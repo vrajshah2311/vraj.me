@@ -4,18 +4,18 @@ import { motion } from 'framer-motion'
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-start justify-center pt-32">
+    <section className="min-h-screen flex items-start justify-center" style={{ paddingTop: '120px' }}>
       <div className="text-left max-w-2xl px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
         >
           {/* Main Heading */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
             className="text-heading-24 mb-8 leading-tight font-semibold text-white"
           >
             Designer, dancer and DJ living in Dubai
@@ -23,9 +23,9 @@ const Hero = () => {
 
           {/* Body Text */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
             className="space-y-6 text-[16px] text-white/70 leading-relaxed font-normal"
           >
             <p>

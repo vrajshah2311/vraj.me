@@ -20,231 +20,63 @@
     @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
   }
   
-  /* Geist Color System - Gray Scale */
-  .bg-geist-1 {
-    @apply bg-[#fafafa];
-  }
-  .bg-geist-2 {
-    @apply bg-[#f5f5f5];
-  }
-  .bg-geist-3 {
-    @apply bg-[#e5e5e5];
-  }
-  .bg-geist-4 {
-    @apply bg-[#d4d4d4];
-  }
-  .bg-geist-5 {
-    @apply bg-[#a3a3a3];
-  }
-  .bg-geist-6 {
-    @apply bg-[#737373];
-  }
-  .bg-geist-7 {
-    @apply bg-[#525252];
-  }
-  .bg-geist-8 {
-    @apply bg-[#404040];
-  }
-  .bg-geist-9 {
-    @apply bg-[#262626];
-  }
-  .bg-geist-10 {
-    @apply bg-[#171717];
-  }
-  
-  .text-geist-1 {
-    @apply text-[#fafafa];
-  }
-  .text-geist-2 {
-    @apply text-[#f5f5f5];
-  }
-  .text-geist-3 {
-    @apply text-[#e5e5e5];
-  }
-  .text-geist-4 {
-    @apply text-[#d4d4d4];
-  }
-  .text-geist-5 {
-    @apply text-[#a3a3a3];
-  }
-  .text-geist-6 {
-    @apply text-[#737373];
-  }
-  .text-geist-7 {
-    @apply text-[#525252];
-  }
-  .text-geist-8 {
-    @apply text-[#404040];
-  }
-  .text-geist-9 {
-    @apply text-[#262626];
-  }
-  .text-geist-10 {
-    @apply text-[#171717];
-  }
-  
-  .border-geist-1 {
-    @apply border-[#fafafa];
-  }
-  .border-geist-2 {
-    @apply border-[#f5f5f5];
-  }
-  .border-geist-3 {
-    @apply border-[#e5e5e5];
-  }
-  .border-geist-4 {
-    @apply border-[#d4d4d4];
-  }
-  .border-geist-5 {
-    @apply border-[#a3a3a3];
-  }
-  .border-geist-6 {
-    @apply border-[#737373];
-  }
-  .border-geist-7 {
-    @apply border-[#525252];
-  }
-  .border-geist-8 {
-    @apply border-[#404040];
-  }
-  .border-geist-9 {
-    @apply border-[#262626];
-  }
-  .border-geist-10 {
-    @apply border-[#171717];
-  }
-  
-  /* Geist Typography System */
-  .text-heading-72 {
-    @apply text-[72px] leading-[80px] tracking-[-0.02em] font-medium;
-  }
-  .text-heading-64 {
-    @apply text-[64px] leading-[72px] tracking-[-0.02em] font-medium;
-  }
-  .text-heading-56 {
-    @apply text-[56px] leading-[64px] tracking-[-0.02em] font-medium;
-  }
-  .text-heading-48 {
-    @apply text-[48px] leading-[56px] tracking-[-0.02em] font-medium;
-  }
-  .text-heading-40 {
-    @apply text-[40px] leading-[48px] tracking-[-0.02em] font-medium;
-  }
-  .text-heading-32 {
-    @apply text-[32px] leading-[40px] tracking-[-0.02em] font-medium;
-  }
   .text-heading-24 {
-    @apply text-[24px] leading-[32px] tracking-[-0.02em] font-medium;
-  }
-  .text-heading-20 {
-    @apply text-[20px] leading-[28px] tracking-[-0.02em] font-medium;
-  }
-  .text-heading-16 {
-    @apply text-[16px] leading-[24px] tracking-[-0.02em] font-medium;
-  }
-  .text-heading-14 {
-    @apply text-[14px] leading-[20px] tracking-[-0.02em] font-medium;
+    @apply text-2xl font-semibold;
   }
   
-  /* Button Typography */
-  .text-button-16 {
-    @apply text-[16px] leading-[24px] tracking-[-0.01em] font-medium;
-  }
-  .text-button-14 {
-    @apply text-[14px] leading-[20px] tracking-[-0.01em] font-medium;
-  }
-  .text-button-12 {
-    @apply text-[12px] leading-[16px] tracking-[-0.01em] font-medium;
-  }
-  
-  /* Label Typography */
-  .text-label-20 {
-    @apply text-[20px] leading-[28px] tracking-[-0.01em] font-medium;
-  }
-  .text-label-18 {
-    @apply text-[18px] leading-[24px] tracking-[-0.01em] font-medium;
-  }
-  .text-label-16 {
-    @apply text-[16px] leading-[24px] tracking-[-0.01em] font-medium;
-  }
-  .text-label-14 {
-    @apply text-[14px] leading-[20px] tracking-[-0.01em] font-medium;
-  }
-  .text-label-14-mono {
-    @apply text-[14px] leading-[20px] tracking-[-0.01em] font-mono font-medium;
-  }
-  .text-label-13 {
-    @apply text-[13px] leading-[20px] tracking-[-0.01em] font-medium;
-  }
-  .text-label-13-mono {
-    @apply text-[13px] leading-[20px] tracking-[-0.01em] font-mono font-medium;
-  }
-  .text-label-12 {
-    @apply text-[12px] leading-[16px] tracking-[-0.01em] font-medium uppercase;
-  }
-  .text-label-12-mono {
-    @apply text-[12px] leading-[16px] tracking-[-0.01em] font-mono font-medium;
-  }
-  
-  /* Copy Typography */
-  .text-copy-24 {
-    @apply text-[24px] leading-[32px] tracking-[-0.01em] font-normal;
-  }
-  .text-copy-20 {
-    @apply text-[20px] leading-[28px] tracking-[-0.01em] font-normal;
-  }
-  .text-copy-18 {
-    @apply text-[18px] leading-[24px] tracking-[-0.01em] font-normal;
-  }
   .text-copy-16 {
-    @apply text-[16px] leading-[24px] tracking-[-0.01em] font-normal;
+    @apply text-base leading-relaxed;
   }
+  
   .text-copy-14 {
-    @apply text-[14px] leading-[20px] tracking-[-0.01em] font-normal;
+    @apply text-sm leading-relaxed;
   }
+  
   .text-copy-13 {
-    @apply text-[13px] leading-[20px] tracking-[-0.01em] font-normal;
+    @apply text-xs leading-relaxed;
   }
+  
   .text-copy-13-mono {
-    @apply text-[13px] leading-[20px] tracking-[-0.01em] font-mono font-normal;
+    @apply text-xs font-mono leading-relaxed;
   }
   
-  /* Legacy classes for backward compatibility */
-  .text-heading {
-    @apply text-heading-32;
-  }
-  .text-subheading {
-    @apply text-copy-18;
+  .text-label-16 {
+    @apply text-base font-medium;
   }
   
-  .gradient-text {
-    @apply bg-gradient-to-r from-geist-10 to-geist-8 bg-clip-text text-transparent;
+  .text-label-14 {
+    @apply text-sm font-medium;
   }
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg;
+  
+  .text-label-14-mono {
+    @apply text-sm font-mono font-medium;
   }
-  .nav-link {
-    @apply relative text-geist-6 hover:text-geist-9 transition-colors duration-200 font-medium;
+  
+  .text-label-13 {
+    @apply text-xs font-medium;
   }
-  .nav-link::after {
-    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-geist-9 transition-all duration-300;
+  
+  .text-label-13-mono {
+    @apply text-xs font-mono font-medium;
   }
-  .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+  
+  .text-label-12 {
+    @apply text-xs font-medium;
   }
-  .minimal-card {
-    @apply bg-white border border-geist-3 rounded-lg p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300;
+  
+  .text-label-12-mono {
+    @apply text-xs font-mono font-medium;
   }
-  .minimal-button {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-geist-10 text-white rounded-lg font-medium hover:bg-geist-9 transition-colors duration-200;
+  
+  .text-button-16 {
+    @apply text-base font-medium;
   }
-  .minimal-button-outline {
-    @apply inline-flex items-center gap-2 px-6 py-3 border border-geist-4 text-geist-7 rounded-lg font-medium hover:border-geist-5 hover:text-geist-9 transition-colors duration-200;
+  
+  .text-button-14 {
+    @apply text-sm font-medium;
   }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  
+  .text-button-12 {
+    @apply text-xs font-medium;
   }
 } 
