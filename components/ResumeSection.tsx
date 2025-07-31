@@ -23,22 +23,18 @@ const ResumeSection = () => {
             />
           </div>
 
-          {/* Creative Coming Soon */}
+          {/* Coming Soon with Animated Dots */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="relative"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
+            className="flex items-center justify-center gap-1"
           >
-            <div className="relative inline-block">
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/5 rounded-2xl blur-xl"></div>
-              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 px-8 py-6">
-                <div className="flex items-center justify-center gap-3">
-                  <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
-                  <span className="text-white/80 font-medium tracking-wide">Coming Soon</span>
-                  <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                </div>
-              </div>
+            <span className="text-white/60 text-lg font-medium">Coming soon</span>
+            <div className="flex items-center gap-1">
+              <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+              <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
             </div>
           </motion.div>
         </motion.div>
