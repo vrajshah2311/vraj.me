@@ -1,37 +1,46 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import BouncyText from './BouncyText'
 
 const PlaygroundSection = () => {
   return (
-    <section className="min-h-screen flex items-start justify-center" style={{ paddingTop: '120px' }}>
-      <div className="text-left w-[600px] px-8">
+    <section className="min-h-screen flex items-center justify-center" style={{ paddingTop: '120px' }}>
+      <div className="text-center w-[600px] px-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
-          className="space-y-8"
+          className="space-y-12"
         >
+          {/* Header */}
           <div>
-            <h2 className="text-heading-24 font-semibold text-white/90">Playground</h2>
-            <p className="text-white/60 text-[16px] leading-relaxed font-normal mt-4">
-              This is where I experiment with new ideas and technologies.
-            </p>
+            <BouncyText 
+              text="Playground"
+              className="text-4xl font-bold text-white/90"
+              delay={0.05}
+              staggerDelay={0.015}
+            />
           </div>
 
-          {/* Coming Soon Tag */}
-          <div className="flex items-center gap-3">
-            <div className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-              <span className="text-xs font-medium text-white/80">Coming Soon</span>
+          {/* Creative Coming Soon */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+            className="relative"
+          >
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-blue-400/5 rounded-2xl blur-xl"></div>
+              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 px-8 py-6">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="w-2 h-2 bg-purple-400/60 rounded-full animate-pulse"></div>
+                  <span className="text-white/80 font-medium tracking-wide">Coming Soon</span>
+                  <div className="w-2 h-2 bg-blue-400/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                </div>
+              </div>
             </div>
-            <div className="h-px flex-1 bg-white/10"></div>
-          </div>
-
-          <div className="mt-8">
-            <p className="text-white/40 text-sm leading-relaxed">
-              I'm currently working on some exciting experiments. Check back soon for interactive demos, prototypes, and experimental projects.
-            </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
