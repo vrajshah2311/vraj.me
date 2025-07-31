@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Hero from '@/components/Hero'
 import WorkSection from '@/components/WorkSection'
+import CaseStudiesSection from '@/components/CaseStudiesSection'
 import ResumeSection from '@/components/ResumeSection'
 import PlaygroundSection from '@/components/PlaygroundSection'
 import Navigation from '@/components/Navigation'
@@ -16,6 +17,8 @@ export default function Home() {
         return <Hero />
       case 'portfolio':
         return <WorkSection />
+      case 'case-studies':
+        return <CaseStudiesSection />
       case 'resume':
         return <ResumeSection />
       case 'playground':
