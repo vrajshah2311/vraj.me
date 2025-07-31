@@ -13,16 +13,6 @@ const ResumeSection = () => {
           transition={{ duration: 0.4 }}
           className="space-y-12"
         >
-          {/* Header */}
-          <div>
-            <BouncyText 
-              text="Experience"
-              className="text-4xl font-bold text-white/90"
-              delay={0.05}
-              staggerDelay={0.015}
-            />
-          </div>
-
           {/* Coming Soon with Animated Dots */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
