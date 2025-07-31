@@ -6,53 +6,49 @@ const CaseStudiesSection = () => {
   const caseStudies = [
     {
       id: 1,
-      title: 'Helping Creators post quality content',
-      subtitle: 'Running quick and broad experiments to figure out how to help creators create meaningful content',
-      company: 'LinkedIn Creators',
-      duration: '12 months',
-      platform: 'Mobile, Web',
-      role: 'Design Lead',
-      background: "So far, your LinkedIn feed has been filled with average content. Acquaintances announcing new jobs. Five learnings from doing good in the community. These are great, but they don't necessarily help your career. We want to change that. We want to make the Feed a great place to learn and boost your career further.",
-      research: "Quality content is integral to LinkedIn's content ecosystem. Our UX Research team has identified six core pillars of creator needs that our team needs to design for in order to help creators thrive on LinkedIn.",
-      approach: "Because LinkedIn is new to the creator game, we move quickly to validate ideas to see what effectively helps our creators get on top of their game. Each experiments took less than a quarter from design to shipping. We monitor the metrics and deliver learnings to Notifications, Feed, Analytics and Profile teams so they can use these learnings to iterate their features.",
-      experiments: [
+      title: 'Profound Conversation Explorer',
+      subtitle: 'Designing a tool that reveals what people actually ask AI',
+      company: 'Profound',
+      duration: '6 months',
+      platform: 'Web',
+      role: 'Lead Designer',
+      background: "Consumers increasingly sidestep traditional search engines and turn straight to conversational agents like ChatGPT, Perplexity and Copilot. Profound's Conversation Explorer arose from this shift. Unlike conventional SEO tools that rely on historic search data, CVE taps into a dataset of millions of real prompts to reveal what people actually ask AI. These insights help brands understand emerging topics, sentiment and intent across answer engines.",
+      contribution: "As the lead designer on CVE, I took an early‑stage prototype and turned it into a polished product ready for customers. Working with data scientists, engineers and marketers, I conducted user interviews and competitive analysis to understand how marketers research keywords, designed and launched features like Bulk Keyword Analysis and a keyword‑hierarchy view, built a component library of atoms and molecules that now underpins Profound's design system, and balanced design decisions with data‑privacy constraints, ensuring sensitive prompts remained hidden while still delivering value.",
+      research: {
+        competitors: [
+          "Semrush offers search‑volume, competition and cost‑per‑click metrics and can analyse up to 100 keywords at once",
+          "Ahrefs uses AI to brainstorm seed keywords and instantly cluster them, providing ranking difficulty and traffic potential",
+          "Ubersuggest covers search volume, SEO difficulty, cost‑per‑click and backlink data, but its keyword database is much smaller",
+          "Google Trends compares search term popularity over time, across regions and categories, but only shows relative interest"
+        ],
+        insights: [
+          "Authenticity: Marketers want to see what people actually ask AI tools, not just search‑engine queries",
+          "Bulk entry: Competitors handle large keyword lists; CVE needed similar or better scale",
+          "Hierarchy: Campaigns are organised by brand, category and subtopic. Users needed a way to group related queries",
+          "Export: Results should be easy to download and integrate into existing workflows",
+          "Clarity: Despite complex data, the interface had to be simple and reusable across the platform"
+        ]
+      },
+      process: [
         {
-          id: 1,
-          title: 'Nudging to reshare when mentioned',
-          description: "When a member is mentioned in a post, the conversation is likely to include a high quality opinion. Therefore we nudge the member to reshare the post to add their voice as a post in addition to the comment to spark meaningful conversation on LinkedIn.",
-          metrics: [
-            { label: 'Pure reshares', value: '+24.26%' },
-            { label: 'DMPC', value: '+0.96%', note: '(members who create or reshare on a given day and have 500+ non-connection followers)' }
-          ]
+          title: 'Building the system',
+          description: "I created a design system of reusable atoms and molecules. Buttons, inputs and icons were designed with accessible colours and spacing; tables, charts and cards were assembled from these primitives. Each component had variants for loading, empty and error states to handle privacy restrictions gracefully."
         },
         {
-          id: 2,
-          title: 'Creator content recommendation',
-          description: "By using AI to analyze member's Profile, we were able to categorize members' interests and recommend content they might want to reshare. Everyday, we recommend three posts that are of their interest to help them get inspired on post to create.",
-          metrics: [
-            { label: 'Sessions', value: '+0.03%' },
-            { label: 'DCC', value: '+0.09%', note: '(members who create or reshare post on a given day)' }
-          ]
+          title: 'Bulk Keyword Analysis',
+          description: "Inspired by Semrush's bulk analysis, we built a tool that lets users paste up to 100 keywords and select an AI platform. For each keyword, CVE returns prompt volume and trends over the past three months, comparative tables that sort by volume or growth, CSV exports for deeper analysis, and keyword hierarchy and recommendations."
         },
         {
-          id: 3,
-          title: 'Sharebox Prompts',
-          description: "Sharebox on the Feed is the first thing any creator sees on LinkedIn. Using the Interests AI and their recent Profile edits, we give post inspirations in this prime space to give inspiration for the Creators to post to their audience.",
-          metrics: [
-            { label: 'Net Content Shared', value: '+4.13%' }
-          ]
+          title: 'Keyword hierarchy and recommendations',
+          description: "Borrowing ideas from Ahrefs' clustering and Google Trends' comparisons, I designed a tree view that groups related queries under parent topics. To surface new questions, we built a prompt‑recommendation engine that analyses real conversations to suggest valuable prompts and identify gaps."
         },
         {
-          id: 4,
-          title: 'Share your achievement',
-          description: "When users update their Linkedin Profile, it usually calls for a celebratory moment. New job, promotion, starting a new school, or obtaining a certificate, all of these moments are worth sharing with their network and we made it very easy to do so.",
-          metrics: [
-            { label: 'Net Content Shared', value: '+20%' },
-            { label: 'DCC', value: '+1%' },
-            { label: 'of all user posts', value: '6.5%' }
-          ]
+          title: 'UI polish',
+          description: "To keep CVE approachable, we used progressive disclosure so that tables and charts expand only when needed, tooltips explain how volumes are calculated, and a responsive layout and dark mode ensure the tool works across devices and meets accessibility standards."
         }
-      ]
+      ],
+      impact: "Launching bulk analysis and the hierarchy view doubled adoption among existing customers. Marketers now spend less time compiling keywords and more time creating content strategies. The new components form the foundation of Profound's design system, accelerating development across the company. By combining real conversation data with bulk analysis and hierarchy, CVE offers a perspective that search‑based tools simply cannot.",
+      future: "The next phase involves adding regional and language filters, incorporating sentiment and intent directly into the UI and extending the design system with dashboard templates. Conversation Explorer is already changing how marketers think about SEO; grounding design decisions in genuine AI conversations has positioned Profound to lead in this rapidly evolving space."
     }
   ]
 
@@ -97,59 +93,85 @@ const CaseStudiesSection = () => {
               {/* Background */}
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-white font-semibold mb-3">Background</h4>
+                  <h4 className="text-white font-semibold mb-3">Why we built it</h4>
                   <p className="text-white/70 text-[16px] leading-relaxed font-normal">
                     {study.background}
                   </p>
                 </div>
 
-                {/* UX Research */}
+                {/* My contribution */}
                 <div>
-                  <h4 className="text-white font-semibold mb-3">UX Research</h4>
+                  <h4 className="text-white font-semibold mb-3">My contribution</h4>
                   <p className="text-white/70 text-[16px] leading-relaxed font-normal">
-                    {study.research}
+                    {study.contribution}
                   </p>
                 </div>
 
-                {/* Approach */}
+                {/* Research highlights */}
                 <div>
-                  <h4 className="text-white font-semibold mb-3">Approach</h4>
-                  <p className="text-white/70 text-[16px] leading-relaxed font-normal">
-                    {study.approach}
-                  </p>
+                  <h4 className="text-white font-semibold mb-6">Research highlights</h4>
+                  
+                  {/* Competitor tools */}
+                  <div className="mb-6">
+                    <h5 className="text-white font-medium mb-3">Competitor tools</h5>
+                    <div className="space-y-2">
+                      {study.research.competitors.map((competitor, index) => (
+                        <p key={index} className="text-white/70 text-[16px] leading-relaxed font-normal">
+                          {competitor}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* User insights */}
+                  <div>
+                    <h5 className="text-white font-medium mb-3">User insights</h5>
+                    <div className="space-y-2">
+                      {study.research.insights.map((insight, index) => (
+                        <p key={index} className="text-white/70 text-[16px] leading-relaxed font-normal">
+                          {insight}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                {/* Experiments */}
+                {/* Design process */}
                 <div>
-                  <h4 className="text-white font-semibold mb-6">Experiments</h4>
+                  <h4 className="text-white font-semibold mb-6">Design process</h4>
                   <div className="space-y-8">
-                    {study.experiments.map((experiment, index) => (
-                      <div key={experiment.id} className="space-y-4">
+                    {study.process.map((step, index) => (
+                      <div key={index} className="space-y-4">
                         <div className="flex items-start gap-4">
                           <span className="text-white/40 text-sm font-mono mt-1">
                             {(index + 1).toString().padStart(2, '0')}
                           </span>
                           <div className="flex-1">
-                            <h5 className="text-white font-semibold mb-2">{experiment.title}</h5>
-                            <p className="text-white/70 text-[16px] leading-relaxed font-normal mb-4">
-                              {experiment.description}
+                            <h5 className="text-white font-semibold mb-2">{step.title}</h5>
+                            <p className="text-white/70 text-[16px] leading-relaxed font-normal">
+                              {step.description}
                             </p>
-                            <div className="space-y-2">
-                              {experiment.metrics.map((metric, metricIndex) => (
-                                <div key={metricIndex} className="flex items-center gap-2">
-                                  <span className="text-white font-semibold">{metric.value}</span>
-                                  <span className="text-white/70">{metric.label}</span>
-                                  {metric.note && (
-                                    <span className="text-white/50 text-sm">({metric.note})</span>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
                           </div>
                         </div>
                       </div>
                     ))}
                   </div>
+                </div>
+
+                {/* Impact */}
+                <div>
+                  <h4 className="text-white font-semibold mb-3">Impact</h4>
+                  <p className="text-white/70 text-[16px] leading-relaxed font-normal">
+                    {study.impact}
+                  </p>
+                </div>
+
+                {/* Looking ahead */}
+                <div>
+                  <h4 className="text-white font-semibold mb-3">Looking ahead</h4>
+                  <p className="text-white/70 text-[16px] leading-relaxed font-normal">
+                    {study.future}
+                  </p>
                 </div>
               </div>
             </motion.div>
