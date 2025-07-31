@@ -53,8 +53,8 @@ const CaseStudiesSection = () => {
   ]
 
   return (
-    <section className="py-32 flex items-start justify-center">
-              <div className="text-left w-[600px] px-8">
+    <section className="py-32 flex items-start justify-center" style={{ paddingTop: '40px' }}>
+      <div className="text-left w-full max-w-[600px] px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -71,8 +71,8 @@ const CaseStudiesSection = () => {
             >
               {/* Case Study Header */}
               <div className="relative">
-                {/* Left Column - Metadata (pushed outside container) */}
-                <div className="absolute -left-40 w-32">
+                {/* Left Column - Metadata (pushed outside container) - Hidden on mobile */}
+                <div className="absolute -left-40 w-32 hidden md:block">
                   <div className="space-y-3 text-sm text-white/60">
                     <div>
                       <span className="font-medium text-white/80">Company</span>

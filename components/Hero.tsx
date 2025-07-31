@@ -5,8 +5,8 @@ import BouncyText from './BouncyText'
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-start justify-center" style={{ paddingTop: '120px' }}>
-      <div className="text-left w-[600px] px-8">
+    <section className="min-h-screen flex items-start justify-center" style={{ paddingTop: '40px' }}>
+      <div className="text-left w-full max-w-[600px] px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -21,7 +21,7 @@ const Hero = () => {
           >
             <BouncyText 
               text="Designer, dancer and DJ living in Dubai"
-              className="text-heading-24 leading-tight font-semibold text-white/90"
+              className="text-2xl md:text-heading-24 leading-tight font-semibold text-white/90"
               delay={0.05}
               staggerDelay={0.015}
             />
@@ -32,7 +32,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.3 }}
-            className="space-y-6 text-[16px] text-white/60 leading-relaxed font-normal"
+            className="space-y-6 text-sm md:text-[16px] text-white/60 leading-relaxed font-normal"
           >
             <div>
               <BouncyText 

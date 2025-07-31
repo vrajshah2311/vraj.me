@@ -5,8 +5,8 @@ import BouncyText from './BouncyText'
 
 const PlaygroundSection = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center" style={{ paddingTop: '120px' }}>
-      <div className="text-center w-[600px] px-8">
+    <section className="min-h-screen flex items-center justify-center" style={{ paddingTop: '40px' }}>
+      <div className="text-center w-full max-w-[600px] px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

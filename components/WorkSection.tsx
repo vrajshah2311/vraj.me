@@ -106,7 +106,7 @@ import BouncyText from './BouncyText'
   ]
 
   return (
-    <section className="pt-32 flex items-start justify-center relative" style={{ paddingTop: '120px' }}>
+    <section className="pt-32 flex items-start justify-center relative" style={{ paddingTop: '40px' }}>
 
       {/* Top Gradient Overlay */}
       <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-30 pointer-events-none"></div>
