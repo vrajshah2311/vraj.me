@@ -114,8 +114,8 @@ import BouncyText from './BouncyText'
       {/* Bottom Gradient Overlay */}
       <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent z-30 pointer-events-none"></div>
       
-      {/* Project Progress Indicator */}
-      <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-40">
+      {/* Project Progress Indicator - Hidden on mobile */}
+      <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
         <div className="flex flex-col items-center space-y-3">
           {projects.map((project, index) => (
             <div
@@ -158,27 +158,26 @@ import BouncyText from './BouncyText'
         </div>
       </div>
       
-      <div className="text-left w-[600px] px-8 relative z-30">
+      <div className="text-left w-full max-w-[600px] px-4 md:px-8 relative z-30">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
-          style={{ gap: '200px' }}
-          className="flex flex-col"
+          className="flex flex-col space-y-16 md:space-y-32"
         >
           {projects.map((project, index) => (
             <div key={project.id} id={`project-${index}`}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.1 * index, duration: 0.4 }}
-                className="space-y-12"
-              >
+                              <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 * index, duration: 0.4 }}
+                  className="space-y-8 md:space-y-12"
+                >
                 {/* Project Header */}
                 <div className="relative">
-                  {/* Left Column - Metadata (for case studies) */}
+                  {/* Left Column - Metadata (for case studies) - Hidden on mobile */}
                   {project.company && (
-                    <div className="absolute -left-40 w-32">
+                    <div className="absolute -left-40 w-32 hidden md:block">
                       <div className="space-y-3 text-sm text-white/60">
                         <div>
                           <span className="font-medium text-white/80">Company</span>
@@ -208,7 +207,7 @@ import BouncyText from './BouncyText'
                       <div className="mb-2">
                         <BouncyText 
                           text={project.title}
-                          className="text-heading-24 font-semibold text-white/90"
+                          className="text-2xl md:text-heading-24 font-semibold text-white/90"
                           delay={0.05}
                           staggerDelay={0.015}
                         />
@@ -216,7 +215,7 @@ import BouncyText from './BouncyText'
                       <div>
                         <BouncyText 
                           text={project.subtitle}
-                          className="text-[16px] text-white/60"
+                          className="text-sm md:text-[16px] text-white/60"
                           delay={0.3}
                           staggerDelay={0.01}
                         />
@@ -240,6 +239,7 @@ import BouncyText from './BouncyText'
                   <div>
                     <BouncyText 
                       text={project.description || ""}
+                      className="text-sm md:text-[16px] leading-relaxed font-normal text-white/60"
                       delay={0.7}
                       staggerDelay={0.008}
                     />
