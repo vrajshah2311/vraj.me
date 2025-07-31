@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
   html {
-    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: var(--font-feature-settings);
   }
   body {
     @apply bg-white text-gray-900;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings: 'rlig' 1, 'calt' 1, 'cv02' 1, 'cv03' 1, 'cv04' 1;
     line-height: 1.6;
+    font-variation-settings: 'wght' 400;
   }
 }
 
@@ -80,3 +86,67 @@
     @apply text-xs font-medium;
   }
 } 
+
+@layer utilities {
+  .text-heading-24 {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+}
+
+/* Bouncy text animation keyframes */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.99);
+    filter: blur(6px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-0.5px) scale(1.005);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes bounceInWord {
+  0% {
+    opacity: 0;
+    transform: translateY(3px) scale(0.99);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translateY(-0.5px) scale(1.005);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-bounce-in-word {
+  animation: bounceInWord 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Stagger animation delays for words */
+.word-animate-1 { animation-delay: 0.1s; }
+.word-animate-2 { animation-delay: 0.2s; }
+.word-animate-3 { animation-delay: 0.3s; }
+.word-animate-4 { animation-delay: 0.4s; }
+.word-animate-5 { animation-delay: 0.5s; }
+.word-animate-6 { animation-delay: 0.6s; }
+.word-animate-7 { animation-delay: 0.7s; }
+.word-animate-8 { animation-delay: 0.8s; }
+.word-animate-9 { animation-delay: 0.9s; }
+.word-animate-10 { animation-delay: 1.0s; } 

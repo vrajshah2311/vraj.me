@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Hero from '@/components/Hero'
 import WorkSection from '@/components/WorkSection'
-import CaseStudiesSection from '@/components/CaseStudiesSection'
 import ResumeSection from '@/components/ResumeSection'
 import PlaygroundSection from '@/components/PlaygroundSection'
 import Navigation from '@/components/Navigation'
@@ -17,8 +16,6 @@ export default function Home() {
         return <Hero />
       case 'portfolio':
         return <WorkSection />
-      case 'case-studies':
-        return <CaseStudiesSection />
       case 'resume':
         return <ResumeSection />
       case 'playground':
@@ -31,12 +28,12 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black relative">
       <div className="flex justify-center">
-        <div className="w-full max-w-[464px]">
+        <div className="w-full max-w-[600px]">
           {renderContent()}
         </div>
       </div>
       
-      <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+      <Navigation activeTab={activeTab} onTabChange={setActiveTab} currentProject="other" />
     </main>
   )
 } 

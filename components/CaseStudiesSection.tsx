@@ -9,9 +9,9 @@ const CaseStudiesSection = () => {
       title: 'Profound Conversation Explorer',
       subtitle: 'Designing a tool that reveals what people actually ask AI',
       company: 'Profound',
-      duration: '6 months',
-      platform: 'Web',
-      role: 'Lead Designer',
+      duration: '2 months',
+      platform: '',
+      role: 'Product Design',
       background: "Consumers increasingly sidestep traditional search engines and turn straight to conversational agents like ChatGPT, Perplexity and Copilot. Profound's Conversation Explorer arose from this shift. Unlike conventional SEO tools that rely on historic search data, CVE taps into a dataset of millions of real prompts to reveal what people actually ask AI. These insights help brands understand emerging topics, sentiment and intent across answer engines.",
       contribution: "As the lead designer on CVE, I took an early‑stage prototype and turned it into a polished product ready for customers. Working with data scientists, engineers and marketers, I conducted user interviews and competitive analysis to understand how marketers research keywords, designed and launched features like Bulk Keyword Analysis and a keyword‑hierarchy view, built a component library of atoms and molecules that now underpins Profound's design system, and balanced design decisions with data‑privacy constraints, ensuring sensitive prompts remained hidden while still delivering value.",
       research: {
@@ -54,7 +54,7 @@ const CaseStudiesSection = () => {
 
   return (
     <section className="py-32 flex items-start justify-center">
-      <div className="text-left w-[464px] px-8">
+              <div className="text-left w-[600px] px-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -70,22 +70,38 @@ const CaseStudiesSection = () => {
               className="space-y-12"
             >
               {/* Case Study Header */}
-              <div className="flex items-center gap-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-1">
-                    <h3 className="text-heading-24 font-semibold text-white">{study.title}</h3>
+              <div className="relative">
+                {/* Left Column - Metadata (pushed outside container) */}
+                <div className="absolute -left-40 w-32">
+                  <div className="space-y-3 text-sm text-white/60">
+                    <div>
+                      <span className="font-medium text-white/80">Company</span>
+                      <p>{study.company}</p>
+                    </div>
+                    <div>
+                      <span className="font-medium text-white/80">Duration</span>
+                      <p>{study.duration}</p>
+                    </div>
+                    {study.platform && (
+                      <div>
+                        <span className="font-medium text-white/80">Platform</span>
+                        <p>{study.platform}</p>
+                      </div>
+                    )}
+                    <div>
+                      <span className="font-medium text-white/80">Role</span>
+                      <p>{study.role}</p>
+                    </div>
                   </div>
-                  <p className="text-white/70 text-[16px] mb-2">
-                    {study.subtitle}
-                  </p>
-                  <div className="flex flex-wrap gap-4 text-sm text-white/60">
-                    <span>{study.company}</span>
-                    <span>•</span>
-                    <span>{study.duration}</span>
-                    <span>•</span>
-                    <span>{study.platform}</span>
-                    <span>•</span>
-                    <span>{study.role}</span>
+                </div>
+                
+                {/* Main Content (stays within container) */}
+                <div>
+                  <div className="mb-6">
+                    <h3 className="text-heading-24 font-semibold text-white mb-2">{study.title}</h3>
+                    <p className="text-white/70 text-[16px]">
+                      {study.subtitle}
+                    </p>
                   </div>
                 </div>
               </div>

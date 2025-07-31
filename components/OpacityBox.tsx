@@ -11,7 +11,7 @@ interface OpacityBoxProps {
 const OpacityBox = ({ 
   width = '840px', 
   height = '472.5px', 
-  opacity = 0.03 
+  opacity = 0.03
 }: OpacityBoxProps) => {
   return (
     <motion.div
@@ -21,7 +21,7 @@ const OpacityBox = ({
       className="mt-8"
     >
       <div 
-        className="bg-white border border-white/20 rounded-lg shadow-lg"
+        className="border rounded-lg shadow-lg transition-all duration-2000 bg-white border-white/20"
         style={{
           width,
           height,

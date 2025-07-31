@@ -5,25 +5,24 @@ import { useState, useRef, useEffect } from 'react'
 interface NavigationProps {
   activeTab: string
   onTabChange: (tab: string) => void
+  currentProject?: string
 }
 
-const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
+const Navigation = ({ activeTab, onTabChange, currentProject }: NavigationProps) => {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 64 })
   const [separatorPositions, setSeparatorPositions] = useState({ first: 0, second: 0, third: 0, fourth: 0 })
   
   const aboutRef = useRef<HTMLButtonElement>(null)
   const portfolioRef = useRef<HTMLButtonElement>(null)
-  const caseStudiesRef = useRef<HTMLButtonElement>(null)
   const resumeRef = useRef<HTMLButtonElement>(null)
   const playgroundRef = useRef<HTMLButtonElement>(null)
 
   const updateSliderPosition = (tab: string) => {
-    if (!aboutRef.current || !portfolioRef.current || !caseStudiesRef.current || !resumeRef.current || !playgroundRef.current) return
+    if (!aboutRef.current || !portfolioRef.current || !resumeRef.current || !playgroundRef.current) return
 
     const aboutWidth = aboutRef.current.offsetWidth
     const portfolioWidth = portfolioRef.current.offsetWidth
-    const caseStudiesWidth = caseStudiesRef.current.offsetWidth
     const resumeWidth = resumeRef.current.offsetWidth
     const playgroundWidth = playgroundRef.current.offsetWidth
     const gap = 8
@@ -34,14 +33,11 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
     if (tab === 'portfolio') {
       left = aboutWidth + gap
       width = portfolioWidth
-    } else if (tab === 'case-studies') {
-      left = aboutWidth + gap + portfolioWidth + gap
-      width = caseStudiesWidth
     } else if (tab === 'resume') {
-      left = aboutWidth + gap + portfolioWidth + gap + caseStudiesWidth + gap
+      left = aboutWidth + gap + portfolioWidth + gap
       width = resumeWidth
     } else if (tab === 'playground') {
-      left = aboutWidth + gap + portfolioWidth + gap + caseStudiesWidth + gap + resumeWidth + gap
+      left = aboutWidth + gap + portfolioWidth + gap + resumeWidth + gap
       width = playgroundWidth
     }
 
@@ -49,18 +45,18 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
   }
 
   const calculatePositions = () => {
-    if (aboutRef.current && portfolioRef.current && caseStudiesRef.current && resumeRef.current && playgroundRef.current) {
+    if (aboutRef.current && portfolioRef.current && resumeRef.current && playgroundRef.current) {
       const aboutWidth = aboutRef.current.offsetWidth
       const portfolioWidth = portfolioRef.current.offsetWidth
-      const caseStudiesWidth = caseStudiesRef.current.offsetWidth
       const resumeWidth = resumeRef.current.offsetWidth
+      const playgroundWidth = playgroundRef.current.offsetWidth
       const gap = 8
       
       setSeparatorPositions({
         first: aboutWidth + gap / 2,
         second: aboutWidth + gap + portfolioWidth + gap / 2,
-        third: aboutWidth + gap + portfolioWidth + gap + caseStudiesWidth + gap / 2,
-        fourth: aboutWidth + gap + portfolioWidth + gap + caseStudiesWidth + gap + resumeWidth + gap / 2
+        third: aboutWidth + gap + portfolioWidth + gap + resumeWidth + gap / 2,
+        fourth: aboutWidth + gap + portfolioWidth + gap + resumeWidth + gap + playgroundWidth + gap / 2
       })
     }
   }
@@ -85,13 +81,15 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
       setIsTransitioning(true)
       setTimeout(() => setIsTransitioning(false), 500)
     }
+    
+
+    
     onTabChange(tab)
   }
 
   const navItems = [
     { id: 'about', ref: aboutRef, label: 'About', icon: 'user' },
     { id: 'portfolio', ref: portfolioRef, label: 'Work', icon: 'portfolio' },
-    { id: 'case-studies', ref: caseStudiesRef, label: 'Case Studies', icon: 'case-studies' },
     { id: 'resume', ref: resumeRef, label: 'Resume', icon: 'resume' },
     { id: 'playground', ref: playgroundRef, label: 'Playground', icon: 'playground' }
   ]
@@ -128,6 +126,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
             <path fillRule="evenodd" clipRule="evenodd" d="M4 4C4 3.44772 4.44772 3 5 3H19C19.5523 3 20 3.44772 20 4C20 4.55228 19.5523 5 19 5H5C4.44772 5 4 4.55228 4 4ZM2 10C2 7.79086 3.79086 6 6 6H18C20.2091 6 22 7.79086 22 10V17C22 19.2091 20.2091 21 18 21H6C3.79086 21 2 19.2091 2 17V10ZM10.5668 10.5987C10.9133 10.4322 11.3245 10.479 11.6247 10.7191L14.1247 12.7191C14.3619 12.9089 14.5 13.1962 14.5 13.5C14.5 13.8038 14.3619 14.0911 14.1247 14.2809L11.6247 16.2809C11.3245 16.521 10.9133 16.5678 10.5668 16.4013C10.2203 16.2348 10 15.8844 10 15.5V11.5C10 11.1156 10.2203 10.7652 10.5668 10.5987Z" fill="currentColor" />
           </>
         )
+
       default:
         return null
     }
@@ -135,7 +134,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 
   return (
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="bg-white/5 backdrop-blur-md rounded-xl px-1 py-1 shadow-lg w-fit border border-white/5">
+      <div className="backdrop-blur-md rounded-xl px-1 py-1 shadow-lg w-fit border transition-all duration-2000 bg-white/5 border-white/5">
         <div className="flex items-center gap-2 relative">
           {/* Sliding Background */}
           <div 
@@ -163,14 +162,20 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
               key={item.id}
               ref={item.ref}
               onClick={() => handleTabClick(item.id)}
-              className={`relative pl-2 pr-2 h-8 flex items-center justify-center gap-2 text-xs font-medium transition-all duration-200 cursor-pointer group ${
-                activeTab === item.id ? 'text-white' : 'text-white/30 hover:text-white/60'
+              className={`relative pl-2 pr-2 h-8 flex items-center justify-center gap-2 text-xs font-medium transition-all duration-2000 cursor-pointer group ${
+                activeTab === item.id 
+                  ? 'text-white'
+                  : 'text-white/30 hover:text-white/60'
               }`}
             >
+
+              
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className={`w-3.5 h-3.5 transition-all duration-200 group-hover:scale-110 ${
-                  activeTab === item.id ? 'text-white' : 'text-white/30'
+                className={`w-3.5 h-3.5 transition-all duration-2000 group-hover:scale-110 ${
+                  activeTab === item.id 
+                    ? 'text-white'
+                    : 'text-white/30'
                 }`} 
                 width="24" 
                 height="24" 
