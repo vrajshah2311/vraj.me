@@ -92,6 +92,19 @@ const ResumeSection = () => {
             </div>
           </motion.div>
 
+          {/* Coming Soon Tag */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
+            className="flex items-center gap-3 mb-8"
+          >
+            <div className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+              <span className="text-xs font-medium text-white/80">Coming Soon</span>
+            </div>
+            <div className="h-px flex-1 bg-white/10"></div>
+          </motion.div>
+
           {/* Experience Cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
