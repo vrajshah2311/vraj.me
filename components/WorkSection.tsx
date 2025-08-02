@@ -1,54 +1,21 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import OpacityBox from './OpacityBox'
 import BouncyText from './BouncyText'
 
-  const WorkSection = () => {
-    const [activeProject, setActiveProject] = useState(0)
-    
-    useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      const windowHeight = window.innerHeight
-      const sectionTop = 120
-      
-      const projectHeight = windowHeight * 2
-      const currentProject = Math.floor((scrollPosition - sectionTop) / projectHeight)
-      
-      const orimiElement = document.getElementById('project-0')
-      const profoundElement = document.getElementById('project-1')
-      
-      let detectedProject = 0
-      if (orimiElement && profoundElement) {
-        const orimiRect = orimiElement.getBoundingClientRect()
-        const profoundRect = profoundElement.getBoundingClientRect()
-        
-        if (profoundRect.top <= window.innerHeight * 0.5) {
-          detectedProject = 1
-        } else if (orimiRect.top <= window.innerHeight * 0.5) {
-          detectedProject = 0
-        }
-      } else {
-        detectedProject = currentProject
-      }
-      
-      if (detectedProject >= 0 && detectedProject < projects.length) {
-        setActiveProject(detectedProject)
-      }
-    }
-    
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+const WorkSection = () => {
+  const [activeProject, setActiveProject] = useState(0)
   
   const projects = [
     {
       id: 1,
       title: 'Orimi',
       subtitle: 'Invoicing and payment management for freelancers',
-      period: '2024 - Now',
+      company: 'Orimi',
+      duration: 'Now',
+      role: 'Founder',
       description: 'When I first went full time as a freelancer, I thought invoicing and payments would be the easy part. Turns out, they were the messiest. Every client had a different system. Some wanted hourly logs. Others needed contracts upfront. A few just ghosted after sending a brief. I found myself buried in spreadsheets, chasing down hours, rewriting invoices, and sending polite but pointed payment reminders. After too many late nights doing admin instead of actual work, I decided to fix it.',
       highlight: "That's how Orimi started.",
       hasOpacityBox: true
@@ -102,12 +69,139 @@ import BouncyText from './BouncyText'
       ],
       impact: "Adoption doubled after launching bulk analysis and hierarchy view. Marketers saved hours on research, shifting time toward strategy. The new design system accelerated dev velocity across Profound. CVE now offers a competitive edge by surfacing data that SEO tools simply can't touch.",
       future: "We're exploring regional and language filters, embedded sentiment and intent analysis, and new dashboard templates to extend the design system. CVE redefines how marketers think about keyword research in an AI-native world. Grounded in real prompts and thoughtful design, it's built not just for today, but for where search is going next."
+    },
+    {
+      id: 3,
+      title: 'nsave',
+      subtitle: 'A Fintech Platform for the Rest of Us',
+      company: 'nsave',
+      duration: '6 months',
+      platform: 'Web & Mobile',
+      role: 'Founding Designer',
+      background: "Nsave was founded to solve a critical gap: people from high-inflation economies often lack access to secure, stable banking. Traditional financial systems weren't built for them. Nsave changes that—offering a fully compliant, multi-currency account that lets users store wealth in USD, EUR, or GBP from anywhere. As the product matured, our challenge was to make it feel just as trustworthy and intuitive as a top-tier neobank—while staying nimble and legally compliant.",
+      contribution: "As the founding designer, I led the entire brand and product redesign. My work spanned UX, UI, growth design, and marketing. I worked closely with founders, legal counsel, and engineering to reimagine the brand and visual identity, aligning trust with global accessibility; design and ship core money features: Investments, Savings, and Transfers; lead onboarding redesign to increase completion and trust signals; build a scalable design system used across web, mobile, and internal tools; and own all growth and marketing design — from Product Hunt to performance ads.",
+      timeline: [
+        "Jan 2024: Brand overhaul kick-off",
+        "Feb 2024: MVP features designed (Invest, Save, Transfer)",
+        "Mar 2024: Product Hunt launch (#1 of the day)",
+        "Apr 2024: DAU growth, onboarding revamp",
+        "Jun 2024: Series A secured ($18M)"
+      ],
+      research: {
+        competitors: [
+          "Wise: Excellent international transfers, but limited on wealth preservation",
+          "Revolut: Broad features but region-locked, with volatile user trust",
+          "Western Union / Legacy banks: Accessible but slow, expensive, and outdated"
+        ],
+        insights: [
+          "Trust and compliance—without friction or jargon",
+          "A clean, modern experience that worked internationally",
+          "Clear entry points into investing, saving, and moving funds",
+          "A brand that felt global but empathetic",
+          "An onboarding that reassured without overwhelming"
+        ]
+      },
+      process: [
+        {
+          title: 'A full brand redesign',
+          description: "We rebuilt the brand from the ground up—new logo, color system, typography, and tone of voice. It had to speak to trust, safety, and borderless access. We deliberately avoided cliché fintech blues and leaned into a warmer, modern palette that felt secure but human. Within 24 hours of launch, thousands signed up organically. The new look helped signal product maturity and investor-readiness."
+        },
+        {
+          title: 'Core financial features',
+          description: "I designed flows for Investments (launching with US Treasury-backed products and Shariah-compliant options via Zoya), Savings (structured options with clear returns and risk profiles), and Transfers (fast, intuitive money movement in and out of nsave accounts)."
+        },
+        {
+          title: 'Onboarding revamp',
+          description: "The previous onboarding flow caused drop-off due to compliance-heavy screens. I redesigned it with a clear progress tracker, in-context guidance, and progressive disclosure. I worked closely with our CTO and legal team to balance regulatory constraints with UX best practices. The result: a 33% lift in retention."
+        },
+        {
+          title: 'Scalable design system',
+          description: "I built the initial library of components: buttons, inputs, modals, cards, graphs—with clear states (loading, empty, error) to handle real-world data issues. It cut dev time by 75% across platforms and enabled the team to ship three major features in under 10 weeks."
+        },
+        {
+          title: 'Growth & marketing design',
+          description: "I owned creative across Product Hunt (where we hit #1), paid acquisition, and our public-facing site. Each piece reinforced the new brand tone and drove acquisition. We kept messaging sharp, visuals lightweight, and made sure our campaign design system was plug-and-play across web and mobile."
+        }
+      ],
+      impact: "Thousands of signups in 24 hours post-launch. Increased DAU by 24.6%, retention up 33%. Built investor confidence, contributing to our successful $18M Series A raise. Cut dev time by 75% with the design system.",
+      future: "Expand investment options and user controls. Launch Mastercard integration for global payments. Build native mobile app experience using the new design system. Nsave isn't just another fintech. It's a lifeline for people overlooked by the global banking system. Designing it meant building more than just features—it meant building trust from screen one."
     }
   ]
 
+  // Scroll detection using getBoundingClientRect
+  useEffect(() => {
+    const handleScroll = () => {
+      const projectElements = projects.map((_, index) => 
+        document.getElementById(`project-${index}`)
+      ).filter(Boolean) as HTMLElement[]
+
+      if (projectElements.length === 0) return
+
+      const windowHeight = window.innerHeight
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+
+      // Find which project is closest to the top of the viewport
+      let currentProjectIndex = 0
+      let minDistance = Infinity
+
+      projectElements.forEach((element, index) => {
+        const rect = element.getBoundingClientRect()
+        
+        // Only consider projects that are at least partially visible
+        if (rect.bottom > 0 && rect.top < windowHeight) {
+          // Calculate distance from top of viewport to top of project
+          const distanceFromTop = Math.abs(rect.top)
+          
+          // Add a small penalty for projects that are too far down
+          const penalty = rect.top > 200 ? (rect.top - 200) * 0.1 : 0
+          const totalDistance = distanceFromTop + penalty
+          
+          if (totalDistance < minDistance) {
+            minDistance = totalDistance
+            currentProjectIndex = index
+          }
+        }
+      })
+
+      // console.log(`Setting active project to: ${currentProjectIndex}`)
+      setActiveProject(currentProjectIndex)
+    }
+
+    // Throttle scroll events
+    let ticking = false
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', throttledScroll)
+    
+    // Initial check
+    setTimeout(handleScroll, 100)
+
+    return () => window.removeEventListener('scroll', throttledScroll)
+  }, [projects.length])
+
+  const scrollToProject = useCallback((index: number) => {
+    const element = document.getElementById(`project-${index}`)
+    if (element) {
+      const offset = 120
+      const elementPosition = element.offsetTop
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      })
+      setActiveProject(index)
+    }
+  }, [])
+
   return (
     <section className="pt-32 flex items-start justify-center relative" style={{ paddingTop: '40px' }}>
-
       {/* Top Gradient Overlay */}
       <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-30 pointer-events-none"></div>
       
@@ -131,27 +225,12 @@ import BouncyText from './BouncyText'
               
               {/* Dot */}
               <div
-                className={`w-2 h-2 rounded-full transition-all duration-2000 cursor-pointer ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   activeProject === index 
                     ? 'bg-white scale-125'
                     : 'bg-white/20 hover:bg-white/40'
                 }`}
-                onClick={() => {
-                  setActiveProject(index)
-                  const projectElement = document.getElementById(`project-${index}`)
-                  console.log('Clicking project:', index, 'Element:', projectElement)
-                  if (projectElement) {
-                    const offset = 120
-                    const elementPosition = projectElement.offsetTop
-                    console.log('Scrolling to:', elementPosition - offset)
-                    window.scrollTo({
-                      top: elementPosition - offset,
-                      behavior: 'smooth'
-                    })
-                  } else {
-                    console.log('Project element not found for index:', index)
-                  }
-                }}
+                onClick={() => scrollToProject(index)}
               />
             </div>
           ))}
@@ -163,43 +242,48 @@ import BouncyText from './BouncyText'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
-          className="flex flex-col space-y-16 md:space-y-32"
+          className="flex flex-col"
         >
           {projects.map((project, index) => (
-            <div key={project.id} id={`project-${index}`}>
-                              <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.1 * index, duration: 0.4 }}
-                  className="space-y-8 md:space-y-12"
-                >
+            <div key={project.id} id={`project-${index}`} className="mb-12">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 * index, duration: 0.4 }}
+                className="space-y-12"
+              >
                 {/* Project Header */}
                 <div className="relative">
-                  {/* Left Column - Metadata (for case studies) - Hidden on mobile */}
-                  {project.company && (
-                    <div className="absolute -left-40 w-32 hidden md:block">
-                      <div className="space-y-3 text-sm text-white/60">
+                                    {/* Left Column - Metadata - Hidden on mobile */}
+                  <div className="absolute -left-56 w-40 hidden md:block">
+                    <div className="space-y-3 text-sm text-white/80">
+                      {project.company && (
                         <div>
                           <span className="font-medium text-white/80">Company</span>
                           <p>{project.company}</p>
                         </div>
+                      )}
+                      {project.duration && (
                         <div>
                           <span className="font-medium text-white/80">Duration</span>
                           <p>{project.duration}</p>
                         </div>
-                        {project.platform && (
-                          <div>
-                            <span className="font-medium text-white/80">Platform</span>
-                            <p>{project.platform}</p>
-                          </div>
-                        )}
+                      )}
+                      {project.platform && (
+                        <div>
+                          <span className="font-medium text-white/80">Platform</span>
+                          <p>{project.platform}</p>
+                        </div>
+                      )}
+                      {project.role && (
                         <div>
                           <span className="font-medium text-white/80">Role</span>
                           <p>{project.role}</p>
                         </div>
-                      </div>
+                      )}
+
                     </div>
-                  )}
+                  </div>
                   
                   {/* Main Content */}
                   <div>
@@ -220,40 +304,33 @@ import BouncyText from './BouncyText'
                           staggerDelay={0.01}
                         />
                       </div>
-                      {project.period && (
-                        <div>
-                          <BouncyText 
-                            text={project.period}
-                            className="text-[16px] mt-1 text-white/60"
-                            delay={0.5}
-                            staggerDelay={0.01}
-                          />
-                        </div>
-                      )}
+
                     </div>
                   </div>
                 </div>
                 
-                {/* Project Description */}
-                <div className="text-[16px] leading-relaxed font-normal text-white/60">
-                  <div>
-                    <BouncyText 
-                      text={project.description || ""}
-                      className="text-sm md:text-[16px] leading-relaxed font-normal text-white/60"
-                      delay={0.7}
-                      staggerDelay={0.008}
-                    />
-                  </div>
-                  {project.highlight && (
-                    <div className="mt-4">
+                {/* Project Description - Only show for projects with description */}
+                {project.description && (
+                  <div className="text-[16px] leading-relaxed font-normal text-white/60">
+                    <div>
                       <BouncyText 
-                        text={project.highlight || ""}
-                        delay={0.9}
-                        staggerDelay={0.01}
+                        text={project.description}
+                        className="text-sm md:text-[16px] leading-relaxed font-normal text-white/60"
+                        delay={0.7}
+                        staggerDelay={0.008}
                       />
                     </div>
-                  )}
-                </div>
+                    {project.highlight && (
+                      <div className="mt-4">
+                        <BouncyText 
+                          text={project.highlight}
+                          delay={0.9}
+                          staggerDelay={0.01}
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
                 
                 {/* Opacity Box for Orimi */}
                 {project.hasOpacityBox && <OpacityBox />}
@@ -269,7 +346,7 @@ import BouncyText from './BouncyText'
                   </div>
                 )}
 
-                {/* Case Study Content for Profound */}
+                {/* Case Study Content for Profound and Nsave */}
                 {project.background && (
                   <div>
                     {/* Background */}
@@ -318,15 +395,41 @@ import BouncyText from './BouncyText'
                     </div>
                     
                     {/* Opacity Box after Contribution */}
-                    <div className="my-12">
+                    <div className="mb-12">
                       <OpacityBox />
                     </div>
+
+                                          {/* Timeline for Nsave */}
+                      {project.timeline && (
+                        <div className="mb-12" id="section-timeline">
+                        <div className="mb-6">
+                          <BouncyText 
+                            text="Timeline"
+                            className="font-semibold text-white/90"
+                            delay={2.8}
+                            staggerDelay={0.02}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          {project.timeline.map((item, idx) => (
+                            <div key={idx}>
+                              <BouncyText 
+                                text={item}
+                                className="text-[16px] leading-relaxed font-normal text-white/60"
+                                delay={3.0 + (idx * 0.1)}
+                                staggerDelay={0.012}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Research highlights */}
                     <div className="mb-12" id="section-research">
                       <div className="mb-6">
                         <BouncyText 
-                          text="Research highlights"
+                          text="Research insights"
                           className="font-semibold text-white/90"
                           delay={3.0}
                           staggerDelay={0.02}
@@ -337,7 +440,7 @@ import BouncyText from './BouncyText'
                       <div className="mb-6">
                         <div className="mb-3">
                           <BouncyText 
-                            text="Competitor tools"
+                            text="What competitors offered"
                             className="font-medium text-white/80"
                             delay={3.2}
                             staggerDelay={0.02}
@@ -366,7 +469,7 @@ import BouncyText from './BouncyText'
                       <div>
                         <div className="mb-3">
                           <BouncyText 
-                            text="User insights"
+                            text="What our users needed"
                             className="font-medium text-white/80"
                             delay={4.0}
                             staggerDelay={0.02}
@@ -396,7 +499,7 @@ import BouncyText from './BouncyText'
                     <div className="mb-12" id="section-process">
                       <div className="mb-6">
                         <BouncyText 
-                          text="Design process"
+                          text="What I designed"
                           className="font-semibold text-white/90"
                           delay={4.8}
                           staggerDelay={0.02}
@@ -422,7 +525,7 @@ import BouncyText from './BouncyText'
                               />
                             </div>
                             {/* OpacityBox after each step */}
-                            <div className="mt-8">
+                            <div className="mt-12">
                               <OpacityBox />
                             </div>
                           </div>
@@ -459,7 +562,7 @@ import BouncyText from './BouncyText'
                     <div className="mb-12" id="section-future">
                       <div className="mb-3">
                         <BouncyText 
-                          text="Looking ahead"
+                          text="What's next"
                           className="font-semibold text-white/90"
                           delay={7.6}
                           staggerDelay={0.02}
@@ -485,7 +588,7 @@ import BouncyText from './BouncyText'
               
               {/* Divider between projects */}
               {index < projects.length - 1 && (
-                <div className="flex justify-center my-16">
+                <div className="flex justify-center my-12">
                   <div className="w-24 h-px" style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)' }}></div>
                 </div>
               )}
