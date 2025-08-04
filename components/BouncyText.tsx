@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 interface BouncyTextProps {
   text: string
   className?: string
+  style?: React.CSSProperties
   delay?: number
   staggerDelay?: number
   onComplete?: () => void
@@ -14,6 +15,7 @@ interface BouncyTextProps {
 const BouncyText = ({ 
   text, 
   className = "", 
+  style,
   delay = 0, 
   staggerDelay = 0.05,
   onComplete 
@@ -68,6 +70,7 @@ const BouncyText = ({
   return (
     <motion.div
       className={`inline ${className}`}
+      style={style}
       variants={containerVariants}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
@@ -79,7 +82,8 @@ const BouncyText = ({
         <motion.span
           key={index}
           variants={wordVariants}
-          className="inline-block mr-1"
+          className={`inline-block mr-1 ${className}`}
+          style={style}
         >
           {word}
         </motion.span>

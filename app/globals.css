@@ -7,17 +7,35 @@
 @layer base {
   :root {
     --font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: #000000;
   }
   
   html {
     font-family: 'Inter', system-ui, sans-serif;
     font-feature-settings: var(--font-feature-settings);
+    background-color: #000000;
   }
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-black text-white;
     font-feature-settings: 'rlig' 1, 'calt' 1, 'cv02' 1, 'cv03' 1, 'cv04' 1;
     line-height: 1.6;
     font-variation-settings: 'wght' 400;
+    background-color: #000000;
+  }
+  
+  * {
+    background-color: #000000;
+  }
+  
+  /* Prevent overscroll and ensure black background */
+  html, body {
+    overscroll-behavior: none;
+    background-color: #000000 !important;
+  }
+  
+  /* Ensure viewport is always black */
+  #__next, #root {
+    background-color: #000000 !important;
   }
 }
 

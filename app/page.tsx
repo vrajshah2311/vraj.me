@@ -2,20 +2,23 @@
 
 import { useState } from 'react'
 import Hero from '@/components/Hero'
-import WorkSection from '@/components/WorkSection'
+import CaseStudies from '@/components/CaseStudies'
+import Projects from '@/components/Projects'
 import ResumeSection from '@/components/ResumeSection'
 import PlaygroundSection from '@/components/PlaygroundSection'
 import Navigation from '@/components/Navigation'
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('about')
+  const [activeTab, setActiveTab] = useState('case-studies')
 
   const renderContent = () => {
     switch (activeTab) {
       case 'about':
         return <Hero />
-      case 'portfolio':
-        return <WorkSection />
+      case 'case-studies':
+        return <CaseStudies />
+      case 'projects':
+        return <Projects />
       case 'resume':
         return <ResumeSection />
       case 'playground':

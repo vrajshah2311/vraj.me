@@ -5,15 +5,15 @@ import { useState, useEffect, useCallback } from 'react'
 import OpacityBox from './OpacityBox'
 import BouncyText from './BouncyText'
 
-const WorkSection = () => {
+const CaseStudies = () => {
   const [activeProject, setActiveProject] = useState(0)
+  const [activeSection, setActiveSection] = useState('role')
   
   const projects = [
     {
       id: 1,
       title: 'Orimi',
       subtitle: 'Invoicing and payment management for freelancers',
-      company: 'Orimi',
       duration: 'Now',
       role: 'Founder',
       description: 'When I first went full time as a freelancer, I thought invoicing and payments would be the easy part. Turns out, they were the messiest. Every client had a different system. Some wanted hourly logs. Others needed contracts upfront. A few just ghosted after sending a brief. I found myself buried in spreadsheets, chasing down hours, rewriting invoices, and sending polite but pointed payment reminders. After too many late nights doing admin instead of actual work, I decided to fix it.',
@@ -22,29 +22,13 @@ const WorkSection = () => {
     },
     {
       id: 2,
-      title: 'Profound Conversation Explorer',
+      title: 'Profound',
       subtitle: 'Designing a tool to uncover what people actually ask AI',
-      company: 'Profound',
       duration: '2 months',
       platform: '',
       role: 'Product Design',
       background: "As users shift from Google to tools like ChatGPT, Perplexity, and Copilot, traditional SEO tools fall short. They track search queries, not conversations. Profound's Conversation Explorer (CVE) bridges that gap, surfacing real prompts from millions of users across answer engines. These insights help brands track emerging topics, understand sentiment, and adapt their strategy for the AI-first internet.",
       contribution: "I led design for CVE, evolving it from a scrappy prototype into a production-ready product. I collaborated with data scientists, engineers, and marketers to conduct user interviews and competitive research, launch key features like Bulk Keyword Analysis and keyword hierarchy, build the foundational design system (atoms, molecules, components) now used across Profound, navigate data-privacy constraints while keeping the product genuinely useful, and redesign the date picker UI, replacing a frustrating experience with a clean, dual-calendar flow inspired by Airbnb.",
-      research: {
-        competitors: [
-          "Semrush: Keyword volume, competition, CPC, bulk analysis up to 100 keywords",
-          "Ahrefs: AI-powered keyword clustering, ranking difficulty, traffic potential",
-          "Ubersuggest: Core SEO metrics, smaller database",
-          "Google Trends: Interest over time, by region or category, but only relative data"
-        ],
-        insights: [
-          "Authenticity: Real AI prompts, not search queries",
-          "Scale: Support for bulk entry, competitive with industry tools",
-          "Structure: A clear keyword hierarchy, from brand to subtopic",
-          "Exportability: Easy downloads, clean CSVs, plug-and-play with existing workflows",
-          "Clarity: A clean, consistent interface — reusable across the platform"
-        ]
-      },
       process: [
         {
           title: 'A scalable design system',
@@ -74,19 +58,11 @@ const WorkSection = () => {
       id: 3,
       title: 'nsave',
       subtitle: 'A Fintech Platform for the Rest of Us',
-      company: 'nsave',
       duration: '6 months',
       platform: 'Web & Mobile',
       role: 'Founding Designer',
       background: "Nsave was founded to solve a critical gap: people from high-inflation economies often lack access to secure, stable banking. Traditional financial systems weren't built for them. Nsave changes that—offering a fully compliant, multi-currency account that lets users store wealth in USD, EUR, or GBP from anywhere. As the product matured, our challenge was to make it feel just as trustworthy and intuitive as a top-tier neobank—while staying nimble and legally compliant.",
       contribution: "As the founding designer, I led the entire brand and product redesign. My work spanned UX, UI, growth design, and marketing. I worked closely with founders, legal counsel, and engineering to reimagine the brand and visual identity, aligning trust with global accessibility; design and ship core money features: Investments, Savings, and Transfers; lead onboarding redesign to increase completion and trust signals; build a scalable design system used across web, mobile, and internal tools; and own all growth and marketing design — from Product Hunt to performance ads.",
-      timeline: [
-        "Jan 2024: Brand overhaul kick-off",
-        "Feb 2024: MVP features designed (Invest, Save, Transfer)",
-        "Mar 2024: Product Hunt launch (#1 of the day)",
-        "Apr 2024: DAU growth, onboarding revamp",
-        "Jun 2024: Series A secured ($18M)"
-      ],
       research: {
         competitors: [
           "Wise: Excellent international transfers, but limited on wealth preservation",
@@ -128,66 +104,12 @@ const WorkSection = () => {
     }
   ]
 
-  // Scroll detection using getBoundingClientRect
-  useEffect(() => {
-    const handleScroll = () => {
-      const projectElements = projects.map((_, index) => 
-        document.getElementById(`project-${index}`)
-      ).filter(Boolean) as HTMLElement[]
+  // Removed auto scroll detection - navigation only changes on manual clicks
 
-      if (projectElements.length === 0) return
-
-      const windowHeight = window.innerHeight
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-
-      // Find which project is closest to the top of the viewport
-      let currentProjectIndex = 0
-      let minDistance = Infinity
-
-      projectElements.forEach((element, index) => {
-        const rect = element.getBoundingClientRect()
-        
-        // Only consider projects that are at least partially visible
-        if (rect.bottom > 0 && rect.top < windowHeight) {
-          // Calculate distance from top of viewport to top of project
-          const distanceFromTop = Math.abs(rect.top)
-          
-          // Add a small penalty for projects that are too far down
-          const penalty = rect.top > 200 ? (rect.top - 200) * 0.1 : 0
-          const totalDistance = distanceFromTop + penalty
-          
-          if (totalDistance < minDistance) {
-            minDistance = totalDistance
-            currentProjectIndex = index
-          }
-        }
-      })
-
-      // console.log(`Setting active project to: ${currentProjectIndex}`)
-      setActiveProject(currentProjectIndex)
-    }
-
-    // Throttle scroll events
-    let ticking = false
-    const throttledScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll()
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-
-    window.addEventListener('scroll', throttledScroll)
-    
-    // Initial check
-    setTimeout(handleScroll, 100)
-
-    return () => window.removeEventListener('scroll', throttledScroll)
-  }, [projects.length])
-
+  // Simple scroll functions
   const scrollToProject = useCallback((index: number) => {
+    setActiveProject(index)
+    
     const element = document.getElementById(`project-${index}`)
     if (element) {
       const offset = 120
@@ -196,47 +118,133 @@ const WorkSection = () => {
         top: elementPosition - offset,
         behavior: 'smooth'
       })
-      setActiveProject(index)
+    }
+  }, [])
+
+  const scrollToSection = useCallback((projectIndex: number, sectionId: string) => {
+    // Extract the section type from the sectionId (e.g., 'section-process' -> 'process')
+    const sectionType = sectionId.replace('section-', '')
+    
+    setActiveProject(projectIndex)
+    setActiveSection(sectionType)
+    
+    const sectionElement = document.getElementById(`${sectionId}-${projectIndex}`)
+    if (sectionElement) {
+      const offset = 120
+      const elementPosition = sectionElement.offsetTop
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      })
     }
   }, [])
 
   return (
     <section className="pt-32 flex items-start justify-center relative" style={{ paddingTop: '40px' }}>
-      {/* Top Gradient Overlay */}
-      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent z-30 pointer-events-none"></div>
-      
-      {/* Bottom Gradient Overlay */}
-      <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent z-30 pointer-events-none"></div>
-      
-      {/* Project Progress Indicator - Hidden on mobile */}
-      <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
-        <div className="flex flex-col items-center space-y-3">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="relative group"
-            >
-              {/* Hover Tooltip */}
-              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-                <div className="bg-black/80 backdrop-blur-sm text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+      {/* Navigation */}
+      <div className="fixed left-7 top-1/2 transform -translate-y-1/2 z-40 hidden md:block bg-transparent overflow-visible">
+        
+        <div className="flex flex-col space-y-3 bg-transparent overflow-visible">
+                      {projects.map((project, index) => (
+              <div key={index} className="flex flex-col bg-transparent overflow-visible">
+                <div className="relative space-y-1 bg-transparent overflow-visible">
+                {/* Project Title */}
+                <div
+                  className={`text-[12px] flex items-center transition-all duration-200 ease-in-out cursor-pointer bg-transparent overflow-visible ${
+                    activeProject === index 
+                      ? 'text-white' 
+                      : 'text-white/40 hover:text-white/80'
+                  }`}
+                  onClick={() => {
+                    setActiveProject(index)
+                    setActiveSection('role')
+                    scrollToProject(index)
+                  }}
+                >
                   {project.title}
                 </div>
+                
+                {/* Navigation Items */}
+                <div 
+                  className={`text-[12px] flex items-center transition-all duration-200 ease-in-out cursor-pointer bg-transparent relative overflow-visible ${
+                    activeProject === index && activeSection === 'role' 
+                      ? 'text-white' 
+                      : 'text-white/30 hover:text-white/70 hover:bg-white/8'
+                  }`}
+                  onClick={() => {
+                    setActiveProject(index)
+                    setActiveSection('role')
+                    scrollToSection(index, 'section-role')
+                  }}
+                >
+                  {activeProject === index && activeSection === 'role' && (
+                    <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 bg-white/5 w-32 h-[24px] -z-10"></div>
+                  )}
+                  ↳ My role
+                </div>
+                
+                <div 
+                  className={`text-[12px] flex items-center transition-all duration-200 ease-in-out cursor-pointer bg-transparent relative overflow-visible ${
+                    activeProject === index && activeSection === 'process' 
+                      ? 'text-white' 
+                      : 'text-white/30 hover:text-white/70 hover:bg-white/8'
+                  }`}
+                  onClick={() => {
+                    setActiveProject(index)
+                    setActiveSection('process')
+                    scrollToSection(index, 'section-process')
+                  }}
+                >
+                  {activeProject === index && activeSection === 'process' && (
+                    <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 bg-white/5 w-32 h-[24px] -z-10"></div>
+                  )}
+                  ↳ What I designed
+                </div>
+                
+                <div 
+                  className={`text-[12px] flex items-center transition-all duration-200 ease-in-out cursor-pointer bg-transparent relative overflow-visible ${
+                    activeProject === index && activeSection === 'impact' 
+                      ? 'text-white' 
+                      : 'text-white/30 hover:text-white/70 hover:bg-white/8'
+                  }`}
+                  onClick={() => {
+                    setActiveProject(index)
+                    setActiveSection('impact')
+                    scrollToSection(index, 'section-impact')
+                  }}
+                >
+                  {activeProject === index && activeSection === 'impact' && (
+                    <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 bg-white/5 w-32 h-[24px] -z-10"></div>
+                  )}
+                  ↳ Impact
+                </div>
+                
+                <div 
+                  className={`text-[12px] flex items-center transition-all duration-200 ease-in-out cursor-pointer bg-transparent relative overflow-visible ${
+                    activeProject === index && activeSection === 'future' 
+                      ? 'text-white' 
+                      : 'text-white/30 hover:text-white/70 hover:bg-white/8'
+                  }`}
+                  onClick={() => {
+                    setActiveProject(index)
+                    setActiveSection('future')
+                    scrollToSection(index, 'section-future')
+                  }}
+                >
+                  {activeProject === index && activeSection === 'future' && (
+                    <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 bg-white/5 w-32 h-[24px] -z-10"></div>
+                  )}
+                  ↳ What's next
+                </div>
               </div>
-              
-              {/* Dot */}
-              <div
-                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  activeProject === index 
-                    ? 'bg-white scale-125'
-                    : 'bg-white/20 hover:bg-white/40'
-                }`}
-                onClick={() => scrollToProject(index)}
-              />
             </div>
           ))}
         </div>
       </div>
       
+
+      
+      {/* Content */}
       <div className="text-left w-full max-w-[600px] px-4 md:px-8 relative z-30">
         <motion.div
           initial={{ opacity: 0 }}
@@ -245,7 +253,7 @@ const WorkSection = () => {
           className="flex flex-col"
         >
           {projects.map((project, index) => (
-            <div key={project.id} id={`project-${index}`} className="mb-12">
+            <div key={project.id} id={`project-${index}`} className="mb-32">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -253,39 +261,7 @@ const WorkSection = () => {
                 className="space-y-12"
               >
                 {/* Project Header */}
-                <div className="relative">
-                                    {/* Left Column - Metadata - Hidden on mobile */}
-                  <div className="absolute -left-56 w-40 hidden md:block">
-                    <div className="space-y-3 text-sm text-white/80">
-                      {project.company && (
-                        <div>
-                          <span className="font-medium text-white/80">Company</span>
-                          <p>{project.company}</p>
-                        </div>
-                      )}
-                      {project.duration && (
-                        <div>
-                          <span className="font-medium text-white/80">Duration</span>
-                          <p>{project.duration}</p>
-                        </div>
-                      )}
-                      {project.platform && (
-                        <div>
-                          <span className="font-medium text-white/80">Platform</span>
-                          <p>{project.platform}</p>
-                        </div>
-                      )}
-                      {project.role && (
-                        <div>
-                          <span className="font-medium text-white/80">Role</span>
-                          <p>{project.role}</p>
-                        </div>
-                      )}
-
-                    </div>
-                  </div>
-                  
-                  {/* Main Content */}
+                <div>
                   <div>
                     <div className="mb-6">
                       <div className="mb-2">
@@ -304,12 +280,33 @@ const WorkSection = () => {
                           staggerDelay={0.01}
                         />
                       </div>
-
                     </div>
+                  </div>
+                  
+                  {/* Metadata */}
+                  <div className="flex flex-wrap gap-8 mb-6 text-sm text-white/80">
+                    {project.duration && (
+                      <div>
+                        <span className="font-medium text-white/80">Duration</span>
+                        <p>{project.duration}</p>
+                      </div>
+                    )}
+                    {project.platform && (
+                      <div>
+                        <span className="font-medium text-white/80">Platform</span>
+                        <p>{project.platform}</p>
+                      </div>
+                    )}
+                    {project.role && (
+                      <div>
+                        <span className="font-medium text-white/80">Role</span>
+                        <p>{project.role}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
                 
-                {/* Project Description - Only show for projects with description */}
+                {/* Project Description */}
                 {project.description && (
                   <div className="text-[16px] leading-relaxed font-normal text-white/60">
                     <div>
@@ -324,6 +321,7 @@ const WorkSection = () => {
                       <div className="mt-4">
                         <BouncyText 
                           text={project.highlight}
+                          className="text-white/60"
                           delay={0.9}
                           staggerDelay={0.01}
                         />
@@ -346,15 +344,120 @@ const WorkSection = () => {
                   </div>
                 )}
 
+                {/* Sections for Orimi */}
+                {project.hasOpacityBox && (
+                  <div>
+                    {/* My role for Orimi */}
+                    <div className="mb-12" id={`section-role-${index}`}>
+                      <div className="mb-3">
+                        <BouncyText 
+                          text="My role"
+                          className="font-semibold text-white/80"
+                          delay={0.8}
+                          staggerDelay={0.02}
+                        />
+                      </div>
+                      <div>
+                        <BouncyText 
+                          text="As the founder of Orimi, I led the entire product development process from concept to launch, including user research, design, and strategic planning."
+                          className="text-[16px] leading-relaxed font-normal text-white/60"
+                          delay={1.0}
+                          staggerDelay={0.012}
+                        />
+                      </div>
+                    </div>
+
+                    {/* What I designed for Orimi */}
+                    <div className="mb-12" id={`section-process-${index}`}>
+                      <div className="mb-6">
+                        <BouncyText 
+                          text="What I designed"
+                          className="font-semibold text-white/80"
+                          delay={1.0}
+                          staggerDelay={0.02}
+                        />
+                      </div>
+                      <div>
+                        <BouncyText 
+                          text="Designed the complete user interface and user experience for the Orimi platform, focusing on intuitive navigation and modern design principles."
+                          className="text-[16px] leading-relaxed font-normal text-white/60"
+                          delay={1.2}
+                          staggerDelay={0.012}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Impact for Orimi */}
+                    <div className="mb-12" id={`section-impact-${index}`}>
+                      <div className="mb-3">
+                        <BouncyText 
+                          text="Impact"
+                          className="font-semibold text-white/80"
+                          delay={1.4}
+                          staggerDelay={0.02}
+                        />
+                      </div>
+                      <div>
+                        <BouncyText 
+                          text="Successfully launched the platform with positive user feedback and increased engagement metrics."
+                          className="text-[16px] leading-relaxed font-normal text-white/60"
+                          delay={1.6}
+                          staggerDelay={0.012}
+                        />
+                      </div>
+                    </div>
+
+                    {/* What's next for Orimi */}
+                    <div className="mb-12" id={`section-future-${index}`}>
+                      <div className="mb-3">
+                        <BouncyText 
+                          text="What's next"
+                          className="font-semibold text-white/80"
+                          delay={1.8}
+                          staggerDelay={0.02}
+                        />
+                      </div>
+                      <div>
+                        <BouncyText 
+                          text="Continuing to iterate on the design based on user feedback and expanding the platform's capabilities."
+                          className="text-[16px] leading-relaxed font-normal text-white/60"
+                          delay={2.0}
+                          staggerDelay={0.012}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Case Study Content for Profound and Nsave */}
                 {project.background && (
                   <div>
+                    {/* My role for Profound and Nsave */}
+                    <div className="mb-12" id={`section-role-${index}`}>
+                      <div className="mb-3">
+                        <BouncyText 
+                          text="My role"
+                          className="font-semibold text-white/80"
+                          delay={1.6}
+                          staggerDelay={0.02}
+                        />
+                      </div>
+                      <div>
+                        <BouncyText 
+                          text={project.role}
+                          className="text-[16px] leading-relaxed font-normal text-white/60"
+                          delay={1.8}
+                          staggerDelay={0.012}
+                        />
+                      </div>
+                    </div>
+
                     {/* Background */}
-                    <div className="mb-12" id="section-background">
+                    <div className="mb-12" id={`section-background-${index}`}>
                       <div className="mb-3">
                         <BouncyText 
                           text="Why we built it"
-                          className="font-semibold text-white/90"
+                          className="font-semibold text-white/80"
                           delay={1.8}
                           staggerDelay={0.02}
                         />
@@ -375,11 +478,11 @@ const WorkSection = () => {
                     </div>
 
                     {/* My contribution */}
-                    <div className="mb-12" id="section-contribution">
+                    <div className="mb-12" id={`section-contribution-${index}`}>
                       <div className="mb-3">
                         <BouncyText 
                           text="My contribution"
-                          className="font-semibold text-white/90"
+                          className="font-semibold text-white/80"
                           delay={2.4}
                           staggerDelay={0.02}
                         />
@@ -399,108 +502,12 @@ const WorkSection = () => {
                       <OpacityBox />
                     </div>
 
-                                          {/* Timeline for Nsave */}
-                      {project.timeline && (
-                        <div className="mb-12" id="section-timeline">
-                        <div className="mb-6">
-                          <BouncyText 
-                            text="Timeline"
-                            className="font-semibold text-white/90"
-                            delay={2.8}
-                            staggerDelay={0.02}
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          {project.timeline.map((item, idx) => (
-                            <div key={idx}>
-                              <BouncyText 
-                                text={item}
-                                className="text-[16px] leading-relaxed font-normal text-white/60"
-                                delay={3.0 + (idx * 0.1)}
-                                staggerDelay={0.012}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Research highlights */}
-                    <div className="mb-12" id="section-research">
-                      <div className="mb-6">
-                        <BouncyText 
-                          text="Research insights"
-                          className="font-semibold text-white/90"
-                          delay={3.0}
-                          staggerDelay={0.02}
-                        />
-                      </div>
-                      
-                      {/* Competitor tools */}
-                      <div className="mb-6">
-                        <div className="mb-3">
-                          <BouncyText 
-                            text="What competitors offered"
-                            className="font-medium text-white/80"
-                            delay={3.2}
-                            staggerDelay={0.02}
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          {project.research.competitors.map((competitor, idx) => (
-                            <div key={idx}>
-                              <BouncyText 
-                                text={competitor}
-                                className="text-[16px] leading-relaxed font-normal text-white/60"
-                                delay={3.4 + (idx * 0.1)}
-                                staggerDelay={0.012}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      {/* Opacity Box after Competitor tools */}
-                      <div className="my-12">
-                        <OpacityBox />
-                      </div>
-
-                      {/* User insights */}
-                      <div>
-                        <div className="mb-3">
-                          <BouncyText 
-                            text="What our users needed"
-                            className="font-medium text-white/80"
-                            delay={4.0}
-                            staggerDelay={0.02}
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          {project.research.insights.map((insight, idx) => (
-                            <div key={idx}>
-                              <BouncyText 
-                                text={insight}
-                                className="text-[16px] leading-relaxed font-normal text-white/60"
-                                delay={4.2 + (idx * 0.1)}
-                                staggerDelay={0.012}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Opacity Box after Research */}
-                    <div className="my-12">
-                      <OpacityBox />
-                    </div>
-
                     {/* Design process */}
-                    <div className="mb-12" id="section-process">
+                    <div className="mb-12" id={`section-process-${index}`}>
                       <div className="mb-6">
                         <BouncyText 
                           text="What I designed"
-                          className="font-semibold text-white/90"
+                          className="font-semibold text-white/80"
                           delay={4.8}
                           staggerDelay={0.02}
                         />
@@ -511,7 +518,7 @@ const WorkSection = () => {
                             <div className="mb-3">
                               <BouncyText 
                                 text={step.title}
-                                className="font-semibold text-white/90"
+                                className="font-semibold text-white/80"
                                 delay={5.0 + (idx * 0.3)}
                                 staggerDelay={0.02}
                               />
@@ -524,21 +531,17 @@ const WorkSection = () => {
                                 staggerDelay={0.012}
                               />
                             </div>
-                            {/* OpacityBox after each step */}
-                            <div className="mt-12">
-                              <OpacityBox />
-                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* Impact */}
-                    <div className="mb-12" id="section-impact">
+                    <div className="mb-12" id={`section-impact-${index}`}>
                       <div className="mb-3">
                         <BouncyText 
                           text="Impact"
-                          className="font-semibold text-white/90"
+                          className="font-semibold text-white/80"
                           delay={7.0}
                           staggerDelay={0.02}
                         />
@@ -559,11 +562,11 @@ const WorkSection = () => {
                     </div>
 
                     {/* Looking ahead */}
-                    <div className="mb-12" id="section-future">
+                    <div className="mb-12" id={`section-future-${index}`}>
                       <div className="mb-3">
                         <BouncyText 
                           text="What's next"
-                          className="font-semibold text-white/90"
+                          className="font-semibold text-white/80"
                           delay={7.6}
                           staggerDelay={0.02}
                         />
@@ -576,11 +579,6 @@ const WorkSection = () => {
                           staggerDelay={0.012}
                         />
                       </div>
-                    </div>
-                    
-                    {/* Final Opacity Box */}
-                    <div className="my-12">
-                      <OpacityBox />
                     </div>
                   </div>
                 )}
@@ -600,4 +598,4 @@ const WorkSection = () => {
   )
 }
 
-export default WorkSection 
+export default CaseStudies 
