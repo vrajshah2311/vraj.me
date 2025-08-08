@@ -3,7 +3,12 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: any) {
+interface IconProps {
+  className?: string;
+  strokeWidth?: string;
+}
+
+function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: IconProps) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M8 9.00009L11.2929 5.7072C11.6834 5.31668 12.3166 5.31668 12.7071 5.7072L16 9.00009" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -56,7 +61,7 @@ const NsaveCaseStudy = () => {
             <section>
               <h2 className="text-[12px] text-neutral-400 mb-4" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Problem</h2>
               <div className="text-[15px] leading-[26px] text-black" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
-                In countries with unstable currencies and strict capital controls, people often can't safely save, invest, or send money abroad. Local banking systems are slow, expensive, and untrusted. nsave was created to fix that.
+                In countries with unstable currencies and strict capital controls, people often can&apos;t safely save, invest, or send money abroad. Local banking systems are slow, expensive, and untrusted. nsave was created to fix that.
               </div>
             </section>
 
@@ -95,7 +100,7 @@ const NsaveCaseStudy = () => {
                 <div>
                   <h3 className="text-[15px] text-black mb-2" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Trust & Compliance</h3>
                   <div className="text-[15px] leading-[26px] text-black" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
-                    Built a clear, calm visual system using soft tones, familiar patterns, and intentionally boring (aka safe-feeling) interactions. Had to educate clearly since couldn't legally call it a "savings" product.
+                    Built a clear, calm visual system using soft tones, familiar patterns, and intentionally boring (aka safe-feeling) interactions. Had to educate clearly since couldn&apos;t legally call it a &quot;savings&quot; product.
                   </div>
                 </div>
               </div>
@@ -114,7 +119,7 @@ const NsaveCaseStudy = () => {
                 <div>
                   <h3 className="text-[15px] text-black mb-2" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Legal and Compliance Constraints</h3>
                   <div className="text-[15px] leading-[26px] text-black" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
-                    Legal and compliance constraints aren't blockers—they're design inputs. Had to educate clearly since couldn't legally call it a "savings" product, turning limitations into design opportunities.
+                    Legal and compliance constraints aren&apos;t blockers—they&apos;re design inputs. Had to educate clearly since couldn&apos;t legally call it a &quot;savings&quot; product, turning limitations into design opportunities.
                   </div>
                 </div>
                 <div>

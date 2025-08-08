@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+
 import CaseStudySection from '../../components/CaseStudySection'
 import CaseStudyContent from '../../components/CaseStudyContent'
 import CaseStudyImage from '../../components/CaseStudyImage'
@@ -10,7 +10,12 @@ import CaseStudyText from '../../components/CaseStudyText'
 import CaseStudySubheading from '../../components/CaseStudySubheading'
 import CaseStudyLogo from '../../components/CaseStudyLogo'
 
-function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: any) {
+interface IconProps {
+  className?: string;
+  strokeWidth?: string;
+}
+
+function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: IconProps) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M8 9.00009L11.2929 5.7072C11.6834 5.31668 12.3166 5.31668 12.7071 5.7072L16 9.00009" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -370,13 +375,13 @@ export default function ProfoundPage() {
                 <div>
               <CaseStudySubheading>Data Complexity vs Clarity</CaseStudySubheading>
               <CaseStudyText>
-                    Good design isn't just about surfacing more data—it's about showing less, more meaningfully. Working with messy data forced ruthless focus on clarity.
+                    Good design isn&apos;t just about surfacing more data—it&apos;s about showing less, more meaningfully. Working with messy data forced ruthless focus on clarity.
               </CaseStudyText>
                 </div>
                 <div>
               <CaseStudySubheading>Privacy Constraints</CaseStudySubheading>
               <CaseStudyText>
-                    Constraints like privacy (can't always show raw prompts) can actually lead to better UX. Used these limitations as design inputs rather than blockers.
+                    Constraints like privacy (can&apos;t always show raw prompts) can actually lead to better UX. Used these limitations as design inputs rather than blockers.
               </CaseStudyText>
                 </div>
                 <div>

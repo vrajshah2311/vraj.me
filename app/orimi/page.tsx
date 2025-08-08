@@ -3,7 +3,12 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: any) {
+interface IconProps {
+  className?: string;
+  strokeWidth?: string;
+}
+
+function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: IconProps) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M8 9.00009L11.2929 5.7072C11.6834 5.31668 12.3166 5.31668 12.7071 5.7072L16 9.00009" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -56,7 +61,7 @@ const OrimiCaseStudy = () => {
             <section>
               <h2 className="text-[12px] text-neutral-400 mb-4" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Problem</h2>
               <div className="text-[15px] leading-[26px] text-black" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
-                Freelancers constantly juggle multiple clients, deadlines, and admin work—but most tools are either too rigid (like time trackers) or too chaotic (like Notion setups). There's no lightweight system that lets freelancers manage projects, track time, and handle payments in one flow.
+                Freelancers constantly juggle multiple clients, deadlines, and admin work—but most tools are either too rigid (like time trackers) or too chaotic (like Notion setups). There&apos;s no lightweight system that lets freelancers manage projects, track time, and handle payments in one flow.
               </div>
             </section>
 
@@ -108,7 +113,7 @@ const OrimiCaseStudy = () => {
                 <div>
                   <h3 className="text-[15px] text-black mb-2" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Feature Complexity vs Simplicity</h3>
                   <div className="text-[15px] leading-[26px] text-black" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
-                    Most freelancers don't want more features—they want fewer, but smarter ones. Built something for myself which gave clarity on edge cases.
+                    Most freelancers don&apos;t want more features—they want fewer, but smarter ones. Built something for myself which gave clarity on edge cases.
                   </div>
                 </div>
                 <div>
@@ -138,7 +143,7 @@ const OrimiCaseStudy = () => {
             <section>
               <h2 className="text-[12px] text-neutral-400 mb-4" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Impact</h2>
               <div className="text-[15px] leading-[26px] text-black" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
-                The product's still in early build, but early user testing showed strong engagement. Freelancers loved the calm UI and quick setup—no steep learning curve. Several testers asked to use it immediately for real client work.
+                The product&apos;s still in early build, but early user testing showed strong engagement. Freelancers loved the calm UI and quick setup—no steep learning curve. Several testers asked to use it immediately for real client work.
               </div>
             </section>
           </motion.div>
