@@ -1,45 +1,46 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
-interface OpacityBoxProps {
-  width?: string
-  height?: string
-  opacity?: number
+type OpacityBoxProps = React.ComponentProps<typeof motion.div> & {
+  children?: React.ReactNode
+  className?: string
+  imageSrc?: string
+  imageAlt?: string
 }
 
-const OpacityBox = ({ 
-  width = '840px', 
-  height = '472.5px', 
-  opacity = 0.03
-}: OpacityBoxProps) => {
+const OpacityBox: React.FC<OpacityBoxProps> = ({ children, className = '', imageSrc, imageAlt, ...rest }) => {
+  const defaultMotionProps = {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-80px 0px -80px 0px', amount: 0.15 },
+    transition: { duration: 0, ease: 'easeOut' },
+  }
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="mt-8"
+      {...defaultMotionProps}
+      {...rest}
+      className={`${imageSrc ? '' : 'bg-black bg-opacity-5'} ${imageSrc ? 'p-0' : 'p-6'} ${className}`}
     >
-      <div 
-        className="border rounded-lg shadow-lg transition-all duration-2000 bg-white border-white/20"
-        style={{
-          width,
-          height,
-          display: 'block',
-          boxSizing: 'border-box',
-          opacity,
-          minWidth: width,
-          maxWidth: width,
-          minHeight: height,
-          maxHeight: height,
-          flexShrink: 0,
-          marginLeft: '-188px'
-        }}
-      >
-
-      </div>
+      {imageSrc && (
+        <div className="w-full h-full relative">
+          <Image
+            src={imageSrc}
+            alt={imageAlt || 'Case study image'}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            onLoad={() => console.log('Image loaded:', imageSrc)}
+            onError={(e) => console.error('Image error:', imageSrc, e)}
+          />
+        </div>
+      )}
+      {children}
     </motion.div>
   )
 }
 
-export default OpacityBox 
+export default OpacityBox

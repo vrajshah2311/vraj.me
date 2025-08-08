@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import { ScrollProvider } from '../components/ScrollContext'
 
 export const metadata: Metadata = {
   title: 'Vraj - Designer & Developer',
@@ -36,8 +34,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
-        {children}
+      <head>
+        <link rel="preconnect" href="https://rsms.me/" />
+      </head>
+      <body className="antialiased">
+        <ScrollProvider>
+          {children}
+        </ScrollProvider>
       </body>
     </html>
   )

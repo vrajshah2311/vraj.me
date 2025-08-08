@@ -5,57 +5,37 @@ import BouncyText from './BouncyText'
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-start justify-center" style={{ paddingTop: '40px' }}>
-      <div className="text-left w-full max-w-[600px] px-4 md:px-8">
+    <section className="flex items-start justify-start relative">
+              <div className="w-full max-w-[600px] text-left pt-2">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px 0px -80px 0px', amount: 0.2 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="mb-8"
         >
-          {/* Main Heading */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1, duration: 0.4 }}
-            className="mb-8"
-          >
-            <BouncyText 
-              text="Designer, dancer and DJ living in Dubai"
-              className="text-2xl md:text-heading-24 leading-tight font-semibold text-white/90"
-              delay={0.05}
-              staggerDelay={0.015}
-            />
-          </motion.div>
-
-          {/* Body Text */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.3 }}
-            className="space-y-6 text-sm md:text-[16px] text-white/60 leading-relaxed font-normal"
-          >
-            <div>
+          <div className="text-[15px] leading-[26px] text-black opacity-70" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
+            <div className="text-black">
               <BouncyText 
-                text="Designer, dancer and DJ living in Dubai. Born in Vadodara, India. For the past 4 years, I've been designing interfaces at Luma. Helping millions of guests and thousands of hosts."
-                delay={0.4}
-                staggerDelay={0.01}
+                text="Designer, instrumentalist, & Vibe coder. Born & raised in India, Currently leaving in London, UK."
+                className="text-black"
+                delay={0.1}
+                staggerDelay={0.015}
+              />
+              <BouncyText 
+                text="Over the past few years, I've designed products across SaaS, fintech, AI, and healthtech i.e B2B & B2C spaces."
+                className="text-black"
+                delay={0.1}
+                staggerDelay={0.015}
+              />
+              <BouncyText 
+                text="I'm drawn to the quiet details most people miss — the perfect breakpoint, the form field that just works, the system that scales without fuss. My work blends clarity with complexity, the artist's instinct with the designer's discipline."
+                className="text-black"
+                delay={0.1}
+                staggerDelay={0.015}
               />
             </div>
-            <div>
-              <BouncyText 
-                text="Primarily I like working on -1-0-1 projects. Previously I've worked with clients like Linktree, Whop, Ninja AI, Lancify."
-                delay={0.6}
-                staggerDelay={0.01}
-              />
-            </div>
-            <div>
-              <BouncyText 
-                text="The neurodivergent mind loves blending styles, clashing genres, stitching together what shouldn't work but somehow does. It's all there in the work, the music I make, and my sets. Forever balancing the artist's urge and the designer's duty. Creating for the soul vs. designing for the world."
-                delay={0.8}
-                staggerDelay={0.008}
-              />
-            </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
