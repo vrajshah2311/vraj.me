@@ -122,9 +122,9 @@ export default function NsavePage() {
             </CaseStudyContent>
           </CaseStudySection>
 
-          {/* Add nsave interface image */}
+          {/* Add nsave main interface image */}
           <CaseStudySection>
-            <CaseStudyImage imageSrc="/nsave.webp" imageAlt="nsave interface" />
+            <CaseStudyImage imageSrc="/nsave1.png" imageAlt="nsave main dashboard interface" />
           </CaseStudySection>
 
           {/* Role & Team */}
@@ -139,6 +139,14 @@ export default function NsavePage() {
             </CaseStudyContent>
           </CaseStudySection>
 
+          {/* Role & Team Images */}
+          <CaseStudySection>
+            <div className="space-y-2">
+              <CaseStudyImage imageSrc="/nsave2.png" imageAlt="nsave mobile interface design" />
+              <CaseStudyImage imageSrc="/nsave3.png" imageAlt="nsave analytics and reporting dashboard" />
+            </div>
+          </CaseStudySection>
+
           {/* Approach */}
           <CaseStudySection>
             <CaseStudyContent>
@@ -150,6 +158,25 @@ export default function NsavePage() {
                     Interviewed users from Lebanon, Argentina, and Nigeria. Found universal frustrations: no trust in local banks, no visibility in transfers, and lots of hidden fees. Even simple things—like seeing funds reflected in USD—were major value props.
                   </CaseStudyText>
                 </div>
+              </div>
+            </CaseStudyContent>
+          </CaseStudySection>
+
+          {/* User Research - Horizontal Carousel */}
+          <CaseStudySection>
+            <div className="-mx-8 overflow-x-auto">
+              <div className="flex space-x-4 w-max">
+                <CaseStudyImage imageSrc="/nsave2.png" imageAlt="User research insights from Lebanon" className="w-80 flex-shrink-0" />
+                <CaseStudyImage imageSrc="/nsave3.png" imageAlt="User research insights from Argentina" className="w-80 flex-shrink-0" />
+                <CaseStudyImage imageSrc="/nsave4.png" imageAlt="User research insights from Nigeria" className="w-80 flex-shrink-0" />
+                <CaseStudyImage imageSrc="/nsave1.png" imageAlt="User feedback analysis" className="w-80 flex-shrink-0" />
+              </div>
+            </div>
+          </CaseStudySection>
+
+          <CaseStudySection>
+            <CaseStudyContent>
+              <div>
                 <div>
                   <CaseStudySubheading>Design & Development</CaseStudySubheading>
                   <CaseStudyText>
@@ -164,6 +191,11 @@ export default function NsavePage() {
                 </div>
               </div>
             </CaseStudyContent>
+          </CaseStudySection>
+
+          {/* Design & Development Image */}
+          <CaseStudySection>
+            <CaseStudyImage imageSrc="/nsave4.png" imageAlt="nsave investment and transfer interface design" />
           </CaseStudySection>
 
           {/* Challenges */}
@@ -191,6 +223,11 @@ export default function NsavePage() {
                 </div>
               </div>
             </CaseStudyContent>
+          </CaseStudySection>
+
+          {/* Challenges Image */}
+          <CaseStudySection>
+            <CaseStudyImage imageSrc="/nsave3.png" imageAlt="nsave KYC flow and trust-building interface" />
           </CaseStudySection>
 
           {/* Solution */}
