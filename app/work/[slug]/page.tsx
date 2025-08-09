@@ -30,7 +30,7 @@ interface ImageItem {
   animationDelay: number
 }
 
-// Generate proper grid layout with no overlapping and consistent spacing
+// Generate images with natural dimensions (CSS Grid handles positioning)
 const generateRandomImage = (id: number): ImageItem => {
   // Generate varied but reasonable image dimensions
   const aspectRatios = [
@@ -50,31 +50,15 @@ const generateRandomImage = (id: number): ImageItem => {
   const finalWidth = Math.floor(randomAspect.w * sizeVariation)
   const finalHeight = Math.floor(randomAspect.h * sizeVariation)
   
-  // Create proper grid layout with consistent spacing
-  const availableWidth = typeof window !== 'undefined' ? window.innerWidth - 64 : 1200
-  const padding = 24 // 24px padding around each image
-  const minColumnWidth = 350 // Minimum column width including padding
-  const columns = Math.max(1, Math.floor(availableWidth / minColumnWidth))
-  const actualColumnWidth = Math.floor(availableWidth / columns)
-  
-  const columnIndex = (id - 1) % columns
-  const rowIndex = Math.floor((id - 1) / columns)
-  
-  // Grid positioning with proper spacing and no overlap
-  const maxImageHeight = 400 // Maximum height for any image in a row
-  const rowHeight = maxImageHeight + (padding * 2) // Row height includes padding
-  const gridX = columnIndex * actualColumnWidth + padding + (actualColumnWidth - finalWidth - (padding * 2)) / 2 // Center in column with padding
-  const gridY = rowIndex * rowHeight + padding // Proper row spacing with padding
-  
   return {
     id,
     src: `https://picsum.photos/${finalWidth}/${finalHeight}?random=${id}`,
     alt: `Work sample ${id}`,
     width: finalWidth,
     height: finalHeight,
-    randomX: Math.max(padding, gridX),
-    randomY: gridY,
-    randomRotation: (Math.random() - 0.5) * 3, // Subtle rotation (reduced)
+    randomX: 0, // Not used with CSS Grid
+    randomY: 0, // Not used with CSS Grid
+    randomRotation: (Math.random() - 0.5) * 3, // Subtle rotation
     randomScale: 1, // No additional scaling, use natural size
     animationDelay: Math.random() * 3
   }
@@ -93,21 +77,12 @@ export default function WorkPage() {
 
   const workItem = workItems[slug]
   
-  // Set container size based on proper grid layout
+  // Container size is handled by CSS Grid, this is just for state management
   useEffect(() => {
     const updateContainerSize = () => {
-      // Calculate columns based on viewport width
-      const availableWidth = window.innerWidth - 64 // Account for container padding
-      const padding = 24 // 24px padding around each image
-      const minColumnWidth = 350 // Minimum column width including padding
-      const columns = Math.max(1, Math.floor(availableWidth / minColumnWidth))
-      const maxImageHeight = 400 // Maximum height for any image in a row
-      const rowHeight = maxImageHeight + (padding * 2) // Row height includes padding
-      const rows = Math.ceil(images.length / columns)
-      
       setContainerSize({
-        width: availableWidth, // Use full available width
-        height: rows * rowHeight + padding // Total height with bottom padding
+        width: window.innerWidth - 64,
+        height: 1000 // Not used with CSS Grid, just placeholder
       })
     }
     
@@ -213,34 +188,36 @@ export default function WorkPage() {
       {/* Scrollable Grid Container - Vertical Only */}
       <div 
         ref={scrollContainerRef}
-        className="flex-1 overflow-y-auto overflow-x-hidden p-8"
+        className="flex-1 overflow-y-auto overflow-x-hidden"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: 'rgba(0,0,0,0.2) rgba(0,0,0,0.05)'
         }}
       >
         <div 
-          className="relative w-full" 
-          style={{ 
-            height: `${containerSize.height}px` 
+          className="grid gap-6 p-8"
+          style={{
+            gridTemplateColumns: `repeat(auto-fit, minmax(350px, 1fr))`
           }}
         >
           {images.map((image) => (
             <div 
               key={image.id} 
-              className="absolute group cursor-pointer transition-all duration-500 hover:z-50 animate-float"
+              className="group cursor-pointer transition-all duration-500 hover:z-50 animate-float flex justify-center"
               style={{
-                left: `${image.randomX}px`,
-                top: `${image.randomY}px`,
-                transform: `rotate(${image.randomRotation}deg)`,
-                transformOrigin: 'center center',
                 animationDelay: `${image.animationDelay}s`,
                 animationDuration: `${3 + (image.id % 3)}s`,
                 '--rotation': `${image.randomRotation}deg`,
                 '--scale': '1'
               } as React.CSSProperties & { '--rotation': string; '--scale': string }}
             >
-              <div className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-2">
+              <div 
+                className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-2"
+                style={{
+                  transform: `rotate(${image.randomRotation}deg)`,
+                  transformOrigin: 'center center'
+                }}
+              >
                 <Image
                   src={image.src}
                   alt={image.alt}
