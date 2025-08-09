@@ -411,19 +411,6 @@ export default function NsavePage() {
               </div>
                   </div>
 
-            {/* Challenges Images */}
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns11.png" 
-                    alt="nsave compliance and security features"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-                  </div>
-
             {/* Video After Challenges */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
@@ -441,6 +428,19 @@ export default function NsavePage() {
                 </div>
               </div>
             </div>
+
+            {/* Challenges Images */}
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/nsave/ns11.png" 
+                    alt="nsave compliance and security features"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+                  </div>
 
             {/* Solution */}
             <div className="case-study-section">

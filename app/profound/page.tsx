@@ -329,19 +329,6 @@ export default function ProfoundPage() {
               </div>
             </div>
 
-            {/* Challenges Images */}
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns11.png" 
-                    alt="nsave compliance and security features"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Video After Challenges */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
@@ -355,6 +342,19 @@ export default function ProfoundPage() {
                     title="nsave challenges and solutions - LinkedIn video"
                     className="w-full h-full rounded-lg"
                     style={{ minHeight: '399px' }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Challenges Images */}
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/nsave/ns11.png" 
+                    alt="nsave compliance and security features"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
