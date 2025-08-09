@@ -240,19 +240,6 @@ export default function NsavePage() {
               </div>
             </div>
 
-            {/* Add nsave main interface image */}
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/nsave1.png" 
-                    alt="nsave main dashboard interface"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Role & Team */}
             <div className="case-study-section">
               <div className="case-study-content">
