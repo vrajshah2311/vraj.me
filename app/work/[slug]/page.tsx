@@ -69,10 +69,12 @@ export default function WorkPage() {
   const router = useRouter()
   const slug = params.slug as string
   
-    const [images, setImages] = useState<ImageItem[]>([])
+  const [images, setImages] = useState<ImageItem[]>([])
   const [loading, setLoading] = useState(false)
   const [, setPage] = useState(1)
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const lastScrollTop = useRef(0)
 
   const workItem = workItems[slug]
   
@@ -115,7 +117,7 @@ export default function WorkPage() {
     }, 1000) // Simulate loading delay
   }, [images.length, loading])
   
-  // Container scroll handler for infinite scroll (grid-based)
+  // Container scroll handler for infinite scroll and navbar visibility
   useEffect(() => {
     const handleScroll = () => {
       const container = scrollContainerRef.current
@@ -129,6 +131,17 @@ export default function WorkPage() {
       if (nearBottom) {
         loadMoreImages()
       }
+
+      // Handle navbar visibility based on scroll direction
+      if (scrollTop > lastScrollTop.current && scrollTop > 100) {
+        // Scrolling down and past initial 100px
+        setIsNavbarVisible(false)
+      } else if (scrollTop < lastScrollTop.current) {
+        // Scrolling up
+        setIsNavbarVisible(true)
+      }
+      
+      lastScrollTop.current = scrollTop
     }
     
     const container = scrollContainerRef.current
@@ -157,7 +170,11 @@ export default function WorkPage() {
   return (
     <div className="work-page-container bg-white flex flex-col">
       {/* Breadcrumb */}
-      <div className="flex-shrink-0 bg-white z-50 h-[56px]">
+      <div 
+        className={`flex-shrink-0 bg-white z-50 h-[56px] transition-transform duration-300 ease-in-out ${
+          isNavbarVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
         <div className="max-w-4xl mx-auto px-8 h-full flex items-center">
           <button 
             onClick={() => router.push('/')}
@@ -210,8 +227,7 @@ export default function WorkPage() {
                   style={{
                     width: `${image.width}px`,
                     height: `${image.height}px`,
-                    maxWidth: '100%',
-                    height: 'auto'
+                    maxWidth: '100%'
                   }}
                 />
               </div>
