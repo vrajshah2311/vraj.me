@@ -8,6 +8,7 @@ import CaseStudyText from '../../components/CaseStudyText'
 import CaseStudySubheading from '../../components/CaseStudySubheading'
 import CaseStudyLogo from '../../components/CaseStudyLogo'
 import ScrollProgress from '../../components/ScrollProgress'
+import ScrollCarousel from '../../components/ScrollCarousel'
 
 interface IconProps {
   className?: string;
@@ -287,11 +288,10 @@ export default function NsavePage() {
               </div>
             </div>
 
-            {/* User Research - Horizontal Carousel */}
+                        {/* User Research - Horizontal Carousel */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
-              <div className="w-full overflow-x-auto">
-                <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
+                <ScrollCarousel>
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
@@ -337,8 +337,7 @@ export default function NsavePage() {
                       />
                     </div>
                   </div>
-                </div>
-              </div>
+                </ScrollCarousel>
               </div>
             </div>
 
@@ -366,28 +365,26 @@ export default function NsavePage() {
             {/* Design & Development Images Carousel */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
-                <div className="w-full overflow-x-auto">
-                  <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
-                    <div className="flex-shrink-0">
-                      <div className="case-study-image-box">
-                        <img 
-                          src="/images/case-studies/nsave/ns6.png" 
-                          alt="nsave dashboard interface design"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex-shrink-0">
-                      <div className="case-study-image-box">
-                        <img 
-                          src="/images/case-studies/nsave/ns8.png" 
-                          alt="nsave investment interface design"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                <ScrollCarousel>
+                  <div className="flex-shrink-0">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/images/case-studies/nsave/ns6.png" 
+                        alt="nsave dashboard interface design"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                </div>
+                  <div className="flex-shrink-0">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/images/case-studies/nsave/ns8.png" 
+                        alt="nsave investment interface design"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </ScrollCarousel>
               </div>
             </div>
 
@@ -455,28 +452,26 @@ export default function NsavePage() {
             {/* Solution Images Carousel */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
-                <div className="w-full overflow-x-auto">
-                  <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
-                    <div className="flex-shrink-0">
-                      <div className="case-study-image-box">
-                        <img 
-                          src="/images/case-studies/nsave/ns9.png" 
-                          alt="nsave transfer flow design"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex-shrink-0">
-                      <div className="case-study-image-box">
-                        <img 
-                          src="/images/case-studies/nsave/ns11.png" 
-                          alt="nsave compliance and security features"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                <ScrollCarousel>
+                  <div className="flex-shrink-0">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/images/case-studies/nsave/ns9.png" 
+                        alt="nsave transfer flow design"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                </div>
+                  <div className="flex-shrink-0">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/images/case-studies/nsave/ns11.png" 
+                        alt="nsave compliance and security features"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </ScrollCarousel>
               </div>
             </div>
 
