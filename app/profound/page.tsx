@@ -91,12 +91,248 @@ export default function ProfoundPage() {
               <img src="/nsave-logo.webp" alt="nsave Logo" className="w-full h-full object-contain" />
             </CaseStudyLogo>
             <h1 className="text-[18px] text-black mb-8" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>nsave</h1>
+            
+            {/* Intro */}
             <div>
-              <CaseStudyHeading>Coming Soon</CaseStudyHeading>
+              <CaseStudyHeading>Intro</CaseStudyHeading>
+              <CaseStudyText className="mb-4">
+                Designed a comprehensive financial platform that enables safe saving, investing, and international transfers for users in high-inflation countries.
+              </CaseStudyText>
               <CaseStudyText>
-                The nsave case study is currently being prepared. Check back soon for detailed insights into this brand and user experience project.
+                A trustworthy, transparent interface showing investment accounts, international transfers with real-time conversions, and streamlined KYC processes.
               </CaseStudyText>
             </div>
+
+            {/* Problem */}
+            <CaseStudySection>
+              <CaseStudyContent>
+                <div>
+                  <CaseStudyHeading>Problem</CaseStudyHeading>
+                  <CaseStudyText>
+                    In countries with unstable currencies and strict capital controls, people often can&apos;t safely save, invest, or send money abroad. Local banking systems are slow, expensive, and untrusted. nsave was created to fix that.
+                  </CaseStudyText>
+                </div>
+              </CaseStudyContent>
+            </CaseStudySection>
+
+            {/* Main Interface Image */}
+            <CaseStudySection>
+              <div className="case-study-image">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/nsave1.png" 
+                    alt="nsave main dashboard interface"
+                    className="w-full h-full object-cover"
+                    style={{ maxWidth: 'none' }}
+                  />
+                </div>
+              </div>
+            </CaseStudySection>
+
+            {/* Role & Team */}
+            <CaseStudySection>
+              <CaseStudyContent>
+                <div>
+                  <CaseStudyHeading>Role & Team</CaseStudyHeading>
+                  <CaseStudyText className="mb-4">First and Only Designer</CaseStudyText>
+                  <CaseStudyText className="mb-4">Solo designer working with CEO, engineers, and compliance team</CaseStudyText>
+                  <CaseStudyText>Product UX, Brand design, User flows, Legal disclaimers, End-to-end experience design</CaseStudyText>
+                </div>
+              </CaseStudyContent>
+            </CaseStudySection>
+
+            {/* Role & Team Images */}
+            <CaseStudySection>
+              <div className="space-y-2">
+                <div className="case-study-image">
+                  <div className="case-study-image-box">
+                    <img 
+                      src="/nsave2.png" 
+                      alt="nsave mobile interface design"
+                      className="w-full h-full object-cover"
+                      style={{ maxWidth: 'none' }}
+                    />
+                  </div>
+                </div>
+                <div className="case-study-image">
+                  <div className="case-study-image-box">
+                    <img 
+                      src="/nsave3.png" 
+                      alt="nsave analytics and reporting dashboard"
+                      className="w-full h-full object-cover"
+                      style={{ maxWidth: 'none' }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </CaseStudySection>
+
+            {/* Approach */}
+            <CaseStudySection>
+              <CaseStudyContent>
+                <div>
+                  <CaseStudyHeading>Approach</CaseStudyHeading>
+                  <div>
+                    <CaseStudySubheading>User Research</CaseStudySubheading>
+                    <CaseStudyText>
+                      Interviewed users from Lebanon, Argentina, and Nigeria. Found universal frustrations: no trust in local banks, no visibility in transfers, and lots of hidden fees. Even simple things—like seeing funds reflected in USD—were major value props.
+                    </CaseStudyText>
+                  </div>
+                </div>
+              </CaseStudyContent>
+            </CaseStudySection>
+
+            {/* User Research - Horizontal Carousel */}
+            <div className="w-full overflow-x-auto my-8">
+              <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
+                <div className="flex-shrink-0">
+                  <div className="case-study-image">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/nsave2.png" 
+                        alt="User research insights from Lebanon"
+                        className="w-full h-full object-cover"
+                        style={{ maxWidth: 'none' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-shrink-0">
+                  <div className="case-study-image">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/nsave3.png" 
+                        alt="User research insights from Argentina"
+                        className="w-full h-full object-cover"
+                        style={{ maxWidth: 'none' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-shrink-0">
+                  <div className="case-study-image">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/nsave4.png" 
+                        alt="User research insights from Nigeria"
+                        className="w-full h-full object-cover"
+                        style={{ maxWidth: 'none' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-shrink-0">
+                  <div className="case-study-image">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/nsave1.png" 
+                        alt="User feedback analysis"
+                        className="w-full h-full object-cover"
+                        style={{ maxWidth: 'none' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <CaseStudySection>
+              <CaseStudyContent>
+                <div>
+                  <div>
+                    <CaseStudySubheading>Design & Development</CaseStudySubheading>
+                    <CaseStudyText className="mb-4">
+                      Designed investment account flow with transparency, stability, and trust as key themes. Rebuilt international transfers UI with real-time conversions and expected delivery times. Redesigned onboarding/KYC flow into smaller, friction-reduced steps.
+                    </CaseStudyText>
+                  </div>
+                  <div>
+                    <CaseStudySubheading>Trust & Compliance</CaseStudySubheading>
+                    <CaseStudyText>
+                      Built a clear, calm visual system using soft tones, familiar patterns, and intentionally boring (aka safe-feeling) interactions. Had to educate clearly since couldn&apos;t legally call it a &quot;savings&quot; product.
+                    </CaseStudyText>
+                  </div>
+                </div>
+              </CaseStudyContent>
+            </CaseStudySection>
+
+            {/* Design & Development Image */}
+            <CaseStudySection>
+              <div className="case-study-image">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/nsave4.png" 
+                    alt="nsave investment and transfer interface design"
+                    className="w-full h-full object-cover"
+                    style={{ maxWidth: 'none' }}
+                  />
+                </div>
+              </div>
+            </CaseStudySection>
+
+            {/* Challenges */}
+            <CaseStudySection>
+              <CaseStudyContent>
+                <div>
+                  <CaseStudyHeading>Challenges</CaseStudyHeading>
+                  <div>
+                    <CaseStudySubheading>Building Trust in Fintech</CaseStudySubheading>
+                    <CaseStudyText className="mb-4">
+                      When designing for money, especially in volatile regions, trust is the product. Used soft tones, familiar patterns, and intentionally safe-feeling interactions to build confidence.
+                    </CaseStudyText>
+                  </div>
+                  <div>
+                    <CaseStudySubheading>Legal and Compliance Constraints</CaseStudySubheading>
+                    <CaseStudyText className="mb-4">
+                      Legal and compliance constraints aren&apos;t blockers—they&apos;re design inputs. Had to educate clearly since couldn&apos;t legally call it a &quot;savings&quot; product, turning limitations into design opportunities.
+                    </CaseStudyText>
+                  </div>
+                  <div>
+                    <CaseStudySubheading>KYC Completion Rates</CaseStudySubheading>
+                    <CaseStudyText>
+                      Redesigned the onboarding/KYC flow into smaller, friction-reduced steps to improve completion rates. Small details like word choices or icon colors make or break confidence in fintech flows.
+                    </CaseStudyText>
+                  </div>
+                </div>
+              </CaseStudyContent>
+            </CaseStudySection>
+
+            {/* Challenges Image */}
+            <CaseStudySection>
+              <div className="case-study-image">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/nsave3.png" 
+                    alt="nsave KYC flow and trust-building interface"
+                    className="w-full h-full object-cover"
+                    style={{ maxWidth: 'none' }}
+                  />
+                </div>
+              </div>
+            </CaseStudySection>
+
+            {/* Solution */}
+            <CaseStudySection>
+              <CaseStudyContent>
+                <div>
+                  <CaseStudyHeading>Solution</CaseStudyHeading>
+                  <CaseStudyText>
+                    nsave provides a full-stack financial product covering savings, investments, and transfers with complete transparency and trust. The platform offers real-time conversions, clear status tracking, and streamlined processes designed specifically for users in high-inflation countries.
+                  </CaseStudyText>
+                </div>
+              </CaseStudyContent>
+            </CaseStudySection>
+
+            {/* Impact */}
+            <CaseStudySection>
+              <CaseStudyContent>
+                <div>
+                  <CaseStudyHeading>Impact</CaseStudyHeading>
+                  <CaseStudyText>
+                    We launched a full-stack financial product covering savings, investments, and transfers. KYC drop-off reduced significantly after the flow redesign. Support tickets around transfers dropped after improving status tracking. The investment product saw solid repeat usage, showing user trust. We started seeing word-of-mouth referrals—people were bringing friends and family onto the platform.
+                  </CaseStudyText>
+                </div>
+              </CaseStudyContent>
+            </CaseStudySection>
           </>
         )
       case 'orimi':
