@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 
@@ -28,6 +28,9 @@ interface ImageItem {
   randomRotation: number
   randomScale: number
   animationDelay: number
+  currentX?: number
+  currentY?: number
+  isDragging?: boolean
 }
 
 // Generate random dimensions and positioning data
@@ -63,6 +66,8 @@ export default function WorkPage() {
   const [images, setImages] = useState<ImageItem[]>([])
   const [loading, setLoading] = useState(false)
   const [, setPage] = useState(1)
+  const [draggedImage, setDraggedImage] = useState<number | null>(null)
+  const dragOffset = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
   
   const workItem = workItems[slug]
   
@@ -89,6 +94,63 @@ export default function WorkPage() {
     }, 1000) // Simulate loading delay
   }, [images.length, loading])
   
+  // Drag handlers
+  const handleMouseDown = (e: React.MouseEvent, imageId: number) => {
+    const rect = (e.target as HTMLElement).getBoundingClientRect()
+    dragOffset.current = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    }
+    setDraggedImage(imageId)
+    
+    // Update image dragging state
+    setImages(prev => prev.map(img => 
+      img.id === imageId ? { ...img, isDragging: true } : img
+    ))
+  }
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (draggedImage === null) return
+    
+    const containerRect = document.querySelector('.relative.min-h-screen')?.getBoundingClientRect()
+    if (!containerRect) return
+    
+    const newX = ((e.clientX - containerRect.left - dragOffset.current.x) / containerRect.width) * 100
+    const newY = e.clientY - containerRect.top - dragOffset.current.y
+    
+    setImages(prev => prev.map(img => 
+      img.id === draggedImage 
+        ? { ...img, currentX: Math.max(0, Math.min(85, newX)), currentY: Math.max(0, newY) }
+        : img
+    ))
+  }, [draggedImage])
+
+  const handleMouseUp = useCallback(() => {
+    if (draggedImage !== null) {
+      setImages(prev => prev.map(img => 
+        img.id === draggedImage ? { ...img, isDragging: false } : img
+      ))
+      setDraggedImage(null)
+    }
+  }, [draggedImage])
+
+  // Mouse event listeners
+  useEffect(() => {
+    if (draggedImage !== null) {
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
+      document.body.style.cursor = 'grabbing'
+      document.body.style.userSelect = 'none'
+      
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove)
+        document.removeEventListener('mouseup', handleMouseUp)
+        document.body.style.cursor = ''
+        document.body.style.userSelect = ''
+      }
+    }
+  }, [draggedImage, handleMouseMove, handleMouseUp])
+
   // Infinite scroll handler
   useEffect(() => {
     const handleScroll = () => {
@@ -145,44 +207,76 @@ export default function WorkPage() {
       {/* Floating Random Grid */}
       <div className="relative min-h-screen px-4 py-8">
         <div className="relative w-full" style={{ height: `${Math.max(1200, images.length * 160)}px` }}>
-          {images.map((image) => (
-            <div 
-              key={image.id} 
-              className="absolute group cursor-pointer transition-all duration-700 hover:z-50 animate-float"
-              style={{
-                left: `${image.randomX}%`,
-                top: `${image.randomY}px`,
-                transform: `rotate(${image.randomRotation}deg) scale(${image.randomScale})`,
-                transformOrigin: 'center center',
-                animationDelay: `${image.animationDelay}s`,
-                animationDuration: `${3 + (image.id % 3)}s`, // Duration between 3-5s based on id
-                '--rotation': `${image.randomRotation}deg`,
-                '--scale': `${image.randomScale}`
-              } as React.CSSProperties & { '--rotation': string; '--scale': string }}
-            >
-              <div className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
-                  className="object-cover"
-                  loading="lazy"
-                  style={{
-                    width: `${224 * image.randomScale}px`,
-                    height: `${149 * image.randomScale}px`
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Floating glow effect on hover */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500" />
-                
-                {/* Subtle floating animation */}
-                <div className="absolute inset-0 rounded-xl border border-white/20 group-hover:border-white/40 transition-colors duration-300" />
+          {images.map((image) => {
+            const currentX = image.currentX !== undefined ? image.currentX : image.randomX
+            const currentY = image.currentY !== undefined ? image.currentY : image.randomY
+            
+            return (
+              <div 
+                key={image.id} 
+                className={`absolute group cursor-grab transition-all duration-300 hover:z-50 select-none ${
+                  image.isDragging 
+                    ? 'z-50 cursor-grabbing scale-105' 
+                    : 'animate-float hover:scale-105'
+                }`}
+                style={{
+                  left: `${currentX}%`,
+                  top: `${currentY}px`,
+                  transform: `rotate(${image.randomRotation}deg) scale(${image.randomScale})`,
+                  transformOrigin: 'center center',
+                  animationDelay: image.isDragging ? 'none' : `${image.animationDelay}s`,
+                  animationDuration: image.isDragging ? 'none' : `${3 + (image.id % 3)}s`,
+                  animationPlayState: image.isDragging ? 'paused' : 'running',
+                  '--rotation': `${image.randomRotation}deg`,
+                  '--scale': `${image.randomScale}`,
+                  transition: image.isDragging ? 'none' : 'all 0.3s ease'
+                } as React.CSSProperties & { '--rotation': string; '--scale': string }}
+                onMouseDown={(e) => handleMouseDown(e, image.id)}
+              >
+                <div className={`relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 ${
+                  image.isDragging 
+                    ? 'shadow-2xl scale-110 -translate-y-2' 
+                    : 'hover:shadow-2xl group-hover:scale-110 group-hover:-translate-y-2'
+                }`}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    className="object-cover pointer-events-none"
+                    loading="lazy"
+                    style={{
+                      width: `${224 * image.randomScale}px`,
+                      height: `${149 * image.randomScale}px`
+                    }}
+                    draggable={false}
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent transition-opacity duration-300 ${
+                    image.isDragging ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`} />
+                  
+                  {/* Floating glow effect */}
+                  <div className={`absolute -inset-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl blur-lg transition-all duration-500 ${
+                    image.isDragging ? 'opacity-40' : 'opacity-0 group-hover:opacity-30'
+                  }`} />
+                  
+                  {/* Border effect */}
+                  <div className={`absolute inset-0 rounded-xl border transition-colors duration-300 ${
+                    image.isDragging ? 'border-white/60' : 'border-white/20 group-hover:border-white/40'
+                  }`} />
+                  
+                  {/* Drag indicator */}
+                  {image.isDragging && (
+                    <div className="absolute top-2 right-2 bg-white/80 rounded-full p-1">
+                      <svg className="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
         
         {/* Loading indicator */}
