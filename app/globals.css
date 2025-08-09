@@ -4,6 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Floating animation for work portfolio grid */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg)) scale(var(--scale, 1));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--rotation, 0deg)) scale(var(--scale, 1));
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;

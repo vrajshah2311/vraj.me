@@ -23,9 +23,14 @@ interface ImageItem {
   alt: string
   width: number
   height: number
+  randomX: number
+  randomY: number
+  randomRotation: number
+  randomScale: number
+  animationDelay: number
 }
 
-// Generate random dimensions while maintaining aspect ratio
+// Generate random dimensions and positioning data
 const generateRandomImage = (id: number): ImageItem => {
   const baseWidth = 224
   const baseHeight = 149
@@ -41,7 +46,12 @@ const generateRandomImage = (id: number): ImageItem => {
     src: `https://picsum.photos/${Math.floor(randomWidth)}/${Math.floor(randomHeight)}?random=${id}`,
     alt: `Work sample ${id}`,
     width: Math.floor(randomWidth),
-    height: Math.floor(randomHeight)
+    height: Math.floor(randomHeight),
+    randomX: Math.random() * 75, // Percentage from left
+    randomY: (id - 1) * 180 + (Math.random() * 150), // Staggered Y with randomness
+    randomRotation: (Math.random() - 0.5) * 6, // Random rotation between -3 and 3 degrees
+    randomScale: 0.85 + (Math.random() * 0.3), // Scale between 0.85 and 1.15
+    animationDelay: Math.random() * 2 // Random delay for floating animation
   }
 }
 
@@ -132,24 +142,44 @@ export default function WorkPage() {
         </div>
       </div>
       
-      {/* Masonry Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
+      {/* Floating Random Grid */}
+      <div className="relative min-h-screen px-4 py-8">
+        <div className="relative w-full" style={{ height: `${Math.max(1200, images.length * 160)}px` }}>
           {images.map((image) => (
             <div 
               key={image.id} 
-              className="break-inside-avoid mb-4 group cursor-pointer"
+              className="absolute group cursor-pointer transition-all duration-700 hover:z-50 animate-float"
+              style={{
+                left: `${image.randomX}%`,
+                top: `${image.randomY}px`,
+                transform: `rotate(${image.randomRotation}deg) scale(${image.randomScale})`,
+                transformOrigin: 'center center',
+                animationDelay: `${image.animationDelay}s`,
+                animationDuration: `${3 + (image.id % 3)}s`, // Duration between 3-5s based on id
+                '--rotation': `${image.randomRotation}deg`,
+                '--scale': `${image.randomScale}`
+              } as React.CSSProperties & { '--rotation': string; '--scale': string }}
             >
-              <div className="relative overflow-hidden rounded-lg bg-gray-100 hover:shadow-lg transition-all duration-300">
+              <div className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2">
                 <Image
                   src={image.src}
                   alt={image.alt}
                   width={image.width}
                   height={image.height}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover"
                   loading="lazy"
+                  style={{
+                    width: `${224 * image.randomScale}px`,
+                    height: `${149 * image.randomScale}px`
+                  }}
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Floating glow effect on hover */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500" />
+                
+                {/* Subtle floating animation */}
+                <div className="absolute inset-0 rounded-xl border border-white/20 group-hover:border-white/40 transition-colors duration-300" />
               </div>
             </div>
           ))}
