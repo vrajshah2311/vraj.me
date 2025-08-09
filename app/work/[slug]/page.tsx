@@ -30,7 +30,7 @@ interface ImageItem {
   animationDelay: number
 }
 
-// Generate responsive grid-based positioning with natural image sizes
+// Generate proper grid layout with no overlapping and consistent spacing
 const generateRandomImage = (id: number): ImageItem => {
   // Generate varied but reasonable image dimensions
   const aspectRatios = [
@@ -50,23 +50,21 @@ const generateRandomImage = (id: number): ImageItem => {
   const finalWidth = Math.floor(randomAspect.w * sizeVariation)
   const finalHeight = Math.floor(randomAspect.h * sizeVariation)
   
-  // Create responsive grid layout that fits viewport
+  // Create proper grid layout with consistent spacing
   const availableWidth = typeof window !== 'undefined' ? window.innerWidth - 64 : 1200
-  const minColumnWidth = 300
+  const padding = 24 // 24px padding around each image
+  const minColumnWidth = 350 // Minimum column width including padding
   const columns = Math.max(1, Math.floor(availableWidth / minColumnWidth))
   const actualColumnWidth = Math.floor(availableWidth / columns)
   
   const columnIndex = (id - 1) % columns
   const rowIndex = Math.floor((id - 1) / columns)
   
-  // Grid positioning with responsive column width
-  const rowHeight = 400
-  const gridX = columnIndex * actualColumnWidth + (actualColumnWidth - finalWidth) / 2 // Center in column
-  const gridY = rowIndex * rowHeight + 50 // 50px top margin
-  
-  // Add small random offset within grid cell (max 20px)
-  const randomOffsetX = (Math.random() - 0.5) * 40
-  const randomOffsetY = (Math.random() - 0.5) * 40
+  // Grid positioning with proper spacing and no overlap
+  const maxImageHeight = 400 // Maximum height for any image in a row
+  const rowHeight = maxImageHeight + (padding * 2) // Row height includes padding
+  const gridX = columnIndex * actualColumnWidth + padding + (actualColumnWidth - finalWidth - (padding * 2)) / 2 // Center in column with padding
+  const gridY = rowIndex * rowHeight + padding // Proper row spacing with padding
   
   return {
     id,
@@ -74,9 +72,9 @@ const generateRandomImage = (id: number): ImageItem => {
     alt: `Work sample ${id}`,
     width: finalWidth,
     height: finalHeight,
-    randomX: Math.max(0, gridX + randomOffsetX),
-    randomY: gridY + randomOffsetY,
-    randomRotation: (Math.random() - 0.5) * 6, // Subtle rotation
+    randomX: Math.max(padding, gridX),
+    randomY: gridY,
+    randomRotation: (Math.random() - 0.5) * 3, // Subtle rotation (reduced)
     randomScale: 1, // No additional scaling, use natural size
     animationDelay: Math.random() * 3
   }
@@ -95,20 +93,21 @@ export default function WorkPage() {
 
   const workItem = workItems[slug]
   
-  // Set container size based on viewport-constrained grid layout
+  // Set container size based on proper grid layout
   useEffect(() => {
     const updateContainerSize = () => {
       // Calculate columns based on viewport width
-      const availableWidth = window.innerWidth - 64 // Account for padding
-      const minColumnWidth = 300 // Minimum column width
+      const availableWidth = window.innerWidth - 64 // Account for container padding
+      const padding = 24 // 24px padding around each image
+      const minColumnWidth = 350 // Minimum column width including padding
       const columns = Math.max(1, Math.floor(availableWidth / minColumnWidth))
-      const actualColumnWidth = Math.floor(availableWidth / columns)
-      const rowHeight = 400
+      const maxImageHeight = 400 // Maximum height for any image in a row
+      const rowHeight = maxImageHeight + (padding * 2) // Row height includes padding
       const rows = Math.ceil(images.length / columns)
       
       setContainerSize({
         width: availableWidth, // Use full available width
-        height: rows * rowHeight + 100 // Rows + margins
+        height: rows * rowHeight + padding // Total height with bottom padding
       })
     }
     
