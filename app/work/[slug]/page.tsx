@@ -32,17 +32,19 @@ interface ImageItem {
 
 // Generate images with natural dimensions (CSS Grid handles positioning)
 const generateRandomImage = (id: number, slug: string): ImageItem => {
-  // Generate 16:9 aspect ratio images with varied sizes
-  const baseWidth = 800
-  const sizeVariations = [0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0] // Different sizes but same ratio
+  // Generate 16:9 aspect ratio images with max height of 240px
+  const maxHeight = 240
+  const maxWidth = Math.floor(maxHeight * (16/9)) // 240 * (16/9) = 426.67px
+  
+  const sizeVariations = [0.6, 0.7, 0.8, 0.9, 1.0] // Smaller variations to stay within limits
   const sizeMultiplier = sizeVariations[id % sizeVariations.length]
   
-  const width = Math.floor(baseWidth * sizeMultiplier)
-  const height = Math.floor(width * (9/16)) // 16:9 aspect ratio
+  const height = Math.floor(maxHeight * sizeMultiplier)
+  const width = Math.floor(height * (16/9)) // Maintain 16:9 ratio
   
-  // Ensure minimum dimensions
-  const finalWidth = Math.max(width, 400)
-  const finalHeight = Math.max(height, 225) // 400 * (9/16) = 225
+  // Ensure dimensions stay within limits
+  const finalHeight = Math.max(height, 144) // Minimum height: 144px
+  const finalWidth = Math.floor(finalHeight * (16/9)) // Corresponding width
   
   return {
     id,
