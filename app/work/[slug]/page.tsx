@@ -33,12 +33,12 @@ interface ImageItem {
 // Generate images with natural dimensions (CSS Grid handles positioning)
 const generateRandomImage = (id: number, slug: string): ImageItem => {
   // Generate 16:9 aspect ratio images with exact 240x135px dimensions
-  const baseHeight = 240
-  const baseWidth = 135
+  const baseWidth = 240
+  const baseHeight = 135
   
   // Use consistent size for all images
-  const finalHeight = baseHeight
   const finalWidth = baseWidth
+  const finalHeight = baseHeight
   
   return {
     id,
