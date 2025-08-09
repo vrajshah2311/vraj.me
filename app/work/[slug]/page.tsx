@@ -194,25 +194,19 @@ export default function WorkPage() {
   
   return (
     <div className="work-page-container bg-white flex flex-col">
-      {/* Header */}
-      <div className="flex-shrink-0 bg-white/90 backdrop-blur-md border-b border-gray-100 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      {/* Breadcrumb */}
+      <div className="flex-shrink-0 bg-white z-50">
+        <div className="max-w-4xl mx-auto px-8 py-6">
           <button 
             onClick={() => router.push('/')}
-            className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
+            className="inline-flex items-center text-neutral-400 hover:text-black transition-colors text-[12px]"
+            style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            <span className="text-sm font-medium">Back</span>
+            Back to home
           </button>
-          
-          <div className="text-center">
-            <h1 className="text-xl font-semibold text-black">{workItem.title}</h1>
-            <p className="text-sm text-gray-600">{workItem.description} • {workItem.year}</p>
-          </div>
-          
-          <div className="w-16"></div> {/* Spacer for center alignment */}
         </div>
       </div>
       
