@@ -141,6 +141,19 @@ export default function ProfoundPage() {
               </div>
             </div>
 
+            {/* Problem Image */}
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/nsave2.png" 
+                    alt="nsave addressing financial challenges in unstable economies"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Role & Team */}
             <div className="case-study-section">
               <div className="case-study-content">
