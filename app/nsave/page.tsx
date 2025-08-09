@@ -7,6 +7,7 @@ import CaseStudyHeading from '../../components/CaseStudyHeading'
 import CaseStudyText from '../../components/CaseStudyText'
 import CaseStudySubheading from '../../components/CaseStudySubheading'
 import CaseStudyLogo from '../../components/CaseStudyLogo'
+import ScrollProgress from '../../components/ScrollProgress'
 
 interface IconProps {
   className?: string;
@@ -79,7 +80,9 @@ export default function NsavePage() {
   }
 
   return (
-    <main className="case-study-page" style={{ overflow: 'visible' }}>
+    <>
+      <ScrollProgress color="#000000" height={2} />
+      <main className="case-study-page" style={{ overflow: 'visible' }}>
       {/* Sticky Breadcrumbs */}
       {isScrolled && (
         <div className="case-study-sticky-nav">
@@ -483,5 +486,6 @@ export default function NsavePage() {
         </div>
       </div>
     </main>
+    </>
   )
 }

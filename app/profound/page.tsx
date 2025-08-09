@@ -10,6 +10,7 @@ import CaseStudyHeading from '../../components/CaseStudyHeading'
 import CaseStudyText from '../../components/CaseStudyText'
 import CaseStudySubheading from '../../components/CaseStudySubheading'
 import CaseStudyLogo from '../../components/CaseStudyLogo'
+import ScrollProgress from '../../components/ScrollProgress'
 
 interface IconProps {
   className?: string;
@@ -416,7 +417,9 @@ export default function ProfoundPage() {
   }
 
   return (
-    <main className="bg-white relative overflow-visible">
+    <>
+      <ScrollProgress color="#000000" height={2} />
+      <main className="bg-white relative overflow-visible">
       {/* Sticky Breadcrumbs */}
       {isScrolled && (
         <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/5">
@@ -712,5 +715,6 @@ export default function ProfoundPage() {
         </>
       )}
     </main>
+    </>
   )
 }
