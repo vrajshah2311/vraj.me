@@ -270,18 +270,6 @@ export default function ProfoundPage() {
               </div>
             </div>
 
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns9.png" 
-                    alt="nsave transfer flow design"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Challenges */}
             <div className="case-study-section">
               <div className="case-study-content">
@@ -329,19 +317,6 @@ export default function ProfoundPage() {
               </div>
             </div>
 
-            {/* Challenges Images */}
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns11.png" 
-                    alt="nsave compliance and security features"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Solution */}
             <div className="case-study-section">
               <div className="case-study-content">
@@ -351,6 +326,34 @@ export default function ProfoundPage() {
                     <CaseStudyText>
                       nsave provides a full-stack financial product covering savings, investments, and transfers with complete transparency and trust. The platform offers real-time conversions, clear status tracking, and streamlined processes designed specifically for users in high-inflation countries.
                     </CaseStudyText>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Solution Images Carousel */}
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="w-full overflow-x-auto">
+                  <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
+                    <div className="flex-shrink-0">
+                      <div className="case-study-image-box">
+                        <img 
+                          src="/images/case-studies/nsave/ns9.png" 
+                          alt="nsave transfer flow design"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <div className="case-study-image-box">
+                        <img 
+                          src="/images/case-studies/nsave/ns11.png" 
+                          alt="nsave compliance and security features"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
