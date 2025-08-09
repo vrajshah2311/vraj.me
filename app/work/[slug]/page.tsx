@@ -30,38 +30,52 @@ interface ImageItem {
   animationDelay: number
 }
 
-// Generate random dimensions and positioning data for 2D grid
+// Generate grid-based positioning with natural image sizes
 const generateRandomImage = (id: number): ImageItem => {
-  const baseWidth = 224
-  const baseHeight = 149
-  const aspectRatio = baseWidth / baseHeight
+  // Generate varied but reasonable image dimensions
+  const aspectRatios = [
+    { w: 400, h: 300 }, // 4:3
+    { w: 350, h: 250 }, // 7:5
+    { w: 300, h: 400 }, // 3:4 (portrait)
+    { w: 450, h: 300 }, // 3:2
+    { w: 320, h: 320 }, // 1:1 (square)
+    { w: 380, h: 280 }, // Varied
+    { w: 300, h: 350 }, // Portrait
+    { w: 420, h: 280 }  // Wide
+  ]
   
-  // Add some variation while keeping close to target size
-  const variation = 0.4
-  const randomWidth = baseWidth + (Math.random() - 0.5) * baseWidth * variation
-  const randomHeight = randomWidth / aspectRatio
+  const randomAspect = aspectRatios[id % aspectRatios.length]
+  const sizeVariation = 0.8 + (Math.random() * 0.4) // 0.8 to 1.2 scale
   
-  // Create 2D random positioning across wider canvas
-  const columns = 8 // More columns for wider layout
-  const rows = Math.ceil(id / columns)
+  const finalWidth = Math.floor(randomAspect.w * sizeVariation)
+  const finalHeight = Math.floor(randomAspect.h * sizeVariation)
+  
+  // Create proper grid layout (no overlapping)
+  const columns = 4 // 4 columns for better spacing
   const columnIndex = (id - 1) % columns
   const rowIndex = Math.floor((id - 1) / columns)
   
-  // Spread images across full 2D space with more randomness
-  const baseX = (columnIndex / columns) * 85 + (Math.random() * 10) // Spread across 85% width with 10% random
-  const baseY = rowIndex * 180 + (Math.random() * 150) // More vertical spacing with randomness
+  // Grid positioning with proper spacing
+  const columnWidth = 450 // Fixed column width for consistency
+  const rowHeight = 400 // Fixed row height for consistency
+  const gridX = columnIndex * columnWidth + 50 // 50px left margin
+  const gridY = rowIndex * rowHeight + 50 // 50px top margin
+  
+  // Add small random offset within grid cell (max 30px)
+  const randomOffsetX = (Math.random() - 0.5) * 60
+  const randomOffsetY = (Math.random() - 0.5) * 60
   
   return {
     id,
-    src: `https://picsum.photos/${Math.floor(randomWidth)}/${Math.floor(randomHeight)}?random=${id}`,
+    src: `https://picsum.photos/${finalWidth}/${finalHeight}?random=${id}`,
     alt: `Work sample ${id}`,
-    width: Math.floor(randomWidth),
-    height: Math.floor(randomHeight),
-    randomX: Math.max(1, Math.min(90, baseX)), // Keep within scrollable bounds
-    randomY: Math.max(20, baseY), // Keep some top margin
-    randomRotation: (Math.random() - 0.5) * 12, // Increased rotation range
-    randomScale: 0.7 + (Math.random() * 0.6), // Scale between 0.7 and 1.3
-    animationDelay: Math.random() * 4 // Random delay for floating animation
+    width: finalWidth,
+    height: finalHeight,
+    randomX: gridX + randomOffsetX,
+    randomY: gridY + randomOffsetY,
+    randomRotation: (Math.random() - 0.5) * 6, // Subtle rotation
+    randomScale: 1, // No additional scaling, use natural size
+    animationDelay: Math.random() * 3
   }
 }
 
@@ -78,12 +92,17 @@ export default function WorkPage() {
 
   const workItem = workItems[slug]
   
-  // Set container size based on viewport
+  // Set container size based on grid layout
   useEffect(() => {
     const updateContainerSize = () => {
+      const columns = 4
+      const columnWidth = 450
+      const rowHeight = 400
+      const rows = Math.ceil(images.length / columns)
+      
       setContainerSize({
-        width: Math.max(1200, window.innerWidth * 1.5),
-        height: Math.max(1500, Math.ceil(images.length / 8) * 200)
+        width: columns * columnWidth + 100, // 4 columns + margins
+        height: rows * rowHeight + 100 // Rows + margins
       })
     }
     
@@ -115,7 +134,7 @@ export default function WorkPage() {
     }, 1000) // Simulate loading delay
   }, [images.length, loading])
   
-  // Container scroll handler for infinite scroll (both X and Y)
+  // Container scroll handler for infinite scroll (grid-based)
   useEffect(() => {
     const handleScroll = () => {
       const container = scrollContainerRef.current
@@ -123,11 +142,10 @@ export default function WorkPage() {
       
       const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = container
       
-      // Load more when approaching bottom or right edge
-      const nearBottom = scrollTop + clientHeight >= scrollHeight - 500
-      const nearRight = scrollLeft + clientWidth >= scrollWidth - 500
+      // Load more when approaching bottom (since we have a proper grid)
+      const nearBottom = scrollTop + clientHeight >= scrollHeight - 800
       
-      if (nearBottom || nearRight) {
+      if (nearBottom) {
         loadMoreImages()
       }
     }
@@ -200,17 +218,17 @@ export default function WorkPage() {
               key={image.id} 
               className="absolute group cursor-pointer transition-all duration-500 hover:z-50 animate-float"
               style={{
-                left: `${image.randomX}%`,
+                left: `${image.randomX}px`,
                 top: `${image.randomY}px`,
-                transform: `rotate(${image.randomRotation}deg) scale(${image.randomScale})`,
+                transform: `rotate(${image.randomRotation}deg)`,
                 transformOrigin: 'center center',
                 animationDelay: `${image.animationDelay}s`,
                 animationDuration: `${3 + (image.id % 3)}s`,
                 '--rotation': `${image.randomRotation}deg`,
-                '--scale': `${image.randomScale}`
+                '--scale': '1'
               } as React.CSSProperties & { '--rotation': string; '--scale': string }}
             >
-              <div className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+              <div className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-2">
                 <Image
                   src={image.src}
                   alt={image.alt}
@@ -219,8 +237,8 @@ export default function WorkPage() {
                   className="object-cover"
                   loading="lazy"
                   style={{
-                    width: `${224 * image.randomScale}px`,
-                    height: `${149 * image.randomScale}px`
+                    width: `${image.width}px`,
+                    height: `${image.height}px`
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
