@@ -72,24 +72,11 @@ export default function WorkPage() {
     const [images, setImages] = useState<ImageItem[]>([])
   const [loading, setLoading] = useState(false)
   const [, setPage] = useState(1)
-  const [containerSize, setContainerSize] = useState({ width: 1200, height: 1500 })
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const workItem = workItems[slug]
   
-  // Container size is handled by CSS Grid, this is just for state management
-  useEffect(() => {
-    const updateContainerSize = () => {
-      setContainerSize({
-        width: window.innerWidth - 64,
-        height: 1000 // Not used with CSS Grid, just placeholder
-      })
-    }
-    
-    updateContainerSize()
-    window.addEventListener('resize', updateContainerSize)
-    return () => window.removeEventListener('resize', updateContainerSize)
-  }, [images.length])
+
 
   // Prevent body scrolling when component mounts
   useEffect(() => {
@@ -134,7 +121,7 @@ export default function WorkPage() {
       const container = scrollContainerRef.current
       if (!container) return
       
-      const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = container
+      const { scrollTop, scrollHeight, clientHeight } = container
       
       // Load more when approaching bottom (since we have a proper grid)
       const nearBottom = scrollTop + clientHeight >= scrollHeight - 800
