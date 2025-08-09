@@ -44,6 +44,12 @@ html, body, #__next, #root {
   overflow-x: hidden;
 }
 
+/* Prevent page scrolling on work portfolio pages */
+.work-page-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
 @layer base {
   :root {
     --font-feature-settings: "cv02", "cv03", "cv04", "cv11";

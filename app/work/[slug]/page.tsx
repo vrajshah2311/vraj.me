@@ -30,7 +30,7 @@ interface ImageItem {
   animationDelay: number
 }
 
-// Generate grid-based positioning with natural image sizes
+// Generate responsive grid-based positioning with natural image sizes
 const generateRandomImage = (id: number): ImageItem => {
   // Generate varied but reasonable image dimensions
   const aspectRatios = [
@@ -50,20 +50,23 @@ const generateRandomImage = (id: number): ImageItem => {
   const finalWidth = Math.floor(randomAspect.w * sizeVariation)
   const finalHeight = Math.floor(randomAspect.h * sizeVariation)
   
-  // Create proper grid layout (no overlapping)
-  const columns = 4 // 4 columns for better spacing
+  // Create responsive grid layout that fits viewport
+  const availableWidth = typeof window !== 'undefined' ? window.innerWidth - 64 : 1200
+  const minColumnWidth = 300
+  const columns = Math.max(1, Math.floor(availableWidth / minColumnWidth))
+  const actualColumnWidth = Math.floor(availableWidth / columns)
+  
   const columnIndex = (id - 1) % columns
   const rowIndex = Math.floor((id - 1) / columns)
   
-  // Grid positioning with proper spacing
-  const columnWidth = 450 // Fixed column width for consistency
-  const rowHeight = 400 // Fixed row height for consistency
-  const gridX = columnIndex * columnWidth + 50 // 50px left margin
+  // Grid positioning with responsive column width
+  const rowHeight = 400
+  const gridX = columnIndex * actualColumnWidth + (actualColumnWidth - finalWidth) / 2 // Center in column
   const gridY = rowIndex * rowHeight + 50 // 50px top margin
   
-  // Add small random offset within grid cell (max 30px)
-  const randomOffsetX = (Math.random() - 0.5) * 60
-  const randomOffsetY = (Math.random() - 0.5) * 60
+  // Add small random offset within grid cell (max 20px)
+  const randomOffsetX = (Math.random() - 0.5) * 40
+  const randomOffsetY = (Math.random() - 0.5) * 40
   
   return {
     id,
@@ -71,7 +74,7 @@ const generateRandomImage = (id: number): ImageItem => {
     alt: `Work sample ${id}`,
     width: finalWidth,
     height: finalHeight,
-    randomX: gridX + randomOffsetX,
+    randomX: Math.max(0, gridX + randomOffsetX),
     randomY: gridY + randomOffsetY,
     randomRotation: (Math.random() - 0.5) * 6, // Subtle rotation
     randomScale: 1, // No additional scaling, use natural size
@@ -92,16 +95,19 @@ export default function WorkPage() {
 
   const workItem = workItems[slug]
   
-  // Set container size based on grid layout
+  // Set container size based on viewport-constrained grid layout
   useEffect(() => {
     const updateContainerSize = () => {
-      const columns = 4
-      const columnWidth = 450
+      // Calculate columns based on viewport width
+      const availableWidth = window.innerWidth - 64 // Account for padding
+      const minColumnWidth = 300 // Minimum column width
+      const columns = Math.max(1, Math.floor(availableWidth / minColumnWidth))
+      const actualColumnWidth = Math.floor(availableWidth / columns)
       const rowHeight = 400
       const rows = Math.ceil(images.length / columns)
       
       setContainerSize({
-        width: columns * columnWidth + 100, // 4 columns + margins
+        width: availableWidth, // Use full available width
         height: rows * rowHeight + 100 // Rows + margins
       })
     }
@@ -110,6 +116,20 @@ export default function WorkPage() {
     window.addEventListener('resize', updateContainerSize)
     return () => window.removeEventListener('resize', updateContainerSize)
   }, [images.length])
+
+  // Prevent body scrolling when component mounts
+  useEffect(() => {
+    // Store original body overflow
+    const originalOverflow = document.body.style.overflow
+    
+    // Prevent body scrolling
+    document.body.style.overflow = 'hidden'
+    
+    // Restore original overflow when component unmounts
+    return () => {
+      document.body.style.overflow = originalOverflow
+    }
+  }, [])
 
   // Load initial images
   useEffect(() => {
@@ -174,7 +194,7 @@ export default function WorkPage() {
   }
   
   return (
-    <div className="h-screen bg-white flex flex-col overflow-hidden">
+    <div className="work-page-container bg-white flex flex-col">
       {/* Header */}
       <div className="flex-shrink-0 bg-white/90 backdrop-blur-md border-b border-gray-100 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -197,19 +217,18 @@ export default function WorkPage() {
         </div>
       </div>
       
-      {/* Scrollable Grid Container - Both X and Y */}
+      {/* Scrollable Grid Container - Vertical Only */}
       <div 
         ref={scrollContainerRef}
-        className="flex-1 overflow-auto p-8"
+        className="flex-1 overflow-y-auto overflow-x-hidden p-8"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: 'rgba(0,0,0,0.2) rgba(0,0,0,0.05)'
         }}
       >
         <div 
-          className="relative" 
+          className="relative w-full" 
           style={{ 
-            width: `${containerSize.width}px`,
             height: `${containerSize.height}px` 
           }}
         >
