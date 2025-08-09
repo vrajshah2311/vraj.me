@@ -116,9 +116,9 @@ export default function ProfoundPage() {
             </CaseStudySection>
 
             {/* Main Interface Image */}
-            <CaseStudySection>
+            <div className="case-study-section">
               <div className="case-study-image">
-                <div className="case-study-image-box">
+                <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                   <img 
                     src="/nsave1.png" 
                     alt="nsave main dashboard interface"
@@ -127,7 +127,7 @@ export default function ProfoundPage() {
                   />
                 </div>
               </div>
-            </CaseStudySection>
+            </div>
 
             {/* Role & Team */}
             <CaseStudySection>
@@ -142,10 +142,10 @@ export default function ProfoundPage() {
             </CaseStudySection>
 
             {/* Role & Team Images */}
-            <CaseStudySection>
+            <div className="case-study-section">
               <div className="space-y-2">
                 <div className="case-study-image">
-                  <div className="case-study-image-box">
+                  <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                     <img 
                       src="/nsave2.png" 
                       alt="nsave mobile interface design"
@@ -155,7 +155,7 @@ export default function ProfoundPage() {
                   </div>
                 </div>
                 <div className="case-study-image">
-                  <div className="case-study-image-box">
+                  <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                     <img 
                       src="/nsave3.png" 
                       alt="nsave analytics and reporting dashboard"
@@ -165,7 +165,7 @@ export default function ProfoundPage() {
                   </div>
                 </div>
               </div>
-            </CaseStudySection>
+            </div>
 
             {/* Approach */}
             <CaseStudySection>
@@ -183,11 +183,11 @@ export default function ProfoundPage() {
             </CaseStudySection>
 
             {/* User Research - Horizontal Carousel */}
-            <div className="w-full overflow-x-auto my-8">
+            <div className="w-full overflow-x-auto my-8" style={{ marginLeft: '-2rem', marginRight: '-2rem' }}>
               <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
                 <div className="flex-shrink-0">
                   <div className="case-study-image">
-                    <div className="case-study-image-box">
+                    <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                       <img 
                         src="/nsave2.png" 
                         alt="User research insights from Lebanon"
@@ -199,7 +199,7 @@ export default function ProfoundPage() {
                 </div>
                 <div className="flex-shrink-0">
                   <div className="case-study-image">
-                    <div className="case-study-image-box">
+                    <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                       <img 
                         src="/nsave3.png" 
                         alt="User research insights from Argentina"
@@ -211,7 +211,7 @@ export default function ProfoundPage() {
                 </div>
                 <div className="flex-shrink-0">
                   <div className="case-study-image">
-                    <div className="case-study-image-box">
+                    <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                       <img 
                         src="/nsave4.png" 
                         alt="User research insights from Nigeria"
@@ -223,7 +223,7 @@ export default function ProfoundPage() {
                 </div>
                 <div className="flex-shrink-0">
                   <div className="case-study-image">
-                    <div className="case-study-image-box">
+                    <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                       <img 
                         src="/nsave1.png" 
                         alt="User feedback analysis"
@@ -256,9 +256,9 @@ export default function ProfoundPage() {
             </CaseStudySection>
 
             {/* Design & Development Image */}
-            <CaseStudySection>
+            <div className="case-study-section">
               <div className="case-study-image">
-                <div className="case-study-image-box">
+                <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                   <img 
                     src="/nsave4.png" 
                     alt="nsave investment and transfer interface design"
@@ -267,7 +267,7 @@ export default function ProfoundPage() {
                   />
                 </div>
               </div>
-            </CaseStudySection>
+            </div>
 
             {/* Challenges */}
             <CaseStudySection>
@@ -297,9 +297,9 @@ export default function ProfoundPage() {
             </CaseStudySection>
 
             {/* Challenges Image */}
-            <CaseStudySection>
+            <div className="case-study-section">
               <div className="case-study-image">
-                <div className="case-study-image-box">
+                <div className="case-study-image-box" style={{ maxWidth: 'none', overflow: 'visible' }}>
                   <img 
                     src="/nsave3.png" 
                     alt="nsave KYC flow and trust-building interface"
@@ -308,7 +308,7 @@ export default function ProfoundPage() {
                   />
                 </div>
               </div>
-            </CaseStudySection>
+            </div>
 
             {/* Solution */}
             <CaseStudySection>
