@@ -304,11 +304,23 @@ html, body, #__next, #root {
 
 /* Image Components */
 .case-study-image {
-  @apply flex justify-center w-full;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  @apply flex justify-center;
 }
 
 .case-study-image-first {
-  @apply flex justify-center w-full;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  @apply flex justify-center;
 }
 
 .case-study-image-box {

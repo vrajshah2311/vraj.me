@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 import CaseStudySection from '../../components/CaseStudySection'
@@ -24,6 +24,8 @@ function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: IconProps) 
 export default function NsavePage() {
   const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isHoverCardOpen, setIsHoverCardOpen] = useState(false)
+  const hoverCardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +35,21 @@ export default function NsavePage() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (hoverCardRef.current && !hoverCardRef.current.contains(event.target as Node)) {
+        setIsHoverCardOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isHoverCardOpen])
+
+  const toggleHoverCard = () => {
+    setIsHoverCardOpen(!isHoverCardOpen)
+  }
 
   const navigateToHome = () => {
     router.push('/')
@@ -48,6 +65,20 @@ export default function NsavePage() {
     }, 500)
   }
 
+  const switchCaseStudy = (caseStudy: string, event?: React.MouseEvent) => {
+    if (event) {
+      event.stopPropagation()
+    }
+    setIsHoverCardOpen(false)
+    // Navigate to the appropriate case study page
+    if (caseStudy === 'profound') {
+      router.push('/profound')
+    } else if (caseStudy === 'orimi') {
+      router.push('/orimi')
+    }
+    // nsave stays on current page
+  }
+
   return (
     <main className="case-study-page">
       {/* Sticky Breadcrumbs */}
@@ -59,10 +90,70 @@ export default function NsavePage() {
               <span className="case-study-breadcrumb-separator">{'>'}</span>
               <span className="case-study-breadcrumb-link" onClick={navigateToWork}>Work</span>
               <span className="case-study-breadcrumb-separator">{'>'}</span>
-              <span className="case-study-breadcrumb-current">nsave</span>
-              <span className="ml-0.5 inline-flex items-center" style={{ verticalAlign: 'middle' }}>
-                <CentralChevronGrabberVerticalFilledOffStroke2Radius2 className="w-4 h-4 text-neutral-400 pb-0.5" strokeWidth="3" />
-              </span>
+              <div className="relative inline-block" ref={hoverCardRef}>
+                <span 
+                  className="case-study-breadcrumb-current cursor-pointer hover:text-black transition-colors"
+                  onClick={toggleHoverCard}
+                >
+                  nsave
+                </span>
+                <span className="ml-0.5 inline-flex items-center" style={{ verticalAlign: 'middle' }}>
+                  <CentralChevronGrabberVerticalFilledOffStroke2Radius2 className="w-4 h-4 text-neutral-400 pb-0.5" strokeWidth="3" />
+                </span>
+                
+                {/* Hover Card */}
+                {isHoverCardOpen && (
+                  <div 
+                    className="absolute top-full mt-0 left-0 bg-white border border-black/10 rounded-lg shadow-lg z-50"
+                    style={{ minWidth: '160px' }}
+                  >
+                    <div className="py-1">
+                      <div 
+                        className="px-3 py-2 hover:bg-gray-50 cursor-pointer flex items-center justify-between group h-8"
+                        onClick={(e) => switchCaseStudy('profound', e)}
+                      >
+                        <div className="flex items-center space-x-2">
+                          <div className="w-3 h-3 rounded flex items-center justify-center overflow-hidden">
+                            <img src="/images/logos/isotype-dark.png" alt="Profound" className="w-full h-full object-contain" />
+                          </div>
+                          <span className="text-[11px] font-bold text-black">Profound</span>
+                        </div>
+                        <svg className="w-3 h-3 text-black opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                      <div 
+                        className="px-3 py-2 hover:bg-gray-50 cursor-pointer flex items-center justify-between group h-8"
+                        onClick={(e) => switchCaseStudy('nsave', e)}
+                      >
+                        <div className="flex items-center space-x-2">
+                          <div className="w-3 h-3 rounded flex items-center justify-center overflow-hidden">
+                            <img src="/images/logos/nsave-logo.webp" alt="nsave" className="w-full h-full object-contain" />
+                          </div>
+                          <span className="text-[11px] font-bold text-black">nsave</span>
+                        </div>
+                        <svg className="w-3 h-3 text-black stroke-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <div 
+                        className="px-3 py-2 hover:bg-gray-50 cursor-pointer flex items-center justify-between group h-8"
+                        onClick={(e) => switchCaseStudy('orimi', e)}
+                      >
+                        <div className="flex items-center space-x-2">
+                          <div className="w-3 h-3 rounded flex items-center justify-center overflow-hidden bg-black/5">
+                            <span className="text-[8px] font-bold text-black">O</span>
+                          </div>
+                          <span className="text-[11px] font-bold text-black">Orimi</span>
+                        </div>
+                        <svg className="w-3 h-3 text-black opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -80,10 +171,17 @@ export default function NsavePage() {
                     <span className="case-study-breadcrumb-separator">{'>'}</span>
                     <span className="case-study-breadcrumb-link" onClick={navigateToWork}>Work</span>
                     <span className="case-study-breadcrumb-separator">{'>'}</span>
-                    <span className="case-study-breadcrumb-current">nsave</span>
-                    <span className="ml-0.5 inline-flex items-center" style={{ verticalAlign: 'middle' }}>
-                      <CentralChevronGrabberVerticalFilledOffStroke2Radius2 className="w-4 h-4 text-neutral-400 pb-0.5" strokeWidth="3" />
-                    </span>
+                    <div className="relative inline-block">
+                      <span 
+                        className="case-study-breadcrumb-current cursor-pointer hover:text-black transition-colors"
+                        onClick={toggleHoverCard}
+                      >
+                        nsave
+                      </span>
+                      <span className="ml-0.5 inline-flex items-center" style={{ verticalAlign: 'middle' }}>
+                        <CentralChevronGrabberVerticalFilledOffStroke2Radius2 className="w-4 h-4 text-neutral-400 pb-0.5" strokeWidth="3" />
+                      </span>
+                    </div>
                   </div>
                 </div>
                 
@@ -137,10 +235,7 @@ export default function NsavePage() {
 
           {/* Role & Team Images */}
           <CaseStudySection>
-            <div className="case-study-image-dual">
-              <CaseStudyImage imageSrc="/images/case-studies/nsave/ns6.png" imageAlt="nsave mobile interface design" />
-              <CaseStudyImage imageSrc="/images/case-studies/nsave/ns7.png" imageAlt="nsave analytics and reporting dashboard" />
-            </div>
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns1.png" imageAlt="nsave mobile interface design" />
           </CaseStudySection>
 
           {/* Approach */}
@@ -163,9 +258,6 @@ export default function NsavePage() {
             <div className="case-study-carousel">
               <div className="case-study-carousel-inner">
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/images/case-studies/nsave/ns1.png" imageAlt="User research insights - Dashboard overview" />
-                </div>
-                <div className="case-study-carousel-item">
                   <CaseStudyImage imageSrc="/images/case-studies/nsave/ns2.png" imageAlt="User research insights - Investment flows" />
                 </div>
                 <div className="case-study-carousel-item">
@@ -176,6 +268,9 @@ export default function NsavePage() {
                 </div>
                 <div className="case-study-carousel-item">
                   <CaseStudyImage imageSrc="/images/case-studies/nsave/ns5.png" imageAlt="User research insights - KYC flow" />
+                </div>
+                <div className="case-study-carousel-item">
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/ns7.png" imageAlt="User research insights - Analytics dashboard" />
                 </div>
               </div>
             </div>
@@ -201,6 +296,10 @@ export default function NsavePage() {
           </CaseStudySection>
 
           {/* Design & Development Images */}
+          <CaseStudySection>
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns6.png" imageAlt="nsave dashboard interface design" />
+          </CaseStudySection>
+
           <CaseStudySection>
             <CaseStudyImage imageSrc="/images/case-studies/nsave/ns8.png" imageAlt="nsave investment interface design" />
           </CaseStudySection>
@@ -238,11 +337,25 @@ export default function NsavePage() {
 
           {/* Challenges Images */}
           <CaseStudySection>
-            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns10.png" imageAlt="nsave KYC flow and trust-building interface" />
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns11.png" imageAlt="nsave compliance and security features" />
           </CaseStudySection>
 
+          {/* Video After Challenges */}
           <CaseStudySection>
-            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns11.png" imageAlt="nsave compliance and security features" />
+            <div className="case-study-image">
+              <div className="case-study-image-box">
+                <iframe 
+                  src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7284884667403501569?compact=1" 
+                  height="399" 
+                  width="504" 
+                  frameBorder="0" 
+                  allowFullScreen 
+                  title="nsave challenges and solutions - LinkedIn video"
+                  className="w-full h-full rounded-lg"
+                  style={{ minHeight: '399px' }}
+                />
+              </div>
+            </div>
           </CaseStudySection>
 
           {/* Solution */}
@@ -267,6 +380,11 @@ export default function NsavePage() {
                 </div>
               </div>
             </CaseStudyContent>
+          </CaseStudySection>
+
+          {/* Impact Image */}
+          <CaseStudySection>
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns10.png" imageAlt="nsave impact and success metrics" />
           </CaseStudySection>
         </div>
       </div>

@@ -1,7 +1,8 @@
 'use client'
 
+import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 
 interface IconProps {
   className?: string;
@@ -18,25 +19,167 @@ function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: IconProps) 
 }
 
 const OrimiCaseStudy = () => {
+  const router = useRouter()
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isHoverCardOpen, setIsHoverCardOpen] = useState(false)
+  const hoverCardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (hoverCardRef.current && !hoverCardRef.current.contains(event.target as Node)) {
+        setIsHoverCardOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isHoverCardOpen])
+
+  const toggleHoverCard = () => {
+    setIsHoverCardOpen(!isHoverCardOpen)
+  }
+
+  const navigateToHome = () => {
+    router.push('/')
+  }
+
+  const navigateToWork = () => {
+    router.push('/')
+    setTimeout(() => {
+      const workSection = document.querySelector('#work-section')
+      if (workSection) {
+        workSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 500)
+  }
+
+  const switchCaseStudy = (caseStudy: string, event?: React.MouseEvent) => {
+    if (event) {
+      event.stopPropagation()
+    }
+    setIsHoverCardOpen(false)
+    // Navigate to the appropriate case study page
+    if (caseStudy === 'profound') {
+      router.push('/profound')
+    } else if (caseStudy === 'nsave') {
+      router.push('/nsave')
+    }
+    // orimi stays on current page
+  }
+
   return (
-    <main className="bg-white relative overflow-auto">
-      <div className="flex justify-center">
-        <div className="w-full max-w-[600px]">
-          {/* Header */}
-          <div className="pt-[96px] pb-2">
-            <div className="relative mb-12">
-              <Link href="/" className="text-[13px] text-neutral-600 hover:text-black transition-colors inline-block">
-                <span className="text-black">Home</span>
-                <span className="mx-2">{'>'}</span>
-                <span className="text-black">Work</span>
-                <span className="mx-2">{'>'}</span>
-                <span className="text-neutral-400">Orimi</span>
+    <main className="case-study-page">
+      {/* Sticky Breadcrumbs */}
+      {isScrolled && (
+        <div className="case-study-sticky-nav">
+          <div className="case-study-sticky-nav-inner">
+            <div className="case-study-breadcrumb">
+              <span className="case-study-breadcrumb-link" onClick={navigateToHome}>Home</span>
+              <span className="case-study-breadcrumb-separator">{'>'}</span>
+              <span className="case-study-breadcrumb-link" onClick={navigateToWork}>Work</span>
+              <span className="case-study-breadcrumb-separator">{'>'}</span>
+              <div className="relative inline-block" ref={hoverCardRef}>
+                <span 
+                  className="case-study-breadcrumb-current cursor-pointer hover:text-black transition-colors"
+                  onClick={toggleHoverCard}
+                >
+                  Orimi
+                </span>
                 <span className="ml-0.5 inline-flex items-center" style={{ verticalAlign: 'middle' }}>
                   <CentralChevronGrabberVerticalFilledOffStroke2Radius2 className="w-4 h-4 text-neutral-400 pb-0.5" strokeWidth="3" />
                 </span>
-              </Link>
+                
+                {/* Hover Card */}
+                {isHoverCardOpen && (
+                  <div 
+                    className="absolute top-full mt-0 left-0 bg-white border border-black/10 rounded-lg shadow-lg z-50"
+                    style={{ minWidth: '160px' }}
+                  >
+                    <div className="py-1">
+                      <div 
+                        className="px-3 py-2 hover:bg-gray-50 cursor-pointer flex items-center justify-between group h-8"
+                        onClick={(e) => switchCaseStudy('profound', e)}
+                      >
+                        <div className="flex items-center space-x-2">
+                          <div className="w-3 h-3 rounded flex items-center justify-center overflow-hidden">
+                            <img src="/images/logos/isotype-dark.png" alt="Profound" className="w-full h-full object-contain" />
+                          </div>
+                          <span className="text-[11px] font-bold text-black">Profound</span>
+                        </div>
+                        <svg className="w-3 h-3 text-black opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                      <div 
+                        className="px-3 py-2 hover:bg-gray-50 cursor-pointer flex items-center justify-between group h-8"
+                        onClick={(e) => switchCaseStudy('nsave', e)}
+                      >
+                        <div className="flex items-center space-x-2">
+                          <div className="w-3 h-3 rounded flex items-center justify-center overflow-hidden">
+                            <img src="/images/logos/nsave-logo.webp" alt="nsave" className="w-full h-full object-contain" />
+                          </div>
+                          <span className="text-[11px] font-bold text-black">nsave</span>
+                        </div>
+                        <svg className="w-3 h-3 text-black opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                      <div 
+                        className="px-3 py-2 hover:bg-gray-50 cursor-pointer flex items-center justify-between group h-8"
+                        onClick={(e) => switchCaseStudy('orimi', e)}
+                      >
+                        <div className="flex items-center space-x-2">
+                          <div className="w-3 h-3 rounded flex items-center justify-center overflow-hidden bg-black/5">
+                            <span className="text-[8px] font-bold text-black">O</span>
+                          </div>
+                          <span className="text-[11px] font-bold text-black">Orimi</span>
+                        </div>
+                        <svg className="w-3 h-3 text-black stroke-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-            <h1 className="text-[18px] text-black mb-8" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Orimi</h1>
+          </div>
+        </div>
+      )}
+
+      <div className="case-study-container">
+        <div className="case-study-wrapper">
+          {/* Header */}
+          <div className="case-study-header">
+            <div className="case-study-header-nav">
+              <div className="case-study-breadcrumb">
+                <span className="case-study-breadcrumb-link" onClick={navigateToHome}>Home</span>
+                <span className="case-study-breadcrumb-separator">{'>'}</span>
+                <span className="case-study-breadcrumb-link" onClick={navigateToWork}>Work</span>
+                <span className="case-study-breadcrumb-separator">{'>'}</span>
+                <div className="relative inline-block">
+                  <span 
+                    className="case-study-breadcrumb-current cursor-pointer hover:text-black transition-colors"
+                    onClick={toggleHoverCard}
+                  >
+                    Orimi
+                  </span>
+                  <span className="ml-0.5 inline-flex items-center" style={{ verticalAlign: 'middle' }}>
+                    <CentralChevronGrabberVerticalFilledOffStroke2Radius2 className="w-4 h-4 text-neutral-400 pb-0.5" strokeWidth="3" />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <h1 className="case-study-title">Orimi</h1>
           </div>
 
           {/* Case Study Content */}

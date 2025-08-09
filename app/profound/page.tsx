@@ -141,19 +141,6 @@ export default function ProfoundPage() {
               </div>
             </div>
 
-            {/* Problem Image */}
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/nsave2.png" 
-                    alt="nsave addressing financial challenges in unstable economies"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Role & Team */}
             <div className="case-study-section">
               <div className="case-study-content">
@@ -170,24 +157,13 @@ export default function ProfoundPage() {
 
             {/* Role & Team Images */}
             <div className="case-study-section">
-              <div className="space-y-2">
-                <div className="case-study-image-breakout">
-                  <div className="case-study-image-box">
-                    <img 
-                      src="/images/case-studies/nsave/ns6.png" 
-                      alt="nsave mobile interface design"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="case-study-image-breakout">
-                  <div className="case-study-image-box">
-                    <img 
-                      src="/images/case-studies/nsave/ns7.png" 
-                      alt="nsave analytics and reporting dashboard"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/nsave/ns1.png" 
+                    alt="nsave mobile interface design"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -214,15 +190,6 @@ export default function ProfoundPage() {
               <div className="case-study-image-breakout">
               <div className="w-full overflow-x-auto">
                 <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
-                  <div className="flex-shrink-0">
-                    <div className="case-study-image-box">
-                      <img 
-                        src="/images/case-studies/nsave/ns1.png" 
-                        alt="User research insights - Dashboard overview"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
@@ -259,6 +226,15 @@ export default function ProfoundPage() {
                       />
                     </div>
                   </div>
+                  <div className="flex-shrink-0">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/images/case-studies/nsave/ns7.png" 
+                        alt="User research insights - Analytics dashboard"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
               </div>
@@ -287,6 +263,18 @@ export default function ProfoundPage() {
             </div>
 
             {/* Design & Development Images */}
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/nsave/ns6.png" 
+                    alt="nsave dashboard interface design"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
             <div className="case-study-section">
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
@@ -363,21 +351,27 @@ export default function ProfoundPage() {
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <img 
-                    src="/images/case-studies/nsave/ns10.png" 
-                    alt="nsave KYC flow and trust-building interface"
+                    src="/images/case-studies/nsave/ns11.png" 
+                    alt="nsave compliance and security features"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
             </div>
 
+            {/* Video After Challenges */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns11.png" 
-                    alt="nsave compliance and security features"
-                    className="w-full h-full object-cover"
+                  <iframe 
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7284884667403501569?compact=1" 
+                    height="399" 
+                    width="504" 
+                    frameBorder="0" 
+                    allowFullScreen 
+                    title="nsave challenges and solutions - LinkedIn video"
+                    className="w-full h-full rounded-lg"
+                    style={{ minHeight: '399px' }}
                   />
                 </div>
               </div>
@@ -407,6 +401,19 @@ export default function ProfoundPage() {
                       We launched a full-stack financial product covering savings, investments, and transfers. KYC drop-off reduced significantly after the flow redesign. Support tickets around transfers dropped after improving status tracking. The investment product saw solid repeat usage, showing user trust. We started seeing word-of-mouth referrals—people were bringing friends and family onto the platform.
                     </CaseStudyText>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Impact Image */}
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/nsave/ns10.png" 
+                    alt="nsave impact and success metrics"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
