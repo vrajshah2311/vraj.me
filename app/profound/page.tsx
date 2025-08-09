@@ -93,14 +93,20 @@ export default function ProfoundPage() {
             <h1 className="text-[18px] text-black mb-8" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>nsave</h1>
             
             {/* Intro */}
-            <div>
-              <CaseStudyHeading>Intro</CaseStudyHeading>
-              <CaseStudyText className="mb-4">
-                Designed a comprehensive financial platform that enables safe saving, investing, and international transfers for users in high-inflation countries.
-              </CaseStudyText>
-              <CaseStudyText>
-                A trustworthy, transparent interface showing investment accounts, international transfers with real-time conversions, and streamlined KYC processes.
-              </CaseStudyText>
+            <div className="case-study-section">
+              <div className="case-study-content">
+                <div className="case-study-content-inner">
+                  <div>
+                    <CaseStudyHeading>Intro</CaseStudyHeading>
+                    <CaseStudyText className="mb-4">
+                      Designed a comprehensive financial platform that enables safe saving, investing, and international transfers for users in high-inflation countries.
+                    </CaseStudyText>
+                    <CaseStudyText>
+                      A trustworthy, transparent interface showing investment accounts, international transfers with real-time conversions, and streamlined KYC processes.
+                    </CaseStudyText>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Intro Image */}
@@ -117,41 +123,32 @@ export default function ProfoundPage() {
             </div>
 
             {/* Problem */}
-            <CaseStudySection>
-              <CaseStudyContent>
-                <div>
-                  <CaseStudyHeading>Problem</CaseStudyHeading>
-                  <CaseStudyText>
-                    In countries with unstable currencies and strict capital controls, people often can&apos;t safely save, invest, or send money abroad. Local banking systems are slow, expensive, and untrusted. nsave was created to fix that.
-                  </CaseStudyText>
-                </div>
-              </CaseStudyContent>
-            </CaseStudySection>
-
-            {/* Main Interface Image */}
             <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/nsave1.png" 
-                    alt="nsave main dashboard interface"
-                    className="w-full h-full object-cover"
-                  />
+              <div className="case-study-content">
+                <div className="case-study-content-inner">
+                  <div>
+                    <CaseStudyHeading>Problem</CaseStudyHeading>
+                    <CaseStudyText>
+                      In countries with unstable currencies and strict capital controls, people often can&apos;t safely save, invest, or send money abroad. Local banking systems are slow, expensive, and untrusted. nsave was created to fix that.
+                    </CaseStudyText>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Role & Team */}
-            <CaseStudySection>
-              <CaseStudyContent>
-                <div>
-                  <CaseStudyHeading>Role & Team</CaseStudyHeading>
-                  <CaseStudyText className="mb-4">First and Only Designer</CaseStudyText>
-                  <CaseStudyText className="mb-4">Solo designer working with CEO, engineers, and compliance team</CaseStudyText>
-                  <CaseStudyText>Product UX, Brand design, User flows, Legal disclaimers, End-to-end experience design</CaseStudyText>
+            <div className="case-study-section">
+              <div className="case-study-content">
+                <div className="case-study-content-inner">
+                  <div>
+                    <CaseStudyHeading>Role & Team</CaseStudyHeading>
+                    <CaseStudyText className="mb-4">First and Only Designer</CaseStudyText>
+                    <CaseStudyText className="mb-4">Solo designer working with CEO, engineers, and compliance team</CaseStudyText>
+                    <CaseStudyText>Product UX, Brand design, User flows, Legal disclaimers, End-to-end experience design</CaseStudyText>
+                  </div>
                 </div>
-              </CaseStudyContent>
-            </CaseStudySection>
+              </div>
+            </div>
 
             {/* Role & Team Images */}
             <div className="case-study-section">
@@ -178,22 +175,25 @@ export default function ProfoundPage() {
             </div>
 
             {/* Approach */}
-            <CaseStudySection>
-              <CaseStudyContent>
-                <div>
-                  <CaseStudyHeading>Approach</CaseStudyHeading>
+            <div className="case-study-section">
+              <div className="case-study-content">
+                <div className="case-study-content-inner">
                   <div>
-                    <CaseStudySubheading>User Research</CaseStudySubheading>
-                    <CaseStudyText>
-                      Interviewed users from Lebanon, Argentina, and Nigeria. Found universal frustrations: no trust in local banks, no visibility in transfers, and lots of hidden fees. Even simple things—like seeing funds reflected in USD—were major value props.
-                    </CaseStudyText>
+                    <CaseStudyHeading>Approach</CaseStudyHeading>
+                    <div>
+                      <CaseStudySubheading>User Research</CaseStudySubheading>
+                      <CaseStudyText>
+                        Interviewed users from Lebanon, Argentina, and Nigeria. Found universal frustrations: no trust in local banks, no visibility in transfers, and lots of hidden fees. Even simple things—like seeing funds reflected in USD—were major value props.
+                      </CaseStudyText>
+                    </div>
                   </div>
                 </div>
-              </CaseStudyContent>
-            </CaseStudySection>
+              </div>
+            </div>
 
             {/* User Research - Horizontal Carousel */}
-            <div className="case-study-image-breakout my-8">
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
               <div className="w-full overflow-x-auto">
                 <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
                   <div className="flex-shrink-0">
@@ -234,26 +234,30 @@ export default function ProfoundPage() {
                   </div>
                 </div>
               </div>
+              </div>
             </div>
 
-            <CaseStudySection>
-              <CaseStudyContent>
-                <div>
+            {/* Design & Development */}
+            <div className="case-study-section">
+              <div className="case-study-content">
+                <div className="case-study-content-inner">
                   <div>
-                    <CaseStudySubheading>Design & Development</CaseStudySubheading>
-                    <CaseStudyText className="mb-4">
-                      Designed investment account flow with transparency, stability, and trust as key themes. Rebuilt international transfers UI with real-time conversions and expected delivery times. Redesigned onboarding/KYC flow into smaller, friction-reduced steps.
-                    </CaseStudyText>
-                  </div>
-                  <div>
-                    <CaseStudySubheading>Trust & Compliance</CaseStudySubheading>
-                    <CaseStudyText>
-                      Built a clear, calm visual system using soft tones, familiar patterns, and intentionally boring (aka safe-feeling) interactions. Had to educate clearly since couldn&apos;t legally call it a &quot;savings&quot; product.
-                    </CaseStudyText>
+                    <div>
+                      <CaseStudySubheading>Design & Development</CaseStudySubheading>
+                      <CaseStudyText className="mb-4">
+                        Designed investment account flow with transparency, stability, and trust as key themes. Rebuilt international transfers UI with real-time conversions and expected delivery times. Redesigned onboarding/KYC flow into smaller, friction-reduced steps.
+                      </CaseStudyText>
+                    </div>
+                    <div>
+                      <CaseStudySubheading>Trust & Compliance</CaseStudySubheading>
+                      <CaseStudyText>
+                        Built a clear, calm visual system using soft tones, familiar patterns, and intentionally boring (aka safe-feeling) interactions. Had to educate clearly since couldn&apos;t legally call it a &quot;savings&quot; product.
+                      </CaseStudyText>
+                    </div>
                   </div>
                 </div>
-              </CaseStudyContent>
-            </CaseStudySection>
+              </div>
+            </div>
 
             {/* Design & Development Image */}
             <div className="case-study-section">
@@ -269,31 +273,33 @@ export default function ProfoundPage() {
             </div>
 
             {/* Challenges */}
-            <CaseStudySection>
-              <CaseStudyContent>
-                <div>
-                  <CaseStudyHeading>Challenges</CaseStudyHeading>
+            <div className="case-study-section">
+              <div className="case-study-content">
+                <div className="case-study-content-inner">
                   <div>
-                    <CaseStudySubheading>Building Trust in Fintech</CaseStudySubheading>
-                    <CaseStudyText className="mb-4">
-                      When designing for money, especially in volatile regions, trust is the product. Used soft tones, familiar patterns, and intentionally safe-feeling interactions to build confidence.
-                    </CaseStudyText>
-                  </div>
-                  <div>
-                    <CaseStudySubheading>Legal and Compliance Constraints</CaseStudySubheading>
-                    <CaseStudyText className="mb-4">
-                      Legal and compliance constraints aren&apos;t blockers—they&apos;re design inputs. Had to educate clearly since couldn&apos;t legally call it a &quot;savings&quot; product, turning limitations into design opportunities.
-                    </CaseStudyText>
-                  </div>
-                  <div>
-                    <CaseStudySubheading>KYC Completion Rates</CaseStudySubheading>
-                    <CaseStudyText>
-                      Redesigned the onboarding/KYC flow into smaller, friction-reduced steps to improve completion rates. Small details like word choices or icon colors make or break confidence in fintech flows.
-                    </CaseStudyText>
+                    <CaseStudyHeading>Challenges</CaseStudyHeading>
+                    <div>
+                      <CaseStudySubheading>Building Trust in Fintech</CaseStudySubheading>
+                      <CaseStudyText className="mb-4">
+                        When designing for money, especially in volatile regions, trust is the product. Used soft tones, familiar patterns, and intentionally safe-feeling interactions to build confidence.
+                      </CaseStudyText>
+                    </div>
+                    <div>
+                      <CaseStudySubheading>Legal and Compliance Constraints</CaseStudySubheading>
+                      <CaseStudyText className="mb-4">
+                        Legal and compliance constraints aren&apos;t blockers—they&apos;re design inputs. Had to educate clearly since couldn&apos;t legally call it a &quot;savings&quot; product, turning limitations into design opportunities.
+                      </CaseStudyText>
+                    </div>
+                    <div>
+                      <CaseStudySubheading>KYC Completion Rates</CaseStudySubheading>
+                      <CaseStudyText>
+                        Redesigned the onboarding/KYC flow into smaller, friction-reduced steps to improve completion rates. Small details like word choices or icon colors make or break confidence in fintech flows.
+                      </CaseStudyText>
+                    </div>
                   </div>
                 </div>
-              </CaseStudyContent>
-            </CaseStudySection>
+              </div>
+            </div>
 
             {/* Challenges Image */}
             <div className="case-study-section">
@@ -309,28 +315,32 @@ export default function ProfoundPage() {
             </div>
 
             {/* Solution */}
-            <CaseStudySection>
-              <CaseStudyContent>
-                <div>
-                  <CaseStudyHeading>Solution</CaseStudyHeading>
-                  <CaseStudyText>
-                    nsave provides a full-stack financial product covering savings, investments, and transfers with complete transparency and trust. The platform offers real-time conversions, clear status tracking, and streamlined processes designed specifically for users in high-inflation countries.
-                  </CaseStudyText>
+            <div className="case-study-section">
+              <div className="case-study-content">
+                <div className="case-study-content-inner">
+                  <div>
+                    <CaseStudyHeading>Solution</CaseStudyHeading>
+                    <CaseStudyText>
+                      nsave provides a full-stack financial product covering savings, investments, and transfers with complete transparency and trust. The platform offers real-time conversions, clear status tracking, and streamlined processes designed specifically for users in high-inflation countries.
+                    </CaseStudyText>
+                  </div>
                 </div>
-              </CaseStudyContent>
-            </CaseStudySection>
+              </div>
+            </div>
 
             {/* Impact */}
-            <CaseStudySection>
-              <CaseStudyContent>
-                <div>
-                  <CaseStudyHeading>Impact</CaseStudyHeading>
-                  <CaseStudyText>
-                    We launched a full-stack financial product covering savings, investments, and transfers. KYC drop-off reduced significantly after the flow redesign. Support tickets around transfers dropped after improving status tracking. The investment product saw solid repeat usage, showing user trust. We started seeing word-of-mouth referrals—people were bringing friends and family onto the platform.
-                  </CaseStudyText>
+            <div className="case-study-section">
+              <div className="case-study-content">
+                <div className="case-study-content-inner">
+                  <div>
+                    <CaseStudyHeading>Impact</CaseStudyHeading>
+                    <CaseStudyText>
+                      We launched a full-stack financial product covering savings, investments, and transfers. KYC drop-off reduced significantly after the flow redesign. Support tickets around transfers dropped after improving status tracking. The investment product saw solid repeat usage, showing user trust. We started seeing word-of-mouth referrals—people were bringing friends and family onto the platform.
+                    </CaseStudyText>
+                  </div>
                 </div>
-              </CaseStudyContent>
-            </CaseStudySection>
+              </div>
+            </div>
           </>
         )
       case 'orimi':
