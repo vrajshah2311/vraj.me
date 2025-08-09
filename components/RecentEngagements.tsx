@@ -26,7 +26,7 @@ const RecentEngagements: React.FC = () => {
             {engagements.map((item) => {
               if (item.href) {
                 return (
-                  <a key={`${item.client}-${item.year}`} href={item.href} className="grid grid-cols-12 items-center h-8 relative group cursor-pointer block">
+                  <a key={`${item.client}-${item.year}`} href={item.href} className="grid grid-cols-12 items-center h-8 relative group cursor-pointer">
                     <div className="absolute inset-0 bg-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity -mx-2"></div>
                     <div className="col-span-6 relative z-10">
                       <div className="inline-flex items-center gap-1 text-black">
