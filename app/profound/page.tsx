@@ -606,24 +606,50 @@ export default function ProfoundPage() {
       </CaseStudySection>
 
       {/* User Research - Horizontal Carousel */}
-      <CaseStudySection>
-        <div className="w-full overflow-x-auto">
-          <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
-            <div className="flex-shrink-0">
-              <CaseStudyImage imageSrc="/images/case-studies/profound/pr3.png" imageAlt="User research insights" />
-            </div>
-            <div className="flex-shrink-0">
-              <CaseStudyImage imageSrc="/images/case-studies/profound/pr6.png" imageAlt="User feedback analysis" />
-                </div>
-            <div className="flex-shrink-0">
-              <CaseStudyImage imageSrc="/images/case-studies/profound/pr7.png" imageAlt="Research findings" />
-                </div>
-            <div className="flex-shrink-0">
-              <CaseStudyImage imageSrc="/images/case-studies/profound/pr4.png" imageAlt="User journey mapping" />
+      <div className="case-study-section">
+        <div className="case-study-image-breakout">
+          <div className="w-full overflow-x-auto">
+            <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
+              <div className="flex-shrink-0">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/profound/pr3.png" 
+                    alt="User research insights"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
+              <div className="flex-shrink-0">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/profound/pr6.png" 
+                    alt="User feedback analysis"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/profound/pr7.png" 
+                    alt="Research findings"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/profound/pr4.png" 
+                    alt="User journey mapping"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </CaseStudySection>
+      </div>
       
       <CaseStudySection>
         <CaseStudyContent>
