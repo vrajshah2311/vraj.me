@@ -109,14 +109,19 @@ export default function ProfoundPage() {
               </div>
             </div>
 
-            {/* Intro Image */}
+            {/* Intro Video */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
-                  <img 
-                    src="/nsave1.png" 
-                    alt="nsave comprehensive financial platform overview"
-                    className="w-full h-full object-cover"
+                  <iframe 
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7287525248491536385?compact=1" 
+                    height="399" 
+                    width="504" 
+                    frameBorder="0" 
+                    allowFullScreen 
+                    title="nsave comprehensive financial platform overview - LinkedIn video"
+                    className="w-full h-full rounded-lg"
+                    style={{ minHeight: '399px' }}
                   />
                 </div>
               </div>
@@ -132,24 +137,6 @@ export default function ProfoundPage() {
                       In countries with unstable currencies and strict capital controls, people often can&apos;t safely save, invest, or send money abroad. Local banking systems are slow, expensive, and untrusted. nsave was created to fix that.
                     </CaseStudyText>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Problem Video */}
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <iframe 
-                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7287525248491536385?compact=1" 
-                    height="399" 
-                    width="504" 
-                    frameBorder="0" 
-                    allowFullScreen 
-                    title="nsave addressing financial challenges - LinkedIn video"
-                    className="w-full h-full rounded-lg"
-                    style={{ minHeight: '399px' }}
-                  />
                 </div>
               </div>
             </div>
