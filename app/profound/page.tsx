@@ -622,23 +622,25 @@ export default function ProfoundPage() {
         </CaseStudyContent>
       </CaseStudySection>
 
-      {/* Full-width horizontal carousel */}
-      <div className="w-full overflow-x-auto my-8">
-        <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
-          <div className="flex-shrink-0">
-            <CaseStudyImage imageSrc="/pr3.png" imageAlt="User research insights" />
+      {/* User Research - Horizontal Carousel */}
+      <CaseStudySection>
+        <div className="w-full overflow-x-auto">
+          <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
+            <div className="flex-shrink-0">
+              <CaseStudyImage imageSrc="/pr3.png" imageAlt="User research insights" />
+            </div>
+            <div className="flex-shrink-0">
+              <CaseStudyImage imageSrc="/pr6.png" imageAlt="User feedback analysis" />
                 </div>
-          <div className="flex-shrink-0">
-            <CaseStudyImage imageSrc="/pr6.png" imageAlt="User feedback analysis" />
+            <div className="flex-shrink-0">
+              <CaseStudyImage imageSrc="/pr7.png" imageAlt="Research findings" />
                 </div>
-          <div className="flex-shrink-0">
-            <CaseStudyImage imageSrc="/pr7.png" imageAlt="Research findings" />
+            <div className="flex-shrink-0">
+              <CaseStudyImage imageSrc="/pr4.png" imageAlt="User journey mapping" />
                 </div>
-          <div className="flex-shrink-0">
-            <CaseStudyImage imageSrc="/pr4.png" imageAlt="User journey mapping" />
               </div>
         </div>
-      </div>
+      </CaseStudySection>
       
       <CaseStudySection>
         <CaseStudyContent>
