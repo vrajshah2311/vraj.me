@@ -182,18 +182,19 @@ export default function WorkPage() {
         }}
       >
         <div 
-          className="grid gap-6 p-8"
+          className="grid gap-8 p-8"
           style={{
-            gridTemplateColumns: `repeat(auto-fit, minmax(350px, 1fr))`
+            gridTemplateColumns: `repeat(auto-fit, minmax(400px, 1fr))`,
+            gridAutoRows: 'max-content'
           }}
         >
           {images.map((image) => (
             <div 
               key={image.id} 
-              className="group cursor-pointer flex justify-center"
+              className="group cursor-pointer flex justify-center items-center p-4"
             >
               <div 
-                className="relative overflow-hidden rounded-xl bg-white"
+                className="relative rounded-xl bg-white"
                 style={{
                   transform: `rotate(${image.randomRotation}deg)`,
                   transformOrigin: 'center center'
@@ -204,11 +205,13 @@ export default function WorkPage() {
                   alt={image.alt}
                   width={image.width}
                   height={image.height}
-                  className="object-cover"
+                  className="object-cover rounded-xl"
                   loading="lazy"
                   style={{
                     width: `${image.width}px`,
-                    height: `${image.height}px`
+                    height: `${image.height}px`,
+                    maxWidth: '100%',
+                    height: 'auto'
                   }}
                 />
               </div>
