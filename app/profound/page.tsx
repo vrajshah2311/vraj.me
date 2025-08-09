@@ -141,7 +141,7 @@ export default function ProfoundPage() {
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <iframe 
-                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7284884667403501569?compact=1" 
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7287525248491536385?compact=1" 
                     height="399" 
                     width="504" 
                     frameBorder="0" 
@@ -295,7 +295,7 @@ export default function ProfoundPage() {
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <iframe 
-                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7287525248491536385?compact=1" 
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7284884667403501569?compact=1" 
                     height="399" 
                     width="504" 
                     frameBorder="0" 
