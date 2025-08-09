@@ -190,16 +190,10 @@ export default function WorkPage() {
           {images.map((image) => (
             <div 
               key={image.id} 
-              className="group cursor-pointer transition-all duration-500 hover:z-50 animate-float flex justify-center"
-              style={{
-                animationDelay: `${image.animationDelay}s`,
-                animationDuration: `${3 + (image.id % 3)}s`,
-                '--rotation': `${image.randomRotation}deg`,
-                '--scale': '1'
-              } as React.CSSProperties & { '--rotation': string; '--scale': string }}
+              className="group cursor-pointer flex justify-center"
             >
               <div 
-                className="relative overflow-hidden rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-2"
+                className="relative overflow-hidden rounded-xl bg-white"
                 style={{
                   transform: `rotate(${image.randomRotation}deg)`,
                   transformOrigin: 'center center'
@@ -217,13 +211,6 @@ export default function WorkPage() {
                     height: `${image.height}px`
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Floating glow effect on hover */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500" />
-                
-                {/* Subtle border */}
-                <div className="absolute inset-0 rounded-xl border border-white/20 group-hover:border-white/40 transition-colors duration-300" />
               </div>
             </div>
           ))}
