@@ -116,12 +116,12 @@ export default function ProfoundPage() {
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <iframe 
-                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7284884667403501569?compact=1" 
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7287525248491536385?compact=1" 
                     height="399" 
                     width="504" 
                     frameBorder="0" 
                     allowFullScreen 
-                    title="nsave comprehensive financial platform overview - LinkedIn video"
+                    title="Introducing nsave's new investment feature: From protection to growth - LinkedIn video"
                     className="w-full h-full rounded-lg"
                     style={{ minHeight: '399px' }}
                   />
@@ -328,7 +328,7 @@ export default function ProfoundPage() {
                     width="504" 
                     frameBorder="0" 
                     allowFullScreen 
-                    title="nsave challenges and solutions - LinkedIn video"
+                    title="nsave comprehensive financial platform overview - LinkedIn video"
                     className="w-full h-full rounded-lg"
                     style={{ minHeight: '399px' }}
                   />
