@@ -31,29 +31,23 @@ interface ImageItem {
 }
 
 // Generate images with natural dimensions (CSS Grid handles positioning)
-const generateRandomImage = (id: number): ImageItem => {
-  // Generate varied but reasonable image dimensions
-  const aspectRatios = [
-    { w: 400, h: 300 }, // 4:3
-    { w: 350, h: 250 }, // 7:5
-    { w: 300, h: 400 }, // 3:4 (portrait)
-    { w: 450, h: 300 }, // 3:2
-    { w: 320, h: 320 }, // 1:1 (square)
-    { w: 380, h: 280 }, // Varied
-    { w: 300, h: 350 }, // Portrait
-    { w: 420, h: 280 }  // Wide
-  ]
+const generateRandomImage = (id: number, slug: string): ImageItem => {
+  // Generate 16:9 aspect ratio images with varied sizes
+  const baseWidth = 800
+  const sizeVariations = [0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0] // Different sizes but same ratio
+  const sizeMultiplier = sizeVariations[id % sizeVariations.length]
   
-  const randomAspect = aspectRatios[id % aspectRatios.length]
-  const sizeVariation = 0.8 + (Math.random() * 0.4) // 0.8 to 1.2 scale
+  const width = Math.floor(baseWidth * sizeMultiplier)
+  const height = Math.floor(width * (9/16)) // 16:9 aspect ratio
   
-  const finalWidth = Math.floor(randomAspect.w * sizeVariation)
-  const finalHeight = Math.floor(randomAspect.h * sizeVariation)
+  // Ensure minimum dimensions
+  const finalWidth = Math.max(width, 400)
+  const finalHeight = Math.max(height, 225) // 400 * (9/16) = 225
   
   return {
     id,
     src: `https://picsum.photos/${finalWidth}/${finalHeight}?random=${id}`,
-    alt: `Work sample ${id}`,
+    alt: `${slug.charAt(0).toUpperCase() + slug.slice(1)} work sample ${id}`,
     width: finalWidth,
     height: finalHeight,
     randomX: 0, // Not used with CSS Grid
@@ -97,10 +91,10 @@ export default function WorkPage() {
   // Load initial images
   useEffect(() => {
     if (workItem) {
-      const initialImages = Array.from({ length: 24 }, (_, i) => generateRandomImage(i + 1))
+      const initialImages = Array.from({ length: 24 }, (_, i) => generateRandomImage(i + 1, slug))
       setImages(initialImages)
     }
-  }, [workItem])
+  }, [workItem, slug])
   
   // Load more images
   const loadMoreImages = useCallback(() => {
@@ -109,13 +103,13 @@ export default function WorkPage() {
     setLoading(true)
     setTimeout(() => {
       const newImages = Array.from({ length: 16 }, (_, i) => 
-        generateRandomImage(images.length + i + 1)
+        generateRandomImage(images.length + i + 1, slug)
       )
       setImages(prev => [...prev, ...newImages])
       setPage(prev => prev + 1)
       setLoading(false)
     }, 1000) // Simulate loading delay
-  }, [images.length, loading])
+  }, [images.length, loading, slug])
   
   // Container scroll handler for infinite scroll and navbar visibility
   useEffect(() => {
