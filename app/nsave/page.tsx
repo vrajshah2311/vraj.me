@@ -328,15 +328,7 @@ export default function NsavePage() {
                       />
                     </div>
                   </div>
-                  <div className="flex-shrink-0">
-                    <div className="case-study-image-box">
-                      <img 
-                        src="/images/case-studies/nsave/ns7.png" 
-                        alt="User research insights - Analytics dashboard"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
+
                 </ScrollCarousel>
               </div>
             </div>
@@ -380,6 +372,15 @@ export default function NsavePage() {
                       <img 
                         src="/images/case-studies/nsave/ns8.png" 
                         alt="nsave investment interface design"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/images/case-studies/nsave/ns7.png" 
+                        alt="nsave trust and compliance features"
                         className="w-full h-full object-cover"
                       />
                     </div>
