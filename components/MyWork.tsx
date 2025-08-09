@@ -10,10 +10,10 @@ type WorkItem = {
 }
 
 const workItems: WorkItem[] = [
-  { title: 'Personal Portfolio', description: 'Design & Development', year: '2024', href: '#' },
-  { title: 'Open Source Contributions', description: 'React & TypeScript', year: '2024', href: '#' },
-  { title: 'Design System', description: 'Component Library', year: '2023', href: '#' },
-  { title: 'Side Projects', description: 'Various Experiments', year: '2023', href: '#' }
+  { title: 'Ninja', description: 'Design & Development', year: '2024', href: '#' },
+  { title: 'Linktree', description: 'Product Design', year: '2024', href: '#' },
+  { title: 'Whop', description: 'User Experience', year: '2023', href: '#' },
+  { title: 'Context', description: 'Brand & Design', year: '2023', href: '#' }
 ]
 
 const MyWork: React.FC = () => {
