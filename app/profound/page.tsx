@@ -110,6 +110,24 @@ export default function ProfoundPage() {
               </div>
             </div>
 
+            {/* Intro Video */}
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <iframe 
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7284884667403501569?compact=1" 
+                    height="399" 
+                    width="504" 
+                    frameBorder="0" 
+                    allowFullScreen 
+                    title="nsave comprehensive financial platform overview - LinkedIn video"
+                    className="w-full h-full rounded-lg"
+                    style={{ minHeight: '399px' }}
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Problem */}
             <div className="case-study-section">
               <div className="case-study-content">
