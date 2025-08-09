@@ -88,7 +88,7 @@ export default function NsavePage() {
                 </div>
                 
                 <div className="case-study-logo">
-                  <img src="/nsave-logo.webp" alt="nsave Logo" className="w-full h-full object-contain" />
+                  <img src="/images/logos/nsave-logo.webp" alt="nsave Logo" className="w-full h-full object-contain" />
                 </div>
                 
                 <h1 className="case-study-title">nsave</h1>
@@ -120,7 +120,7 @@ export default function NsavePage() {
 
           {/* Add nsave main interface image */}
           <CaseStudySection>
-            <CaseStudyImage imageSrc="/nsave1.png" imageAlt="nsave main dashboard interface" />
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave1.png" imageAlt="nsave main dashboard interface" />
           </CaseStudySection>
 
           {/* Role & Team */}
@@ -138,8 +138,8 @@ export default function NsavePage() {
           {/* Role & Team Images */}
           <CaseStudySection>
             <div className="case-study-image-dual">
-              <CaseStudyImage imageSrc="/nsave2.png" imageAlt="nsave mobile interface design" />
-              <CaseStudyImage imageSrc="/nsave3.png" imageAlt="nsave analytics and reporting dashboard" />
+              <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave2.png" imageAlt="nsave mobile interface design" />
+              <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave3.png" imageAlt="nsave analytics and reporting dashboard" />
             </div>
           </CaseStudySection>
 
@@ -163,16 +163,16 @@ export default function NsavePage() {
             <div className="case-study-carousel">
               <div className="case-study-carousel-inner">
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/nsave2.png" imageAlt="User research insights from Lebanon" />
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave2.png" imageAlt="User research insights from Lebanon" />
                 </div>
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/nsave3.png" imageAlt="User research insights from Argentina" />
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave3.png" imageAlt="User research insights from Argentina" />
                 </div>
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/nsave4.png" imageAlt="User research insights from Nigeria" />
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave4.png" imageAlt="User research insights from Nigeria" />
                 </div>
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/nsave1.png" imageAlt="User feedback analysis" />
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave1.png" imageAlt="User feedback analysis" />
                 </div>
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function NsavePage() {
 
           {/* Design & Development Image */}
           <CaseStudySection>
-            <CaseStudyImage imageSrc="/nsave4.png" imageAlt="nsave investment and transfer interface design" />
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave4.png" imageAlt="nsave investment and transfer interface design" />
           </CaseStudySection>
 
           {/* Challenges */}
@@ -231,7 +231,7 @@ export default function NsavePage() {
 
           {/* Challenges Image */}
           <CaseStudySection>
-            <CaseStudyImage imageSrc="/nsave3.png" imageAlt="nsave KYC flow and trust-building interface" />
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave3.png" imageAlt="nsave KYC flow and trust-building interface" />
           </CaseStudySection>
 
           {/* Solution */}

@@ -88,7 +88,7 @@ export default function ProfoundPage() {
         return (
           <>
             <CaseStudyLogo>
-              <img src="/nsave-logo.webp" alt="nsave Logo" className="w-full h-full object-contain" />
+              <img src="/images/logos/nsave-logo.webp" alt="nsave Logo" className="w-full h-full object-contain" />
             </CaseStudyLogo>
             <h1 className="text-[18px] text-black mb-8" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>nsave</h1>
             
@@ -146,7 +146,7 @@ export default function ProfoundPage() {
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <img 
-                    src="/nsave2.png" 
+                    src="/images/case-studies/nsave/nsave2.png" 
                     alt="nsave addressing financial challenges in unstable economies"
                     className="w-full h-full object-cover"
                   />
@@ -174,7 +174,7 @@ export default function ProfoundPage() {
                 <div className="case-study-image-breakout">
                   <div className="case-study-image-box">
                     <img 
-                      src="/nsave2.png" 
+                      src="/images/case-studies/nsave/nsave2.png" 
                       alt="nsave mobile interface design"
                       className="w-full h-full object-cover"
                     />
@@ -183,7 +183,7 @@ export default function ProfoundPage() {
                 <div className="case-study-image-breakout">
                   <div className="case-study-image-box">
                     <img 
-                      src="/nsave3.png" 
+                      src="/images/case-studies/nsave/nsave3.png" 
                       alt="nsave analytics and reporting dashboard"
                       className="w-full h-full object-cover"
                     />
@@ -217,7 +217,7 @@ export default function ProfoundPage() {
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
-                        src="/nsave2.png" 
+                        src="/images/case-studies/nsave/nsave2.png" 
                         alt="User research insights from Lebanon"
                         className="w-full h-full object-cover"
                       />
@@ -226,7 +226,7 @@ export default function ProfoundPage() {
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
-                        src="/nsave3.png" 
+                        src="/images/case-studies/nsave/nsave3.png" 
                         alt="User research insights from Argentina"
                         className="w-full h-full object-cover"
                       />
@@ -235,7 +235,7 @@ export default function ProfoundPage() {
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
-                        src="/nsave4.png" 
+                        src="/images/case-studies/nsave/nsave4.png" 
                         alt="User research insights from Nigeria"
                         className="w-full h-full object-cover"
                       />
@@ -244,7 +244,7 @@ export default function ProfoundPage() {
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
-                        src="/nsave1.png" 
+                        src="/images/case-studies/nsave/nsave1.png" 
                         alt="User feedback analysis"
                         className="w-full h-full object-cover"
                       />
@@ -282,7 +282,7 @@ export default function ProfoundPage() {
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <img 
-                    src="/nsave4.png" 
+                    src="/images/case-studies/nsave/nsave4.png" 
                     alt="nsave investment and transfer interface design"
                     className="w-full h-full object-cover"
                   />
@@ -342,7 +342,7 @@ export default function ProfoundPage() {
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <img 
-                    src="/nsave3.png" 
+                    src="/images/case-studies/nsave/nsave3.png" 
                     alt="nsave KYC flow and trust-building interface"
                     className="w-full h-full object-cover"
                   />
@@ -398,7 +398,7 @@ export default function ProfoundPage() {
         return (
           <>
             <CaseStudyLogo>
-              <img src="/isotype-dark.png" alt="Profound Logo" className="w-full h-full object-contain" />
+              <img src="/images/logos/isotype-dark.png" alt="Profound Logo" className="w-full h-full object-contain" />
             </CaseStudyLogo>
             <h1 className="text-[18px] text-black mb-8" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Profound</h1>
             {/* Profound content continues with all existing sections */}
@@ -425,7 +425,7 @@ export default function ProfoundPage() {
                   <div className="-space-y-0.5">
                     <div className={`flex items-center space-x-2 p-1 rounded h-8 ${currentCaseStudy === 'profound' ? '' : 'hover:bg-black/5 cursor-pointer'}`} onClick={currentCaseStudy !== 'profound' ? (e) => switchCaseStudy('profound', e) : undefined}>
                       <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                        <img src="/isotype-dark.png" alt="Profound" className="w-5 h-5 object-contain" />
+                        <img src="/images/logos/isotype-dark.png" alt="Profound" className="w-5 h-5 object-contain" />
                       </div>
                       <span className="text-[12px] font-bold text-black flex-1">Profound</span>
                       {currentCaseStudy === 'profound' && (
@@ -437,7 +437,7 @@ export default function ProfoundPage() {
                     
                     <div className={`flex items-center space-x-2 p-1 rounded h-8 ${currentCaseStudy === 'nsave' ? '' : 'hover:bg-black/5 cursor-pointer'} transition-colors group/item`} onClick={currentCaseStudy !== 'nsave' ? (e) => switchCaseStudy('nsave', e) : undefined}>
                       <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                        <img src="/nsave-logo.webp" alt="nsave" className="w-5 h-5 object-contain" />
+                        <img src="/images/logos/nsave-logo.webp" alt="nsave" className="w-5 h-5 object-contain" />
                       </div>
                       <span className="text-[12px] font-bold text-black flex-1">nsave</span>
                       {currentCaseStudy === 'nsave' ? (
@@ -492,7 +492,7 @@ export default function ProfoundPage() {
                     <div className="-space-y-0.5">
                       <div className={`flex items-center space-x-2 p-1 rounded h-8 ${currentCaseStudy === 'profound' ? '' : 'hover:bg-black/5 cursor-pointer'}`} onClick={currentCaseStudy !== 'profound' ? (e) => switchCaseStudy('profound', e) : undefined}>
                         <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                          <img src="/isotype-dark.png" alt="Profound" className="w-3 h-3 object-contain" />
+                          <img src="/images/logos/isotype-dark.png" alt="Profound" className="w-3 h-3 object-contain" />
                         </div>
                         <span className="text-[12px] font-bold text-black flex-1">Profound</span>
                         {currentCaseStudy === 'profound' && (
@@ -504,7 +504,7 @@ export default function ProfoundPage() {
                       
                       <div className={`flex items-center space-x-2 p-1 rounded h-8 ${currentCaseStudy === 'nsave' ? '' : 'hover:bg-black/5 cursor-pointer'} transition-colors group/item`} onClick={currentCaseStudy !== 'nsave' ? (e) => switchCaseStudy('nsave', e) : undefined}>
                         <div className="w-5 h-5 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 border border-black/10">
-                          <img src="/nsave-logo.webp" alt="nsave" className="w-4 h-4 object-contain" />
+                          <img src="/images/logos/nsave-logo.webp" alt="nsave" className="w-4 h-4 object-contain" />
                         </div>
                         <span className="text-[12px] font-bold text-black flex-1">nsave</span>
                         {currentCaseStudy === 'nsave' ? (
@@ -566,7 +566,7 @@ export default function ProfoundPage() {
         <>
           {/* First Image - Pr1.png */}
       <CaseStudySection>
-        <CaseStudyImage imageSrc="/pr1.png" imageAlt="Profound interface" isFirst={true} />
+        <CaseStudyImage imageSrc="/images/case-studies/profound/pr1.png" imageAlt="Profound interface" isFirst={true} />
       </CaseStudySection>
 
       <CaseStudySection>
@@ -583,7 +583,7 @@ export default function ProfoundPage() {
 
       {/* Platforms Image */}
       <CaseStudySection>
-        <CaseStudyImage imageSrc="/platforms.png" imageAlt="Platforms interface" />
+        <CaseStudyImage imageSrc="/images/case-studies/profound/platforms.png" imageAlt="Platforms interface" />
       </CaseStudySection>
 
       <CaseStudySection>
@@ -600,8 +600,8 @@ export default function ProfoundPage() {
 
       <CaseStudySection>
         <div className="space-y-2">
-          <CaseStudyImage imageSrc="/pr2.png" imageAlt="Profound interface design" />
-          <CaseStudyImage imageSrc="/pr5.png" imageAlt="Profound user experience flow" />
+          <CaseStudyImage imageSrc="/images/case-studies/profound/pr2.png" imageAlt="Profound interface design" />
+          <CaseStudyImage imageSrc="/images/case-studies/profound/pr5.png" imageAlt="Profound user experience flow" />
         </div>
       </CaseStudySection>
 
@@ -627,16 +627,16 @@ export default function ProfoundPage() {
         <div className="w-full overflow-x-auto">
           <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
             <div className="flex-shrink-0">
-              <CaseStudyImage imageSrc="/pr3.png" imageAlt="User research insights" />
+              <CaseStudyImage imageSrc="/images/case-studies/profound/pr3.png" imageAlt="User research insights" />
             </div>
             <div className="flex-shrink-0">
-              <CaseStudyImage imageSrc="/pr6.png" imageAlt="User feedback analysis" />
+              <CaseStudyImage imageSrc="/images/case-studies/profound/pr6.png" imageAlt="User feedback analysis" />
                 </div>
             <div className="flex-shrink-0">
-              <CaseStudyImage imageSrc="/pr7.png" imageAlt="Research findings" />
+              <CaseStudyImage imageSrc="/images/case-studies/profound/pr7.png" imageAlt="Research findings" />
                 </div>
             <div className="flex-shrink-0">
-              <CaseStudyImage imageSrc="/pr4.png" imageAlt="User journey mapping" />
+              <CaseStudyImage imageSrc="/images/case-studies/profound/pr4.png" imageAlt="User journey mapping" />
                 </div>
               </div>
         </div>
@@ -666,7 +666,7 @@ export default function ProfoundPage() {
         <div className="case-study-image">
           <div className="case-study-image-box">
             <img 
-              src="/p10.png" 
+              src="/images/case-studies/profound/p10.png" 
               alt="Design and development workflow"
               className="w-full h-full object-cover"
               style={{ maxWidth: 'none' }}
@@ -703,7 +703,7 @@ export default function ProfoundPage() {
       </CaseStudySection>
 
       <CaseStudySection>
-        <CaseStudyImage imageSrc="/p11.png" imageAlt="Challenges and solutions overview" />
+        <CaseStudyImage imageSrc="/images/case-studies/profound/p11.png" imageAlt="Challenges and solutions overview" />
       </CaseStudySection>
 
       <CaseStudySection>
