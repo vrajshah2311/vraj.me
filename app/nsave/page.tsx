@@ -138,8 +138,8 @@ export default function NsavePage() {
           {/* Role & Team Images */}
           <CaseStudySection>
             <div className="case-study-image-dual">
-              <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave2.png" imageAlt="nsave mobile interface design" />
-              <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave3.png" imageAlt="nsave analytics and reporting dashboard" />
+              <CaseStudyImage imageSrc="/images/case-studies/nsave/ns6.png" imageAlt="nsave mobile interface design" />
+              <CaseStudyImage imageSrc="/images/case-studies/nsave/ns7.png" imageAlt="nsave analytics and reporting dashboard" />
             </div>
           </CaseStudySection>
 
@@ -163,16 +163,19 @@ export default function NsavePage() {
             <div className="case-study-carousel">
               <div className="case-study-carousel-inner">
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave2.png" imageAlt="User research insights from Lebanon" />
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/ns1.png" imageAlt="User research insights - Dashboard overview" />
                 </div>
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave3.png" imageAlt="User research insights from Argentina" />
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/ns2.png" imageAlt="User research insights - Investment flows" />
                 </div>
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave4.png" imageAlt="User research insights from Nigeria" />
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/ns3.png" imageAlt="User research insights - Transfer interface" />
                 </div>
                 <div className="case-study-carousel-item">
-                  <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave1.png" imageAlt="User feedback analysis" />
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/ns4.png" imageAlt="User research insights - Mobile experience" />
+                </div>
+                <div className="case-study-carousel-item">
+                  <CaseStudyImage imageSrc="/images/case-studies/nsave/ns5.png" imageAlt="User research insights - KYC flow" />
                 </div>
               </div>
             </div>
@@ -197,9 +200,13 @@ export default function NsavePage() {
             </CaseStudyContent>
           </CaseStudySection>
 
-          {/* Design & Development Image */}
+          {/* Design & Development Images */}
           <CaseStudySection>
-            <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave4.png" imageAlt="nsave investment and transfer interface design" />
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns8.png" imageAlt="nsave investment interface design" />
+          </CaseStudySection>
+
+          <CaseStudySection>
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns9.png" imageAlt="nsave transfer flow design" />
           </CaseStudySection>
 
           {/* Challenges */}
@@ -229,9 +236,13 @@ export default function NsavePage() {
             </CaseStudyContent>
           </CaseStudySection>
 
-          {/* Challenges Image */}
+          {/* Challenges Images */}
           <CaseStudySection>
-            <CaseStudyImage imageSrc="/images/case-studies/nsave/nsave3.png" imageAlt="nsave KYC flow and trust-building interface" />
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns10.png" imageAlt="nsave KYC flow and trust-building interface" />
+          </CaseStudySection>
+
+          <CaseStudySection>
+            <CaseStudyImage imageSrc="/images/case-studies/nsave/ns11.png" imageAlt="nsave compliance and security features" />
           </CaseStudySection>
 
           {/* Solution */}

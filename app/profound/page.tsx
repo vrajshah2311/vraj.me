@@ -174,7 +174,7 @@ export default function ProfoundPage() {
                 <div className="case-study-image-breakout">
                   <div className="case-study-image-box">
                     <img 
-                      src="/images/case-studies/nsave/nsave2.png" 
+                      src="/images/case-studies/nsave/ns6.png" 
                       alt="nsave mobile interface design"
                       className="w-full h-full object-cover"
                     />
@@ -183,7 +183,7 @@ export default function ProfoundPage() {
                 <div className="case-study-image-breakout">
                   <div className="case-study-image-box">
                     <img 
-                      src="/images/case-studies/nsave/nsave3.png" 
+                      src="/images/case-studies/nsave/ns7.png" 
                       alt="nsave analytics and reporting dashboard"
                       className="w-full h-full object-cover"
                     />
@@ -217,8 +217,8 @@ export default function ProfoundPage() {
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
-                        src="/images/case-studies/nsave/nsave2.png" 
-                        alt="User research insights from Lebanon"
+                        src="/images/case-studies/nsave/ns1.png" 
+                        alt="User research insights - Dashboard overview"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -226,8 +226,8 @@ export default function ProfoundPage() {
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
-                        src="/images/case-studies/nsave/nsave3.png" 
-                        alt="User research insights from Argentina"
+                        src="/images/case-studies/nsave/ns2.png" 
+                        alt="User research insights - Investment flows"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -235,8 +235,8 @@ export default function ProfoundPage() {
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
-                        src="/images/case-studies/nsave/nsave4.png" 
-                        alt="User research insights from Nigeria"
+                        src="/images/case-studies/nsave/ns3.png" 
+                        alt="User research insights - Transfer interface"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -244,8 +244,17 @@ export default function ProfoundPage() {
                   <div className="flex-shrink-0">
                     <div className="case-study-image-box">
                       <img 
-                        src="/images/case-studies/nsave/nsave1.png" 
-                        alt="User feedback analysis"
+                        src="/images/case-studies/nsave/ns4.png" 
+                        alt="User research insights - Mobile experience"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <div className="case-study-image-box">
+                      <img 
+                        src="/images/case-studies/nsave/ns5.png" 
+                        alt="User research insights - KYC flow"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -277,13 +286,25 @@ export default function ProfoundPage() {
               </div>
             </div>
 
-            {/* Design & Development Image */}
+            {/* Design & Development Images */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <img 
-                    src="/images/case-studies/nsave/nsave4.png" 
-                    alt="nsave investment and transfer interface design"
+                    src="/images/case-studies/nsave/ns8.png" 
+                    alt="nsave investment interface design"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/nsave/ns9.png" 
+                    alt="nsave transfer flow design"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -337,13 +358,25 @@ export default function ProfoundPage() {
               </div>
             </div>
 
-            {/* Challenges Image */}
+            {/* Challenges Images */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <img 
-                    src="/images/case-studies/nsave/nsave3.png" 
+                    src="/images/case-studies/nsave/ns10.png" 
                     alt="nsave KYC flow and trust-building interface"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/images/case-studies/nsave/ns11.png" 
+                    alt="nsave compliance and security features"
                     className="w-full h-full object-cover"
                   />
                 </div>
