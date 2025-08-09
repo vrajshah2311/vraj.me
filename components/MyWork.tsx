@@ -10,10 +10,10 @@ type WorkItem = {
 }
 
 const workItems: WorkItem[] = [
-  { title: 'Ninja', description: 'Design & Development', year: '2024', href: '#' },
-  { title: 'Linktree', description: 'Product Design', year: '2024', href: '#' },
-  { title: 'Whop', description: 'User Experience', year: '2023', href: '#' },
-  { title: 'Context', description: 'Brand & Design', year: '2023', href: '#' }
+  { title: 'Ninja', description: 'Design & Development', year: '2024', href: '/work/ninja' },
+  { title: 'Linktree', description: 'Product Design', year: '2024', href: '/work/linktree' },
+  { title: 'Whop', description: 'User Experience', year: '2023', href: '/work/whop' },
+  { title: 'Context', description: 'Brand & Design', year: '2023', href: '/work/context' }
 ]
 
 const MyWork: React.FC = () => {
