@@ -171,14 +171,20 @@ export default function WorkPage() {
     <div className="work-page-container bg-white flex flex-col">
       {/* Breadcrumb */}
       <div 
-        className={`flex-shrink-0 bg-white z-50 h-[56px] transition-transform duration-300 ease-in-out ${
-          isNavbarVisible ? 'translate-y-0' : '-translate-y-full'
+        className={`flex-shrink-0 z-50 h-[56px] transition-all duration-300 ease-in-out ${
+          isNavbarVisible 
+            ? 'translate-y-0 bg-white' 
+            : '-translate-y-full bg-transparent'
         }`}
       >
         <div className="max-w-4xl mx-auto px-8 h-full flex items-center">
           <button 
             onClick={() => router.push('/')}
-            className="inline-flex items-center text-neutral-400 hover:text-black transition-colors text-[12px]"
+            className={`inline-flex items-center transition-all duration-300 text-[12px] ${
+              isNavbarVisible 
+                ? 'text-neutral-400 hover:text-black' 
+                : 'text-black hover:text-neutral-600'
+            }`}
             style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}
           >
             <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
