@@ -30,7 +30,7 @@ interface ImageItem {
   animationDelay: number
 }
 
-// Generate random dimensions and positioning data for vertical grid
+// Generate random dimensions and positioning data for 2D grid
 const generateRandomImage = (id: number): ImageItem => {
   const baseWidth = 224
   const baseHeight = 149
@@ -41,19 +41,15 @@ const generateRandomImage = (id: number): ImageItem => {
   const randomWidth = baseWidth + (Math.random() - 0.5) * baseWidth * variation
   const randomHeight = randomWidth / aspectRatio
   
-  // Create vertical grid layout (responsive)
-  const columns = 5 // Desktop: 5 columns, will be responsive
-  const columnWidth = 100 / columns // Each column takes up 20% of width
+  // Create 2D random positioning across wider canvas
+  const columns = 8 // More columns for wider layout
+  const rows = Math.ceil(id / columns)
   const columnIndex = (id - 1) % columns
   const rowIndex = Math.floor((id - 1) / columns)
   
-  // Position within column with some randomness
-  const baseX = columnIndex * columnWidth + (columnWidth * 0.1) // 10% padding from column start
-  const randomXOffset = Math.random() * (columnWidth * 0.6) // Random within 60% of column width
-  const finalX = baseX + randomXOffset
-  
-  // Staggered Y positioning with more randomness
-  const baseY = rowIndex * 200 + (Math.random() * 120) // Base row height with random offset
+  // Spread images across full 2D space with more randomness
+  const baseX = (columnIndex / columns) * 85 + (Math.random() * 10) // Spread across 85% width with 10% random
+  const baseY = rowIndex * 180 + (Math.random() * 150) // More vertical spacing with randomness
   
   return {
     id,
@@ -61,11 +57,11 @@ const generateRandomImage = (id: number): ImageItem => {
     alt: `Work sample ${id}`,
     width: Math.floor(randomWidth),
     height: Math.floor(randomHeight),
-    randomX: Math.max(2, Math.min(85, finalX)), // Keep within bounds
-    randomY: baseY,
-    randomRotation: (Math.random() - 0.5) * 8, // Random rotation between -4 and 4 degrees
-    randomScale: 0.8 + (Math.random() * 0.4), // Scale between 0.8 and 1.2
-    animationDelay: Math.random() * 3 // Random delay for floating animation
+    randomX: Math.max(1, Math.min(90, baseX)), // Keep within scrollable bounds
+    randomY: Math.max(20, baseY), // Keep some top margin
+    randomRotation: (Math.random() - 0.5) * 12, // Increased rotation range
+    randomScale: 0.7 + (Math.random() * 0.6), // Scale between 0.7 and 1.3
+    animationDelay: Math.random() * 4 // Random delay for floating animation
   }
 }
 
@@ -74,13 +70,28 @@ export default function WorkPage() {
   const router = useRouter()
   const slug = params.slug as string
   
-  const [images, setImages] = useState<ImageItem[]>([])
+    const [images, setImages] = useState<ImageItem[]>([])
   const [loading, setLoading] = useState(false)
   const [, setPage] = useState(1)
+  const [containerSize, setContainerSize] = useState({ width: 1200, height: 1500 })
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  
+
   const workItem = workItems[slug]
   
+  // Set container size based on viewport
+  useEffect(() => {
+    const updateContainerSize = () => {
+      setContainerSize({
+        width: Math.max(1200, window.innerWidth * 1.5),
+        height: Math.max(1500, Math.ceil(images.length / 8) * 200)
+      })
+    }
+    
+    updateContainerSize()
+    window.addEventListener('resize', updateContainerSize)
+    return () => window.removeEventListener('resize', updateContainerSize)
+  }, [images.length])
+
   // Load initial images
   useEffect(() => {
     if (workItem) {
@@ -104,14 +115,19 @@ export default function WorkPage() {
     }, 1000) // Simulate loading delay
   }, [images.length, loading])
   
-  // Container scroll handler for infinite scroll
+  // Container scroll handler for infinite scroll (both X and Y)
   useEffect(() => {
     const handleScroll = () => {
       const container = scrollContainerRef.current
       if (!container) return
       
-      const { scrollTop, scrollHeight, clientHeight } = container
-      if (scrollTop + clientHeight >= scrollHeight - 500) { // Load more when 500px from bottom
+      const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = container
+      
+      // Load more when approaching bottom or right edge
+      const nearBottom = scrollTop + clientHeight >= scrollHeight - 500
+      const nearRight = scrollLeft + clientWidth >= scrollWidth - 500
+      
+      if (nearBottom || nearRight) {
         loadMoreImages()
       }
     }
@@ -163,16 +179,22 @@ export default function WorkPage() {
         </div>
       </div>
       
-      {/* Scrollable Grid Container */}
+      {/* Scrollable Grid Container - Both X and Y */}
       <div 
         ref={scrollContainerRef}
-        className="flex-1 overflow-y-auto px-4 py-8"
+        className="flex-1 overflow-auto p-8"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: 'rgba(0,0,0,0.2) rgba(0,0,0,0.05)'
         }}
       >
-        <div className="relative w-full" style={{ height: `${Math.max(1500, Math.ceil(images.length / 5) * 250)}px` }}>
+        <div 
+          className="relative" 
+          style={{ 
+            width: `${containerSize.width}px`,
+            height: `${containerSize.height}px` 
+          }}
+        >
           {images.map((image) => (
             <div 
               key={image.id} 
