@@ -157,8 +157,8 @@ export default function WorkPage() {
   return (
     <div className="work-page-container bg-white flex flex-col">
       {/* Breadcrumb */}
-      <div className="flex-shrink-0 bg-white z-50">
-        <div className="max-w-4xl mx-auto px-8 py-6">
+      <div className="flex-shrink-0 bg-white z-50 h-[56px]">
+        <div className="max-w-4xl mx-auto px-8 h-full flex items-center">
           <button 
             onClick={() => router.push('/')}
             className="inline-flex items-center text-neutral-400 hover:text-black transition-colors text-[12px]"
