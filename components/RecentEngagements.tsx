@@ -17,7 +17,7 @@ const engagements: Engagement[] = [
 
 const RecentEngagements: React.FC = () => {
   return (
-    <div className="mt-[16px] mb-[16px]">
+    <div id="work-section" className="mt-[16px] mb-[16px]">
       <div className="max-w-4xl">
         <h2 className="mb-2 text-[12px] text-neutral-400" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Selected case studies</h2>
         <div className="w-full h-px mb-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)' }}></div>

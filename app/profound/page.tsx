@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 import CaseStudySection from '../../components/CaseStudySection'
 import CaseStudyContent from '../../components/CaseStudyContent'
@@ -25,6 +26,7 @@ function CentralChevronGrabberVerticalFilledOffStroke2Radius2(props: IconProps) 
 }
 
 export default function ProfoundPage() {
+  const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isHoverCardOpen, setIsHoverCardOpen] = useState(false)
   const [currentCaseStudy, setCurrentCaseStudy] = useState('profound')
@@ -53,6 +55,21 @@ export default function ProfoundPage() {
 
   const toggleHoverCard = () => {
     setIsHoverCardOpen(!isHoverCardOpen)
+  }
+
+  const navigateToHome = () => {
+    router.push('/')
+  }
+
+  const navigateToWork = () => {
+    router.push('/')
+    // Wait for navigation to complete, then scroll
+    setTimeout(() => {
+      const workSection = document.querySelector('#work-section')
+      if (workSection) {
+        workSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 500)
   }
 
   const switchCaseStudy = (caseStudy: string, event?: React.MouseEvent) => {
@@ -117,9 +134,9 @@ export default function ProfoundPage() {
         <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/5">
           <div className="max-w-[600px] mx-auto py-4">
             <div className="text-[13px] text-neutral-600 inline-block" style={{ fontWeight: '600', fontVariationSettings: "'wght' 600" }}>
-              <span className="text-black">Home</span>
+              <span className="text-black cursor-pointer hover:text-neutral-600 transition-colors" onClick={navigateToHome}>Home</span>
               <span className="mx-2">{'>'}</span>
-              <span className="text-black">Work</span>
+              <span className="text-black cursor-pointer hover:text-neutral-600 transition-colors" onClick={navigateToWork}>Work</span>
               <span className="mx-2">{'>'}</span>
               <span className="text-neutral-400 relative group cursor-pointer hover-card-container" onClick={toggleHoverCard}>
                 {currentCaseStudy === 'profound' ? 'Profound' : currentCaseStudy === 'nsave' ? 'nsave' : 'Orimi'}
@@ -184,9 +201,9 @@ export default function ProfoundPage() {
           <div className="pt-[96px] pb-2">
             <div className="relative mb-12">
               <div className="text-[13px] text-neutral-600 inline-block" style={{ fontWeight: '600', fontVariationSettings: "'wght' 600" }}>
-                <span className="text-black">Home</span>
+                <span className="text-black cursor-pointer hover:text-neutral-600 transition-colors" onClick={navigateToHome}>Home</span>
                 <span className="mx-2">{'>'}</span>
-                <span className="text-black">Work</span>
+                <span className="text-black cursor-pointer hover:text-neutral-600 transition-colors" onClick={navigateToWork}>Work</span>
                 <span className="mx-2">{'>'}</span>
                 <span className="text-neutral-400 relative group cursor-pointer hover-card-container" onClick={toggleHoverCard}>
                   {currentCaseStudy === 'profound' ? 'Profound' : currentCaseStudy === 'nsave' ? 'nsave' : 'Orimi'}
