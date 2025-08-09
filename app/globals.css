@@ -58,7 +58,6 @@ html, body, #__next, #root {
   html, body {
     overscroll-behavior: none;
     background-color: #FFFFFF !important;
-    overflow-x: hidden;
   }
   
   /* Ensure viewport is always white */
@@ -226,11 +225,11 @@ html, body, #__next, #root {
 }
 
 .case-study-content {
-  @apply flex justify-center;
+  @apply flex justify-center overflow-visible;
 }
 
 .case-study-content-inner {
-  @apply w-full max-w-[600px];
+  @apply w-full max-w-[600px] overflow-visible;
 }
 
 

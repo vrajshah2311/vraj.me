@@ -72,8 +72,8 @@ export default function NsavePage() {
         </div>
       )}
 
-      <div className="flex justify-center">
-        <div className="w-full max-w-[600px]">
+      <div className="flex justify-center overflow-visible">
+        <div className="w-full max-w-[600px] overflow-visible">
           {/* Header & Intro */}
           <CaseStudySection>
             <CaseStudyContent>
