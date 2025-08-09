@@ -103,6 +103,19 @@ export default function ProfoundPage() {
               </CaseStudyText>
             </div>
 
+            {/* Intro Image */}
+            <div className="case-study-section">
+              <div className="case-study-image-breakout">
+                <div className="case-study-image-box">
+                  <img 
+                    src="/nsave1.png" 
+                    alt="nsave comprehensive financial platform overview"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Problem */}
             <CaseStudySection>
               <CaseStudyContent>
