@@ -52,7 +52,7 @@ export default function WorkPage() {
   
   const [images, setImages] = useState<ImageItem[]>([])
   const [loading, setLoading] = useState(false)
-  const [page, setPage] = useState(1)
+  const [, setPage] = useState(1)
   
   const workItem = workItems[slug]
   
