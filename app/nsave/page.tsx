@@ -216,12 +216,12 @@ export default function NsavePage() {
               <div className="case-study-image-breakout">
                 <div className="case-study-image-box">
                   <iframe 
-                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7284884667403501569?compact=1" 
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7287525248491536385?compact=1" 
                     height="399" 
                     width="504" 
                     frameBorder="0" 
                     allowFullScreen 
-                    title="nsave comprehensive financial platform overview - LinkedIn video"
+                    title="Introducing nsave's new investment feature: From protection to growth - LinkedIn video"
                     className="w-full h-full rounded-lg"
                     style={{ minHeight: '399px' }}
                   />
@@ -363,27 +363,30 @@ export default function NsavePage() {
               </div>
             </div>
 
-            {/* Design & Development Images */}
+            {/* Design & Development Images Carousel */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns6.png" 
-                    alt="nsave dashboard interface design"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns8.png" 
-                    alt="nsave investment interface design"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-full overflow-x-auto">
+                  <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
+                    <div className="flex-shrink-0">
+                      <div className="case-study-image-box">
+                        <img 
+                          src="/images/case-studies/nsave/ns6.png" 
+                          alt="nsave dashboard interface design"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <div className="case-study-image-box">
+                        <img 
+                          src="/images/case-studies/nsave/ns8.png" 
+                          alt="nsave investment interface design"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

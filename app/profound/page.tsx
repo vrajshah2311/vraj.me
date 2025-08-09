@@ -263,27 +263,30 @@ export default function ProfoundPage() {
               </div>
             </div>
 
-            {/* Design & Development Images */}
+            {/* Design & Development Images Carousel */}
             <div className="case-study-section">
               <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns6.png" 
-                    alt="nsave dashboard interface design"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="case-study-section">
-              <div className="case-study-image-breakout">
-                <div className="case-study-image-box">
-                  <img 
-                    src="/images/case-studies/nsave/ns8.png" 
-                    alt="nsave investment interface design"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-full overflow-x-auto">
+                  <div className="flex space-x-4 px-8" style={{ width: 'max-content' }}>
+                    <div className="flex-shrink-0">
+                      <div className="case-study-image-box">
+                        <img 
+                          src="/images/case-studies/nsave/ns6.png" 
+                          alt="nsave dashboard interface design"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <div className="case-study-image-box">
+                        <img 
+                          src="/images/case-studies/nsave/ns8.png" 
+                          alt="nsave investment interface design"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
