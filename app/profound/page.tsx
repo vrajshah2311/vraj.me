@@ -380,10 +380,19 @@ export default function ProfoundPage() {
         </CaseStudyContent>
       </CaseStudySection>
 
-      <CaseStudySection>
-        <CaseStudyImage imageSrc="/p10.png" imageAlt="Design and development workflow" />
-      </CaseStudySection>
-
+      <div className="case-study-section">
+        <div className="case-study-image">
+          <div className="case-study-image-box">
+            <img 
+              src="/p10.png" 
+              alt="Design and development workflow"
+              className="w-full h-full object-cover"
+              style={{ maxWidth: 'none' }}
+            />
+              </div>
+        </div>
+      </div>
+      
       <CaseStudySection>
         <CaseStudyContent>
             {/* Challenges */}
