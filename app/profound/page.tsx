@@ -419,21 +419,7 @@ export default function ProfoundPage() {
             </div>
           </>
         )
-      case 'orimi':
-        return (
-          <>
-            <div className="w-14 h-14 mb-6 bg-black/5 rounded-2xl flex items-center justify-center">
-              <span className="text-lg font-bold text-black">O</span>
-            </div>
-            <h1 className="text-[18px] text-black mb-8" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Orimi</h1>
-            <div>
-              <CaseStudyHeading>Coming Soon</CaseStudyHeading>
-              <CaseStudyText>
-                The Orimi case study is currently being prepared. Check back soon for detailed insights into this brand and user experience project.
-              </CaseStudyText>
-            </div>
-          </>
-        )
+
       default: // profound
         return (
           <>
@@ -459,7 +445,7 @@ export default function ProfoundPage() {
               <span className="text-black cursor-pointer hover:text-neutral-600 transition-colors" onClick={navigateToWork}>Work</span>
               <span className="mx-2">{'>'}</span>
               <span className="text-neutral-400 relative group cursor-pointer hover-card-container" onClick={toggleHoverCard}>
-                {currentCaseStudy === 'profound' ? 'Profound' : currentCaseStudy === 'nsave' ? 'nsave' : 'Orimi'}
+                {currentCaseStudy === 'profound' ? 'Profound' : 'nsave'}
                 {/* Hover Card */}
                 <div className={`absolute top-full left-0 mt-0 w-48 bg-white rounded-lg shadow-xl border border-black/10 p-1 transition-all duration-200 transform ${isHoverCardOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0'}`}>
                   <div className="-space-y-0.5">
@@ -490,21 +476,7 @@ export default function ProfoundPage() {
                         </svg>
                       )}
                     </div>
-                    
-                    <div className={`flex items-center space-x-2 p-1 rounded h-8 ${currentCaseStudy === 'orimi' ? '' : 'hover:bg-black/5 cursor-pointer'} transition-colors group/item`} onClick={currentCaseStudy !== 'orimi' ? (e) => switchCaseStudy('orimi', e) : undefined}>
-                      <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                      </div>
-                      <span className="text-[12px] font-bold text-black flex-1">Orimi</span>
-                      {currentCaseStudy === 'orimi' ? (
-                        <svg className="w-3 h-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                        </svg>
-                      ) : (
-                        <svg className="w-3 h-3 text-neutral-400 opacity-0 group-hover/item:opacity-100 group-hover/item:text-neutral-600 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      )}
-                    </div>
+
                   </div>
                 </div>
               </span>
@@ -526,7 +498,7 @@ export default function ProfoundPage() {
                 <span className="text-black cursor-pointer hover:text-neutral-600 transition-colors" onClick={navigateToWork}>Work</span>
                 <span className="mx-2">{'>'}</span>
                 <span className="text-neutral-400 relative group cursor-pointer hover-card-container" onClick={toggleHoverCard}>
-                  {currentCaseStudy === 'profound' ? 'Profound' : currentCaseStudy === 'nsave' ? 'nsave' : 'Orimi'}
+                  {currentCaseStudy === 'profound' ? 'Profound' : 'nsave'}
                   {/* Hover Card */}
                   <div className={`absolute top-full left-0 mt-0 w-48 bg-white rounded-lg shadow-xl border border-black/10 p-1 transition-all duration-200 transform ${isHoverCardOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0'}`}>
                     <div className="-space-y-0.5">
@@ -557,21 +529,7 @@ export default function ProfoundPage() {
                           </svg>
                         )}
                       </div>
-                      
-                      <div className={`flex items-center space-x-2 p-1 rounded h-8 ${currentCaseStudy === 'orimi' ? '' : 'hover:bg-black/5 cursor-pointer'} transition-colors group/item`} onClick={currentCaseStudy !== 'orimi' ? (e) => switchCaseStudy('orimi', e) : undefined}>
-                        <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                        </div>
-                        <span className="text-[12px] font-bold text-black flex-1">Orimi</span>
-                        {currentCaseStudy === 'orimi' ? (
-                          <svg className="w-3 h-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
-                        ) : (
-                          <svg className="w-3 h-3 text-neutral-400 opacity-0 group-hover/item:opacity-100 group-hover/item:text-neutral-600 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        )}
-                      </div>
+
                     </div>
                   </div>
                 </span>

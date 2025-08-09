@@ -11,8 +11,7 @@ type Engagement = {
 
 const engagements: Engagement[] = [
   { client: 'Profound', scope: 'User Experience', year: '', href: '/profound' },
-  { client: 'nsave', scope: 'Brand & User Experience', year: '', href: '/nsave' },
-  { client: 'Orimi', scope: 'Brand & User Experience', year: '', href: '/orimi' }
+  { client: 'nsave', scope: 'Brand & User Experience', year: '', href: '/nsave' }
 ]
 
 const RecentEngagements: React.FC = () => {
