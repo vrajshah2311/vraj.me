@@ -315,6 +315,21 @@ html, body, #__next, #root {
   @apply w-[840px] h-[473px];
 }
 
+/* Full width image breakout */
+.case-study-image-breakout {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  @apply flex justify-center;
+}
+
+.case-study-image-breakout .case-study-image-box {
+  @apply w-[840px] h-[473px];
+}
+
 .case-study-image-dual {
   @apply space-y-2;
 }
