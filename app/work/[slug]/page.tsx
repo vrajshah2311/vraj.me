@@ -33,16 +33,30 @@ interface ImageItem {
   isDragging?: boolean
 }
 
-// Generate random dimensions and positioning data
+// Generate random dimensions and positioning data for vertical grid
 const generateRandomImage = (id: number): ImageItem => {
   const baseWidth = 224
   const baseHeight = 149
   const aspectRatio = baseWidth / baseHeight
   
   // Add some variation while keeping close to target size
-  const variation = 0.3
+  const variation = 0.4
   const randomWidth = baseWidth + (Math.random() - 0.5) * baseWidth * variation
   const randomHeight = randomWidth / aspectRatio
+  
+  // Create vertical grid layout (responsive)
+  const columns = 5 // Desktop: 5 columns, will be responsive
+  const columnWidth = 100 / columns // Each column takes up 20% of width
+  const columnIndex = (id - 1) % columns
+  const rowIndex = Math.floor((id - 1) / columns)
+  
+  // Position within column with some randomness
+  const baseX = columnIndex * columnWidth + (columnWidth * 0.1) // 10% padding from column start
+  const randomXOffset = Math.random() * (columnWidth * 0.6) // Random within 60% of column width
+  const finalX = baseX + randomXOffset
+  
+  // Staggered Y positioning with more randomness
+  const baseY = rowIndex * 200 + (Math.random() * 120) // Base row height with random offset
   
   return {
     id,
@@ -50,11 +64,11 @@ const generateRandomImage = (id: number): ImageItem => {
     alt: `Work sample ${id}`,
     width: Math.floor(randomWidth),
     height: Math.floor(randomHeight),
-    randomX: Math.random() * 75, // Percentage from left
-    randomY: (id - 1) * 180 + (Math.random() * 150), // Staggered Y with randomness
-    randomRotation: (Math.random() - 0.5) * 6, // Random rotation between -3 and 3 degrees
-    randomScale: 0.85 + (Math.random() * 0.3), // Scale between 0.85 and 1.15
-    animationDelay: Math.random() * 2 // Random delay for floating animation
+    randomX: Math.max(2, Math.min(85, finalX)), // Keep within bounds
+    randomY: baseY,
+    randomRotation: (Math.random() - 0.5) * 8, // Random rotation between -4 and 4 degrees
+    randomScale: 0.8 + (Math.random() * 0.4), // Scale between 0.8 and 1.2
+    animationDelay: Math.random() * 3 // Random delay for floating animation
   }
 }
 
@@ -74,7 +88,7 @@ export default function WorkPage() {
   // Load initial images
   useEffect(() => {
     if (workItem) {
-      const initialImages = Array.from({ length: 12 }, (_, i) => generateRandomImage(i + 1))
+      const initialImages = Array.from({ length: 24 }, (_, i) => generateRandomImage(i + 1))
       setImages(initialImages)
     }
   }, [workItem])
@@ -85,7 +99,7 @@ export default function WorkPage() {
     
     setLoading(true)
     setTimeout(() => {
-      const newImages = Array.from({ length: 8 }, (_, i) => 
+      const newImages = Array.from({ length: 16 }, (_, i) => 
         generateRandomImage(images.length + i + 1)
       )
       setImages(prev => [...prev, ...newImages])
@@ -206,7 +220,7 @@ export default function WorkPage() {
       
       {/* Floating Random Grid */}
       <div className="relative min-h-screen px-4 py-8">
-        <div className="relative w-full" style={{ height: `${Math.max(1200, images.length * 160)}px` }}>
+        <div className="relative w-full" style={{ height: `${Math.max(1500, Math.ceil(images.length / 5) * 250)}px` }}>
           {images.map((image) => {
             const currentX = image.currentX !== undefined ? image.currentX : image.randomX
             const currentY = image.currentY !== undefined ? image.currentY : image.randomY
