@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import { useRegisterScrollContainer } from '../components/ScrollContext'
 import Hero from '../components/Hero'
 import RecentEngagements from '../components/RecentEngagements'
+import MyWork from '../components/MyWork'
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
@@ -22,6 +23,7 @@ export default function Home() {
           </div>
           <Hero />
           <RecentEngagements />
+          <MyWork />
         </div>
       </div>
       
