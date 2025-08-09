@@ -50,6 +50,25 @@ html, body, #__next, #root {
   overflow: hidden;
 }
 
+/* Ensure work portfolio content is never clipped */
+.work-page-container .overflow-y-auto {
+  overflow-x: visible !important;
+  overflow-y: auto !important;
+}
+
+.work-page-container .flex {
+  overflow: visible !important;
+}
+
+.work-page-container .flex-shrink-0 {
+  overflow: visible !important;
+}
+
+/* Force all work portfolio elements to show completely */
+.work-page-container * {
+  overflow: visible !important;
+}
+
 @layer base {
   :root {
     --font-feature-settings: "cv02", "cv03", "cv04", "cv11";

@@ -198,29 +198,34 @@ export default function WorkPage() {
       {/* Scrollable Grid Container - Vertical Only */}
       <div 
         ref={scrollContainerRef}
-        className="flex-1 overflow-y-auto overflow-x-hidden"
+        className="flex-1 overflow-y-auto"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: 'rgba(0,0,0,0.2) rgba(0,0,0,0.05)'
         }}
       >
         <div 
-          className="grid gap-8 p-8"
+          className="flex flex-wrap gap-8 p-8 justify-center"
           style={{
-            gridTemplateColumns: `repeat(auto-fit, minmax(400px, 1fr))`,
-            gridAutoRows: 'max-content'
+            minHeight: '100vh'
           }}
         >
           {images.map((image) => (
             <div 
               key={image.id} 
-              className="group cursor-pointer flex justify-center items-center p-4"
+              className="flex-shrink-0 cursor-pointer flex justify-center items-center p-4"
+              style={{
+                width: `${image.width + 48}px`,
+                height: `${image.height + 48}px`
+              }}
             >
               <div 
                 className="relative rounded-xl bg-white"
                 style={{
                   transform: `rotate(${image.randomRotation}deg)`,
-                  transformOrigin: 'center center'
+                  transformOrigin: 'center center',
+                  width: `${image.width}px`,
+                  height: `${image.height}px`
                 }}
               >
                 <Image
@@ -231,9 +236,8 @@ export default function WorkPage() {
                   className="object-cover rounded-xl"
                   loading="lazy"
                   style={{
-                    width: `${image.width}px`,
-                    height: `${image.height}px`,
-                    maxWidth: '100%'
+                    width: '100%',
+                    height: '100%'
                   }}
                 />
               </div>
