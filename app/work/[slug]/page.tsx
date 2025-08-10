@@ -302,49 +302,28 @@ export default function WorkPage() {
       
       {/* Full Screen Modal */}
       {isModalOpen && selectedImage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-10"
-          onClick={closeModal}
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            className="relative max-w-full max-h-full"
-            onClick={(e) => e.stopPropagation()}
+        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-10">
+          {/* Close Button */}
+          <button
+            onClick={closeModal}
+            className="absolute top-10 right-10 text-white hover:text-gray-300 transition-colors duration-200 z-10"
           >
-            {/* Close Button */}
-            <button
-              onClick={closeModal}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors duration-200 z-10"
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            
-            {/* Image Container */}
-            <div className="relative">
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                width={800}
-                height={600}
-                className="object-contain rounded-lg"
-                style={{
-                  maxWidth: 'calc(100vw - 80px)',
-                  maxHeight: 'calc(100vh - 80px)',
-                  width: 'auto',
-                  height: 'auto'
-                }}
-                priority
-              />
-            </div>
-          </motion.div>
-        </motion.div>
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          {/* Image */}
+          <img
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            className="max-w-full max-h-full object-contain rounded-lg"
+            style={{
+              maxWidth: 'calc(100vw - 80px)',
+              maxHeight: 'calc(100vh - 80px)'
+            }}
+          />
+        </div>
       )}
     </div>
   )
