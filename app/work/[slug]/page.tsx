@@ -326,18 +326,23 @@ export default function WorkPage() {
               </svg>
             </button>
             
-            {/* Image */}
-            <Image
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              width={selectedImage.width * 2}
-              height={selectedImage.height * 2}
-              className="object-contain rounded-lg"
-              style={{
-                maxWidth: 'calc(100vw - 80px)',
-                maxHeight: 'calc(100vh - 80px)'
-              }}
-            />
+            {/* Image Container */}
+            <div className="relative">
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                width={800}
+                height={600}
+                className="object-contain rounded-lg"
+                style={{
+                  maxWidth: 'calc(100vw - 80px)',
+                  maxHeight: 'calc(100vh - 80px)',
+                  width: 'auto',
+                  height: 'auto'
+                }}
+                priority
+              />
+            </div>
           </motion.div>
         </motion.div>
       )}
