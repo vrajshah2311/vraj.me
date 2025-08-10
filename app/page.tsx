@@ -29,9 +29,9 @@ export default function Home() {
           <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
             <h3 className="text-sm font-medium text-gray-700 mb-3">CSS Properties</h3>
             <div className="bg-white p-4 rounded border font-mono text-xs">
-              <div className="text-gray-600">display: flex;</div>
-              <div className="text-gray-600">width: 600px;</div>
-              <div className="text-gray-600">align-items: flex-start;</div>
+              <div className="text-gray-600">border-radius: 12px;</div>
+              <div className="text-gray-600">border: 1px solid rgba(24, 24, 26, 0.10);</div>
+              <div className="text-gray-600">background: #FFF;</div>
             </div>
           </div>
         </div>
