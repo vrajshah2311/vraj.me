@@ -245,7 +245,7 @@ export default function WorkPage() {
               }}
             >
               <div 
-                className="relative rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-200"
+                className="relative rounded-xl bg-white"
                 style={{
                   transform: `translate(${image.randomX}px, ${image.randomY}px) scale(${image.randomScale})`,
                   transformOrigin: 'center center',
