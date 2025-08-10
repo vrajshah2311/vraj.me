@@ -25,7 +25,6 @@ interface ImageItem {
   height: number
   randomX: number
   randomY: number
-  randomRotation: number
   randomScale: number
   animationDelay: number
 }
@@ -73,7 +72,6 @@ const generateRandomImage = (id: number, slug: string): ImageItem => {
     height: finalHeight,
     randomX: (Math.random() - 0.5) * 40, // Random X offset ±20px
     randomY: (Math.random() - 0.5) * 40, // Random Y offset ±20px
-    randomRotation: (Math.random() - 0.5) * 6, // Slightly more rotation ±3°
     randomScale: 0.95 + Math.random() * 0.1, // Random scale 0.95-1.05
     animationDelay: Math.random() * 3
   }
@@ -249,7 +247,7 @@ export default function WorkPage() {
               <div 
                 className="relative rounded-xl bg-white"
                 style={{
-                  transform: `translate(${image.randomX}px, ${image.randomY}px) rotate(${image.randomRotation}deg) scale(${image.randomScale})`,
+                  transform: `translate(${image.randomX}px, ${image.randomY}px) scale(${image.randomScale})`,
                   transformOrigin: 'center center',
                   width: `${image.width}px`,
                   height: `${image.height}px`
