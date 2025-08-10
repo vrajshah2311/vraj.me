@@ -214,7 +214,7 @@ export default function WorkPage() {
       <div 
         className={`flex-shrink-0 z-50 h-[56px] transition-all duration-300 ease-in-out ${
           isNavbarVisible 
-            ? 'translate-y-0 bg-white shadow-sm' 
+            ? 'translate-y-0 bg-white' 
             : '-translate-y-full bg-transparent'
         }`}
       >
