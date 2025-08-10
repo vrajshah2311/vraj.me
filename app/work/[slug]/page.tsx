@@ -70,9 +70,9 @@ const generateRandomImage = (id: number, slug: string): ImageItem => {
     alt: `${slug.charAt(0).toUpperCase() + slug.slice(1)} work sample ${id}`,
     width: finalWidth,
     height: finalHeight,
-    randomX: (Math.random() - 0.5) * 40, // Random X offset ±20px
-    randomY: (Math.random() - 0.5) * 40, // Random Y offset ±20px
-    randomScale: 0.95 + Math.random() * 0.1, // Random scale 0.95-1.05
+    randomX: (Math.random() - 0.5) * 16, // Reduced random X offset ±8px
+    randomY: (Math.random() - 0.5) * 16, // Reduced random Y offset ±8px
+    randomScale: 0.98 + Math.random() * 0.04, // Reduced random scale 0.98-1.02
     animationDelay: Math.random() * 3
   }
 }
@@ -230,7 +230,7 @@ export default function WorkPage() {
         }}
       >
         <div 
-          className="flex flex-wrap gap-8 p-8 justify-center"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-8 justify-items-center"
           style={{
             minHeight: '100vh'
           }}
@@ -238,14 +238,14 @@ export default function WorkPage() {
           {images.map((image) => (
             <div 
               key={image.id} 
-              className="flex-shrink-0 cursor-pointer flex justify-center items-center p-4"
+              className="flex justify-center items-center p-3"
               style={{
-                width: `${image.width + 48}px`,
-                height: `${image.height + 48}px`
+                width: `${image.width + 32}px`,
+                height: `${image.height + 32}px`
               }}
             >
               <div 
-                className="relative rounded-xl bg-white"
+                className="relative rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-200"
                 style={{
                   transform: `translate(${image.randomX}px, ${image.randomY}px) scale(${image.randomScale})`,
                   transformOrigin: 'center center',
