@@ -39,7 +39,9 @@ const ninjaImages = [
   '/images/case-studies/work/Ni9.png',
   '/images/case-studies/work/Ni10.png',
   '/images/case-studies/work/Ni11.png',
-  '/images/case-studies/work/Ni12.png'
+  '/images/case-studies/work/Ni12.png',
+  // Added additional Vault image per request
+  '/images/case-studies/MN1.png'
 ]
 
 // Generate images with natural dimensions (CSS Grid handles positioning)
