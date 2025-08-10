@@ -192,7 +192,7 @@ export default function WorkPage() {
       container.addEventListener('scroll', handleScroll)
       return () => container.removeEventListener('scroll', handleScroll)
     }
-  }, [loadMoreImages])
+  }, [loadMoreImages, images.length, slug])
   
   if (!workItem) {
     return (
