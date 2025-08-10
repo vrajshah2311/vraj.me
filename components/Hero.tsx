@@ -12,9 +12,9 @@ const Hero = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px 0px -80px 0px', amount: 0.2 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="mb-8"
+          style={{ height: 'auto', minHeight: 'auto', marginBottom: '0' }}
         >
-          <div className="text-[15px] leading-[26px] text-black opacity-70" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
+          <div className="text-[15px] leading-[26px] text-black opacity-70" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif', height: 'auto', minHeight: 'auto' }}>
             <div className="text-black">
               <BouncyText 
                 text="Designer, instrumentalist, & Vibe coder. Born & raised in India, Currently leaving in London, UK."

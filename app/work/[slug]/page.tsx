@@ -209,7 +209,7 @@ export default function WorkPage() {
   }
   
   return (
-    <div className="work-page-container bg-white flex flex-col">
+    <div className="work-page-container bg-white flex flex-col pt-[80px]">
       {/* Breadcrumb */}
       <div 
         className={`flex-shrink-0 z-50 h-[56px] transition-all duration-300 ease-in-out ${

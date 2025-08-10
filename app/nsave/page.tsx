@@ -150,9 +150,9 @@ export default function NsavePage() {
 
       <div className="case-study-container">
         <div className="case-study-wrapper">
-          <div className="pt-[96px] pb-2">
+          <div className="pt-[80px] pb-2">
             <div className="relative mb-12">
-              <div className="text-[13px] text-neutral-600 inline-block" style={{ fontWeight: '600', fontVariationSettings: "'wght' 600" }}>
+              <div className="text-[13px] text-neutral-600 inline-block" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>
                 <span className="text-black cursor-pointer hover:text-neutral-600 transition-colors" onClick={navigateToHome}>Home</span>
                 <span className="mx-2">{'>'}</span>
                 <span className="text-black cursor-pointer hover:text-neutral-600 transition-colors" onClick={navigateToWork}>Work</span>

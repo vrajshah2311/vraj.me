@@ -18,6 +18,20 @@
   animation: float 4s ease-in-out infinite;
 }
 
+/* Ticker animation for pills */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 20s linear infinite;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
@@ -272,8 +286,8 @@ html, body, #__next, #root {
 
 .case-study-breadcrumb {
   @apply text-[13px] text-neutral-600 inline-block;
-  font-weight: 600;
-  font-variation-settings: 'wght' 600;
+  font-weight: 400;
+  font-variation-settings: 'wght' 400;
 }
 
 .case-study-breadcrumb-link {
