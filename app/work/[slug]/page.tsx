@@ -30,6 +30,21 @@ interface ImageItem {
   animationDelay: number
 }
 
+// Ninja project images
+const ninjaImages = [
+  '/images/case-studies/work/Ni2.png',
+  '/images/case-studies/work/Ni3.png',
+  '/images/case-studies/work/Ni4.png',
+  '/images/case-studies/work/Ni5.png',
+  '/images/case-studies/work/Ni6.png',
+  '/images/case-studies/work/Ni7.png',
+  '/images/case-studies/work/Ni8.png',
+  '/images/case-studies/work/Ni9.png',
+  '/images/case-studies/work/Ni10.png',
+  '/images/case-studies/work/Ni11.png',
+  '/images/case-studies/work/Ni12.png'
+]
+
 // Generate images with natural dimensions (CSS Grid handles positioning)
 const generateRandomImage = (id: number, slug: string): ImageItem => {
   // Generate 16:9 aspect ratio images with exact 240x135px dimensions
@@ -40,9 +55,19 @@ const generateRandomImage = (id: number, slug: string): ImageItem => {
   const finalWidth = baseWidth
   const finalHeight = baseHeight
   
+  // Use actual Ninja images if available, otherwise fallback to Picsum
+  let imageSrc: string
+  if (slug === 'ninja' && ninjaImages.length > 0) {
+    // Cycle through available Ninja images
+    const imageIndex = (id - 1) % ninjaImages.length
+    imageSrc = ninjaImages[imageIndex]
+  } else {
+    imageSrc = `https://picsum.photos/${finalWidth}/${finalHeight}?random=${id}`
+  }
+  
   return {
     id,
-    src: `https://picsum.photos/${finalWidth}/${finalHeight}?random=${id}`,
+    src: imageSrc,
     alt: `${slug.charAt(0).toUpperCase() + slug.slice(1)} work sample ${id}`,
     width: finalWidth,
     height: finalHeight,
@@ -87,7 +112,9 @@ export default function WorkPage() {
   // Load initial images
   useEffect(() => {
     if (workItem) {
-      const initialImages = Array.from({ length: 24 }, (_, i) => generateRandomImage(i + 1, slug))
+      // For Ninja, start with all available images, for others use 24
+      const initialCount = slug === 'ninja' ? ninjaImages.length : 24
+      const initialImages = Array.from({ length: initialCount }, (_, i) => generateRandomImage(i + 1, slug))
       setImages(initialImages)
     }
   }, [workItem, slug])
@@ -98,9 +125,19 @@ export default function WorkPage() {
     
     setLoading(true)
     setTimeout(() => {
-      const newImages = Array.from({ length: 16 }, (_, i) => 
-        generateRandomImage(images.length + i + 1, slug)
-      )
+      // For Ninja, cycle through available images, for others load 16 new ones
+      let newImages: ImageItem[]
+      if (slug === 'ninja') {
+        // Cycle through available Ninja images
+        newImages = Array.from({ length: 16 }, (_, i) => 
+          generateRandomImage(images.length + i + 1, slug)
+        )
+      } else {
+        newImages = Array.from({ length: 16 }, (_, i) => 
+          generateRandomImage(images.length + i + 1, slug)
+        )
+      }
+      
       setImages(prev => [...prev, ...newImages])
       setPage(prev => prev + 1)
       setLoading(false)
