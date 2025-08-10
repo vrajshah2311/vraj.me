@@ -302,11 +302,11 @@ export default function WorkPage() {
       
       {/* Full Screen Modal */}
       {isModalOpen && selectedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-10">
+        <div className="fixed inset-0 bg-white z-50 flex items-center justify-center p-10">
           {/* Close Button */}
           <button
             onClick={closeModal}
-            className="absolute top-10 right-10 text-white hover:text-gray-300 transition-colors duration-200 z-10"
+            className="absolute top-10 right-10 text-gray-600 hover:text-gray-800 transition-colors duration-200 z-10"
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
