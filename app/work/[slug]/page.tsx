@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
+import * as motion from 'motion/react-client'
 
 interface WorkItem {
   title: string
@@ -86,12 +87,22 @@ export default function WorkPage() {
   const [loading, setLoading] = useState(false)
   const [, setPage] = useState(1)
   const [isNavbarVisible, setIsNavbarVisible] = useState(true)
+  const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const lastScrollTop = useRef(0)
 
   const workItem = workItems[slug]
   
-
+  const openModal = (image: ImageItem) => {
+    setSelectedImage(image)
+    setIsModalOpen(true)
+  }
+  
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedImage(null)
+  }
 
   // Prevent body scrolling when component mounts
   useEffect(() => {
@@ -235,39 +246,42 @@ export default function WorkPage() {
             minHeight: '100vh'
           }}
         >
-          {images.map((image) => (
-            <div 
-              key={image.id} 
-              className="flex justify-center items-center p-3"
-              style={{
-                width: `${image.width + 32}px`,
-                height: `${image.height + 32}px`
-              }}
-            >
-              <div 
-                className="relative rounded-xl bg-white"
-                style={{
-                  transform: `translate(${image.randomX}px, ${image.randomY}px) scale(${image.randomScale})`,
-                  transformOrigin: 'center center',
-                  width: `${image.width}px`,
-                  height: `${image.height}px`
-                }}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
-                  className="object-cover rounded-xl"
-                  loading="lazy"
-                  style={{
-                    width: '100%',
-                    height: '100%'
-                  }}
-                />
-              </div>
-            </div>
-          ))}
+                            {images.map((image) => (
+                    <div 
+                      key={image.id} 
+                      className="flex justify-center items-center p-3"
+                      style={{
+                        width: `${image.width + 32}px`,
+                        height: `${image.height + 32}px`
+                      }}
+                    >
+                      <motion.div 
+                        className="relative rounded-xl bg-white cursor-pointer"
+                        style={{
+                          transform: `translate(${image.randomX}px, ${image.randomY}px) scale(${image.randomScale})`,
+                          transformOrigin: 'center center',
+                          width: `${image.width}px`,
+                          height: `${image.height}px`
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => openModal(image)}
+                      >
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={image.width}
+                          height={image.height}
+                          className="object-cover rounded-xl"
+                          loading="lazy"
+                          style={{
+                            width: '100%',
+                            height: '100%'
+                          }}
+                        />
+                      </motion.div>
+                    </div>
+                  ))}
         </div>
         
         {/* Loading indicator */}
@@ -285,6 +299,48 @@ export default function WorkPage() {
           Showing {images.length} items
         </div>
       </div>
+      
+      {/* Full Screen Modal */}
+      {isModalOpen && selectedImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-10"
+          onClick={closeModal}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            className="relative max-w-full max-h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors duration-200 z-10"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* Image */}
+            <Image
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              width={selectedImage.width * 2}
+              height={selectedImage.height * 2}
+              className="object-contain rounded-lg"
+              style={{
+                maxWidth: 'calc(100vw - 80px)',
+                maxHeight: 'calc(100vh - 80px)'
+              }}
+            />
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   )
 }
