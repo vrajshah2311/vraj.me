@@ -128,7 +128,7 @@ export default function WorkPage() {
     if (workItem) {
       // Only show actual images that exist
       if (slug === 'ninja') {
-        // For Ninja, use all available images
+        // For Ninja, use all available images (no infinite scroll needed)
         const initialImages = Array.from({ length: ninjaImages.length }, (_, i) => generateRandomImage(i + 1, slug))
           .filter((img): img is ImageItem => img !== null)
         setImages(initialImages)
@@ -143,12 +143,16 @@ export default function WorkPage() {
   const loadMoreImages = useCallback(() => {
     if (loading) return
     
-    // Only load more if we have actual images
-    if (slug === 'ninja' && ninjaImages.length > 0) {
+    // Only load more if we have actual images and haven't shown them all yet
+    if (slug === 'ninja' && images.length < ninjaImages.length) {
       setLoading(true)
       setTimeout(() => {
-        // For Ninja, cycle through available images
-        const newImages = Array.from({ length: 16 }, (_, i) => 
+        // Calculate how many more images we can add
+        const remainingImages = ninjaImages.length - images.length
+        const imagesToAdd = Math.min(16, remainingImages)
+        
+        // Add remaining images
+        const newImages = Array.from({ length: imagesToAdd }, (_, i) => 
           generateRandomImage(images.length + i + 1, slug)
         )
           .filter((img): img is ImageItem => img !== null)
@@ -168,10 +172,10 @@ export default function WorkPage() {
       
       const { scrollTop, scrollHeight, clientHeight } = container
       
-      // Load more when approaching bottom (since we have a proper grid)
+      // Load more when approaching bottom (only if we haven't shown all images)
       const nearBottom = scrollTop + clientHeight >= scrollHeight - 800
       
-      if (nearBottom) {
+      if (nearBottom && slug === 'ninja' && images.length < ninjaImages.length) {
         loadMoreImages()
       }
 
@@ -304,8 +308,8 @@ export default function WorkPage() {
           </div>
         )}
         
-        {/* Loading indicator */}
-        {loading && slug === 'ninja' && (
+        {/* Loading indicator - only show if we're actually loading more */}
+        {loading && slug === 'ninja' && images.length < ninjaImages.length && (
           <div className="flex justify-center py-8">
             <div className="flex items-center space-x-2 text-gray-500">
               <div className="w-4 h-4 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin"></div>
@@ -314,10 +318,10 @@ export default function WorkPage() {
           </div>
         )}
         
-        {/* Stats */}
+        {/* Stats - show total images for Ninja */}
         {slug === 'ninja' && images.length > 0 && (
           <div className="text-center py-8 text-gray-500 text-sm">
-            Showing {images.length} items
+            Showing {images.length} of {ninjaImages.length} images
           </div>
         )}
       </div>
