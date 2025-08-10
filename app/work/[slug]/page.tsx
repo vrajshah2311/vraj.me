@@ -24,9 +24,6 @@ interface ImageItem {
   alt: string
   width: number
   height: number
-  randomX: number
-  randomY: number
-  randomScale: number
   animationDelay: number
 }
 
@@ -76,9 +73,6 @@ const generateRandomImage = (id: number, slug: string): ImageItem | null => {
     alt,
     width: finalWidth,
     height: finalHeight,
-    randomX: (Math.random() - 0.5) * 16, // Reduced random X offset ±8px
-    randomY: (Math.random() - 0.5) * 16, // Reduced random Y offset ±8px
-    randomScale: 0.98 + Math.random() * 0.04, // Reduced random scale 0.98-1.02
     animationDelay: Math.random() * 3
   }
 }
@@ -270,8 +264,6 @@ export default function WorkPage() {
                 <motion.div 
                   className="relative rounded-xl bg-white cursor-pointer"
                   style={{
-                    transform: `translate(${image.randomX}px, ${image.randomY}px) scale(${image.randomScale})`,
-                    transformOrigin: 'center center',
                     width: `${image.width}px`,
                     height: `${image.height}px`
                   }}
