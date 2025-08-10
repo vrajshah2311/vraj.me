@@ -46,10 +46,10 @@ const generateRandomImage = (id: number, slug: string): ImageItem => {
     alt: `${slug.charAt(0).toUpperCase() + slug.slice(1)} work sample ${id}`,
     width: finalWidth,
     height: finalHeight,
-    randomX: 0, // Not used with CSS Grid
-    randomY: 0, // Not used with CSS Grid
-    randomRotation: (Math.random() - 0.5) * 3, // Subtle rotation
-    randomScale: 1, // No additional scaling, use natural size
+    randomX: (Math.random() - 0.5) * 40, // Random X offset ±20px
+    randomY: (Math.random() - 0.5) * 40, // Random Y offset ±20px
+    randomRotation: (Math.random() - 0.5) * 6, // Slightly more rotation ±3°
+    randomScale: 0.95 + Math.random() * 0.1, // Random scale 0.95-1.05
     animationDelay: Math.random() * 3
   }
 }
@@ -212,7 +212,7 @@ export default function WorkPage() {
               <div 
                 className="relative rounded-xl bg-white"
                 style={{
-                  transform: `rotate(${image.randomRotation}deg)`,
+                  transform: `translate(${image.randomX}px, ${image.randomY}px) rotate(${image.randomRotation}deg) scale(${image.randomScale})`,
                   transformOrigin: 'center center',
                   width: `${image.width}px`,
                   height: `${image.height}px`
