@@ -46,7 +46,7 @@ const ninjaImages = [
 ]
 
 // Generate images with natural dimensions (CSS Grid handles positioning)
-const generateRandomImage = (id: number, slug: string): ImageItem => {
+const generateRandomImage = (id: number, slug: string): ImageItem | null => {
   // Generate 16:9 aspect ratio images with exact 240x135px dimensions
   const baseWidth = 240
   const baseHeight = 135
@@ -55,20 +55,25 @@ const generateRandomImage = (id: number, slug: string): ImageItem => {
   const finalWidth = baseWidth
   const finalHeight = baseHeight
   
-  // Use actual Ninja images if available, otherwise fallback to Picsum
+  // Only use actual images that exist
   let imageSrc: string
+  let alt: string
+  
   if (slug === 'ninja' && ninjaImages.length > 0) {
-    // Cycle through available Ninja images
+    // Use actual Ninja images
     const imageIndex = (id - 1) % ninjaImages.length
     imageSrc = ninjaImages[imageIndex]
+    alt = `Ninja Project Image ${imageIndex + 1}`
   } else {
-    imageSrc = `https://picsum.photos/${finalWidth}/${finalHeight}?random=${id}`
+    // For other projects, we need actual images
+    // For now, return null to indicate no images
+    return null
   }
   
   return {
     id,
     src: imageSrc,
-    alt: `${slug.charAt(0).toUpperCase() + slug.slice(1)} work sample ${id}`,
+    alt,
     width: finalWidth,
     height: finalHeight,
     randomX: (Math.random() - 0.5) * 16, // Reduced random X offset ±8px
@@ -121,10 +126,16 @@ export default function WorkPage() {
   // Load initial images
   useEffect(() => {
     if (workItem) {
-      // For Ninja, start with all available images, for others use 24
-      const initialCount = slug === 'ninja' ? ninjaImages.length : 24
-      const initialImages = Array.from({ length: initialCount }, (_, i) => generateRandomImage(i + 1, slug))
-      setImages(initialImages)
+      // Only show actual images that exist
+      if (slug === 'ninja') {
+        // For Ninja, use all available images
+        const initialImages = Array.from({ length: ninjaImages.length }, (_, i) => generateRandomImage(i + 1, slug))
+          .filter((img): img is ImageItem => img !== null)
+        setImages(initialImages)
+      } else {
+        // For other projects, show message that images need to be added
+        setImages([])
+      }
     }
   }, [workItem, slug])
   
@@ -132,25 +143,21 @@ export default function WorkPage() {
   const loadMoreImages = useCallback(() => {
     if (loading) return
     
-    setLoading(true)
-    setTimeout(() => {
-      // For Ninja, cycle through available images, for others load 16 new ones
-      let newImages: ImageItem[]
-      if (slug === 'ninja') {
-        // Cycle through available Ninja images
-        newImages = Array.from({ length: 16 }, (_, i) => 
+    // Only load more if we have actual images
+    if (slug === 'ninja' && ninjaImages.length > 0) {
+      setLoading(true)
+      setTimeout(() => {
+        // For Ninja, cycle through available images
+        const newImages = Array.from({ length: 16 }, (_, i) => 
           generateRandomImage(images.length + i + 1, slug)
         )
-      } else {
-        newImages = Array.from({ length: 16 }, (_, i) => 
-          generateRandomImage(images.length + i + 1, slug)
-        )
-      }
-      
-      setImages(prev => [...prev, ...newImages])
-      setPage(prev => prev + 1)
-      setLoading(false)
-    }, 1000) // Simulate loading delay
+          .filter((img): img is ImageItem => img !== null)
+        
+        setImages(prev => [...prev, ...newImages])
+        setPage(prev => prev + 1)
+        setLoading(false)
+      }, 1000) // Simulate loading delay
+    }
   }, [images.length, loading, slug])
   
   // Container scroll handler for infinite scroll and navbar visibility
@@ -240,52 +247,65 @@ export default function WorkPage() {
           scrollbarColor: 'rgba(0,0,0,0.2) rgba(0,0,0,0.05)'
         }}
       >
-        <div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-8 justify-items-center"
-          style={{
-            minHeight: '100vh'
-          }}
-        >
-                            {images.map((image) => (
-                    <div 
-                      key={image.id} 
-                      className="flex justify-center items-center p-3"
-                      style={{
-                        width: `${image.width + 32}px`,
-                        height: `${image.height + 32}px`
-                      }}
-                    >
-                      <motion.div 
-                        className="relative rounded-xl bg-white cursor-pointer"
-                        style={{
-                          transform: `translate(${image.randomX}px, ${image.randomY}px) scale(${image.randomScale})`,
-                          transformOrigin: 'center center',
-                          width: `${image.width}px`,
-                          height: `${image.height}px`
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => openModal(image)}
-                      >
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          width={image.width}
-                          height={image.height}
-                          className="object-cover rounded-xl"
-                          loading="lazy"
-                          style={{
-                            width: '100%',
-                            height: '100%'
-                          }}
-                        />
-                      </motion.div>
-                    </div>
-                  ))}
-        </div>
+        {slug === 'ninja' && images.length > 0 ? (
+          <div 
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-8 justify-items-center"
+            style={{
+              minHeight: '100vh'
+            }}
+          >
+            {images.map((image) => (
+              <div 
+                key={image.id} 
+                className="flex justify-center items-center p-3"
+                style={{
+                  width: `${image.width + 32}px`,
+                  height: `${image.height + 32}px`
+                }}
+              >
+                <motion.div 
+                  className="relative rounded-xl bg-white cursor-pointer"
+                  style={{
+                    transform: `translate(${image.randomX}px, ${image.randomY}px) scale(${image.randomScale})`,
+                    transformOrigin: 'center center',
+                    width: `${image.width}px`,
+                    height: `${image.height}px`
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => openModal(image)}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    className="object-cover rounded-xl"
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      height: '100%'
+                    }}
+                  />
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex-1 flex items-center justify-center p-8">
+            <div className="text-center">
+              <h2 className="text-xl font-semibold text-gray-600 mb-2">
+                {slug === 'ninja' ? 'Loading images...' : 'Images coming soon'}
+              </h2>
+              <p className="text-gray-500 text-sm">
+                {slug === 'ninja' ? 'Please wait while we load your project images.' : 'We\'re working on adding images for this project.'}
+              </p>
+            </div>
+          </div>
+        )}
         
         {/* Loading indicator */}
-        {loading && (
+        {loading && slug === 'ninja' && (
           <div className="flex justify-center py-8">
             <div className="flex items-center space-x-2 text-gray-500">
               <div className="w-4 h-4 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin"></div>
@@ -295,9 +315,11 @@ export default function WorkPage() {
         )}
         
         {/* Stats */}
-        <div className="text-center py-8 text-gray-500 text-sm">
-          Showing {images.length} items
-        </div>
+        {slug === 'ninja' && images.length > 0 && (
+          <div className="text-center py-8 text-gray-500 text-sm">
+            Showing {images.length} items
+          </div>
+        )}
       </div>
       
       {/* Full Screen Modal */}
