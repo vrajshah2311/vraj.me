@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { ScrollProvider } from '../components/ScrollContext'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: 'Vraj - Designer & Developer',
@@ -41,6 +42,7 @@ export default function RootLayout({
         <ScrollProvider>
           {children}
         </ScrollProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
