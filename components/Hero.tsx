@@ -14,10 +14,10 @@ const Hero = () => {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           style={{ height: 'auto', minHeight: 'auto', marginBottom: '0' }}
         >
-          <div className="text-[15px] leading-[26px] text-black opacity-70" style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif', height: 'auto', minHeight: 'auto' }}>
+          <div className="text-[15px] leading-[26px] text-black opacity-70" style={{ fontWeight: '400', fontFamily: 'Inter, system-ui, sans-serif', height: 'auto', minHeight: 'auto' }}>
             <div className="text-black">
               <BouncyText 
-                text="Designer, instrumentalist, & Vibe coder. Born & raised in India, Currently leaving in London, UK."
+                text="Designer, instrumentalist, & a Vibe coder. Born & raised in India, Currently leaving in London, UK."
                 className="text-black"
                 delay={0.1}
                 staggerDelay={0.015}

@@ -107,19 +107,19 @@ module.exports = {
       },
       fontSize: {
         // Display Scale
-        'display-2xl': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'display-xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'display-lg': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'display-md': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'display-sm': ['1.875rem', { lineHeight: '1.3', letterSpacing: '0', fontWeight: '600' }],
+              'display-2xl': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '500' }],
+      'display-xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '500' }],
+      'display-lg': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
+      'display-md': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
+      'display-sm': ['1.875rem', { lineHeight: '1.3', letterSpacing: '0', fontWeight: '500' }],
         
         // Heading Scale
-        'heading-2xl': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'heading-xl': ['1.875rem', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'heading-lg': ['1.5rem', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '600' }],
-        'heading-md': ['1.25rem', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '600' }],
-        'heading-sm': ['1.125rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '600' }],
-        'heading-xs': ['1rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '600' }],
+        'heading-2xl': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'heading-xl': ['1.875rem', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'heading-lg': ['1.5rem', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '500' }],
+        'heading-md': ['1.25rem', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '500' }],
+        'heading-sm': ['1.125rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500' }],
+        'heading-xs': ['1rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500' }],
         
         // Body Scale
         'body-xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
@@ -129,9 +129,9 @@ module.exports = {
         'body-xs': ['0.75rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
         
         // Label Scale
-        'label-lg': ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '600' }],
-        'label-md': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '600' }],
-        'label-sm': ['0.625rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '600' }],
+        'label-lg': ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '500' }],
+        'label-md': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '500' }],
+        'label-sm': ['0.625rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '500' }],
         
         // Code Scale
         'code-lg': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '400', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace' }],

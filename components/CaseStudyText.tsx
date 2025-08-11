@@ -9,7 +9,7 @@ interface CaseStudyTextProps {
 
 const CaseStudyText: React.FC<CaseStudyTextProps> = ({ children, className = '' }) => {
   return (
-    <div className={`case-study-text ${className}`} style={{ fontWeight: '500', fontFamily: 'Inter, system-ui, sans-serif' }}>
+    <div className={`case-study-text font-sans ${className}`}>
       {children}
     </div>
   )

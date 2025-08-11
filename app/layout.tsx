@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { ScrollProvider } from '../components/ScrollContext'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import PerformanceOptimizer from '../components/PerformanceOptimizer'
 
 export const metadata: Metadata = {
   title: 'Vraj - Designer & Developer',
@@ -37,11 +38,14 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://rsms.me/" />
+        <link rel="dns-prefetch" href="https://rsms.me/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
       <body className="antialiased">
         <ScrollProvider>
           {children}
         </ScrollProvider>
+        <PerformanceOptimizer />
         <SpeedInsights />
       </body>
     </html>

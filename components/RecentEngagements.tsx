@@ -10,8 +10,8 @@ type Engagement = {
 }
 
 const engagements: Engagement[] = [
-  { client: 'Profound', scope: 'User Experience', year: '', href: '/profound' },
-  { client: 'nsave', scope: 'Brand & User Experience', year: '', href: '/nsave' }
+  { client: 'Profound', scope: 'Product Design', year: '', href: '/profound' },
+  { client: 'nsave', scope: 'Product, Brand & Growth', year: '', href: '/nsave' }
 ]
 
 const RecentEngagements: React.FC = () => {
@@ -29,13 +29,13 @@ const RecentEngagements: React.FC = () => {
                     <div className="absolute inset-0 bg-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity -mx-2"></div>
                     <div className="col-span-6 relative z-10">
                       <div className="inline-flex items-center gap-1 text-black">
-                        <span className="text-[13px]" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.client}</span>
+                        <span className="text-[14px]" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.client}</span>
                         <svg className="w-3.5 h-3.5 rotate-30 opacity-0 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M7 17l9-9M17 17V7H7" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
                     </div>
-                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.scope}</div>
+                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>{item.scope}</div>
                   </a>
                 )
               } else {
@@ -43,9 +43,9 @@ const RecentEngagements: React.FC = () => {
                   <div key={`${item.client}-${item.year}`} className="grid grid-cols-12 items-center h-8 relative group">
                     <div className="absolute inset-0 bg-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity -mx-2"></div>
                     <div className="col-span-6 relative z-10">
-                      <span className="text-[13px] text-black" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.client}</span>
+                      <span className="text-[14px] text-black" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.client}</span>
                     </div>
-                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.scope}</div>
+                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>{item.scope}</div>
                   </div>
                 )
               }

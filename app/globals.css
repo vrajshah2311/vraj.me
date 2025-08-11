@@ -4,6 +4,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Optimize images and animations */
+img, video, canvas, svg {
+  content-visibility: auto;
+  contain: layout style paint;
+}
+
+/* Optimize animations */
+.animate-float,
+.animate-ticker,
+.animate-bounce-in,
+.animate-bounce-in-word {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Optimize scrolling */
+.case-study-page,
+.case-study-container,
+.case-study-wrapper {
+  will-change: scroll-position;
+  contain: layout style;
+}
+
 /* Floating animation for work portfolio grid */
 @keyframes float {
   0%, 100% {
@@ -50,12 +78,16 @@ body {
   color: rgb(var(--foreground-rgb));
   background: #FFFFFF;
   overflow-x: hidden;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html, body, #__next, #root {
   background-color: #FFFFFF !important;
   overscroll-behavior: none;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* Prevent page scrolling on work portfolio pages */
@@ -277,7 +309,8 @@ html, body, #__next, #root {
 
 /* Sticky Navigation */
 .case-study-sticky-nav {
-  @apply fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/5;
+  @apply fixed top-0 left-0 right-0 z-50 bg-white/95 border-b border-black/10;
+  backdrop-filter: blur(20px);
 }
 
 .case-study-sticky-nav-inner {
@@ -285,9 +318,10 @@ html, body, #__next, #root {
 }
 
 .case-study-breadcrumb {
-  @apply text-[13px] text-neutral-600 inline-block;
+  @apply text-[13px] text-neutral-500 inline-block;
   font-weight: 400;
   font-variation-settings: 'wght' 400;
+  letter-spacing: 0.01em;
 }
 
 .case-study-breadcrumb-link {
@@ -299,12 +333,12 @@ html, body, #__next, #root {
 }
 
 .case-study-breadcrumb-current {
-  @apply text-neutral-400;
+  @apply text-neutral-600 font-medium;
 }
 
 /* Content Sections */
 .case-study-section {
-  @apply pb-[50px];
+  @apply pb-[60px];
 }
 
 .case-study-content {
@@ -325,34 +359,47 @@ html, body, #__next, #root {
 }
 
 .case-study-title {
-  @apply text-[18px] text-black mb-8;
+  @apply text-[24px] text-black mb-10;
   font-weight: 500;
   font-variation-settings: 'wght' 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 /* Logo Component */
 .case-study-logo {
-  @apply w-14 h-14 mb-6 border border-black/10 rounded-2xl flex items-center justify-center overflow-hidden;
+  @apply w-16 h-16 mb-8 border border-black/10 rounded-2xl flex items-center justify-center overflow-hidden;
   border-radius: 16px;
 }
 
 /* Typography */
 .case-study-heading {
-  @apply text-[12px] text-neutral-400 mb-4;
-  font-weight: 500;
+  @apply text-[16px] text-black mb-6;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  font-family: Inter, system-ui, sans-serif !important;
   font-variation-settings: 'wght' 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .case-study-subheading {
-  @apply text-[15px] text-black mb-4;
-  font-weight: 500;
+  @apply text-[14px] text-neutral-700 mb-3;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  font-family: Inter, system-ui, sans-serif !important;
   font-variation-settings: 'wght' 500;
+  letter-spacing: -0.005em;
+  line-height: 1.4;
 }
 
 .case-study-text {
-  @apply text-[15px] leading-[26px] text-black;
-  font-weight: 500;
-  font-family: Inter, system-ui, sans-serif;
+  @apply text-[15px] leading-[26px] text-neutral-600;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  margin-bottom: 16px;
+  line-height: 26px;
 }
 
 /* Image Components */
@@ -377,7 +424,7 @@ html, body, #__next, #root {
 }
 
 .case-study-image-box {
-  @apply w-[840px] h-[473px];
+  @apply w-[840px] h-[473px] rounded-lg;
 }
 
 /* Full width image breakout */
@@ -392,7 +439,7 @@ html, body, #__next, #root {
 }
 
 .case-study-image-breakout .case-study-image-box {
-  @apply w-[840px] h-[473px];
+  @apply w-[840px] h-[473px] rounded-lg;
 }
 
 .case-study-image-dual {
@@ -402,10 +449,16 @@ html, body, #__next, #root {
 /* Horizontal Carousel */
 .case-study-carousel {
   @apply -mx-8 overflow-x-auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.case-study-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .case-study-carousel-inner {
-  @apply flex space-x-4 w-max;
+  @apply flex space-x-6 w-max;
 }
 
 .case-study-carousel-item {

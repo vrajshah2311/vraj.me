@@ -37,7 +37,7 @@ const MyWork: React.FC = () => {
                         </svg>
                       </div>
                     </div>
-                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.description}</div>
+                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>{item.description}</div>
                   </a>
                 )
               } else {
@@ -47,7 +47,7 @@ const MyWork: React.FC = () => {
                     <div className="col-span-6 relative z-10">
                       <span className="text-[13px] text-black" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.title}</span>
                     </div>
-                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>{item.description}</div>
+                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>{item.description}</div>
                   </div>
                 )
               }

@@ -9,7 +9,7 @@ interface CaseStudyHeadingProps {
 
 const CaseStudyHeading: React.FC<CaseStudyHeadingProps> = ({ children, className = '' }) => {
   return (
-    <h2 className={`case-study-heading ${className}`} style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>
+    <h2 className={`case-study-heading font-sans ${className}`}>
       {children}
     </h2>
   )
