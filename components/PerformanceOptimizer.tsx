@@ -62,8 +62,8 @@ const PerformanceOptimizer: React.FC = () => {
     const clsObserver = new PerformanceObserver((list) => {
       const entries = list.getEntries()
       entries.forEach(entry => {
-        if (entry.entryType === 'layout-shift' && !(entry as any).hadRecentInput) {
-          clsValue += (entry as any).value
+        if (entry.entryType === 'layout-shift' && !(entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number }).hadRecentInput) {
+          clsValue += (entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number }).value || 0
           setMetrics(prev => ({ ...prev, cls: clsValue }))
         }
       })

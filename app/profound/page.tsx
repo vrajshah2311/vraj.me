@@ -199,7 +199,7 @@ export default function ProfoundPage() {
               <div>
                 <CaseStudySubheading>User Research</CaseStudySubheading>
                 <CaseStudyText>
-                  I spoke with growth teams, content strategists, and AI researchers using Profound's early prototype. We found that AI search patterns often had little overlap with Google, that AI conversations covered the entire marketing funnel, and that marketers wanted the ability to group related prompts, track sentiment, and see which websites influenced AI answers.
+                  I spoke with growth teams, content strategists, and AI researchers using Profound&apos;s early prototype. We found that AI search patterns often had little overlap with Google, that AI conversations covered the entire marketing funnel, and that marketers wanted the ability to group related prompts, track sentiment, and see which websites influenced AI answers.
                 </CaseStudyText>
               </div>
               <div>

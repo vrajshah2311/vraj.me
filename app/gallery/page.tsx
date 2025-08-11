@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import * as motion from 'motion/react-client'
@@ -58,11 +58,6 @@ const baseImages: string[] = [
   '/images/case-studies/LN1.png',
   '/images/case-studies/LN2.png',
   '/images/case-studies/LN3.png',
-  '/images/case-studies/Exp1.png',
-  '/images/case-studies/Exp2.png',
-  '/images/case-studies/Exp3.png',
-  '/images/case-studies/Exp4.png',
-  '/images/case-studies/Exp5.png',
   // Ninja images
   '/images/case-studies/work/Ni2.png',
   '/images/case-studies/work/Ni3.png',
@@ -125,24 +120,11 @@ export default function GalleryPage() {
     }
   }, [])
 
-  // Load all images at once
-  useEffect(() => {
-    const initial = Array.from({ length: baseImages.length }, (_, i) => generateImage(i + 1))
-    console.log('Loading images:', initial)
-    console.log('Base images array:', baseImages)
-    setImages(initial)
-    
-    // Set all images to loading state initially to prevent blank states
-    initial.forEach(img => setImageLoading(img.id, true))
+  const closeModal = useCallback(() => {
+    setSelectedImage(null)
   }, [])
 
-
-
-  const closeModal = () => {
-    setSelectedImage(null)
-  }
-
-  const setImageLoading = (imageId: number, loading: boolean) => {
+  const setImageLoading = useCallback((imageId: number, loading: boolean) => {
     setLoadingImages(prev => {
       const newSet = new Set(prev)
       if (loading) {
@@ -152,15 +134,15 @@ export default function GalleryPage() {
       }
       return newSet
     })
-  }
+  }, [])
 
   // Auto-loading state for images that take time to load
-  const startImageLoadTimer = (imageId: number) => {
+  const startImageLoadTimer = useCallback((imageId: number) => {
     // Show loading state immediately to prevent blank states
     setImageLoading(imageId, true)
-  }
+  }, [setImageLoading])
 
-  const navigateImage = (direction: 'prev' | 'next') => {
+  const navigateImage = useCallback((direction: 'prev' | 'next') => {
     if (!selectedImage) return
     
     const currentIndex = images.findIndex(img => img.id === selectedImage.id)
@@ -174,7 +156,18 @@ export default function GalleryPage() {
     }
     
     setSelectedImage(images[newIndex])
-  }
+  }, [selectedImage, images])
+
+  // Load all images at once
+  useEffect(() => {
+    const initial = Array.from({ length: baseImages.length }, (_, i) => generateImage(i + 1))
+    console.log('Loading images:', initial)
+    console.log('Base images array:', baseImages)
+    setImages(initial)
+    
+    // Set all images to loading state initially to prevent blank states
+    initial.forEach(img => setImageLoading(img.id, true))
+  }, [setImageLoading])
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -194,7 +187,7 @@ export default function GalleryPage() {
       document.addEventListener('keydown', handleKeyDown)
       return () => document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [selectedImage, images])
+  }, [selectedImage, images, navigateImage, closeModal])
 
   // Navbar show/hide on scroll of inner container
   useEffect(() => {
