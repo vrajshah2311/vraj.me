@@ -25,7 +25,6 @@ const nextConfig = {
   generateEtags: false,
   trailingSlash: false,
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['framer-motion'],
   },
   compiler: {
