@@ -63,6 +63,7 @@ export default function Home() {
                           maskImage: 'linear-gradient(to right, transparent 0%, transparent 2%, black 8%, black 92%, transparent 98%, transparent 100%)',
                           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 2%, black 8%, black 92%, transparent 98%, transparent 100%)'
                         }}>
+                        {/* First set of pills */}
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Context</button>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Ninja</button>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Whop</button>
@@ -71,7 +72,16 @@ export default function Home() {
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Eleven</button>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">OTPless</button>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Scaledock</button>
-                        {/* Duplicate pills for seamless loop */}
+                        {/* Second set for seamless loop */}
+                        <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Context</button>
+                        <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Ninja</button>
+                        <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Whop</button>
+                        <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Linktree</button>
+                        <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Opson</button>
+                        <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Eleven</button>
+                        <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">OTPless</button>
+                        <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Scaledock</button>
+                        {/* Third set for extra smoothness */}
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Context</button>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Ninja</button>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Whop</button>

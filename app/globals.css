@@ -52,12 +52,12 @@ img, video, canvas, svg {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-33.333%));
   }
 }
 
 .animate-ticker {
-  animation: ticker 20s linear infinite;
+  animation: ticker 25s linear infinite;
 }
 
 :root {
