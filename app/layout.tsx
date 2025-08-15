@@ -41,6 +41,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="dns-prefetch" href="https://rsms.me/" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <Analytics mode="production" />
       </head>
       <body className="antialiased">
         <ScrollProvider>
@@ -48,7 +49,6 @@ export default function RootLayout({
         </ScrollProvider>
         <PerformanceOptimizer />
         <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   )
