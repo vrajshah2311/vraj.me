@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main ref={scrollContainerRef} className="bg-white relative overflow-auto h-screen">
       <div className="flex justify-center">
-        <div className="w-full max-w-[600px] pb-[80px] relative overflow-visible">
+        <div className="w-full max-w-[600px] px-4 sm:px-6 lg:px-0 pb-[80px] relative overflow-visible">
           <div className="pt-[32px] pb-2">
             <h1 className="text-[20px] text-black" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Vraj Shah</h1>
           </div>
@@ -29,18 +29,18 @@ export default function Home() {
             <h2 className="mb-2 text-[12px] text-neutral-400" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Personal Projects</h2>
             <div className="w-full h-px mb-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)' }}></div>
             <div>
-              <a href="/orimi" className="grid grid-cols-12 items-center h-8 relative group cursor-pointer">
+                            <a href="https://www.orimi.app/" target="_blank" rel="noopener noreferrer" className="grid grid-cols-1 sm:grid-cols-12 items-start sm:items-center py-2 sm:h-8 relative group cursor-pointer">
                 <div className="absolute inset-0 bg-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity -mx-2"></div>
-                <div className="col-span-6 relative z-10">
+                <div className="col-span-1 sm:col-span-6 relative z-10">
                   <div className="inline-flex items-center gap-3 text-black">
-                                            <span className="text-[14px]" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Orimi</span>
-                    <span className="px-2 py-0.5 text-[10px] bg-neutral-100 group-hover:bg-white text-neutral-500 rounded transition-colors" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500", borderRadius: '4px', maxHeight: '20px' }}>Coming Soon</span>
+                    <span className="text-[14px]" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Orimi</span>
+                    <span className="px-2 py-0.5 text-[10px] bg-neutral-100 group-hover:bg-white text-neutral-500 rounded transition-colors" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500", borderRadius: '4px', maxHeight: '20px' }}>Live</span>
                     <svg className="w-3.5 h-3.5 rotate-30 opacity-0 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M7 17l9-9M17 17V7H7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                 </div>
-                                    <div className="col-span-6 text-right text-neutral-600 text-[12px] relative z-10" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>Founder, Design & Development</div>
+                <div className="col-span-1 sm:col-span-6 sm:text-right text-neutral-600 text-[12px] relative z-10 mt-1 sm:mt-0" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>Founder, Design & Development</div>
               </a>
             </div>
           </div>
@@ -49,32 +49,20 @@ export default function Home() {
           {/* Gallery (formerly Vault) */}
           <div className="w-full relative">
             <div className="flex justify-center">
-              <a href="/gallery" className="block bg-white rounded-lg transition-shadow" style={{ height: '242px', width: '650px', border: '1px solid rgba(0, 0, 0, 0.04)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', height: '100%' }}>
+              <a href="/gallery" className="block bg-white rounded-lg transition-shadow w-[650px] border border-gray-100">
+                <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start min-h-[242px] lg:h-[242px]">
                   {/* Left Content */}
-                  <div style={{
-                    width: '400px',
-                    height: '242px',
-                    padding: '24px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    gap: '12px',
-                    overflow: 'hidden'
-                  }}>
+                  <div className="w-full lg:w-[400px] p-6 lg:p-6 flex flex-col items-start gap-3 lg:gap-3 overflow-hidden h-full">
                                             <h2 className="text-[12px] font-medium" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500", color: '#9ca3af' }}>All work</h2>
-                    <p className="text-[15px] text-neutral-600" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400", lineHeight: '22px', marginBottom: 'auto', maxWidth: '320px' }}>
+                    <p className="text-[15px] text-neutral-600" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400", lineHeight: '22px', maxWidth: '320px' }}>
                       This is a collection of my work, created in collaboration with studios like Endless, top notch designers, marketing agencies and some pieces I made just for fun.
                     </p>
-                    <div style={{
-                      overflow: 'hidden',
-                      height: '32px'
-                    }}>
-                      <div style={{
-                        display: 'flex',
-                        gap: '6px',
-                        animation: 'ticker 20s linear infinite'
-                      }}>
+                    <div className="w-full lg:w-[398.7px] lg:max-w-[398.7px] h-fit relative overflow-hidden mt-auto">
+                      <div className="flex gap-1.5 lg:gap-1.5 animate-ticker relative z-10 flex-nowrap w-max lg:max-w-[398.7px]"
+                        style={{
+                          maskImage: 'linear-gradient(to right, transparent 0%, transparent 2%, black 8%, black 92%, transparent 98%, transparent 100%)',
+                          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 2%, black 8%, black 92%, transparent 98%, transparent 100%)'
+                        }}>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Context</button>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Ninja</button>
                         <button className="px-[11px] py-[3px] text-neutral-700 rounded text-[13px] font-medium transition-colors flex items-center justify-center whitespace-nowrap bg-neutral-100">Whop</button>
@@ -97,14 +85,7 @@ export default function Home() {
                   </div>
                   
                   {/* Right Content - Project Previews */}
-                  <div style={{
-                    width: '250px',
-                    height: '242px',
-                    padding: '35px 23.999px 35.899px 24.001px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                  }}>
+                  <div className="w-full lg:w-[250px] lg:h-[242px] p-6 lg:p-6 flex justify-center items-center">
                     <img 
                       src="/images/case-studies/work/Frame 2087329258.png" 
                       alt="Ninja preview cards showing AI text generation features" 
@@ -125,7 +106,7 @@ export default function Home() {
       </div>
       
       <div className="fixed bottom-0 left-0 right-0 h-[56px] bg-white z-40">
-        <div className="w-full max-w-[600px] mx-auto h-full flex items-center justify-between">
+        <div className="w-full max-w-[600px] mx-auto h-full flex items-center justify-between px-4 sm:px-6 lg:px-0">
           <div className="flex space-x-4">
             <div className="relative group">
               <a href="https://cal.com/vraj-shah/chat-with-vraj?user=vraj-shah&overlayCalendar=true&date=2025-08-12" className="flex items-center space-x-1 text-black hover:text-neutral-600 transition-colors cursor-pointer" target="_blank" rel="noopener noreferrer">

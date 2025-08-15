@@ -87,8 +87,8 @@ interface ImageItem {
 }
 
 const generateImage = (id: number): ImageItem => {
-  const baseWidth = 256
-  const baseHeight = 256 // Square-ish default for better flexibility
+  const baseWidth = 400
+  const baseHeight = 267
   const index = (id - 1) % baseImages.length
   return {
     id,
@@ -252,7 +252,7 @@ export default function GalleryPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedImage(image)}
-                style={{ width: '256px' }}
+                style={{ width: '400px' }}
               >
                 {/* Loading skeleton - always show initially, hide when loaded */}
                 {loadingImages.has(image.id) && (

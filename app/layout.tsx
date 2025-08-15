@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { ScrollProvider } from '../components/ScrollContext'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import PerformanceOptimizer from '../components/PerformanceOptimizer'
 
 export const metadata: Metadata = {
@@ -47,6 +48,7 @@ export default function RootLayout({
         </ScrollProvider>
         <PerformanceOptimizer />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
