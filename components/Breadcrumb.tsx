@@ -31,10 +31,6 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ current }) => {
   }, [])
 
   const navigateToHome = () => router.push('/')
-  const navigateToWork = () => {
-    router.push('/')
-    setTimeout(() => document.querySelector('#work-section')?.scrollIntoView({ behavior: 'smooth' }), 400)
-  }
 
   return (
     <div className="flex items-center gap-[6px] text-[13px]">
