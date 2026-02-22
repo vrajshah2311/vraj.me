@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRegisterScrollContainer } from '../components/ScrollContext'
 import Hero from '../components/Hero'
 import RecentEngagements from '../components/RecentEngagements'
@@ -9,8 +9,19 @@ export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
   useRegisterScrollContainer(scrollContainerRef)
 
+  const [lastUpdated, setLastUpdated] = useState<string>('19 July, 2025')
+
   useEffect(() => {
-    // no-op, kept to ensure client hook ordering; global scroll handled by context
+    fetch('https://api.github.com/repos/vrajshah2311/vraj.me/commits/main')
+      .then(res => res.json())
+      .then(data => {
+        const date = new Date(data?.commit?.committer?.date)
+        if (!isNaN(date.getTime())) {
+          const formatted = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+          setLastUpdated(formatted)
+        }
+      })
+      .catch(() => {})
   }, [])
 
   return (
@@ -19,32 +30,11 @@ export default function Home() {
         <div className="w-full max-w-[600px] px-4 sm:px-6 lg:px-0 pb-[80px] relative overflow-visible">
           <div className="pt-[32px] pb-2">
             <h1 className="text-[20px] text-black" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Vraj Shah</h1>
+            <p className="text-[14px] text-neutral-400" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>Last Update {lastUpdated}</p>
           </div>
           <Hero />
                     <div style={{ marginTop: '32px' }}></div>
           <RecentEngagements />
-          {/* Personal Projects */}
-          <div style={{ marginTop: '32px' }}></div>
-          <div>
-            <h2 className="mb-2 text-[12px] text-neutral-400" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Personal Projects</h2>
-            <div className="w-full h-px mb-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.04)' }}></div>
-            <div>
-                            <a href="https://www.orimi.app/" target="_blank" rel="noopener noreferrer" className="grid grid-cols-1 sm:grid-cols-12 items-start sm:items-center py-2 sm:h-8 relative group cursor-pointer">
-                <div className="absolute inset-0 bg-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity -mx-2"></div>
-                <div className="col-span-1 sm:col-span-6 relative z-10">
-                  <div className="inline-flex items-center gap-3 text-black">
-                    <span className="text-[14px]" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500" }}>Orimi</span>
-                    <span className="px-2 py-0.5 text-[10px] bg-neutral-100 group-hover:bg-white text-neutral-500 rounded transition-colors" style={{ fontWeight: '500', fontVariationSettings: "'wght' 500", borderRadius: '4px', maxHeight: '20px' }}>Live</span>
-                    <svg className="w-3.5 h-3.5 rotate-30 opacity-0 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M7 17l9-9M17 17V7H7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="col-span-1 sm:col-span-6 sm:text-right text-neutral-600 text-[12px] relative z-10 mt-1 sm:mt-0" style={{ fontWeight: '400', fontVariationSettings: "'wght' 400" }}>Founder, Design & Development</div>
-              </a>
-            </div>
-          </div>
-          
           <div style={{ marginTop: '32px' }}></div>
           {/* Gallery (formerly Vault) */}
           <div className="w-full relative">
