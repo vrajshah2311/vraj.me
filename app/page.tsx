@@ -51,7 +51,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main ref={scrollContainerRef} className="bg-white relative overflow-y-auto overflow-x-hidden h-screen">
+    <main className="bg-white relative overflow-x-hidden">
       <div className="flex justify-center min-h-screen">
         <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px] relative overflow-visible flex flex-col">
 
