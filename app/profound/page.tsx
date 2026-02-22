@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
+import Breadcrumb from "../../components/Breadcrumb"
+import CaseStudyTitleLink from "../../components/CaseStudyTitleLink"
 import Image from "next/image"
 
 import CaseStudySection from "../../components/CaseStudySection"
@@ -13,38 +15,15 @@ import CaseStudySubheading from "../../components/CaseStudySubheading"
 import CaseStudyLogo from "../../components/CaseStudyLogo"
 import ScrollProgress from "../../components/ScrollProgress"
 import ScrollCarousel from "../../components/ScrollCarousel"
-import { CentralChevronGrabberVerticalFilledOffStroke2Radius1 } from "../../components/CentralChevronGrabberVerticalFilledOffStroke2Radius1"
 
 export default function ProfoundPage() {
-  const router = useRouter()
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isHoverCardOpen, setIsHoverCardOpen] = useState(false)
-  const hoverRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 100)
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
-
-  useEffect(() => {
-    const onDocClick = (e: MouseEvent) => {
-      if (hoverRef.current && !hoverRef.current.contains(e.target as Node)) {
-        setIsHoverCardOpen(false)
-      }
-    }
-    document.addEventListener("mousedown", onDocClick)
-    return () => document.removeEventListener("mousedown", onDocClick)
-  }, [])
-
-  const navigateToHome = () => router.push("/")
-  const navigateToWork = () => {
-    router.push("/")
-    setTimeout(() => {
-      const workSection = document.querySelector("#work-section")
-      if (workSection) workSection.scrollIntoView({ behavior: "smooth" })
-    }, 400)
-  }
 
   return (
     <>
@@ -53,58 +32,16 @@ export default function ProfoundPage() {
         {isScrolled && (
           <div className="case-study-sticky-nav">
             <div className="case-study-sticky-nav-inner">
-              <div className="flex items-center space-x-1 text-sm text-neutral-500">
-                <span className="cursor-pointer hover:text-black transition-colors" onClick={navigateToHome}>Home</span>
-                <span className="text-neutral-300">/</span>
-                <span className="cursor-pointer hover:text-black transition-colors" onClick={navigateToWork}>Work</span>
-                <span className="text-neutral-300">/</span>
-                <span className="text-neutral-400 relative cursor-pointer" onClick={() => setIsHoverCardOpen((s) => !s)}>
-                  Profound
-                  <CentralChevronGrabberVerticalFilledOffStroke2Radius1 className="inline-block w-3 h-3 ml-1 text-neutral-400" />
-                  {/* Hover Card */}
-                  <div className={`absolute top-full left-0 mt-1 w-40 bg-white rounded-md shadow-lg border border-neutral-200 p-1 transition-all duration-150 ${isHoverCardOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'}`}>
-                    <div className="flex items-center gap-2 px-2 py-1.5 rounded text-sm">
-                      <span className="text-black font-medium">Profound</span>
-                    </div>
-                    <button
-                      className="w-full text-left flex items-center gap-2 px-2 py-1.5 rounded text-sm hover:bg-neutral-50 transition-colors"
-                      onClick={() => router.push('/nsave')}
-                    >
-                      <span className="text-neutral-600">nsave</span>
-                    </button>
-                  </div>
-                </span>
-              </div>
+              <Breadcrumb current="Profound" />
             </div>
           </div>
         )}
 
         <CaseStudySection>
           <CaseStudyContent>
-            <div className="pt-[80px] pb-2">
+            <div className="pt-8 sm:pt-[32px] pb-2">
               <div className="case-study-header-nav">
-                              <div className="flex items-center space-x-1 text-sm text-neutral-500 mb-8">
-                <span className="cursor-pointer hover:text-black transition-colors" onClick={navigateToHome}>Home</span>
-                <span className="text-neutral-300">/</span>
-                <span className="cursor-pointer hover:text-black transition-colors" onClick={navigateToWork}>Work</span>
-                <span className="text-neutral-300">/</span>
-                <span className="text-neutral-400 relative cursor-pointer" onClick={() => setIsHoverCardOpen((s) => !s)}>
-                  Profound
-                  <CentralChevronGrabberVerticalFilledOffStroke2Radius1 className="inline-block w-3 h-3 ml-1 text-neutral-400" />
-                  {/* Hover Card */}
-                  <div className={`absolute top-full left-0 mt-1 w-40 bg-white rounded-md shadow-lg border border-neutral-200 p-1 transition-all duration-150 ${isHoverCardOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'}`}>
-                    <div className="flex items-center gap-2 px-2 py-1.5 rounded text-sm">
-                      <span className="text-black font-medium">Profound</span>
-                    </div>
-                    <button
-                      className="w-full text-left flex items-center gap-2 px-2 py-1.5 rounded text-sm hover:bg-neutral-50 transition-colors"
-                      onClick={() => router.push('/nsave')}
-                    >
-                      <span className="text-neutral-600">nsave</span>
-                    </button>
-                  </div>
-                </span>
-              </div>
+                <div className="mb-8"><Breadcrumb current="Profound" /></div>
               </div>
 
               <CaseStudyLogo>
@@ -117,7 +54,7 @@ export default function ProfoundPage() {
                   priority
                 />
               </CaseStudyLogo>
-              <h1 className="case-study-title">Profound</h1>
+              <CaseStudyTitleLink title="Profound" href="https://www.tryprofound.com/" />
 
               <div>
                 <CaseStudyHeading>Intro</CaseStudyHeading>

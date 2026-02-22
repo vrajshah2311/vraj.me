@@ -220,7 +220,7 @@ export default function WorkPage() {
             : '-translate-y-full bg-transparent'
         }`}
       >
-        <div className="max-w-4xl mx-auto px-8 h-full flex items-center">
+        <div className="max-w-[600px] mx-auto px-8 h-full flex items-center">
           <button 
             onClick={() => router.push('/')}
             className={`inline-flex items-center transition-all duration-300 text-[12px] ${

@@ -218,7 +218,7 @@ export default function GalleryPage() {
           isNavbarVisible ? 'translate-y-0 bg-white' : '-translate-y-full bg-transparent'
         }`}
       >
-        <div className="max-w-4xl mx-auto px-8 h-full flex items-center">
+        <div className="max-w-[600px] mx-auto px-8 h-full flex items-center">
           <button
             onClick={() => router.push('/')}
             className={`inline-flex items-center transition-all duration-150 text-[12px] ${

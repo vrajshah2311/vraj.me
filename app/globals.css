@@ -1,5 +1,3 @@
-@import url('https://rsms.me/inter/inter.css');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -122,21 +120,14 @@ html, body, #__next, #root {
   }
   
   html {
-    font-family: Inter, system-ui, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
     font-feature-settings: var(--font-feature-settings);
     background-color: #FFFFFF;
   }
   body {
-    font-family: Inter, system-ui, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
-    font-variation-settings: 'wght' 400;
     background-color: #FFFFFF;
-  }
-  
-  @supports (font-variation-settings: normal) {
-    html, body {
-      font-family: InterVariable, sans-serif;
-    }
   }
   
   /* Prevent overscroll and ensure white background */
@@ -235,6 +226,29 @@ html, body, #__next, #root {
   }
 }
 
+/* Hover underline slide animation */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0a0a0a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after,
+.hover-trigger:hover .hover-underline-animation::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 /* Bouncy text animation keyframes */
 @keyframes bounceIn {
   0% {
@@ -309,31 +323,41 @@ html, body, #__next, #root {
 
 /* Sticky Navigation */
 .case-study-sticky-nav {
-  @apply fixed top-0 left-0 right-0 z-50 bg-white/95 border-b border-black/10;
+  @apply fixed top-0 left-0 right-0 z-50 bg-white/95;
+  border-bottom: 1px solid rgba(10,10,10,0.08);
   backdrop-filter: blur(20px);
 }
 
 .case-study-sticky-nav-inner {
-  @apply max-w-[600px] mx-auto py-4;
+  @apply max-w-[600px] mx-auto py-4 px-5 sm:px-8 lg:px-[32px];
 }
 
 .case-study-breadcrumb {
-  @apply text-[13px] text-neutral-500 inline-block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
   font-weight: 400;
-  font-variation-settings: 'wght' 400;
-  letter-spacing: 0.01em;
 }
 
 .case-study-breadcrumb-link {
-  @apply text-black cursor-pointer hover:text-neutral-600 transition-colors;
+  color: rgba(10,10,10,0.5);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.case-study-breadcrumb-link:hover {
+  color: #0a0a0a;
 }
 
 .case-study-breadcrumb-separator {
-  @apply mx-2;
+  color: rgba(10,10,10,0.2);
+  font-size: 13px;
 }
 
 .case-study-breadcrumb-current {
-  @apply text-neutral-600 font-medium;
+  color: #0a0a0a;
+  font-weight: 600;
 }
 
 /* Content Sections */
@@ -346,85 +370,75 @@ html, body, #__next, #root {
 }
 
 .case-study-content-inner {
-  @apply w-full max-w-[600px] overflow-visible;
+  @apply w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px] overflow-visible;
 }
 
 /* Header Section */
 .case-study-header {
-  @apply pt-[96px] pb-2;
+  @apply pt-8 sm:pt-[32px] pb-2;
 }
 
 .case-study-header-nav {
-  @apply relative mb-12;
+  @apply relative mb-8 sm:mb-12;
 }
 
 .case-study-title {
-  @apply text-[24px] text-black mb-10;
-  font-weight: 500;
-  font-variation-settings: 'wght' 500;
+  @apply mb-8 sm:mb-10;
+  font-size: clamp(18px, 4vw, 20px);
+  font-weight: 600;
+  color: #0a0a0a;
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
 /* Logo Component */
 .case-study-logo {
-  @apply w-16 h-16 mb-8 border border-black/10 rounded-2xl flex items-center justify-center overflow-hidden;
+  @apply w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 border border-black/10 rounded-2xl flex items-center justify-center overflow-hidden;
   border-radius: 16px;
 }
 
 /* Typography */
 .case-study-heading {
-  @apply text-[16px] text-black mb-6;
-  font-size: 16px !important;
-  font-weight: 500 !important;
-  font-family: Inter, system-ui, sans-serif !important;
-  font-variation-settings: 'wght' 500;
+  @apply mb-6;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #0a0a0a !important;
   letter-spacing: -0.01em;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .case-study-subheading {
-  @apply text-[14px] text-neutral-700 mb-3;
-  font-size: 14px !important;
+  @apply mb-3;
+  font-size: 13px !important;
   font-weight: 500 !important;
-  font-family: Inter, system-ui, sans-serif !important;
-  font-variation-settings: 'wght' 500;
+  color: #0a0a0a !important;
   letter-spacing: -0.005em;
   line-height: 1.4;
 }
 
 .case-study-text {
-  @apply text-[15px] leading-[26px] text-neutral-600;
   font-size: 15px !important;
   font-weight: 400 !important;
-  font-family: Inter, system-ui, sans-serif !important;
-  margin-bottom: 16px;
-  line-height: 26px;
+  color: rgba(10,10,10,0.64) !important;
+  margin-bottom: 12px;
+  line-height: 1.6;
 }
 
 /* Image Components */
 .case-study-image {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  @apply flex justify-center;
+  width: 100%;
+  @apply flex justify-center px-5 sm:px-8 lg:px-[32px];
 }
 
 .case-study-image-first {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  @apply flex justify-center;
+  width: 100%;
+  @apply flex justify-center px-5 sm:px-8 lg:px-[32px];
 }
 
 .case-study-image-box {
-  @apply w-[840px] h-[473px] rounded-lg;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  @apply rounded-lg sm:rounded-xl overflow-hidden;
 }
 
 /* Full width image breakout */
@@ -435,11 +449,14 @@ html, body, #__next, #root {
   margin-left: -50vw;
   margin-right: -50vw;
   width: 100vw;
-  @apply flex justify-center;
+  @apply flex justify-center overflow-x-auto;
 }
 
 .case-study-image-breakout .case-study-image-box {
-  @apply w-[840px] h-[473px] rounded-lg;
+  @apply flex-shrink-0 rounded-lg sm:rounded-xl overflow-hidden;
+  width: min(840px, 90vw);
+  aspect-ratio: 16 / 9;
+  height: auto;
 }
 
 .case-study-image-dual {

@@ -38,8 +38,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="dns-prefetch" href="https://rsms.me/" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <Analytics mode="production" />
       </head>
