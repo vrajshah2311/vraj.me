@@ -75,7 +75,6 @@ img, video, canvas, svg {
 body {
   color: rgb(var(--foreground-rgb));
   background: #FFFFFF;
-  overflow-x: hidden;
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -83,9 +82,10 @@ body {
 
 html, body, #__next, #root {
   background-color: #FFFFFF !important;
-  overscroll-behavior: none;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip;
 }
 
 /* Prevent page scrolling on work portfolio pages */
