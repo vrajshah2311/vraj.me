@@ -38,7 +38,7 @@ export default function ProfoundPage() {
 
         <CaseStudySection>
           <CaseStudyContent>
-            <div className="pt-8 sm:pt-[32px] pb-2">
+            <div className="pt-[96px] pb-2">
               <div className="case-study-header-nav">
                 <div className="mb-8"><Breadcrumb current="Profound" /></div>
               </div>

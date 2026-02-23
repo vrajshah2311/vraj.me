@@ -54,7 +54,7 @@ function EngagementRow({ company, year, href }: { company: string; year: string;
 
 const RecentEngagements: React.FC = () => {
   return (
-    <div id="work-section" className="flex flex-col" style={{ gap: '6px' }}>
+    <div id="work-section" className="flex flex-col" style={{ gap: '10px' }}>
       {engagements.map((item) => (
         <EngagementRow key={item.company} company={item.company} year={item.year} href={item.href} />
       ))}

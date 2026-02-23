@@ -55,7 +55,7 @@ export default function Home() {
       <div className="flex justify-center min-h-screen">
         <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px] relative overflow-visible flex flex-col">
 
-          <motion.div className="pt-8 sm:pt-[32px]" {...fade(0)}>
+          <motion.div className="pt-[96px]" {...fade(0)}>
             <Image
               src="/images/avatars/profile.png"
               alt="Vraj Shah"
