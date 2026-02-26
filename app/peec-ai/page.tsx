@@ -22,6 +22,9 @@ const images: string[] = [
   '/images/case-studies/peec-ai/Peec-Matrix-1.png',
   '/images/case-studies/peec-ai/Peec-Onboarding-1.png',
   '/images/case-studies/peec-ai/Peec-Onboarding-2.png',
+  '/images/case-studies/peec-ai/Peec-Onboarding-3.png',
+  '/images/case-studies/peec-ai/Peec-date-picker-1.png',
+  '/images/case-studies/peec-ai/Peec-table-1.png',
   '/images/case-studies/peec-ai/Peec-URL-details-1.png',
   '/images/case-studies/peec-ai/Peec-brands-1.png',
 ]
@@ -63,7 +66,7 @@ export default function PeecAIPage() {
 
         {images.map((src, i) => (
           <div key={i} className="px-5 sm:px-8 lg:px-[32px]" style={{ marginBottom: '4px' }}>
-            <Image src={src} alt={`Peec AI ${i + 1}`} width={1920} height={1080} className="w-full h-auto block rounded-lg sm:rounded-xl" loading={i === 0 ? 'eager' : 'lazy'} />
+            <Image src={src} alt={`Peec AI ${i + 1}`} width={3840} height={2160} className="w-full h-auto block rounded-lg sm:rounded-xl" loading={i === 0 ? 'eager' : 'lazy'} quality={100} />
           </div>
         ))}
       </main>
