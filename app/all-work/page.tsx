@@ -77,7 +77,7 @@ export default function AllWorkPage() {
   return (
     <>
       <ScrollProgress color="#000000" height={2} />
-      <main className="bg-white relative overflow-visible">
+      <main className="bg-[#FCFCFC] relative overflow-visible">
         {isScrolled && (
           <div className="case-study-sticky-nav">
             <div className="case-study-sticky-nav-inner">
@@ -98,11 +98,16 @@ export default function AllWorkPage() {
           </CaseStudyContent>
         </div>
 
-        {images.map((src, i) => (
-          <div key={i} className="px-5 sm:px-8 lg:px-[32px]" style={{ marginBottom: '4px' }}>
-            <Image src={src} alt={`All work ${i + 1}`} width={1920} height={1080} className="w-full h-auto block rounded-lg sm:rounded-xl" loading={i === 0 ? 'eager' : 'lazy'} />
-          </div>
-        ))}
+        <div className="px-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '4px' }}>
+          {images.map((src, i) => (
+            <div key={i} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ border: '1px solid rgba(0,0,0,0.02)' }}>
+              <Image src={src} alt={`All work ${i + 1}`} width={400} height={225} className="w-full h-full object-cover block rounded-[8px]" loading={i < 8 ? 'eager' : 'lazy'} />
+            </div>
+          ))}
+          {Array.from({ length: (4 - (images.length % 4)) % 4 }, (_, i) => (
+            <div key={`empty-${i}`} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ backgroundColor: '#FCFCFC', border: '1px solid rgba(0,0,0,0.02)' }} aria-hidden />
+          ))}
+        </div>
       </main>
     </>
   )

@@ -26,7 +26,7 @@ export default function NsavePage() {
   return (
     <>
       <ScrollProgress color="#000000" height={2} />
-      <main className="bg-white relative overflow-visible">
+      <main className="bg-[#FCFCFC] relative overflow-visible">
         {isScrolled && (
           <div className="case-study-sticky-nav">
             <div className="case-study-sticky-nav-inner">

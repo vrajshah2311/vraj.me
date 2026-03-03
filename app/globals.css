@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'SuisseWorks';
+  src: url('/fonts/SuisseWorks-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SuisseWorks';
+  src: url('/fonts/SuisseWorks-Book.otf') format('opentype');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SuisseWorks';
+  src: url('/fonts/SuisseWorks-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -74,14 +98,14 @@ img, video, canvas, svg {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #FFFFFF;
+  background: #FCFCFC;
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 html, body, #__next, #root {
-  background-color: #FFFFFF !important;
+  background-color: #FCFCFC !important;
 }
 
 body {
@@ -116,29 +140,29 @@ body {
 @layer base {
   :root {
     --font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    background-color: #FFFFFF;
+    background-color: #FCFCFC;
   }
   
   html {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
     font-feature-settings: var(--font-feature-settings);
-    background-color: #FFFFFF;
+    background-color: #FCFCFC;
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
-    background-color: #FFFFFF;
+    background-color: #FCFCFC;
   }
   
   /* Prevent overscroll and ensure white background */
   html, body {
     overscroll-behavior: none;
-    background-color: #FFFFFF !important;
+    background-color: #FCFCFC !important;
   }
   
   /* Ensure viewport is always white */
   #__next, #root {
-    background-color: #FFFFFF !important;
+    background-color: #FCFCFC !important;
   }
 }
 
@@ -247,6 +271,15 @@ body {
 .hover-trigger:hover .hover-underline-animation::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.bio-link:hover {
+  color: #9a3d0f;
+}
+.bio-link {
+  color: inherit;
+  text-decoration: underline;
+  transition: color 0.2s ease;
 }
 
 /* Bouncy text animation keyframes */

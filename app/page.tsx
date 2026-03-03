@@ -51,19 +51,27 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="bg-white relative overflow-x-hidden">
+    <main className="bg-[#FCFCFC] relative overflow-x-hidden">
       <div className="flex justify-center min-h-screen">
         <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px] relative overflow-visible flex flex-col">
 
           <motion.div className="pt-[96px]" {...fade(0)}>
-            <Image
-              src="/images/avatars/profile.png"
-              alt="Vraj Shah"
-              width={64}
-              height={64}
-              className="rounded-full mb-4"
-              style={{ width: '64px', height: '64px', objectFit: 'cover', objectPosition: 'center top' }}
-            />
+            <div
+              className="rounded-xl mb-4 inline-block"
+              style={{
+                boxShadow: '0 10px 30px -8px rgba(10,10,10,0.15), 0 4px 12px -4px rgba(10,10,10,0.08)',
+                transform: 'rotate(-1.5deg)',
+              }}
+            >
+              <Image
+                src="/images/avatars/profile.png"
+                alt="Vraj Shah"
+                width={104}
+                height={88}
+                className="rounded-xl"
+                style={{ width: '104px', height: '88px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              />
+            </div>
             <h1 className="text-[20px]" style={{ fontWeight: '600', color: '#0a0a0a', letterSpacing: '-0.02em', lineHeight: '1.1' }}>Vraj Shah</h1>
             <p className="text-[13px] mt-1" style={{ fontWeight: '400', color: 'rgba(10,10,10,0.5)' }}>Last Update {lastUpdated}</p>
           </motion.div>
@@ -81,7 +89,7 @@ export default function Home() {
         </div>
       </div>
 
-      <motion.div className="fixed bottom-0 left-0 right-0 bg-white" {...fade(0.45)}>
+      <motion.div className="fixed bottom-0 left-0 right-0 bg-[#FCFCFC]" {...fade(0.45)}>
         <div className="flex justify-center">
           <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px]">
             <div className="w-full h-px mb-4" style={{ backgroundColor: 'rgba(10,10,10,0.08)' }}></div>
