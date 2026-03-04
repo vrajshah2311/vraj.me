@@ -7,6 +7,7 @@ import { useRegisterScrollContainer } from '../components/ScrollContext'
 import Hero from '../components/Hero'
 
 const bioTextStyle = { fontWeight: '500' as const, color: 'var(--text-bio)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }
+const footerLinkStyle = { fontWeight: '500' as const, fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }
 
 function FooterLink({ label, href }: { label: string; href: string }) {
   return (
@@ -14,8 +15,8 @@ function FooterLink({ label, href }: { label: string; href: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="bio-link text-[17px] leading-[27px]"
-      style={bioTextStyle}
+      className="footer-link text-[17px] leading-[27px]"
+      style={footerLinkStyle}
     >
       {label}
     </a>
@@ -50,7 +51,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="relative overflow-x-hidden" style={{ backgroundColor: 'var(--bg)' }}>
+    <main className="bio-links-group relative overflow-x-hidden" style={{ backgroundColor: 'var(--bg)' }}>
       <div className="flex justify-center min-h-screen">
         <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px] relative overflow-visible flex flex-col">
 
@@ -69,10 +70,10 @@ export default function Home() {
               <Image
                 src="/images/avatars/profile.png"
                 alt="Vraj Shah"
-                width={104}
-                height={88}
+                width={88}
+                height={75}
                 className="rounded-xl"
-                style={{ width: '104px', height: '88px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                style={{ width: '88px', height: '75px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
               />
             </div>
             <h1 className="text-[22px]" style={{ fontWeight: '600', color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: '1.1' }}>Vraj Shah</h1>
@@ -91,7 +92,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6" style={{ marginTop: '32px' }} {...fade(0.45)}>
+          <motion.div className="footer-links-group flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6" style={{ marginTop: '32px' }} {...fade(0.45)}>
             {[
               { label: 'Email', href: 'https://cal.com/vraj-shah/chat-with-vraj?user=vraj-shah&overlayCalendar=true&date=2025-08-12' },
               { label: 'Resume', href: '#' },

@@ -74,6 +74,7 @@ img, video, canvas, svg {
   --border-cell: rgba(0,0,0,0.02);
   --link: rgba(245, 48, 0, 0.9);
   --link-hover: rgba(255, 52, 0, 0.9);
+  --link-lighter: rgba(255, 130, 100, 0.92);
   --shadow-profile: 0 10px 30px -8px rgba(10,10,10,0.15), 0 4px 12px -4px rgba(10,10,10,0.08);
   --dropdown-bg: #ffffff;
   --dropdown-border: rgba(10,10,10,0.08);
@@ -256,13 +257,32 @@ body {
   transform-origin: bottom left;
 }
 
-.bio-link:hover {
-  color: var(--link-hover);
+/* Group hover: only when hovering a link — all orange links go lighter; the one under cursor stays darker */
+.bio-links-group:has(.bio-link:hover) .bio-link {
+  color: var(--link-lighter);
+  transition: color 0.2s ease;
+}
+.bio-links-group:has(.bio-link:hover) .bio-link:hover {
+  color: var(--link);
 }
 .bio-link {
   color: var(--link);
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+/* Footer links: black 64% default; when any is hovered, others drop to 40%, hovered one turns orange */
+.footer-link {
+  color: rgba(0, 0, 0, 0.64);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-links-group:has(.footer-link:hover) .footer-link {
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.2s ease;
+}
+.footer-links-group:has(.footer-link:hover) .footer-link:hover {
+  color: var(--link);
 }
 
 /* Bouncy text animation keyframes */
