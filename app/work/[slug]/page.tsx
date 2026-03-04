@@ -105,6 +105,20 @@ export default function WorkPage() {
     setSelectedImage(null)
   }
 
+  // Keyboard: Escape to close, ArrowLeft/ArrowRight to switch image
+  useEffect(() => {
+    if (!isModalOpen || !selectedImage || images.length === 0) return
+    const currentIndex = images.findIndex((img) => img.src === selectedImage.src && img.id === selectedImage.id)
+    const idx = currentIndex >= 0 ? currentIndex : 0
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal()
+      if (e.key === 'ArrowLeft') setSelectedImage(images[idx <= 0 ? images.length - 1 : idx - 1])
+      if (e.key === 'ArrowRight') setSelectedImage(images[idx >= images.length - 1 ? 0 : idx + 1])
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isModalOpen, selectedImage, images])
+
   // Prevent body scrolling when component mounts
   useEffect(() => {
     // Store original body overflow
@@ -322,11 +336,13 @@ export default function WorkPage() {
       
       {/* Full Screen Modal */}
       {isModalOpen && selectedImage && (
-        <div className="fixed inset-0 bg-white z-50 flex items-center justify-center p-10">
-          {/* Close Button */}
+        <div className="fixed inset-0 bg-white z-50 flex items-center justify-center p-10" role="dialog" aria-modal="true" aria-label="Image lightbox">
+          {/* Close button - top right */}
           <button
+            type="button"
             onClick={closeModal}
-            className="absolute top-10 right-10 text-gray-600 hover:text-gray-800 transition-colors duration-200 z-10"
+            className="absolute top-10 right-10 flex h-10 w-10 items-center justify-center rounded-full text-gray-600 hover:bg-black/5 hover:text-gray-800 transition-colors duration-200 z-10"
+            aria-label="Close"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

@@ -7,6 +7,7 @@ import CaseStudyContent from "../../components/CaseStudyContent"
 import CaseStudyTitleLink from "../../components/CaseStudyTitleLink"
 import ScrollProgress from "../../components/ScrollProgress"
 import Breadcrumb from "../../components/Breadcrumb"
+import ImageLightbox from "../../components/ImageLightbox"
 
 const images: string[] = [
   '/images/case-studies/MN1.png',
@@ -67,6 +68,7 @@ const images: string[] = [
 
 export default function AllWorkPage() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 100)
@@ -100,14 +102,30 @@ export default function AllWorkPage() {
 
         <div className="px-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '4px' }}>
           {images.map((src, i) => (
-            <div key={i} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ border: '1px solid var(--border-cell)' }}>
+            <button
+              key={i}
+              type="button"
+              className="aspect-video rounded-[8px] overflow-hidden relative w-full text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--link)]"
+              style={{ border: '1px solid var(--border-cell)' }}
+              onClick={() => setLightboxIndex(i)}
+            >
               <Image src={src} alt={`All work ${i + 1}`} width={400} height={225} className="w-full h-full object-cover block rounded-[8px]" loading={i < 8 ? 'eager' : 'lazy'} />
-            </div>
+            </button>
           ))}
           {Array.from({ length: (4 - (images.length % 4)) % 4 }, (_, i) => (
             <div key={`empty-${i}`} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ backgroundColor: 'var(--bg)', border: '1px solid var(--border-cell)' }} aria-hidden />
           ))}
         </div>
+
+        {lightboxIndex !== null && (
+          <ImageLightbox
+            images={images}
+            currentIndex={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+            onNavigate={setLightboxIndex}
+            altPrefix="All work"
+          />
+        )}
       </main>
     </>
   )

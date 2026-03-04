@@ -32,7 +32,7 @@ export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
   useRegisterScrollContainer(scrollContainerRef)
 
-  const [lastUpdated, setLastUpdated] = useState<string>('19 July, 2025')
+  const [lastUpdated, setLastUpdated] = useState<string>("4 Mar'26")
 
   useEffect(() => {
     fetch('https://api.github.com/repos/vrajshah2311/vraj.me/commits/main')
@@ -40,8 +40,10 @@ export default function Home() {
       .then(data => {
         const date = new Date(data?.commit?.committer?.date)
         if (!isNaN(date.getTime())) {
-          const formatted = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
-          setLastUpdated(formatted)
+          const day = date.getDate()
+          const month = date.toLocaleDateString('en-GB', { month: 'short' })
+          const year = date.getFullYear().toString().slice(-2)
+          setLastUpdated(`${day} ${month}'${year}`)
         }
       })
       .catch(() => {})
@@ -54,10 +56,14 @@ export default function Home() {
 
           <motion.div className="pt-[96px]" {...fade(0)}>
             <div
-              className="rounded-xl mb-4 inline-block"
+              className="rounded-xl mb-4 inline-block overflow-hidden"
               style={{
-                boxShadow: 'var(--shadow-profile)',
+                padding: '2px',
+                border: '1.5px solid rgba(245, 48, 0, 0.9)',
+                borderRadius: '14px',
+                boxShadow: '0 10px 30px -8px rgba(200, 35, 0, 0.22), 0 4px 12px -4px rgba(200, 35, 0, 0.12)',
                 transform: 'rotate(-1.5deg)',
+                boxSizing: 'border-box',
               }}
             >
               <Image
@@ -69,8 +75,8 @@ export default function Home() {
                 style={{ width: '104px', height: '88px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
               />
             </div>
-            <h1 className="text-[20px]" style={{ fontWeight: '600', color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: '1.1' }}>Vraj Shah</h1>
-            <p className="text-[13px] mt-1" style={{ fontWeight: '500', color: 'var(--text-secondary)' }}>Last Update {lastUpdated}</p>
+            <h1 className="text-[22px]" style={{ fontWeight: '600', color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: '1.1' }}>Vraj Shah</h1>
+            <p className="text-[14px] mt-1" style={{ fontWeight: '500', color: 'var(--text-secondary)' }}>Updated on {lastUpdated}</p>
           </motion.div>
 
           <div style={{ marginTop: '20px' }}></div>
@@ -81,7 +87,7 @@ export default function Home() {
               className="text-[17px] leading-[27px]"
               style={{ fontWeight: '500', color: 'var(--text-bio)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }}
             >
-              I&apos;m currently rounding rectangles at <a href="/peec-ai" className="bio-link">Peec AI</a>, where I&apos;m mainly working on product. It&apos;s been really fun getting to know users and their thoughts. I&apos;ve also had the chance to work with great teams at <a href="/model-ml" className="bio-link">Model ML</a>, <a href="/profound" className="bio-link">Profound</a>, <a href="/nsave" className="bio-link">nsave</a>, and <a href="/hale" className="bio-link">Hale</a>—each one taught me something different.
+              I&apos;m currently rounding rectangles at <a href="/peec-ai" className="bio-link">Peec AI</a>, where I&apos;m mainly working on product. I&apos;ve also had the chance to work with great teams at <a href="/model-ml" className="bio-link">Model ML</a>, <a href="/profound" className="bio-link">Profound</a>, <a href="/nsave" className="bio-link">nsave</a>, and <a href="/hale" className="bio-link">Hale</a>—each one taught me something different.
             </p>
           </motion.div>
 
