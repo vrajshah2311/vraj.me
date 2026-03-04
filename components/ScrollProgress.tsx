@@ -8,7 +8,7 @@ interface ScrollProgressProps {
 }
 
 export default function ScrollProgress({ 
-  color = "#000000", 
+  color = "var(--scroll-progress)", 
   height = 2 
 }: ScrollProgressProps) {
   const { scrollYProgress } = useScroll()

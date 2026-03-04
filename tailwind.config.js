@@ -122,11 +122,11 @@ module.exports = {
         'heading-xs': ['1rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500' }],
         
         // Body Scale
-        'body-xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
-        'body-lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
-        'body-md': ['1rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
-        'body-sm': ['0.875rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
-        'body-xs': ['0.75rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '400' }],
+'body-xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '500' }],
+      'body-lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '500' }],
+      'body-md': ['1rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '500' }],
+      'body-sm': ['0.875rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '500' }],
+      'body-xs': ['0.75rem', { lineHeight: '1.6', letterSpacing: '0', fontWeight: '500' }],
         
         // Label Scale
         'label-lg': ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '500' }],
@@ -134,16 +134,16 @@ module.exports = {
         'label-sm': ['0.625rem', { lineHeight: '1.4', letterSpacing: '0.01em', fontWeight: '500' }],
         
         // Code Scale
-        'code-lg': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '400', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace' }],
-        'code-md': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '400', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace' }],
-        'code-sm': ['0.625rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '400', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace' }],
+        'code-lg': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace' }],
+        'code-md': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace' }],
+        'code-sm': ['0.625rem', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace' }],
       },
       fontFamily: {
-        'sans': ['InterVariable', 'Inter', 'system-ui', 'sans-serif'],
+        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
         'mono': ['ui-monospace', 'SFMono-Regular', '"SF Mono"', 'Consolas', '"Liberation Mono"', 'Menlo', 'monospace'],
       },
       fontWeight: {
-        'normal': '400',
+        'normal': '500',
         'semibold': '600',
         'bold': '700',
         'extrabold': '800',

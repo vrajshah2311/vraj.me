@@ -25,8 +25,8 @@ export default function NsavePage() {
 
   return (
     <>
-      <ScrollProgress color="#000000" height={2} />
-      <main className="bg-[#FCFCFC] relative overflow-visible">
+      <ScrollProgress height={2} />
+      <main className="relative overflow-visible" style={{ backgroundColor: 'var(--bg)' }}>
         {isScrolled && (
           <div className="case-study-sticky-nav">
             <div className="case-study-sticky-nav-inner">

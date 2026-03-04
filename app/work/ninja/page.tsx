@@ -34,7 +34,7 @@ export default function NinjaWorkPage() {
 
   return (
     <>
-      <ScrollProgress color="#000000" height={2} />
+      <ScrollProgress height={2} />
       <main className="bg-white relative overflow-visible">
         {isScrolled && (
           <div className="case-study-sticky-nav">

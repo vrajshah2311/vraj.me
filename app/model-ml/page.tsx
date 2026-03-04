@@ -29,8 +29,8 @@ export default function ModelMLPage() {
 
   return (
     <>
-      <ScrollProgress color="#000000" height={2} />
-      <main className="bg-[#FCFCFC] relative overflow-visible">
+      <ScrollProgress height={2} />
+      <main className="relative overflow-visible" style={{ backgroundColor: 'var(--bg)' }}>
         {isScrolled && (
           <div className="case-study-sticky-nav">
             <div className="case-study-sticky-nav-inner">
@@ -55,12 +55,12 @@ export default function ModelMLPage() {
 
         <div className="px-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '4px' }}>
           {images.map((src, i) => (
-            <div key={i} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ border: '1px solid rgba(0,0,0,0.02)' }}>
+            <div key={i} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ border: '1px solid var(--border-cell)' }}>
               <Image src={src} alt={`Model ML ${i + 1}`} width={400} height={225} className="w-full h-full object-cover block rounded-[8px]" loading={i === 0 ? 'eager' : 'lazy'} />
             </div>
           ))}
           {Array.from({ length: (4 - (images.length % 4)) % 4 }, (_, i) => (
-            <div key={`empty-${i}`} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ backgroundColor: '#FCFCFC', border: '1px solid rgba(0,0,0,0.02)' }} aria-hidden />
+            <div key={`empty-${i}`} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ backgroundColor: 'var(--bg)', border: '1px solid var(--border-cell)' }} aria-hidden />
           ))}
         </div>
       </main>
