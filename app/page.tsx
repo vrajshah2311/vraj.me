@@ -51,11 +51,11 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="bio-links-group relative overflow-x-hidden" style={{ backgroundColor: 'var(--bg)' }}>
+    <main className="bio-links-group relative overflow-x-hidden" style={{ backgroundColor: '#fff' }}>
       <div className="flex justify-center min-h-screen">
         <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px] relative overflow-visible flex flex-col">
 
-          <motion.div className="pt-[96px]" {...fade(0)}>
+          <motion.div className="pt-[148px]" {...fade(0)}>
             <div
               className="rounded-xl mb-4 inline-block overflow-hidden"
               style={{
@@ -107,7 +107,7 @@ export default function Home() {
         </div>
       </div>
 
-      <motion.div className="fixed bottom-0 left-0 right-0" style={{ backgroundColor: 'var(--bg)' }} {...fade(0.45)}>
+      <motion.div className="fixed bottom-0 left-0 right-0" style={{ backgroundColor: '#fff' }} {...fade(0.45)}>
         <div className="flex justify-center">
           <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px]">
             <div className="w-full h-px mb-4" style={{ backgroundColor: 'var(--border)' }}></div>

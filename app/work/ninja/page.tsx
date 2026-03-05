@@ -81,7 +81,7 @@ export default function NinjaWorkPage() {
           <div className="case-study-image-breakout">
             <ScrollCarousel>
               {[
-                "Ni2.png","Ni3.png","Ni4.png","Ni5.png","Ni6.png","Ni7.png","Ni8.png","Ni9.png","Ni10.png","Ni11.png","Ni12.png","Ni14.png","Ni15.png","Ni16.png","Ni17.png","Ni18.png"
+                "ni2.png","ni3.png","ni4.png","ni5.png","ni6.png","ni7.png","ni8.png","ni9.png","ni10.png","ni11.png","ni12.png","ni14.png","ni15.png","ni16.png","ni17.png","ni18.png"
               ].map((name) => (
                 <div key={name} className="flex-shrink-0">
                   <div className="case-study-image-box">

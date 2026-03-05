@@ -29,19 +29,19 @@ interface ImageItem {
 
 // Ninja project images
 const ninjaImages = [
-  '/images/case-studies/work/Ni2.png',
-  '/images/case-studies/work/Ni3.png',
-  '/images/case-studies/work/Ni4.png',
-  '/images/case-studies/work/Ni5.png',
-  '/images/case-studies/work/Ni6.png',
-  '/images/case-studies/work/Ni7.png',
-  '/images/case-studies/work/Ni8.png',
-  '/images/case-studies/work/Ni9.png',
-  '/images/case-studies/work/Ni10.png',
-  '/images/case-studies/work/Ni11.png',
-  '/images/case-studies/work/Ni12.png',
+  '/images/case-studies/work/ni2.png',
+  '/images/case-studies/work/ni3.png',
+  '/images/case-studies/work/ni4.png',
+  '/images/case-studies/work/ni5.png',
+  '/images/case-studies/work/ni6.png',
+  '/images/case-studies/work/ni7.png',
+  '/images/case-studies/work/ni8.png',
+  '/images/case-studies/work/ni9.png',
+  '/images/case-studies/work/ni10.png',
+  '/images/case-studies/work/ni11.png',
+  '/images/case-studies/work/ni12.png',
   // Added additional Vault image per request
-  '/images/case-studies/MN1.png'
+  '/images/case-studies/mn1.png'
 ]
 
 // Generate images with natural dimensions (CSS Grid handles positioning)

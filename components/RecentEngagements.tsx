@@ -4,11 +4,11 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 
 const engagements = [
-  { company: 'Peec AI', year: '2026', href: '/peec-ai', logo: '/images/logos/peec-ai-logo.png' },
-  { company: 'Model ML', year: '2025', href: '/model-ml', logo: '/images/case-studies/model-ml/logo.svg' },
-  { company: 'Profound', year: '2025', href: '/profound', logo: '/images/logos/isotype-dark.png' },
-  { company: 'nsave', year: '2023', href: '/nsave', logo: '/images/logos/nsave-logo.webp' },
-  { company: 'Hale', year: '2025', href: '/hale', logo: '/images/case-studies/hale/logo.png' },
+  { company: 'Peec AI', year: '2026', href: '/gallery/peec-ai', logo: '/images/logos/peec-ai-logo.png' },
+  { company: 'Model ML', year: '2025', href: '/gallery/model-ml', logo: '/images/case-studies/model-ml/logo.svg' },
+  { company: 'Profound', year: '2025', href: '/gallery/profound', logo: '/images/logos/isotype-dark.png' },
+  { company: 'nsave', year: '2023', href: '/gallery/nsave', logo: '/images/logos/nsave-logo.webp' },
+  { company: 'Hale', year: '2025', href: '/gallery/hale', logo: '/images/case-studies/hale/logo.png' },
 ]
 
 function EngagementPill({
