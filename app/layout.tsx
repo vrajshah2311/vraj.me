@@ -4,7 +4,6 @@ import { ScrollProvider } from '../components/ScrollContext'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 import PerformanceOptimizer from '../components/PerformanceOptimizer'
-import SmoothScroll from '../components/SmoothScroll'
 
 export const metadata: Metadata = {
   title: 'Vraj - Designer & Developer',
@@ -46,7 +45,6 @@ export default function RootLayout({
         <ScrollProvider>
           {children}
         </ScrollProvider>
-        <SmoothScroll />
         <PerformanceOptimizer />
         <SpeedInsights />
       </body>
