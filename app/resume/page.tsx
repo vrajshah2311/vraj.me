@@ -39,7 +39,7 @@ export default function ResumePage() {
               <p style={{ margin: '4px 0 0', fontSize: '14px', color: 'rgba(0,0,0,0.5)', fontWeight: 400, letterSpacing: '-0.01em' }}>Product Designer</p>
             </div>
             <div style={{ textAlign: 'right', fontSize: '12px', color: 'rgba(0,0,0,0.5)', lineHeight: 1.8, letterSpacing: '-0.01em' }}>
-              <div><a href="https://cal.com/vraj-shah/chat-with-vraj" style={{ color: 'inherit', textDecoration: 'none' }}>Say hello</a></div>
+              <div><a href="https://cal.com/vraj-shah/say-hello-to-vraj" style={{ color: 'inherit', textDecoration: 'none' }}>Say hello</a></div>
               <div>vraj.me</div>
               <div>x.com/shahvraj99</div>
               <div>linkedin.com/in/vraj-shah-375990199</div>
