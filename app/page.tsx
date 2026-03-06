@@ -102,7 +102,7 @@ export default function Home() {
             ))}
             <FooterLink label="All work" href="/all-work" />
             <span className="inline-flex items-center gap-1.5">
-              <a href="/lab" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Playground</a>
+              <a href="/lab" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Labs</a>
               <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.35)', background: 'rgba(0,0,0,0.06)', borderRadius: '4px', padding: '1px 5px', lineHeight: '16px' }}>Soon</span>
             </span>
           </motion.div>
