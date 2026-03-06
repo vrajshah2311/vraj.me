@@ -79,7 +79,7 @@ export default function Home() {
             <p className="text-[14px] mt-1" style={{ fontWeight: '500', color: 'var(--text-secondary)' }}>Updated on {lastUpdated}</p>
           </motion.div>
 
-          <div style={{ marginTop: '20px' }}></div>
+          <div style={{ marginTop: '10px' }}></div>
           <Hero />
 
           <motion.div style={{ marginTop: '20px' }} {...fade(0.35)}>
