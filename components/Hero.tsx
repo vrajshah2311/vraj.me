@@ -12,7 +12,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
           >
-            I build products that make complex things feel simple. <a href="https://frisovandestadt.substack.com/p/the-founding-designer" target="_blank" rel="noopener noreferrer" className="bio-link">I care about how things work,</a> how they scale, and how they feel in the smallest moments. I&apos;ve built products at YC and Sequoia-backed startups across SaaS, fintech, AI, and healthtech for both B2B and B2C. My work is grounded in clarity, structure, and the quiet decisions that make something feel effortless.
+            I design products that make complex things feel simple. I&apos;ve shipped end-to-end at YC and Sequoia-backed startups — across fintech, AI, and health — where clarity and craft are non-negotiable.
           </motion.p>
         </div>
       </div>

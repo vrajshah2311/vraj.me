@@ -87,7 +87,7 @@ export default function Home() {
               className="text-[17px] leading-[27px]"
               style={{ fontWeight: '500', color: 'var(--text-bio)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }}
             >
-              I&apos;m currently rounding rectangles at <a href="/peec-ai" className="bio-link">Peec AI</a>, where I&apos;m mainly working on product. I&apos;ve also had the chance to work with great teams at <a href="/model-ml" className="bio-link">Model ML</a>, <a href="/profound" className="bio-link">Profound</a>, <a href="/nsave" className="bio-link">nsave</a>, and <a href="/hale" className="bio-link">Hale</a>—each one taught me something different.
+              Currently rounding rectangles at <a href="/peec-ai" className="bio-link">Peec AI</a>. Before that: <a href="/model-ml" className="bio-link">Model ML</a>, <a href="/profound" className="bio-link">Profound</a>, <a href="/nsave" className="bio-link">nsave</a>, <a href="/hale" className="bio-link">Hale</a>.
             </p>
           </motion.div>
 
