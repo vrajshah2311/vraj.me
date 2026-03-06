@@ -94,7 +94,7 @@ export default function Home() {
 
           <motion.div className="footer-links-group flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6" style={{ marginTop: '32px' }} {...fade(0.45)}>
             {[
-              { label: 'Email', href: 'https://cal.com/vraj-shah/chat-with-vraj?user=vraj-shah&overlayCalendar=true&date=2025-08-12' },
+              { label: 'Say hello', href: 'https://cal.com/vraj-shah/chat-with-vraj?user=vraj-shah&overlayCalendar=true&date=2025-08-12' },
               { label: 'Resume', href: '#' },
               { label: 'X', href: 'https://x.com/shahvraj99' },
               { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vraj-shah-375990199/' },
