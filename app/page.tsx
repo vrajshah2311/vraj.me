@@ -33,6 +33,18 @@ export default function Home() {
   useRegisterScrollContainer(scrollContainerRef)
 
   const [lastUpdated, setLastUpdated] = useState<string>("4 Mar'26")
+  const [showFade, setShowFade] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY + window.innerHeight
+      const total = document.documentElement.scrollHeight
+      setShowFade(scrolled < total - 10)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     fetch('https://api.github.com/repos/vrajshah2311/vraj.me/commits/main')
@@ -54,9 +66,9 @@ export default function Home() {
       <div className="flex justify-center min-h-screen">
         <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px] relative overflow-visible flex flex-col">
 
-          <motion.div className="pt-[148px]" {...fade(0)}>
+          <motion.div className="pt-[20px] sm:pt-[90px] md:pt-[110px] lg:pt-[130px] xl:pt-[148px] 2xl:pt-[170px]" {...fade(0)}>
             <div
-              className="rounded-xl mb-4 inline-block overflow-hidden"
+              className="rounded-xl mb-2 inline-block overflow-hidden"
               style={{
                 padding: '2px',
                 border: '1.5px solid rgba(245, 48, 0, 0.9)',
@@ -79,10 +91,10 @@ export default function Home() {
             <p className="text-[14px] mt-1" style={{ fontWeight: '500', color: 'var(--text-secondary)' }}>Updated on {lastUpdated}</p>
           </motion.div>
 
-          <div style={{ marginTop: '20px' }}></div>
+          <div style={{ marginTop: '28px' }}></div>
           <Hero />
 
-          <motion.div style={{ marginTop: '20px' }} {...fade(0.35)}>
+          <motion.div style={{ marginTop: '16px' }} {...fade(0.35)}>
             <p
               className="text-[17px] leading-[27px]"
               style={{ fontWeight: '500', color: 'var(--text-bio)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }}
@@ -91,7 +103,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div className="footer-links-group flex items-center gap-x-4 sm:gap-x-6" style={{ marginTop: '32px' }} {...fade(0.45)}>
+          <motion.div className="footer-links-group flex items-center gap-x-4 sm:gap-x-6" style={{ marginTop: '28px' }} {...fade(0.45)}>
             <span className="group relative inline-flex items-center">
               <a href="/all-work" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Playground</a>
               <span className="pointer-events-none absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif', width: 'max-content' }}>
@@ -117,6 +129,16 @@ export default function Home() {
 
           <div style={{ marginTop: '80px' }}></div>
         </div>
+      </div>
+
+      <div className="fixed left-0 right-0 pointer-events-none" style={{ bottom: '76px', height: '60px', zIndex: 10, opacity: showFade ? 1 : 0, transition: 'opacity 0.3s' }}>
+        {[
+          { blur: '1px', mask: 'linear-gradient(to bottom, black 0%, transparent 60%)' },
+          { blur: '3px', mask: 'linear-gradient(to bottom, transparent 50%, black 100%)' },
+        ].map(({ blur, mask }, i) => (
+          <div key={i} style={{ position: 'absolute', inset: 0, backdropFilter: `blur(${blur})`, WebkitBackdropFilter: `blur(${blur})`, maskImage: mask, WebkitMaskImage: mask }} />
+        ))}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.6) 70%, #fff 100%)' }} />
       </div>
 
       <motion.div className="fixed bottom-0 left-0 right-0" style={{ backgroundColor: '#fff' }} {...fade(0.45)}>
