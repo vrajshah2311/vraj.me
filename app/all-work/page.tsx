@@ -1,12 +1,7 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Image from "next/image"
-
-import CaseStudyContent from "../../components/CaseStudyContent"
-import CaseStudyTitleLink from "../../components/CaseStudyTitleLink"
-import ScrollProgress from "../../components/ScrollProgress"
-import Breadcrumb from "../../components/Breadcrumb"
 import ImageLightbox from "../../components/ImageLightbox"
 
 const images: string[] = [
@@ -67,40 +62,12 @@ const images: string[] = [
 ]
 
 export default function AllWorkPage() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
-
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 100)
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
 
   return (
     <>
-      <ScrollProgress height={2} />
-      <main className="relative overflow-visible" style={{ backgroundColor: 'var(--bg)' }}>
-        {isScrolled && (
-          <div className="case-study-sticky-nav">
-            <div className="case-study-sticky-nav-inner">
-              <Breadcrumb current="All work" />
-            </div>
-          </div>
-        )}
-
-        <div className="pb-1">
-          <CaseStudyContent>
-            <div className="pt-[96px] pb-2">
-              <div className="case-study-header-nav">
-                <div className="mb-8"><Breadcrumb current="All work" /></div>
-              </div>
-              <div style={{ width: '56px', height: '56px', borderRadius: '14px', backgroundColor: 'var(--border-light)', marginBottom: '24px' }}></div>
-              <CaseStudyTitleLink title="All work" />
-            </div>
-          </CaseStudyContent>
-        </div>
-
-        <div className="px-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '4px' }}>
+      <main style={{ backgroundColor: 'var(--bg)', padding: '4px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4px' }}>
           {images.map((src, i) => (
             <button
               key={i}
@@ -109,10 +76,10 @@ export default function AllWorkPage() {
               style={{ border: '1px solid var(--border-cell)' }}
               onClick={() => setLightboxIndex(i)}
             >
-              <Image src={src} alt={`All work ${i + 1}`} width={400} height={225} className="w-full h-full object-cover block rounded-[8px]" loading={i < 8 ? 'eager' : 'lazy'} />
+              <Image src={src} alt={`All work ${i + 1}`} width={400} height={225} className="w-full h-full object-cover block rounded-[8px]" loading={i < 9 ? 'eager' : 'lazy'} />
             </button>
           ))}
-          {Array.from({ length: (4 - (images.length % 4)) % 4 }, (_, i) => (
+          {Array.from({ length: (3 - (images.length % 3)) % 3 }, (_, i) => (
             <div key={`empty-${i}`} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ backgroundColor: 'var(--bg)', border: '1px solid var(--border-cell)' }} aria-hidden />
           ))}
         </div>
