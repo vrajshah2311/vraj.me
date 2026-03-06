@@ -4,10 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRegisterScrollContainer } from '../components/ScrollContext'
-import { Dancing_Script } from 'next/font/google'
 import Hero from '../components/Hero'
-
-const dancingScript = Dancing_Script({ subsets: ['latin'], weight: ['700'] })
 
 const footerLinkStyle = { fontWeight: '500' as const, fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }
 
@@ -132,7 +129,7 @@ export default function Home() {
                 <FooterLink label="X" href="https://x.com/shahvraj99" />
                 <FooterLink label="LinkedIn" href="https://www.linkedin.com/in/vraj-shah-375990199/" />
               </div>
-              <p className={`text-[22px] shrink-0 ${dancingScript.className}`} style={{ color: 'var(--text-secondary)', lineHeight: 1 }}>Vraj</p>
+              <p className="text-[13px] shrink-0" style={{ fontWeight: '500', color: 'var(--text-secondary)', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace' }}>© 2026 Vraj</p>
             </div>
           </div>
         </div>
