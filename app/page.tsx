@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRegisterScrollContainer } from '../components/ScrollContext'
 import Hero from '../components/Hero'
-import { Signature } from '../components/Signature'
 
 const footerLinkStyle = { fontWeight: '500' as const, fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }
 
@@ -130,7 +129,7 @@ export default function Home() {
                 <FooterLink label="X" href="https://x.com/shahvraj99" />
                 <FooterLink label="LinkedIn" href="https://www.linkedin.com/in/vraj-shah-375990199/" />
               </div>
-              <Signature className="w-16" style={{ color: 'rgba(0,0,0,0.25)' }} />
+              <p className="text-[13px] shrink-0" style={{ fontWeight: '500', color: 'var(--text-secondary)', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace' }}>Vraj</p>
             </div>
           </div>
         </div>
