@@ -6,7 +6,7 @@ import Lenis from '@studio-freight/lenis'
 export default function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.05,
+      lerp: 0.12,
       smoothWheel: true,
     })
 
