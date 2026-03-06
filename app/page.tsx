@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { useRegisterScrollContainer } from '../components/ScrollContext'
 import Hero from '../components/Hero'
 
-const bioTextStyle = { fontWeight: '500' as const, color: 'var(--text-bio)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }
 const footerLinkStyle = { fontWeight: '500' as const, fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }
 
 function FooterLink({ label, href }: { label: string; href: string }) {
@@ -101,8 +100,9 @@ export default function Home() {
             ].map(({ label, href }) => (
               <FooterLink key={label} label={label} href={href} />
             ))}
+            <FooterLink label="All work" href="/all-work" />
             <span className="inline-flex items-center gap-1.5">
-              <a href="/lab" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Lab</a>
+              <a href="/lab" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Playground</a>
               <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.35)', background: 'rgba(0,0,0,0.06)', borderRadius: '4px', padding: '1px 5px', lineHeight: '16px' }}>Soon</span>
             </span>
           </motion.div>
