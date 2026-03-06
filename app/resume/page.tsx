@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import PrintButton from './PrintButton'
 
 export const metadata: Metadata = {
   title: 'Vraj Shah — Resume',
@@ -19,15 +20,7 @@ export default function ResumePage() {
         body { margin: 0; background: #f0f0f0; }
       `}</style>
 
-      {/* Print button */}
-      <div className="no-print" style={{ position: 'fixed', top: 20, right: 20, zIndex: 100 }}>
-        <button
-          onClick={() => window.print()}
-          style={{ padding: '8px 16px', background: '#000', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '13px', fontWeight: 500 }}
-        >
-          Print / Save PDF
-        </button>
-      </div>
+      <PrintButton />
 
       <div style={{ minHeight: '100vh', background: '#f0f0f0', padding: '40px 20px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif' }}>
         <div className="page" style={{ maxWidth: '794px', margin: '0 auto', background: '#fff', boxShadow: '0 4px 40px rgba(0,0,0,0.1)', padding: '56px 56px 64px' }}>
