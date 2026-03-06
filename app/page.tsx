@@ -97,9 +97,9 @@ export default function Home() {
               <a href="/lab" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>My lab</a>
               <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.35)', background: 'rgba(0,0,0,0.06)', borderRadius: '4px', padding: '1px 5px', lineHeight: '16px' }}>Soon</span>
               <span className="pointer-events-none absolute bottom-full left-0 mb-3 w-60 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif' }}>
-                <span style={{ display: 'block', background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 16px 40px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)', borderRadius: '12px', padding: '10px 13px' }}>
+                <span style={{ display: 'block', background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 16px 40px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)', borderRadius: '12px', padding: '8px 10px' }}>
                   <span style={{ display: 'block', fontSize: '11px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: '2px' }}>My lab</span>
-                  <span style={{ display: 'block', fontSize: '12.5px', lineHeight: '1.55', fontWeight: 400, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.75)' }}>This is where I share my experiments and things I&apos;m building or exploring</span>
+                  <span style={{ display: 'block', fontSize: '13px', lineHeight: '1.55', fontWeight: 500, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.75)' }}>This is where I share my experiments and things I&apos;m building or exploring</span>
                 </span>
                 <span style={{ display: 'block', width: '10px', height: '10px', background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.08)', borderTop: 'none', borderLeft: 'none', transform: 'rotate(45deg)', marginTop: '-6px', marginLeft: '14px' }} />
               </span>
