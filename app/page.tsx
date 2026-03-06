@@ -97,10 +97,6 @@ export default function Home() {
               <a href="/lab" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Labs</a>
               <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.35)', background: 'rgba(0,0,0,0.06)', borderRadius: '4px', padding: '1px 5px', lineHeight: '16px' }}>Soon</span>
             </span>
-            <span style={{ color: 'rgba(0,0,0,0.15)', fontSize: '17px', lineHeight: '27px', fontWeight: 300 }}>|</span>
-            <FooterLink label="Say hello" href="https://cal.com/vraj-shah/say-hello-to-vraj?overlayCalendar=true" />
-            <FooterLink label="X" href="https://x.com/shahvraj99" />
-            <FooterLink label="LinkedIn" href="https://www.linkedin.com/in/vraj-shah-375990199/" />
           </motion.div>
 
           <div style={{ marginTop: '80px' }}></div>
@@ -111,7 +107,12 @@ export default function Home() {
         <div className="flex justify-center">
           <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px]">
             <div className="w-full h-px mb-4" style={{ backgroundColor: 'var(--border)' }}></div>
-            <div className="pb-8 flex items-center justify-end">
+            <div className="pb-8 flex items-center justify-between">
+              <div className="flex items-center gap-x-4 sm:gap-x-6">
+                <FooterLink label="Say hello" href="https://cal.com/vraj-shah/say-hello-to-vraj?overlayCalendar=true" />
+                <FooterLink label="X" href="https://x.com/shahvraj99" />
+                <FooterLink label="LinkedIn" href="https://www.linkedin.com/in/vraj-shah-375990199/" />
+              </div>
               <p className="text-[13px] shrink-0" style={{ fontWeight: '500', color: 'var(--text-secondary)', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace' }}>© 2026 Vraj</p>
             </div>
           </div>
