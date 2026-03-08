@@ -73,14 +73,14 @@ export default function AllWorkPage() {
               key={i}
               type="button"
               className="aspect-video rounded-[8px] overflow-hidden relative w-full text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--link)]"
-              style={{ border: '1px solid var(--border-cell)' }}
+              style={{ border: 'none' }}
               onClick={() => setLightboxIndex(i)}
             >
               <Image src={src} alt={`All work ${i + 1}`} width={400} height={225} className="w-full h-full object-cover block rounded-[8px]" loading={i < 9 ? 'eager' : 'lazy'} unoptimized />
             </button>
           ))}
           {Array.from({ length: (3 - (images.length % 3)) % 3 }, (_, i) => (
-            <div key={`empty-${i}`} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ backgroundColor: 'var(--bg)', border: '1px solid var(--border-cell)' }} aria-hidden />
+            <div key={`empty-${i}`} className="aspect-video rounded-[8px] overflow-hidden relative" style={{ backgroundColor: 'var(--bg)' }} aria-hidden />
           ))}
         </div>
 
