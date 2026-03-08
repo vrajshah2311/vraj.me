@@ -76,7 +76,7 @@ export default function AllWorkPage() {
               style={{ border: '1px solid var(--border-cell)' }}
               onClick={() => setLightboxIndex(i)}
             >
-              <Image src={src} alt={`All work ${i + 1}`} width={400} height={225} className="w-full h-full object-cover block rounded-[8px]" loading={i < 9 ? 'eager' : 'lazy'} />
+              <Image src={src} alt={`All work ${i + 1}`} width={400} height={225} className="w-full h-full object-cover block rounded-[8px]" loading={i < 9 ? 'eager' : 'lazy'} unoptimized />
             </button>
           ))}
           {Array.from({ length: (3 - (images.length % 3)) % 3 }, (_, i) => (
