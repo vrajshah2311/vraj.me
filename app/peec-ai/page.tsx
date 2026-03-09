@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import ImageLightbox from "../../components/ImageLightbox"
 
 const images = [
+  '/images/case-studies/peec-ai/aa1.png',
   '/images/case-studies/peec-ai/peec-prompts-1.png',
   '/images/case-studies/peec-ai/peec-prompts-2.png',
   '/images/case-studies/peec-ai/peec-prompt-builder-1.png',
@@ -22,7 +23,6 @@ const images = [
   '/images/case-studies/peec-ai/peec-table-1.png',
   '/images/case-studies/peec-ai/peec-url-details-1.png',
   '/images/case-studies/peec-ai/peec-brands-1.png',
-  '/images/case-studies/peec-ai/aa1.png',
 ]
 
 export default function PeecAIPage() {
