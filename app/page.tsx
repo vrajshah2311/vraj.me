@@ -147,6 +147,7 @@ export default function Home() {
             <div className="w-full h-px mb-4" style={{ backgroundColor: 'var(--border)' }}></div>
             <div className="pb-8 flex items-center justify-between">
               <div className="flex items-center gap-x-4 sm:gap-x-6">
+                <a href="/resume" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Resume</a>
                 <FooterLink label="Say hello" href="https://cal.com/vraj-shah/say-hello-to-vraj?overlayCalendar=true" />
                 <FooterLink label="X" href="https://x.com/shahvraj99" />
                 <FooterLink label="LinkedIn" href="https://www.linkedin.com/in/vraj-shah-375990199/" />

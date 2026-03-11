@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import ImageLightbox from "../../components/ImageLightbox"
 
 const images = [
+  '/images/case-studies/peec-ai/projects-cpp.png',
   '/images/case-studies/peec-ai/aa1.png',
   '/images/case-studies/peec-ai/peec-prompts-1.png',
   '/images/case-studies/peec-ai/peec-prompts-2.png',
