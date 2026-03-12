@@ -6,6 +6,71 @@ export const metadata: Metadata = {
   robots: { index: false },
 }
 
+const SF = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
+
+const experience = [
+  {
+    company: 'Peec AI',
+    role: 'Founding Designer',
+    period: '2024 – Present',
+    location: 'Berlin, DE',
+    bullets: [
+      'First and sole designer — built the entire product from 0 to 1, establishing the visual language, component system, and interaction patterns.',
+      'Shipped core product features end-to-end: prompt builder, actions flow, brand analytics, data tables, URL details, and onboarding.',
+      'Worked directly with founders and engineering to ship fast without sacrificing craft.',
+    ],
+  },
+  {
+    company: 'Profound',
+    role: 'Product Designer',
+    period: '2024',
+    location: 'New York, NY',
+    bullets: [
+      'Sole designer at an AI visibility startup tracking how models like ChatGPT and Perplexity talk about brands — 100M+ queries/month across 18 countries.',
+      'Designed the core dashboard, brand monitoring tools, AI-generated insights UI, and reporting flows.',
+    ],
+  },
+  {
+    company: 'Model ML',
+    role: 'Product Designer',
+    period: '2023',
+    location: '',
+    bullets: [
+      'Designed the dashboard and data visualisation experience for a B2B ML platform helping teams build, deploy, and monitor AI models at scale.',
+    ],
+  },
+  {
+    company: 'nsave',
+    role: 'Product Designer',
+    period: '2022 – 2023',
+    location: 'London, UK',
+    bullets: [
+      'Led design from concept to launch for a cross-border fintech bringing USD/EUR savings and everyday banking to underbanked, high-inflation markets.',
+      'Owned end-to-end design across 11 shipped screens: onboarding, accounts, transactions, and investments.',
+    ],
+  },
+  {
+    company: 'Context',
+    role: 'Product Designer',
+    period: '2021 – 2022',
+    location: '',
+    bullets: [
+      'Led design initiatives across the core product, enhancing user experiences and contributing to scalable design systems.',
+    ],
+  },
+  {
+    company: 'Hale',
+    role: 'Product Designer',
+    period: '2020 – 2021',
+    location: '',
+    bullets: [
+      'Designed the end-to-end product experience for a health and wellness platform focused on personalised coaching and habit building.',
+    ],
+  },
+]
+
+const skills = ['Product Design', 'UI / UX', 'Interaction Design', 'Design Systems', 'Prototyping', 'User Research', 'Figma', 'Framer', 'Next.js / React', 'Cross-functional Leadership']
+
 export default function ResumePage() {
   return (
     <>
@@ -18,122 +83,111 @@ export default function ResumePage() {
         }
         * { box-sizing: border-box; }
         body { margin: 0; background: #f0f0f0; }
+        a { color: inherit; text-decoration: none; }
       `}</style>
 
       <PrintButton />
 
-      <div style={{ minHeight: '100vh', background: '#f0f0f0', padding: '40px 20px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif' }}>
-        <div className="page" style={{ maxWidth: '794px', margin: '0 auto', background: '#fff', boxShadow: '0 4px 40px rgba(0,0,0,0.1)', padding: '56px 56px 64px' }}>
+      <div style={{ minHeight: '100vh', background: '#f0f0f0', padding: '40px 20px', fontFamily: SF }}>
+        <div className="page" style={{ maxWidth: '794px', margin: '0 auto', background: '#fff', boxShadow: '0 4px 40px rgba(0,0,0,0.1)', borderRadius: '4px', overflow: 'hidden' }}>
 
-          {/* Header */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '40px', paddingBottom: '28px', borderBottom: '1px solid #e5e5e5' }}>
-            <div>
-              <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 600, letterSpacing: '-0.03em', color: '#000', lineHeight: 1.1 }}>Vraj Shah</h1>
-              <p style={{ margin: '4px 0 0', fontSize: '14px', color: 'rgba(0,0,0,0.5)', fontWeight: 400, letterSpacing: '-0.01em' }}>Product Designer</p>
-            </div>
-            <div style={{ textAlign: 'right', fontSize: '12px', color: 'rgba(0,0,0,0.5)', lineHeight: 1.8, letterSpacing: '-0.01em' }}>
-              <div><a href="https://cal.com/vraj-shah/say-hello-to-vraj?overlayCalendar=true" style={{ color: 'inherit', textDecoration: 'none' }}>Say hello</a></div>
-              <div>vraj.me</div>
-              <div>x.com/shahvraj99</div>
-              <div>linkedin.com/in/vraj-shah-375990199</div>
-            </div>
-          </div>
+          {/* Top accent bar */}
+          <div style={{ height: '3px', background: 'linear-gradient(90deg, rgba(245,48,0,0.9), rgba(255,130,100,0.7))' }} />
 
-          {/* About */}
-          <div style={{ marginBottom: '36px' }}>
-            <SectionLabel>About</SectionLabel>
-            <p style={{ margin: 0, fontSize: '13px', lineHeight: 1.7, color: 'rgba(0,0,0,0.65)', maxWidth: '540px', letterSpacing: '-0.01em' }}>
-              Product designer with a track record of building end-to-end experiences at fast-moving startups across fintech, AI, and health. I work across the full design process — from early concepts to shipped product — with a focus on clarity, craft, and things that actually work.
-            </p>
-          </div>
+          <div style={{ padding: '48px 56px 56px' }}>
 
-          {/* Experience */}
-          <div style={{ marginBottom: '36px' }}>
-            <SectionLabel>Experience</SectionLabel>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
-
-              <ExperienceItem
-                role="Product Designer"
-                company="Peec AI"
-                period="2024 – Present"
-                bullets={[
-                  'Designed the full product experience for an AI-powered marketing intelligence platform tracking brand visibility across paid and organic channels.',
-                  'Built and shipped core features: prompt builder, actions flow, onboarding, data tables, URL details, and brand analytics views.',
-                  'Worked closely with engineering and product to define interaction patterns and component systems from scratch.',
-                ]}
-              />
-
-              <ExperienceItem
-                role="Product Designer"
-                company="Profound"
-                location="New York, NY"
-                period="2024"
-                bullets={[
-                  'Sole product designer at a startup tracking how AI agents (ChatGPT, Perplexity, etc.) talk about brands — processing 100M+ queries/month across 18 countries.',
-                  'Designed the core dashboard, brand monitoring tools, reporting flows, and AI-generated insights UI.',
-                  'Collaborated directly with founders to establish the full visual and interaction language of the product.',
-                ]}
-              />
-
-              <ExperienceItem
-                role="Product Designer"
-                company="nSave"
-                period="2023"
-                bullets={[
-                  'Led design from concept to launch for a cross-border fintech platform bringing savings, investments, and everyday banking to underbanked and high-inflation markets.',
-                  'Owned the end-to-end design process across 11 shipped screens covering onboarding, accounts, and transactions.',
-                ]}
-              />
-
-              <ExperienceItem
-                role="Product Designer"
-                company="Model ML"
-                period="2023"
-                bullets={[
-                  'Designed the core dashboard and data visualization experience for a B2B ML platform helping teams build, deploy, and monitor AI models at scale.',
-                ]}
-              />
-
-              <ExperienceItem
-                role="Product Designer"
-                company="Hale"
-                period="2025"
-                bullets={[
-                  'Designed the end-to-end product experience for a health and wellness platform focused on personalized coaching and sustainable habit building.',
-                ]}
-              />
-
-            </div>
-          </div>
-
-          {/* Skills */}
-          <div style={{ marginBottom: '36px' }}>
-            <SectionLabel>Skills</SectionLabel>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 40px' }}>
-              <SkillGroup
-                title="Design"
-                items={['Product Design', 'UI / UX Design', 'Interaction Design', 'Design Systems', 'Prototyping & Wireframing']}
-              />
-              <SkillGroup
-                title="Tools & Workflow"
-                items={['Figma', 'Framer', 'Next.js / React', 'User Research', 'Cross-functional Collaboration']}
-              />
-            </div>
-          </div>
-
-          {/* Education — placeholder */}
-          {/* Uncomment and fill in when ready
-          <div>
-            <SectionLabel>Education</SectionLabel>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+            {/* Header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '36px' }}>
               <div>
-                <div style={{ fontWeight: 500, color: '#000', letterSpacing: '-0.01em' }}>University Name</div>
-                <div style={{ color: 'rgba(0,0,0,0.5)', marginTop: '2px' }}>Degree · Year – Year</div>
+                <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 700, letterSpacing: '-0.04em', color: '#000', lineHeight: 1 }}>Vraj Shah</h1>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
+                  <span style={{ fontSize: '13px', fontWeight: 600, color: 'rgba(245,48,0,0.9)', letterSpacing: '-0.01em' }}>Founding Designer</span>
+                  <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'rgba(0,0,0,0.2)', display: 'inline-block' }} />
+                  <span style={{ fontSize: '13px', color: 'rgba(0,0,0,0.45)', letterSpacing: '-0.01em' }}>Berlin, DE</span>
+                </div>
+              </div>
+              <div style={{ textAlign: 'right', fontSize: '11.5px', color: 'rgba(0,0,0,0.45)', lineHeight: 2, letterSpacing: '-0.01em' }}>
+                <div><a href="https://vraj.me">vraj.me</a></div>
+                <div><a href="https://x.com/shahvraj99">x.com/shahvraj99</a></div>
+                <div><a href="https://linkedin.com/in/vraj-shah-375990199">linkedin.com/in/vraj-shah-375990199</a></div>
+                <div><a href="https://cal.com/vraj-shah/say-hello-to-vraj">cal.com/vraj-shah</a></div>
               </div>
             </div>
-          </div>
-          */}
 
+            {/* Divider */}
+            <div style={{ height: '1px', background: '#ebebeb', marginBottom: '32px' }} />
+
+            {/* About */}
+            <div style={{ marginBottom: '32px' }}>
+              <SectionLabel>About</SectionLabel>
+              <p style={{ margin: 0, fontSize: '13px', lineHeight: 1.75, color: 'rgba(0,0,0,0.62)', maxWidth: '560px', letterSpacing: '-0.01em' }}>
+                Product designer with a multidisciplinary background in business and engineering. I specialise in 0→1 product work at fast-moving startups — across fintech, AI, and health — where I own the full design process from early concept to shipped product. I care about clarity, craft, and building things that actually work for real people.
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: '#ebebeb', marginBottom: '32px' }} />
+
+            {/* Experience */}
+            <div style={{ marginBottom: '32px' }}>
+              <SectionLabel>Experience</SectionLabel>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                {experience.map((job, i) => (
+                  <div key={i} style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: '0 28px' }}>
+                    {/* Left */}
+                    <div style={{ paddingTop: '1px' }}>
+                      <div style={{ fontSize: '12px', fontWeight: 600, color: '#000', letterSpacing: '-0.02em' }}>{job.company}</div>
+                      <div style={{ fontSize: '11px', color: 'rgba(0,0,0,0.4)', marginTop: '3px', letterSpacing: '-0.01em' }}>{job.period}</div>
+                      {job.location && <div style={{ fontSize: '11px', color: 'rgba(0,0,0,0.3)', marginTop: '1px', letterSpacing: '-0.01em' }}>{job.location}</div>}
+                    </div>
+                    {/* Right */}
+                    <div>
+                      <div style={{ fontSize: '12px', fontWeight: 600, color: '#111', marginBottom: '7px', letterSpacing: '-0.02em' }}>{job.role}</div>
+                      <ul style={{ margin: 0, padding: '0 0 0 12px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        {job.bullets.map((b, bi) => (
+                          <li key={bi} style={{ fontSize: '11.5px', lineHeight: 1.65, color: 'rgba(0,0,0,0.58)', letterSpacing: '-0.01em' }}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: '#ebebeb', marginBottom: '32px' }} />
+
+            {/* Education */}
+            <div style={{ marginBottom: '32px' }}>
+              <SectionLabel>Education</SectionLabel>
+              <div style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: '0 28px' }}>
+                <div style={{ paddingTop: '1px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 600, color: '#000', letterSpacing: '-0.02em' }}>University of York</div>
+                  <div style={{ fontSize: '11px', color: 'rgba(0,0,0,0.4)', marginTop: '3px', letterSpacing: '-0.01em' }}>York, UK</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '12px', fontWeight: 600, color: '#111', letterSpacing: '-0.02em' }}>Master's in Business Administration</div>
+                  <div style={{ fontSize: '11px', color: 'rgba(0,0,0,0.4)', marginTop: '3px', letterSpacing: '-0.01em' }}>Multidisciplinary foundation spanning business strategy, engineering, and human-centred design.</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: '#ebebeb', marginBottom: '32px' }} />
+
+            {/* Skills */}
+            <div>
+              <SectionLabel>Skills</SectionLabel>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                {skills.map((skill, i) => (
+                  <span key={i} style={{ fontSize: '11.5px', fontWeight: 500, color: 'rgba(0,0,0,0.6)', background: '#f5f5f5', borderRadius: '5px', padding: '3px 9px', letterSpacing: '-0.01em' }}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </>
@@ -142,47 +196,8 @@ export default function ResumePage() {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.35)', marginBottom: '14px' }}>
+    <div style={{ fontSize: '9.5px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: '16px', fontFamily: SF }}>
       {children}
-    </div>
-  )
-}
-
-function ExperienceItem({ role, company, location, period, bullets }: {
-  role: string
-  company: string
-  location?: string
-  period: string
-  bullets: string[]
-}) {
-  return (
-    <div style={{ display: 'grid', gridTemplateColumns: '180px 1fr', gap: '0 24px' }}>
-      <div>
-        <div style={{ fontSize: '12px', fontWeight: 500, color: '#000', letterSpacing: '-0.01em' }}>{company}</div>
-        <div style={{ fontSize: '11.5px', color: 'rgba(0,0,0,0.45)', marginTop: '2px', letterSpacing: '-0.01em' }}>{period}</div>
-        {location && <div style={{ fontSize: '11.5px', color: 'rgba(0,0,0,0.35)', marginTop: '1px', letterSpacing: '-0.01em' }}>{location}</div>}
-      </div>
-      <div>
-        <div style={{ fontSize: '12px', fontWeight: 500, color: '#000', marginBottom: '6px', letterSpacing: '-0.01em' }}>{role}</div>
-        <ul style={{ margin: 0, padding: '0 0 0 14px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          {bullets.map((b, i) => (
-            <li key={i} style={{ fontSize: '12px', lineHeight: 1.6, color: 'rgba(0,0,0,0.6)', letterSpacing: '-0.01em' }}>{b}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  )
-}
-
-function SkillGroup({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div style={{ marginBottom: '8px' }}>
-      <div style={{ fontSize: '12px', fontWeight: 500, color: '#000', marginBottom: '6px', letterSpacing: '-0.01em' }}>{title}</div>
-      <ul style={{ margin: 0, padding: '0 0 0 14px', display: 'flex', flexDirection: 'column', gap: '3px' }}>
-        {items.map((item, i) => (
-          <li key={i} style={{ fontSize: '12px', color: 'rgba(0,0,0,0.6)', lineHeight: 1.5, letterSpacing: '-0.01em' }}>{item}</li>
-        ))}
-      </ul>
     </div>
   )
 }
