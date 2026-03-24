@@ -104,6 +104,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div className="footer-links-group flex items-center gap-x-4 sm:gap-x-6" style={{ marginTop: '28px' }} {...fade(0.45)}>
+            <a href="/thoughts" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Thoughts</a>
             <span className="group relative inline-flex items-center">
               <a href="/all-work" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Playground</a>
               <span className="pointer-events-none absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif', width: 'max-content' }}>

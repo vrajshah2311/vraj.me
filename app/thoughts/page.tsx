@@ -1,0 +1,45 @@
+const articles: { title: string; date: string; href: string }[] = [
+  // Add articles here
+]
+
+export default function ThoughtsPage() {
+  return (
+    <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh', padding: '80px 24px' }}>
+      <div style={{ maxWidth: '550px', margin: '0 auto' }}>
+
+        {articles.length === 0 ? (
+          <p style={{ fontSize: '14px', color: 'var(--text-muted)', fontWeight: 500, letterSpacing: '-0.01em' }}>
+            Coming soon
+          </p>
+        ) : (
+          <div className="group/list">
+            {articles.map((article, i) => (
+              <a
+                key={i}
+                href={article.href}
+                className="group-hover/list:opacity-40 hover:!opacity-100 transition-opacity duration-200"
+                style={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  gap: '72px',
+                  paddingTop: '10px',
+                  paddingBottom: '10px',
+                  borderBottom: '0.4px solid var(--border)',
+                  textDecoration: 'none',
+                }}
+              >
+                <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: 400, flexShrink: 0, letterSpacing: '-0.01em' }}>
+                  {article.date}
+                </span>
+                <span style={{ fontSize: '14px', color: 'var(--text-primary)', fontWeight: 500, letterSpacing: '-0.02em' }}>
+                  {article.title}
+                </span>
+              </a>
+            ))}
+          </div>
+        )}
+
+      </div>
+    </main>
+  )
+}

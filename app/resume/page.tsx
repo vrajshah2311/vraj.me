@@ -12,53 +12,49 @@ const experience = [
   {
     company: 'Peec AI',
     role: 'Founding Designer',
-    period: 'Sep 2025 – Present',
     location: 'Berlin, Germany',
     bullets: [
       'First and sole designer — built the entire product from 0 to 1, establishing the visual language, component system, and interaction patterns.',
-      'Shipped core product features end-to-end: prompt builder, actions flow, brand analytics, data tables, URL details, and onboarding.',
-      'Worked directly with founders and engineering to ship fast without sacrificing craft.',
+      'Shipped core features end-to-end: prompt builder, actions flow, brand analytics, data tables, and onboarding.',
     ],
   },
   {
     company: 'Context',
     role: 'Design Lead → Senior Product Designer',
-    period: 'May 2024 – Jul 2025',
     location: 'Palo Alto, CA · Remote',
     bullets: [
       'Progressed from Senior Product Designer (part-time) to Design Lead (full-time) within 9 months.',
-      'Led design initiatives across the core product, enhancing user experiences and contributing to scalable design systems.',
+      'Led design across the core product, contributing to scalable systems and user-centred experiences.',
     ],
   },
   {
     company: 'nsave',
     role: 'Founding Designer',
-    period: 'Jan 2023 – Jan 2024',
     location: 'London, UK',
     bullets: [
-      'Led design from concept to launch for a cross-border fintech bringing USD/EUR savings and everyday banking to underbanked, high-inflation markets.',
+      'Led design from concept to launch for a cross-border fintech bringing USD/EUR banking to underbanked markets.',
       'Owned end-to-end design across 11 shipped screens: onboarding, accounts, transactions, and investments.',
     ],
   },
   {
     company: 'Multithread',
     role: 'Product Designer',
-    period: 'Jun 2022 – Nov 2023',
     location: 'London, UK · Remote',
     bullets: [
-      'Contract product designer working across multiple product teams, delivering end-to-end design for B2B and consumer-facing products.',
+      'Contract designer across multiple product teams, delivering end-to-end design for B2B and consumer products.',
     ],
   },
   {
     company: 'Scaledock',
     role: 'Designer',
-    period: 'Sep 2020 – Nov 2022',
     location: '',
     bullets: [
-      'Early-stage product design across core product flows, contributing to the visual identity and user experience from the ground up.',
+      'Early-stage product design across core flows, contributing to the visual identity and UX from the ground up.',
     ],
   },
 ]
+
+const contracts = ['Tryprofound', 'Join Hale', 'ModelML', 'Linktree', 'Whop.io']
 
 const skills = ['Product Design', 'UI / UX', 'Interaction Design', 'Design Systems', 'Prototyping', 'User Research', 'Figma', 'Framer', 'Next.js / React', 'Cross-functional Leadership']
 
@@ -140,6 +136,21 @@ export default function ResumePage() {
                       </ul>
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: '#ebebeb', marginBottom: '32px' }} />
+
+            {/* Contracts */}
+            <div style={{ marginBottom: '32px' }}>
+              <SectionLabel>Contracts</SectionLabel>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                {contracts.map((name, i) => (
+                  <span key={i} style={{ fontSize: '11.5px', fontWeight: 500, color: 'rgba(0,0,0,0.6)', background: '#f5f5f5', borderRadius: '5px', padding: '3px 9px', letterSpacing: '-0.01em' }}>
+                    {name}
+                  </span>
                 ))}
               </div>
             </div>
