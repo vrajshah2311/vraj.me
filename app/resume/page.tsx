@@ -12,8 +12,8 @@ const experience = [
   {
     company: 'Peec AI',
     role: 'Founding Designer',
-    period: '2024 – Present',
-    location: 'Berlin, DE',
+    period: 'Sep 2025 – Present',
+    location: 'Berlin, Germany',
     bullets: [
       'First and sole designer — built the entire product from 0 to 1, establishing the visual language, component system, and interaction patterns.',
       'Shipped core product features end-to-end: prompt builder, actions flow, brand analytics, data tables, URL details, and onboarding.',
@@ -21,28 +21,19 @@ const experience = [
     ],
   },
   {
-    company: 'Profound',
-    role: 'Product Designer',
-    period: '2024',
-    location: 'New York, NY',
+    company: 'Context',
+    role: 'Design Lead → Senior Product Designer',
+    period: 'May 2024 – Jul 2025',
+    location: 'Palo Alto, CA · Remote',
     bullets: [
-      'Sole designer at an AI visibility startup tracking how models like ChatGPT and Perplexity talk about brands — 100M+ queries/month across 18 countries.',
-      'Designed the core dashboard, brand monitoring tools, AI-generated insights UI, and reporting flows.',
-    ],
-  },
-  {
-    company: 'Model ML',
-    role: 'Product Designer',
-    period: '2023',
-    location: '',
-    bullets: [
-      'Designed the dashboard and data visualisation experience for a B2B ML platform helping teams build, deploy, and monitor AI models at scale.',
+      'Progressed from Senior Product Designer (part-time) to Design Lead (full-time) within 9 months.',
+      'Led design initiatives across the core product, enhancing user experiences and contributing to scalable design systems.',
     ],
   },
   {
     company: 'nsave',
-    role: 'Product Designer',
-    period: '2022 – 2023',
+    role: 'Founding Designer',
+    period: 'Jan 2023 – Jan 2024',
     location: 'London, UK',
     bullets: [
       'Led design from concept to launch for a cross-border fintech bringing USD/EUR savings and everyday banking to underbanked, high-inflation markets.',
@@ -50,21 +41,21 @@ const experience = [
     ],
   },
   {
-    company: 'Context',
+    company: 'Multithread',
     role: 'Product Designer',
-    period: '2021 – 2022',
-    location: '',
+    period: 'Jun 2022 – Nov 2023',
+    location: 'London, UK · Remote',
     bullets: [
-      'Led design initiatives across the core product, enhancing user experiences and contributing to scalable design systems.',
+      'Contract product designer working across multiple product teams, delivering end-to-end design for B2B and consumer-facing products.',
     ],
   },
   {
-    company: 'Hale',
-    role: 'Product Designer',
-    period: '2020 – 2021',
+    company: 'Scaledock',
+    role: 'Designer',
+    period: 'Sep 2020 – Nov 2022',
     location: '',
     bullets: [
-      'Designed the end-to-end product experience for a health and wellness platform focused on personalised coaching and habit building.',
+      'Early-stage product design across core product flows, contributing to the visual identity and user experience from the ground up.',
     ],
   },
 ]
@@ -101,7 +92,7 @@ export default function ResumePage() {
               <div>
                 <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 700, letterSpacing: '-0.04em', color: '#000', lineHeight: 1 }}>Vraj Shah</h1>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
-                  <span style={{ fontSize: '13px', fontWeight: 600, color: 'rgba(245,48,0,0.9)', letterSpacing: '-0.01em' }}>Founding Designer</span>
+                  <span style={{ fontSize: '13px', fontWeight: 600, color: 'rgba(245,48,0,0.9)', letterSpacing: '-0.01em' }}>Founding Designer @ Peec AI</span>
                   <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'rgba(0,0,0,0.2)', display: 'inline-block' }} />
                   <span style={{ fontSize: '13px', color: 'rgba(0,0,0,0.45)', letterSpacing: '-0.01em' }}>Berlin, DE</span>
                 </div>
@@ -137,8 +128,7 @@ export default function ResumePage() {
                     {/* Left */}
                     <div style={{ paddingTop: '1px' }}>
                       <div style={{ fontSize: '12px', fontWeight: 600, color: '#000', letterSpacing: '-0.02em' }}>{job.company}</div>
-                      <div style={{ fontSize: '11px', color: 'rgba(0,0,0,0.4)', marginTop: '3px', letterSpacing: '-0.01em' }}>{job.period}</div>
-                      {job.location && <div style={{ fontSize: '11px', color: 'rgba(0,0,0,0.3)', marginTop: '1px', letterSpacing: '-0.01em' }}>{job.location}</div>}
+                      {job.location && <div style={{ fontSize: '11px', color: 'rgba(0,0,0,0.3)', marginTop: '3px', letterSpacing: '-0.01em' }}>{job.location}</div>}
                     </div>
                     {/* Right */}
                     <div>
