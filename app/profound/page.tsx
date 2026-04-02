@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Breadcrumb from "../../components/Breadcrumb"
 import CaseStudyTitleLink from "../../components/CaseStudyTitleLink"
 import Image from "next/image"
@@ -15,25 +15,10 @@ import ScrollProgress from "../../components/ScrollProgress"
 import ScrollCarousel from "../../components/ScrollCarousel"
 
 export default function ProfoundPage() {
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 100)
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
   return (
     <>
       <ScrollProgress height={2} />
       <main className="relative overflow-visible" style={{ backgroundColor: 'var(--bg)' }}>
-        {isScrolled && (
-          <div className="case-study-sticky-nav">
-            <div className="case-study-sticky-nav-inner">
-              <Breadcrumb current="Profound" />
-            </div>
-          </div>
-        )}
 
         <CaseStudySection>
           <CaseStudyContent>
