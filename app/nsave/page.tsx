@@ -2,14 +2,12 @@
 
 import React from "react"
 import Breadcrumb from "../../components/Breadcrumb"
-import CaseStudyTitleLink from "../../components/CaseStudyTitleLink"
 import Image from "next/image"
 import CaseStudySection from "../../components/CaseStudySection"
 import CaseStudyContent from "../../components/CaseStudyContent"
 import CaseStudyImage from "../../components/CaseStudyImage"
 import CaseStudyHeading from "../../components/CaseStudyHeading"
 import CaseStudyText from "../../components/CaseStudyText"
-import CaseStudyLogo from "../../components/CaseStudyLogo"
 import ScrollProgress from "../../components/ScrollProgress"
 import ScrollCarousel from "../../components/ScrollCarousel"
 import CaseStudyStickyNav from "../../components/CaseStudyStickyNav"
@@ -21,25 +19,30 @@ export default function NsavePage() {
       <CaseStudyStickyNav current="nsave" />
       <main className="relative overflow-visible" style={{ backgroundColor: 'var(--bg)' }}>
 
+        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 20px' }}>
+          <div style={{ paddingTop: '96px', paddingBottom: '20px' }}>
+            <div className="mb-8"><Breadcrumb current="nsave" /></div>
+            <div style={{ width: '64px', height: '64px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.08)', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Image src="/images/logos/nsave-logo.webp" alt="nsave" width={64} height={64} style={{ width: '100%', height: '100%', objectFit: 'contain' }} priority />
+            </div>
+          </div>
+          <h1 style={{ fontSize: '22px', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '14px', lineHeight: 1.1, fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif' }}>nsave</h1>
+          <p style={{ fontSize: '17px', lineHeight: 1.6, color: 'rgba(0,0,0,0.5)', marginBottom: '20px', maxWidth: '480px', fontWeight: 500, letterSpacing: '-0.02em', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif' }}>Designed the end-to-end product experience for nsave — a cross-border fintech platform bringing savings, investments, and everyday banking to people in emerging markets.</p>
+          <a href="https://nsave.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ display: 'inline-block', fontSize: '17px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: '27px', marginBottom: '52px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif' }}>
+            View live site
+          </a>
+        </div>
+
         <CaseStudySection>
           <CaseStudyContent>
-            <div className="pt-[96px]">
-              <div className="case-study-header-nav">
-                <div className="mb-8"><Breadcrumb current="nsave" /></div>
-              </div>
-              <CaseStudyLogo>
-                <Image src="/images/logos/nsave-logo.webp" alt="nsave Logo" width={200} height={200} className="w-full h-full object-contain" priority />
-              </CaseStudyLogo>
-              <CaseStudyTitleLink title="nsave" href="https://nsave.com" />
-              <div>
-                <CaseStudyHeading>Intro</CaseStudyHeading>
-                <CaseStudyText>
-                  nsave is a cross-border fintech platform for emerging markets that brings savings, investments, and everyday banking into one simple, intuitive experience. Designed for transparency, accessibility, and financial literacy, it helps people in underbanked and high-inflation regions securely manage, grow, and move their money.
-                </CaseStudyText>
-                <CaseStudyText>
-                  I led the design from concept to launch, ensuring every detail addressed user needs while meeting strict regulatory requirements.
-                </CaseStudyText>
-              </div>
+            <div>
+              <CaseStudyHeading>Intro</CaseStudyHeading>
+              <CaseStudyText>
+                nsave is a cross-border fintech platform for emerging markets that brings savings, investments, and everyday banking into one simple, intuitive experience. Designed for transparency, accessibility, and financial literacy, it helps people in underbanked and high-inflation regions securely manage, grow, and move their money.
+              </CaseStudyText>
+              <CaseStudyText>
+                I led the design from concept to launch, ensuring every detail addressed user needs while meeting strict regulatory requirements.
+              </CaseStudyText>
             </div>
           </CaseStudyContent>
         </CaseStudySection>

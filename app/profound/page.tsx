@@ -2,7 +2,6 @@
 
 import React from "react"
 import Breadcrumb from "../../components/Breadcrumb"
-import CaseStudyTitleLink from "../../components/CaseStudyTitleLink"
 import Image from "next/image"
 import CaseStudySection from "../../components/CaseStudySection"
 import CaseStudyContent from "../../components/CaseStudyContent"
@@ -10,7 +9,6 @@ import CaseStudyImage from "../../components/CaseStudyImage"
 import CaseStudyHeading from "../../components/CaseStudyHeading"
 import CaseStudyText from "../../components/CaseStudyText"
 import CaseStudySubheading from "../../components/CaseStudySubheading"
-import CaseStudyLogo from "../../components/CaseStudyLogo"
 import ScrollProgress from "../../components/ScrollProgress"
 import ScrollCarousel from "../../components/ScrollCarousel"
 import CaseStudyStickyNav from "../../components/CaseStudyStickyNav"
@@ -22,25 +20,30 @@ export default function ProfoundPage() {
       <CaseStudyStickyNav current="Profound" />
       <main className="relative overflow-visible" style={{ backgroundColor: 'var(--bg)' }}>
 
+        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 20px' }}>
+          <div style={{ paddingTop: '96px', paddingBottom: '20px' }}>
+            <div className="mb-8"><Breadcrumb current="Profound" /></div>
+            <div style={{ width: '64px', height: '64px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.08)', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Image src="/images/logos/isotype-dark.png" alt="Profound" width={64} height={64} style={{ width: '100%', height: '100%', objectFit: 'contain' }} priority />
+            </div>
+          </div>
+          <h1 style={{ fontSize: '22px', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '14px', lineHeight: 1.1, fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif' }}>Profound</h1>
+          <p style={{ fontSize: '17px', lineHeight: 1.6, color: 'rgba(0,0,0,0.5)', marginBottom: '20px', maxWidth: '480px', fontWeight: 500, letterSpacing: '-0.02em', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif' }}>Designed the core product experience for Profound — an AI search intelligence platform helping brands understand and optimize how AI agents like ChatGPT, Perplexity, and Copilot talk about them.</p>
+          <a href="https://www.tryprofound.com/" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ display: 'inline-block', fontSize: '17px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: '27px', marginBottom: '52px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif' }}>
+            View live site
+          </a>
+        </div>
+
         <CaseStudySection>
           <CaseStudyContent>
-            <div className="pt-[96px] pb-2">
-              <div className="case-study-header-nav">
-                <div className="mb-8"><Breadcrumb current="Profound" /></div>
-              </div>
-              <CaseStudyLogo>
-                <Image src="/images/logos/isotype-dark.png" alt="Profound Logo" width={200} height={200} className="w-full h-full object-contain" priority />
-              </CaseStudyLogo>
-              <CaseStudyTitleLink title="Profound" href="https://www.tryprofound.com/" />
-              <div>
-                <CaseStudyHeading>Intro</CaseStudyHeading>
-                <CaseStudyText>
-                  In 2025, I joined Profound as the sole product designer. The New York–based startup helps brands understand how AI agents like ChatGPT, Perplexity, Google AI Overviews, and Copilot talk about them. Processing over 100 million AI queries each month across 18 countries and 6 languages, Profound supports companies including Indeed, MongoDB, Ramp, and Rho.
-                </CaseStudyText>
-                <CaseStudyText>
-                  With more than 60 percent of consumers starting product research with AI assistants, knowing how these conversations happen has become critical for marketing teams.
-                </CaseStudyText>
-              </div>
+            <div>
+              <CaseStudyHeading>Intro</CaseStudyHeading>
+              <CaseStudyText>
+                In 2025, I joined Profound as the sole product designer. The New York–based startup helps brands understand how AI agents like ChatGPT, Perplexity, Google AI Overviews, and Copilot talk about them. Processing over 100 million AI queries each month across 18 countries and 6 languages, Profound supports companies including Indeed, MongoDB, Ramp, and Rho.
+              </CaseStudyText>
+              <CaseStudyText>
+                With more than 60 percent of consumers starting product research with AI assistants, knowing how these conversations happen has become critical for marketing teams.
+              </CaseStudyText>
             </div>
           </CaseStudyContent>
         </CaseStudySection>
