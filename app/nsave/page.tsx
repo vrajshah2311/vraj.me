@@ -12,11 +12,13 @@ import CaseStudyText from "../../components/CaseStudyText"
 import CaseStudyLogo from "../../components/CaseStudyLogo"
 import ScrollProgress from "../../components/ScrollProgress"
 import ScrollCarousel from "../../components/ScrollCarousel"
+import CaseStudyStickyNav from "../../components/CaseStudyStickyNav"
 
 export default function NsavePage() {
   return (
     <>
       <ScrollProgress height={2} />
+      <CaseStudyStickyNav current="nsave" />
       <main className="relative overflow-visible" style={{ backgroundColor: 'var(--bg)' }}>
 
         <CaseStudySection>

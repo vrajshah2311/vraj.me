@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import Image from "next/image"
 import ImageLightbox from "../../components/ImageLightbox"
 import Breadcrumb from "../../components/Breadcrumb"
+import CaseStudyStickyNav from "../../components/CaseStudyStickyNav"
 
 const images = [
   '/images/case-studies/hale/hale-1.png',
@@ -17,7 +18,8 @@ export default function HalePage() {
 
   return (
     <main style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
-      <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
+      <CaseStudyStickyNav current="Hale" />
+      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 20px', position: 'relative' }}>
         <div style={{ paddingTop: '96px', paddingBottom: '20px' }}>
           <div className="mb-8"><Breadcrumb current="Hale" /></div>
           <div style={{ width: '64px', height: '64px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.08)', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

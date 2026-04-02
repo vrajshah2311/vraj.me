@@ -13,11 +13,13 @@ import CaseStudySubheading from "../../components/CaseStudySubheading"
 import CaseStudyLogo from "../../components/CaseStudyLogo"
 import ScrollProgress from "../../components/ScrollProgress"
 import ScrollCarousel from "../../components/ScrollCarousel"
+import CaseStudyStickyNav from "../../components/CaseStudyStickyNav"
 
 export default function ProfoundPage() {
   return (
     <>
       <ScrollProgress height={2} />
+      <CaseStudyStickyNav current="Profound" />
       <main className="relative overflow-visible" style={{ backgroundColor: 'var(--bg)' }}>
 
         <CaseStudySection>
