@@ -105,7 +105,7 @@ export default function AllWorkPage() {
   return (
     <>
       <main style={{ backgroundColor: 'var(--bg)', padding: '32px' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style={{ gap: '0' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: '0' }}>
           {images.map((src, i) => (
             <button
               key={i}
