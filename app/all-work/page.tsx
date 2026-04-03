@@ -97,6 +97,24 @@ const images: string[] = [
   '/images/case-studies/work/ni16.png',
   '/images/case-studies/work/ni17.png',
   '/images/case-studies/work/ni18.png',
+  // Other portfolio
+  '/images/case-studies/other-portfolio/C1.png',
+  '/images/case-studies/other-portfolio/C2.png',
+  '/images/case-studies/other-portfolio/Wh1.png',
+  '/images/case-studies/other-portfolio/Wh2.png',
+  '/images/case-studies/other-portfolio/Wh3.png',
+  '/images/case-studies/other-portfolio/Wh4.png',
+  '/images/case-studies/other-portfolio/Wh5.png',
+  '/images/case-studies/other-portfolio/Wh6.png',
+  '/images/case-studies/other-portfolio/Wh7.png',
+  '/images/case-studies/other-portfolio/Wh8.png',
+  '/images/case-studies/other-portfolio/Wh9.png',
+  '/images/case-studies/other-portfolio/Wh10.png',
+  '/images/case-studies/other-portfolio/Wh11.png',
+  '/images/case-studies/other-portfolio/Wh12.png',
+  '/images/case-studies/other-portfolio/Wh13.png',
+  '/images/case-studies/other-portfolio/Wh14.png',
+  '/images/case-studies/other-portfolio/Wh15.png',
 ]
 
 export default function AllWorkPage() {
