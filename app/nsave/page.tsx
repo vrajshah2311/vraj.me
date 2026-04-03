@@ -34,20 +34,6 @@ export default function NsavePage() {
         </div>
 
         <CaseStudySection>
-          <CaseStudyContent>
-            <div>
-              <CaseStudyHeading>Intro</CaseStudyHeading>
-              <CaseStudyText>
-                nsave is a cross-border fintech platform for emerging markets that brings savings, investments, and everyday banking into one simple, intuitive experience. Designed for transparency, accessibility, and financial literacy, it helps people in underbanked and high-inflation regions securely manage, grow, and move their money.
-              </CaseStudyText>
-              <CaseStudyText>
-                I led the design from concept to launch, ensuring every detail addressed user needs while meeting strict regulatory requirements.
-              </CaseStudyText>
-            </div>
-          </CaseStudyContent>
-        </CaseStudySection>
-
-        <CaseStudySection>
           <CaseStudyImage imageSrc="/images/case-studies/nsave/ns1.png" imageAlt="nsave platform overview" isFirst />
         </CaseStudySection>
 

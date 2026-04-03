@@ -35,20 +35,6 @@ export default function ProfoundPage() {
         </div>
 
         <CaseStudySection>
-          <CaseStudyContent>
-            <div>
-              <CaseStudyHeading>Intro</CaseStudyHeading>
-              <CaseStudyText>
-                In 2025, I joined Profound as the sole product designer. The New York–based startup helps brands understand how AI agents like ChatGPT, Perplexity, Google AI Overviews, and Copilot talk about them. Processing over 100 million AI queries each month across 18 countries and 6 languages, Profound supports companies including Indeed, MongoDB, Ramp, and Rho.
-              </CaseStudyText>
-              <CaseStudyText>
-                With more than 60 percent of consumers starting product research with AI assistants, knowing how these conversations happen has become critical for marketing teams.
-              </CaseStudyText>
-            </div>
-          </CaseStudyContent>
-        </CaseStudySection>
-
-        <CaseStudySection>
           <CaseStudyImage imageSrc="/images/case-studies/profound/pr1.png" imageAlt="Profound interface" isFirst />
         </CaseStudySection>
 
