@@ -80,7 +80,6 @@ const images: string[] = [
   '/images/case-studies/ln3.png',
   '/images/case-studies/ma1.png',
   '/images/case-studies/ma2.png',
-  '/images/case-studies/work/op1.png',
   '/images/case-studies/work/ni2.png',
   '/images/case-studies/work/ni3.png',
   '/images/case-studies/work/ni4.png',
