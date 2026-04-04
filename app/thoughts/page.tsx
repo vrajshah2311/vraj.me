@@ -1,5 +1,9 @@
 const articles: { title: string; date: string; href: string }[] = [
-  // Add articles here
+  {
+    title: 'we spent three hours arguing about a modal',
+    date: '04/04',
+    href: '/thoughts/we-spent-three-hours-arguing-about-a-modal',
+  },
 ]
 
 export default function ThoughtsPage() {
