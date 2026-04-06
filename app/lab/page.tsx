@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Multi-Step Form', href: '/lab/multi-step-form' },
   { name: 'Command Palette', href: '/lab/command-palette' },
   { name: 'Toast Notification Stack', href: '/lab/toast-stack' },
   { name: 'Progressive Blur', href: '/lab/progressive-blur' },
