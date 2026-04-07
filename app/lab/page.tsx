@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Tag Input', href: '/lab/tag-input' },
   { name: 'Multi-Step Form', href: '/lab/multi-step-form' },
   { name: 'Command Palette', href: '/lab/command-palette' },
   { name: 'Toast Notification Stack', href: '/lab/toast-stack' },
