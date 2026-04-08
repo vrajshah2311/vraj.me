@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Tab Switcher', href: '/lab/tab-switcher' },
   { name: 'Tag Input', href: '/lab/tag-input' },
   { name: 'Multi-Step Form', href: '/lab/multi-step-form' },
   { name: 'Command Palette', href: '/lab/command-palette' },
