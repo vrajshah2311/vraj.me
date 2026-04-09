@@ -1,4 +1,5 @@
 const articles: { title: string; date: string; href: string }[] = [
+  { title: 'Most layouts need less, not more', date: '04/09', href: '/thoughts/most-layouts-need-less-not-more' },
   {
     title: 'we spent three hours arguing about a modal',
     date: '04/04',
