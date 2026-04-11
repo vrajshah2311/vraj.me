@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Bottom Sheet', href: '/lab/bottom-sheet' },
   { name: 'Draggable List', href: '/lab/draggable-list' },
   { name: 'Context Menu', href: '/lab/context-menu' },
   { name: 'Tab Switcher', href: '/lab/tab-switcher' },
