@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Accordion', href: '/lab/accordion' },
   { name: 'Number Scrubber', href: '/lab/number-scrubber' },
   { name: 'Bottom Sheet', href: '/lab/bottom-sheet' },
   { name: 'Draggable List', href: '/lab/draggable-list' },
