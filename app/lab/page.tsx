@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Tooltip', href: '/lab/tooltip' },
   { name: 'Segmented Control', href: '/lab/segmented-control' },
   { name: 'Accordion', href: '/lab/accordion' },
   { name: 'Number Scrubber', href: '/lab/number-scrubber' },
