@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Rich Text Editor', href: '/lab/rich-text-editor' },
   { name: 'Tooltip', href: '/lab/tooltip' },
   { name: 'Segmented Control', href: '/lab/segmented-control' },
   { name: 'Accordion', href: '/lab/accordion' },
