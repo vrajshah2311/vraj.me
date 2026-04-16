@@ -1,4 +1,5 @@
 const articles: { title: string; date: string; href: string }[] = [
+  { title: 'Real content always breaks the mockup', date: '04/16', href: '/thoughts/real-content-always-breaks-the-mockup' },
   { title: 'The hover state is where design gets honest', date: '04/13', href: '/thoughts/the-hover-state-is-where-design-gets-honest' },
   { title: 'Most layouts need less, not more', date: '04/09', href: '/thoughts/most-layouts-need-less-not-more' },
   {
