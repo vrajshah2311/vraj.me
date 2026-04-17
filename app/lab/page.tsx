@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Hover Card', href: '/lab/hover-card' },
   { name: 'Rich Text Editor', href: '/lab/rich-text-editor' },
   { name: 'Tooltip', href: '/lab/tooltip' },
   { name: 'Segmented Control', href: '/lab/segmented-control' },
