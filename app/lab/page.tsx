@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Color Picker', href: '/lab/color-picker' },
   { name: 'OTP Input', href: '/lab/otp-input' },
   { name: 'Hover Card', href: '/lab/hover-card' },
   { name: 'Rich Text Editor', href: '/lab/rich-text-editor' },
