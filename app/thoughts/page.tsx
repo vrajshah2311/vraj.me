@@ -1,4 +1,5 @@
 const articles: { title: string; date: string; href: string }[] = [
+  { title: 'Every animation is a promise you have to keep', date: '04/20', href: '/thoughts/every-animation-is-a-promise-you-have-to-keep' },
   { title: 'Padding is where you confess your taste', date: '04/17', href: '/thoughts/padding-is-where-you-confess-your-taste' },
   { title: 'Real content always breaks the mockup', date: '04/16', href: '/thoughts/real-content-always-breaks-the-mockup' },
   { title: 'The hover state is where design gets honest', date: '04/13', href: '/thoughts/the-hover-state-is-where-design-gets-honest' },
