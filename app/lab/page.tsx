@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Action Button', href: '/lab/action-button' },
   { name: 'Date Picker', href: '/lab/date-picker' },
   { name: 'Color Picker', href: '/lab/color-picker' },
   { name: 'OTP Input', href: '/lab/otp-input' },
