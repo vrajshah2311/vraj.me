@@ -1,16 +1,14 @@
 'use client'
 
-import { Handle, Position } from '@xyflow/react'
-import { useBuilderStore } from '../../store/useBuilderStore'
+import { Handle, Position, type NodeProps } from '@xyflow/react'
+import { useBuilderStore, type NodeData } from '../../store/useBuilderStore'
 
-interface BaseNodeProps {
-  id: string
-  selected: boolean
+interface BaseNodeProps extends NodeProps {
+  data: NodeData
   color: string
   icon: string
   label: string
   preview: string
-  children?: React.ReactNode
 }
 
 export default function BaseNode({ id, selected, color, icon, label, preview }: BaseNodeProps) {
@@ -54,7 +52,7 @@ export default function BaseNode({ id, selected, color, icon, label, preview }: 
           >
             {icon}
           </span>
-          <span style={{ fontSize: 11, fontWeight: 600, color: color, letterSpacing: '0.02em', textTransform: 'uppercase' }}>
+          <span style={{ fontSize: 11, fontWeight: 600, color, letterSpacing: '0.02em', textTransform: 'uppercase' }}>
             {label}
           </span>
         </div>
