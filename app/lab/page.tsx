@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Split View', href: '/lab/split-view' },
   { name: 'Action Button', href: '/lab/action-button' },
   { name: 'Date Picker', href: '/lab/date-picker' },
   { name: 'Color Picker', href: '/lab/color-picker' },
