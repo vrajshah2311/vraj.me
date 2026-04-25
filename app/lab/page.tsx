@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Toggle Switch', href: '/lab/toggle-switch' },
   { name: 'Range Slider', href: '/lab/range-slider' },
   { name: 'Split View', href: '/lab/split-view' },
   { name: 'Action Button', href: '/lab/action-button' },
