@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'File Upload Dropzone', href: '/lab/file-upload' },
   { name: 'Toggle Switch', href: '/lab/toggle-switch' },
   { name: 'Range Slider', href: '/lab/range-slider' },
   { name: 'Split View', href: '/lab/split-view' },
