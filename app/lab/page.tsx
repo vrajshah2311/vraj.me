@@ -1,6 +1,7 @@
 'use client'
 
 const items = [
+  { name: 'Animated Counter', href: '/lab/animated-counter' },
   { name: 'Password Strength', href: '/lab/password-strength' },
   { name: 'File Upload Dropzone', href: '/lab/file-upload' },
   { name: 'Toggle Switch', href: '/lab/toggle-switch' },
