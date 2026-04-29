@@ -58,7 +58,7 @@ function ToastIcon({ type, size = 16 }: { type: ToastType; size?: number }) {
   )
 }
 
-const DURATION = 5000
+const DURATION = 3500
 
 // ─── Spinner ─────────────────────────────────────────────────────────────────
 
@@ -150,25 +150,26 @@ function Toast({ toast, onDismiss, onAction, index, total, stackHovered, showPro
   expandOffset: number
   colorIcons: boolean
 }) {
-  const [visible, setVisible] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [exiting, setExiting] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const _theme = THEME[toast.type]
 
   useEffect(() => {
-    requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)))
+    requestAnimationFrame(() => requestAnimationFrame(() => setMounted(true)))
   }, [])
 
   useEffect(() => {
     if (toast.type === 'loading') return
-    if (stackHovered) { if (timerRef.current) clearTimeout(timerRef.current); return }
+    if (!showProgress) {
+      if (stackHovered) { if (timerRef.current) clearTimeout(timerRef.current); return }
+    }
     timerRef.current = setTimeout(() => dismiss(), DURATION)
     return () => { if (timerRef.current) clearTimeout(timerRef.current) }
-  }, [stackHovered]) // eslint-disable-line
+  }, [stackHovered, showProgress]) // eslint-disable-line
 
   const dismiss = useCallback(() => {
     setExiting(true)
-    setTimeout(() => onDismiss(toast.id), 350)
+    setTimeout(() => onDismiss(toast.id), 400)
   }, [toast.id, onDismiss])
 
   const dist = total - 1 - index
@@ -177,19 +178,22 @@ function Toast({ toast, onDismiss, onAction, index, total, stackHovered, showPro
   const yShift = collapsed ? dist * -8 : 0
   const hide = dist > 3
 
+  const y = mounted && !exiting
+    ? (stackHovered ? -expandOffset : yShift)
+    : exiting ? -8 : 100
+
   return (
-    <div style={{
-      position: 'absolute', bottom: 0, left: 0, right: 0,
-      transform: visible && !exiting
-        ? `translateY(${stackHovered ? -expandOffset : yShift}px) scale(${scale})`
-        : exiting
-        ? 'translateY(-12px)'
-        : 'translateY(16px)',
-      opacity: exiting ? 0 : visible ? (hide ? 0 : 1) : 0,
-      transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-      zIndex: index + 1,
-      pointerEvents: hide ? 'none' : 'auto',
-    }}>
+    <div
+      data-mounted={mounted && !exiting}
+      style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        transform: `translateY(${mounted && !exiting ? y : exiting ? -8 : '100%'}${mounted && !exiting ? 'px' : exiting ? 'px' : ''}) scale(${mounted && !exiting ? scale : 1})`,
+        opacity: exiting ? 0 : mounted ? (hide ? 0 : 1) : 0,
+        transition: 'transform 400ms ease, opacity 300ms ease',
+        zIndex: index + 1,
+        pointerEvents: hide ? 'none' : 'auto',
+      }}
+    >
       <div style={{
         background: colorIcons ? THEME[toast.type].bg : '#FDFDFD',
         borderRadius: 16,
@@ -513,18 +517,26 @@ function ToastDemo() {
   const [activeIdx, setActiveIdx] = useState(0)
   const [autoplay, setAutoplay] = useState(false)
   const [colorIcons, setColorIcons] = useState(false)
+  const [shake, setShake] = useState(false)
   const stackRef = useRef<HTMLDivElement>(null)
   const counter = useRef(0)
   const msgCounter = useRef<Record<string, number>>({})
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const addRandom = useCallback((type: ToastType) => {
-    const pool = MESSAGE_POOL[type]
-    const idx = (msgCounter.current[type] ?? 0) % pool.length
-    msgCounter.current[type] = idx + 1
-    const msg = pool[idx]
-    const id = ++counter.current
-    setToasts(prev => [...prev.slice(-2), { id, type, title: msg.title, message: msg.message, action: msg.action }])
+    setToasts(prev => {
+      if (prev.length >= 3) {
+        setShake(true)
+        setTimeout(() => setShake(false), 500)
+        return prev
+      }
+      const pool = MESSAGE_POOL[type]
+      const idx = (msgCounter.current[type] ?? 0) % pool.length
+      msgCounter.current[type] = idx + 1
+      const msg = pool[idx]
+      const id = ++counter.current
+      return [...prev, { id, type, title: msg.title, message: msg.message, action: msg.action }]
+    })
   }, [])
 
   const remove = useCallback((id: number) => {
@@ -585,7 +597,7 @@ function ToastDemo() {
         ref={stackRef}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        style={{ width: 380, height: 100, position: 'relative', marginBottom: 40 }}
+        style={{ width: 380, height: 100, position: 'relative', marginBottom: 40, animation: shake ? 'toastShake 0.4s ease' : undefined }}
       >
         {toasts.map((toast, i) => {
           // Calculate cumulative offset from bottom for expanded view
@@ -671,6 +683,7 @@ export default function ToastsPage() {
       <style>{`
         @keyframes toastSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes toastDropIn { from { opacity: 0; transform: translateY(6px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes toastShake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
       `}</style>
       <ToastDemo />
     </main>
