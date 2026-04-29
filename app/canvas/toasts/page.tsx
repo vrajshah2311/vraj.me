@@ -627,7 +627,18 @@ function ToastDemo() {
       </div>
 
       {/* Controls row */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 16 }}>
+      <p className="hint-shimmer" style={{ margin: '0 0 16px', fontSize: 13, fontWeight: 500, fontFamily: geist, letterSpacing: '-0.01em',
+        color: 'oklch(0 0 0 / 0.18)',
+        background: 'linear-gradient(90deg, oklch(0 0 0 / 0.18) 0%, oklch(0 0 0 / 0.18) 35%, oklch(0 0 0 / 0.25) 45%, oklch(0 0 0 / 0.3) 50%, oklch(0 0 0 / 0.25) 55%, oklch(0 0 0 / 0.18) 65%, oklch(0 0 0 / 0.18) 100%)',
+        backgroundSize: '200% 100%',
+        backgroundPosition: '200% 0',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+      }}>
+        Hover the stack to expand
+      </p>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
         {/* Action pill bar: Add Toast | Keyframes */}
         <ActionPillBar
           autoplay={autoplay}
@@ -662,10 +673,6 @@ function ToastDemo() {
         </button>
       </div>
 
-      {/* Hint */}
-      <p style={{ margin: 0, fontSize: 12, fontWeight: 450, color: 'oklch(0 0 0 / 0.25)', fontFamily: geist, letterSpacing: '-0.01em' }}>
-        Hover the stack to expand · click to dismiss
-      </p>
     </div>
   )
 }
@@ -684,6 +691,8 @@ export default function ToastsPage() {
         @keyframes toastSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes toastDropIn { from { opacity: 0; transform: translateY(6px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
         @keyframes toastShake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
+        @keyframes hintShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .hint-shimmer { animation: hintShimmer 2s ease 7s infinite; }
       `}</style>
       <ToastDemo />
     </main>
