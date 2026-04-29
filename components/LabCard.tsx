@@ -13,6 +13,7 @@ interface LabCardProps {
   video?: string
   href: string
   cropBottom?: boolean
+  noModal?: boolean
 }
 
 function VideoModal({ video, title, subtitle, onClose }: { video: string; title: string; subtitle: string; onClose: () => void }) {
@@ -102,7 +103,7 @@ function VideoModal({ video, title, subtitle, onClose }: { video: string; title:
   )
 }
 
-export default function LabCard({ title, subtitle, image, video, href, cropBottom }: LabCardProps) {
+export default function LabCard({ title, subtitle, image, video, href, cropBottom, noModal }: LabCardProps) {
   const [hov, setHov] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -114,7 +115,7 @@ export default function LabCard({ title, subtitle, image, video, href, cropBotto
         onMouseEnter={() => setHov(true)}
         onMouseLeave={() => setHov(false)}
         onClick={e => {
-          if (video) { e.preventDefault(); setModalOpen(true) }
+          if (video && !noModal) { e.preventDefault(); setModalOpen(true) }
           else { window.location.href = href }
         }}
       >

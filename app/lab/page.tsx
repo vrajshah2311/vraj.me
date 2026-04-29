@@ -1,8 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import LabCard from '@/components/LabCard'
 
-const labs = [
+const labCards = [
   // Peec AI
   { title: 'Map', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/peec-ai-map.mp4', href: '/lab/map' },
   { title: 'Agent Analytics', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/aa.mp4', href: '/lab/agent-analytics' },
@@ -25,12 +26,21 @@ const labs = [
   { title: 'CVE Analysis', subtitle: 'Profound', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/profound-cve.mp4', href: '/lab/profound-cve' },
   { title: 'Fluid Search', subtitle: 'Profound', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/profound-search.mp4', href: '/lab/profound-search' },
   // Other
-  { title: 'Hallucination', subtitle: 'AI Visibility', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/canvas/hallucination' },
   { title: 'Toast Stack', subtitle: 'Notifications', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/lab/toast-stack' },
   { title: 'Progressive Blur', subtitle: 'Scroll Effect', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/lab-preview.mp4', href: '/lab/progressive-blur', cropBottom: true },
 ]
 
+const tryCards = [
+  { title: 'Actions', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/actions-01.mp4', href: '/canvas/hallucination', noModal: true },
+  { title: 'Toasts', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/canvas/toasts' },
+  { title: 'Dropdown', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/dropdown.mp4', href: '/canvas/labels-dropdown', noModal: true },
+]
+
 export default function LabPage() {
+  const [tab, setTab] = useState<'lab' | 'try'>('lab')
+  const [hovTab, setHovTab] = useState<'lab' | 'try' | null>(null)
+  const cards = tab === 'lab' ? labCards : tryCards
+
   return (
     <>
       <style>{`
@@ -45,20 +55,63 @@ export default function LabPage() {
         <div className="flex justify-center">
           <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px]">
             <div className="pt-[20px] sm:pt-[90px] md:pt-[110px] lg:pt-[130px] xl:pt-[148px] 2xl:pt-[170px]">
-              <h1 className="text-[22px]" style={{ fontWeight: '600', color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: '1.1', margin: 0 }}>Lab</h1>
-              <p className="text-[14px] mt-1" style={{ fontWeight: '500', color: 'var(--text-secondary)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.01em' }}>Experiments with interface. Stories told through motion.</p>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
+                <button
+                  onClick={() => setTab('lab')}
+                  onMouseEnter={() => setHovTab('lab')}
+                  onMouseLeave={() => setHovTab(null)}
+                  className="text-[22px]"
+                  style={{
+                    fontWeight: '600',
+                    color: tab === 'lab' ? 'var(--text-primary)' : hovTab === 'lab' ? 'oklch(0 0 0 / 0.45)' : 'oklch(0 0 0 / 0.2)',
+                    letterSpacing: '-0.02em', lineHeight: '1.1',
+                    background: 'none', border: 'none', padding: 0, margin: 0, cursor: 'pointer',
+                    transition: 'color 0.15s ease',
+                  }}
+                >
+                  Lab
+                </button>
+                <button
+                  onClick={() => setTab('try')}
+                  onMouseEnter={() => setHovTab('try')}
+                  onMouseLeave={() => setHovTab(null)}
+                  className="text-[22px]"
+                  style={{
+                    fontWeight: '600',
+                    color: tab === 'try' ? 'var(--text-primary)' : hovTab === 'try' ? 'oklch(0 0 0 / 0.45)' : 'oklch(0 0 0 / 0.2)',
+                    letterSpacing: '-0.02em', lineHeight: '1.1',
+                    background: 'none', border: 'none', padding: 0, margin: 0, cursor: 'pointer',
+                    transition: 'color 0.15s ease',
+                  }}
+                >
+                  Try it out
+                </button>
+              </div>
             </div>
           </div>
         </div>
         <div className="flex justify-center" style={{ marginTop: 28 }}>
-          <div className="w-full px-5 sm:px-8 lg:px-[32px] lab-grid" style={{ maxWidth: 1200 }}>
-            {labs.map(lab => (
+          <div
+            key={tab}
+            className="w-full px-5 sm:px-8 lg:px-[32px] lab-grid"
+            style={{
+              maxWidth: 1200,
+              animation: 'labFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
+          >
+            {cards.map(lab => (
               <LabCard key={lab.href} {...lab} />
             ))}
           </div>
         </div>
         <div style={{ height: 80 }} />
       </main>
+      <style>{`
+        @keyframes labFadeIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </>
   )
 }

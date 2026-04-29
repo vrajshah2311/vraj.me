@@ -25,6 +25,7 @@ const images = [
   '/images/case-studies/peec-ai/peec-table-1.png',
   '/images/case-studies/peec-ai/peec-url-details-1.png',
   '/images/case-studies/peec-ai/peec-brands-1.png',
+  '/images/case-studies/peec-ai/peec-map-1.png',
 ]
 
 export default function PeecAIPage() {
