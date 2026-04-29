@@ -8,6 +8,7 @@ const experiments = [
   { label: 'Labels dropdown', href: '/canvas/labels-dropdown' },
   { label: 'Hallucination',   href: '/canvas/hallucination' },
   { label: 'Toasts',          href: '/canvas/toasts' },
+  { label: 'Orb',             href: '/canvas/orb' },
 ]
 
 export default function CanvasIndex() {
