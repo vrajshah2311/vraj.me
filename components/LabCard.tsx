@@ -153,18 +153,20 @@ export default function LabCard({ title, subtitle, image, video, href, cropBotto
             display: 'flex', alignItems: 'center', gap: 4,
             overflow: 'hidden',
           }}>
-            <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 6, minWidth: 0, overflow: 'hidden' }}>
               <span style={{
                 fontFamily: geistMono, fontSize: 14, fontWeight: 600,
                 lineHeight: '14px', color: '#171717',
+                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flexShrink: 1,
               }}>{title}</span>
               <span style={{
                 fontFamily: geist, fontSize: 14, fontWeight: 500,
-                lineHeight: '20px', color: 'oklch(0 0 0 / 0.06)',
+                lineHeight: '20px', color: 'oklch(0 0 0 / 0.06)', flexShrink: 0,
               }}>|</span>
               <span style={{
                 fontFamily: geistMono, fontSize: 14, fontWeight: 500,
                 lineHeight: '20px', color: 'oklch(0 0 0 / 0.5)',
+                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flexShrink: 1,
               }}>{subtitle}</span>
             </div>
             <img
