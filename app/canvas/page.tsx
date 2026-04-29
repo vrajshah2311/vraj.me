@@ -7,6 +7,7 @@ const font = 'Geist, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,
 const experiments = [
   { label: 'Labels dropdown', href: '/canvas/labels-dropdown' },
   { label: 'Hallucination',   href: '/canvas/hallucination' },
+  { label: 'Toasts',          href: '/canvas/toasts' },
 ]
 
 export default function CanvasIndex() {

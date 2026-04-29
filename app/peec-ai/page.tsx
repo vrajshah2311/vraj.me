@@ -50,10 +50,25 @@ export default function PeecAIPage() {
         </a>
       </div>
 
-      <div style={{ padding: '0 24px 80px', display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Hero video */}
+      <div style={{ padding: '0 32px 8px', margin: '0 auto', maxWidth: 1000 }}>
+        <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: 12, overflow: 'hidden', background: '#000' }}>
+          <video
+            src="/videos/peec-ai-product.mp4"
+            autoPlay muted loop playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 600, margin: '0 auto', padding: '48px 20px 24px' }}>
+        <h2 style={{ fontSize: 17, fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: 1.2, margin: 0, fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif' }}>All work</h2>
+      </div>
+
+      <div style={{ padding: '0 32px 80px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, margin: '0 auto' }}>
         {images.map((src, i) => (
-          <button key={i} type="button" onClick={() => setLightboxIndex(i)} style={{ aspectRatio: '16/9', overflow: 'hidden', background: '#fff', cursor: 'pointer', borderRadius: '8px', display: 'block', width: '100%', border: 'none', padding: 0 }}>
-            <Image src={src} alt={`Peec AI ${i + 1}`} width={1000} height={563} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading={i < 8 ? 'eager' : 'lazy'} quality={90} />
+          <button key={i} type="button" onClick={() => setLightboxIndex(i)} style={{ aspectRatio: '16/10', overflow: 'hidden', background: '#f5f5f5', cursor: 'pointer', borderRadius: 8, display: 'block', width: '100%', border: 'none', padding: 0 }}>
+            <Image src={src} alt={`Peec AI ${i + 1}`} width={600} height={375} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading={i < 9 ? 'eager' : 'lazy'} quality={90} />
           </button>
         ))}
       </div>
