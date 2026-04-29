@@ -70,7 +70,7 @@ function ColorPicker() {
   }, [hex])
 
   // ── SV canvas interaction ──
-  const handleSvMove = useCallback((e: MouseEvent | Touch) => {
+  const handleSvMove = useCallback((e: MouseEvent | Touch | any) => {
     if (!svRef.current) return
     const rect = svRef.current.getBoundingClientRect()
     const sx = clamp((('clientX' in e ? e.clientX : e.clientX) - rect.left) / rect.width, 0, 1)
@@ -86,7 +86,7 @@ function ColorPicker() {
   }, [handleSvMove])
 
   // ── Hue slider interaction ──
-  const handleHueMove = useCallback((e: MouseEvent | Touch) => {
+  const handleHueMove = useCallback((e: MouseEvent | Touch | any) => {
     if (!hueRef.current) return
     const rect = hueRef.current.getBoundingClientRect()
     const x = clamp((('clientX' in e ? e.clientX : e.clientX) - rect.left) / rect.width, 0, 1)

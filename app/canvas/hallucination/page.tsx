@@ -810,7 +810,7 @@ export default function Page() {
         setTimeout(() => setShowCursor(false), 300)
         PHRASE_ORDER.forEach((id, i) => {
           setTimeout(() => {
-            setHighlighted(prev => new Set([...prev, id]))
+            setHighlighted(prev => { const n = new Set(prev); n.add(id); return n })
           }, 500 + i * HIGHLIGHT_DELAY)
         })
         return
@@ -899,18 +899,18 @@ export default function Page() {
               setIsEditing={setToolbarEditing}
               isAskingAI={toolbarAskAI}
               setIsAskingAI={setToolbarAskAI}
-              applied={new Set([...applied, ...customTexts.keys()])}
+              applied={(() => { const s = new Set(applied); customTexts.forEach((_, k) => s.add(k)); return s })()}
               onApply={id => {
                 const suggestion = OPTIMIZATIONS[id]?.suggestion ?? ''
                 let count = 0
                 const tick = () => {
                   count++
-                  setReplaceCount(prev => new Map([...prev, [id, count]]))
+                  setReplaceCount(prev => { const n = new Map(prev); n.set(id, count); return n })
                   if (count < suggestion.length) {
                     setTimeout(tick, 32)
                   } else {
                     setTimeout(() => {
-                      setApplied(prev => new Set([...prev, id]))
+                      setApplied(prev => { const n = new Set(prev); n.add(id); return n })
                       setReplaceCount(prev => { const n = new Map(prev); n.delete(id); return n })
                       setScores(prev => { const n = new Map(prev); n.set(id, Math.floor(Math.random() * 15) + 82); return n })
                       if (toolbarPos) {
