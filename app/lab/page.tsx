@@ -46,9 +46,15 @@ export default function LabPage() {
       <style>{`
         .lab-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          grid-template-columns: repeat(3, 1fr);
           gap: 16px;
           width: 100%;
+        }
+        @media (max-width: 900px) {
+          .lab-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+          .lab-grid { grid-template-columns: 1fr; }
         }
       `}</style>
       <main className="relative overflow-x-hidden" style={{ backgroundColor: '#fff' }}>
@@ -90,12 +96,11 @@ export default function LabPage() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center" style={{ marginTop: 28 }}>
+        <div style={{ marginTop: 48, padding: '0 32px 32px' }}>
           <div
             key={tab}
-            className="w-full px-5 sm:px-8 lg:px-[32px] lab-grid"
+            className="lab-grid"
             style={{
-              maxWidth: 1200,
               animation: 'labFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
