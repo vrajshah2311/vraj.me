@@ -26,7 +26,7 @@ const labs = [
   // Other
   { title: 'Hallucination', subtitle: 'AI Visibility', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/canvas/hallucination' },
   { title: 'Toast Stack', subtitle: 'Notifications', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/lab/toast-stack' },
-  { title: 'Progressive Blur', subtitle: 'Scroll Effect', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/lab/progressive-blur' },
+  { title: 'Progressive Blur', subtitle: 'Scroll Effect', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/lab-preview.mp4', href: '/lab/progressive-blur', cropBottom: true },
 ]
 
 export default function LabPage() {

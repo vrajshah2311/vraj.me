@@ -12,6 +12,7 @@ interface LabCardProps {
   image: string
   video?: string
   href: string
+  cropBottom?: boolean
 }
 
 function VideoModal({ video, title, subtitle, onClose }: { video: string; title: string; subtitle: string; onClose: () => void }) {
@@ -101,7 +102,7 @@ function VideoModal({ video, title, subtitle, onClose }: { video: string; title:
   )
 }
 
-export default function LabCard({ title, subtitle, image, video, href }: LabCardProps) {
+export default function LabCard({ title, subtitle, image, video, href, cropBottom }: LabCardProps) {
   const [hov, setHov] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -136,13 +137,13 @@ export default function LabCard({ title, subtitle, image, video, href }: LabCard
                 loop
                 playsInline
                 autoPlay
-                style={{ width: '100%', aspectRatio: '429 / 269', display: 'block', objectFit: 'cover' }}
+                style={{ width: '100%', aspectRatio: '429 / 269', display: 'block', objectFit: 'cover', objectPosition: cropBottom ? 'center bottom' : undefined }}
               />
             ) : (
               <img
                 src={image}
                 alt={title}
-                style={{ width: '100%', aspectRatio: '429 / 269', display: 'block', objectFit: 'cover' }}
+                style={{ width: '100%', aspectRatio: '429 / 269', display: 'block', objectFit: 'cover', objectPosition: cropBottom ? 'center bottom' : undefined }}
               />
             )}
           </div>
