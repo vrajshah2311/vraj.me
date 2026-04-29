@@ -3,15 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ChevronUpDownIcon } from './ChevronUpDownIcon'
-
-const workPages = [
-  { label: 'Peec AI', href: '/peec-ai' },
-  { label: 'Hale', href: '/hale' },
-  { label: 'Model ML', href: '/model-ml' },
-  { label: 'Profound', href: '/profound' },
-  { label: 'nsave', href: '/nsave' },
-  { label: 'All work', href: '/all-work' },
-]
+import { workPages } from '../lib/data'
 
 interface BreadcrumbProps {
   current: string

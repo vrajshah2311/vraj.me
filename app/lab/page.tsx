@@ -1,62 +1,55 @@
 'use client'
 
-const items = [
-  { name: 'Carousel', href: '/lab/carousel' },
-  { name: 'Animated Counter', href: '/lab/animated-counter' },
-  { name: 'Password Strength', href: '/lab/password-strength' },
-  { name: 'File Upload Dropzone', href: '/lab/file-upload' },
-  { name: 'Toggle Switch', href: '/lab/toggle-switch' },
-  { name: 'Range Slider', href: '/lab/range-slider' },
-  { name: 'Split View', href: '/lab/split-view' },
-  { name: 'Action Button', href: '/lab/action-button' },
-  { name: 'Date Picker', href: '/lab/date-picker' },
-  { name: 'Color Picker', href: '/lab/color-picker' },
-  { name: 'OTP Input', href: '/lab/otp-input' },
-  { name: 'Hover Card', href: '/lab/hover-card' },
-  { name: 'Rich Text Editor', href: '/lab/rich-text-editor' },
-  { name: 'Tooltip', href: '/lab/tooltip' },
-  { name: 'Segmented Control', href: '/lab/segmented-control' },
-  { name: 'Accordion', href: '/lab/accordion' },
-  { name: 'Number Scrubber', href: '/lab/number-scrubber' },
-  { name: 'Bottom Sheet', href: '/lab/bottom-sheet' },
-  { name: 'Draggable List', href: '/lab/draggable-list' },
-  { name: 'Context Menu', href: '/lab/context-menu' },
-  { name: 'Tab Switcher', href: '/lab/tab-switcher' },
-  { name: 'Tag Input', href: '/lab/tag-input' },
-  { name: 'Multi-Step Form', href: '/lab/multi-step-form' },
-  { name: 'Command Palette', href: '/lab/command-palette' },
-  { name: 'Toast Notification Stack', href: '/lab/toast-stack' },
-  { name: 'Progressive Blur', href: '/lab/progressive-blur' },
-  { name: 'Dropdown', href: '/lab/dropdown' },
+import LabCard from '@/components/LabCard'
+
+const labs = [
+  { title: 'Insights', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-insights.mp4', href: '/lab/insights' },
+  { title: 'Minipilot', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-minipilot.mp4', href: '/lab/minipilot' },
+  { title: 'Docs', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-docs.mp4', href: '/lab/docs' },
+  { title: 'Teams', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-teams.mp4', href: '/lab/teams' },
+  { title: 'Landing', subtitle: 'Context AI', image: '/images/context-ai.png', video: '/videos/context-landing.mp4', href: '/lab/landing' },
+  { title: 'Tooltip', subtitle: 'Context AI', image: '/images/context-tooltip.png', video: '/videos/context-tooltip.mp4', href: '/lab/tooltip' },
+  { title: 'AA', subtitle: 'Animation', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/aa.mp4', href: '/lab/aa' },
+  { title: 'Dropdown', subtitle: 'Component', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/dropdown.mp4', href: '/lab/dropdown' },
+  { title: 'Export Chart', subtitle: 'Data Viz', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/export-chart.mp4', href: '/lab/export-chart' },
+  { title: 'Matrix', subtitle: 'Animation', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/matrix.mp4', href: '/lab/matrix' },
+  { title: 'MCP Animation', subtitle: 'Motion', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/mcp-animation.mp4', href: '/lab/mcp-animation' },
+  { title: 'CVE Analysis', subtitle: 'Profound', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/profound-cve.mp4', href: '/lab/profound-cve' },
+  { title: 'Fluid Search', subtitle: 'Profound', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/profound-search.mp4', href: '/lab/profound-search' },
+  { title: 'Hallucination', subtitle: 'AI Visibility', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/canvas/hallucination' },
+  { title: 'Toast Stack', subtitle: 'Notifications', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/lab/toast-stack' },
+  { title: 'Progressive Blur', subtitle: 'Scroll Effect', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/lab/progressive-blur' },
 ]
 
 export default function LabPage() {
   return (
-    <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', width: '100%', maxWidth: '320px' }}>
-        {items.map(item => (
-          <a
-            key={item.href}
-            href={item.href}
-            style={{
-              display: 'block',
-              padding: '10px 12px',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              color: 'var(--text-primary)',
-              fontSize: '13px',
-              fontWeight: 500,
-              letterSpacing: '-0.01em',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif',
-              transition: 'background 150ms ease',
-            }}
-            onMouseEnter={e => (e.currentTarget.style.background = 'var(--hover-bg, rgba(10,10,10,0.05))')}
-            onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-          >
-            {item.name}
-          </a>
-        ))}
-      </div>
-    </main>
+    <>
+      <style>{`
+        .lab-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 16px;
+          width: 100%;
+        }
+      `}</style>
+      <main className="relative overflow-x-hidden" style={{ backgroundColor: '#fff' }}>
+        <div className="flex justify-center">
+          <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px]">
+            <div className="pt-[20px] sm:pt-[90px] md:pt-[110px] lg:pt-[130px] xl:pt-[148px] 2xl:pt-[170px]">
+              <h1 className="text-[22px]" style={{ fontWeight: '600', color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: '1.1', margin: 0 }}>Lab</h1>
+              <p className="text-[14px] mt-1" style={{ fontWeight: '500', color: 'var(--text-secondary)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.01em' }}>Experiments with interface. Stories told through motion.</p>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center" style={{ marginTop: 28 }}>
+          <div className="w-full px-5 sm:px-8 lg:px-[32px] lab-grid" style={{ maxWidth: 1200 }}>
+            {labs.map(lab => (
+              <LabCard key={lab.href} {...lab} />
+            ))}
+          </div>
+        </div>
+        <div style={{ height: 80 }} />
+      </main>
+    </>
   )
 }
