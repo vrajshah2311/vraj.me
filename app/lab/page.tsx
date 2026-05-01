@@ -4,6 +4,7 @@ import { useState } from 'react'
 import LabCard from '@/components/LabCard'
 
 const labCards = [
+  { title: 'Command Palette', subtitle: 'UI Component', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/multi-step-form.mp4', href: '/lab/command-palette' },
   { title: 'Multi-step Form', subtitle: 'UI Component', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/multi-step-form.mp4', href: '/lab/multi-step-form' },
   // Peec AI
   { title: 'Map', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/peec-ai-map.mp4', href: '/lab/map' },
