@@ -9,6 +9,7 @@ const experiments = [
   { label: 'Hallucination',   href: '/canvas/hallucination' },
   { label: 'Toasts',          href: '/canvas/toasts' },
   { label: 'Orb',             href: '/canvas/orb' },
+  { label: 'Cmdk',            href: '/canvas/cmdk' },
 ]
 
 export default function CanvasIndex() {
