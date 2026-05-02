@@ -54,7 +54,7 @@ function HeroVideo() {
           100% { background-position: 200% 0; }
         }
       `}</style>
-      <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: 20, overflow: 'hidden', position: 'relative', background: '#f5f5f5' }}>
+      <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: 20, overflow: 'hidden', position: 'relative', background: '#f5f5f5', boxShadow: 'inset 0 0 0 0.5px oklch(0 0 0 / 0.2)' }}>
         {!loaded && (
           <div style={{
             position: 'absolute', inset: 0,
