@@ -482,7 +482,7 @@ function ScrollHighlightLine({ line, delay }: { line: string; delay: number }) {
   )
 }
 
-export default function HomePage() {
+export default function V2Page() {
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(null)
   const [hoveredIdx, setHoveredIdx] = useState<string | null>(null)
   const [expanded, setExpanded] = useState<string | null>(null)

@@ -1,0 +1,162 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { useRegisterScrollContainer } from '../components/ScrollContext'
+import Hero from '../components/Hero'
+import { SF_PRO } from '../lib/data'
+
+const footerLinkStyle = { fontWeight: '500' as const, fontFamily: SF_PRO, letterSpacing: '-0.02em' }
+
+function FooterLink({ label, href }: { label: string; href: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="footer-link text-[17px] leading-[27px]"
+      style={footerLinkStyle}
+    >
+      {label}
+    </a>
+  )
+}
+
+const fade = (delay: number) => ({
+  initial: { opacity: 0, y: 8 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay },
+})
+
+export default function Home() {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null)
+  useRegisterScrollContainer(scrollContainerRef)
+
+  const [lastUpdated, setLastUpdated] = useState<string>("4 Mar'26")
+  const [showFade, setShowFade] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY + window.innerHeight
+      const total = document.documentElement.scrollHeight
+      setShowFade(scrolled < total - 10)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/vrajshah2311/vraj.me/commits/main')
+      .then(res => res.json())
+      .then(data => {
+        const date = new Date(data?.commit?.committer?.date)
+        if (!isNaN(date.getTime())) {
+          const day = date.getDate()
+          const month = date.toLocaleDateString('en-GB', { month: 'short' })
+          const year = date.getFullYear().toString().slice(-2)
+          setLastUpdated(`${day} ${month}'${year}`)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  return (
+    <main className="bio-links-group relative overflow-x-hidden" style={{ backgroundColor: '#fff' }}>
+      <div className="flex justify-center min-h-screen">
+        <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px] relative overflow-visible flex flex-col">
+
+          <motion.div className="pt-[20px] sm:pt-[90px] md:pt-[110px] lg:pt-[130px] xl:pt-[148px] 2xl:pt-[170px]" {...fade(0)}>
+            <div
+              className="rounded-xl mb-2 inline-block overflow-hidden"
+              style={{
+                padding: '2px',
+                border: '1.5px solid rgba(245, 48, 0, 0.9)',
+                borderRadius: '14px',
+                boxShadow: '0 10px 30px -8px rgba(200, 35, 0, 0.22), 0 4px 12px -4px rgba(200, 35, 0, 0.12)',
+                transform: 'rotate(-1.5deg)',
+                boxSizing: 'border-box',
+              }}
+            >
+              <Image
+                src="/images/avatars/profile.png"
+                alt="Vraj Shah"
+                width={88}
+                height={75}
+                className="rounded-xl"
+                style={{ width: '88px', height: '75px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              />
+            </div>
+            <h1 className="text-[22px]" style={{ fontWeight: '600', color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: '1.1' }}>Vraj Shah</h1>
+            <p className="text-[14px] mt-1" style={{ fontWeight: '500', color: 'var(--text-secondary)' }}>Updated on {lastUpdated}</p>
+          </motion.div>
+
+          <div style={{ marginTop: '28px' }}></div>
+          <Hero />
+
+          <motion.div style={{ marginTop: '16px' }} {...fade(0.35)}>
+            <p
+              className="text-[17px] leading-[27px]"
+              style={{ fontWeight: '500', color: 'var(--text-bio)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif', letterSpacing: '-0.02em' }}
+            >
+              Currently rounding rectangles at <a href="/peec-ai" className="bio-link">Peec AI</a>. Before that: <a href="/model-ml" className="bio-link">Model ML</a>, <a href="/profound" className="bio-link">Profound</a>, <a href="/nsave" className="bio-link">nsave</a>, <a href="/hale" className="bio-link">Hale</a>.
+            </p>
+          </motion.div>
+
+          <motion.div className="footer-links-group flex items-center gap-x-4 sm:gap-x-6" style={{ marginTop: '28px' }} {...fade(0.45)}>
+            <span className="group relative inline-flex items-center">
+              <a href="/all-work" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Playground</a>
+              <span className="pointer-events-none absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif', width: 'max-content' }}>
+                <span style={{ display: 'block', background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 16px 40px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)', borderRadius: '12px', padding: '8px 10px' }}>
+                  <span style={{ display: 'block', fontSize: '11px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: '2px' }}>Playground</span>
+                  <span style={{ display: 'block', fontSize: '13px', lineHeight: '1.55', fontWeight: 500, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.75)', whiteSpace: 'nowrap' }}>All my past projects and experiments</span>
+                </span>
+                <span style={{ display: 'block', width: '10px', height: '10px', background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.08)', borderTop: 'none', borderLeft: 'none', transform: 'rotate(45deg)', marginTop: '-6px', marginLeft: '14px' }} />
+              </span>
+            </span>
+            <span className="group relative inline-flex items-center">
+              <a href="/lab" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Lab</a>
+              <span className="pointer-events-none absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif', width: 'max-content' }}>
+                <span style={{ display: 'block', background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 16px 40px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)', borderRadius: '12px', padding: '8px 10px' }}>
+                  <span style={{ display: 'block', fontSize: '11px', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: '2px' }}>Lab</span>
+                  <span style={{ display: 'block', fontSize: '13px', lineHeight: '1.55', fontWeight: 500, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.75)', whiteSpace: 'nowrap' }}>UI experiments and components</span>
+                </span>
+                <span style={{ display: 'block', width: '10px', height: '10px', background: '#0f0f0f', border: '1px solid rgba(255,255,255,0.08)', borderTop: 'none', borderLeft: 'none', transform: 'rotate(45deg)', marginTop: '-6px', marginLeft: '14px' }} />
+              </span>
+            </span>
+          </motion.div>
+
+          <div style={{ marginTop: '80px' }}></div>
+        </div>
+      </div>
+
+      <div className="fixed left-0 right-0 pointer-events-none" style={{ bottom: '76px', height: '60px', zIndex: 10, opacity: showFade ? 1 : 0, transition: 'opacity 0.3s' }}>
+        {[
+          { blur: '1px', mask: 'linear-gradient(to bottom, black 0%, transparent 60%)' },
+          { blur: '3px', mask: 'linear-gradient(to bottom, transparent 50%, black 100%)' },
+        ].map(({ blur, mask }, i) => (
+          <div key={i} style={{ position: 'absolute', inset: 0, backdropFilter: `blur(${blur})`, WebkitBackdropFilter: `blur(${blur})`, maskImage: mask, WebkitMaskImage: mask }} />
+        ))}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.6) 70%, #fff 100%)' }} />
+      </div>
+
+      <motion.div className="fixed bottom-0 left-0 right-0" style={{ backgroundColor: '#fff' }} {...fade(0.45)}>
+        <div className="flex justify-center">
+          <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px]">
+            <div className="w-full h-px mb-4" style={{ backgroundColor: 'var(--border)' }}></div>
+            <div className="pb-8 flex items-center justify-between">
+              <div className="flex items-center gap-x-4 sm:gap-x-6">
+                <a href="/resume" className="footer-link text-[17px] leading-[27px]" style={footerLinkStyle}>Resume</a>
+                <FooterLink label="Say hello" href="https://cal.com/vraj-shah/say-hello-to-vraj?overlayCalendar=true" />
+                <FooterLink label="X" href="https://x.com/shahvraj99" />
+                <FooterLink label="LinkedIn" href="https://www.linkedin.com/in/vraj-shah-375990199/" />
+              </div>
+              <p className="text-[13px] shrink-0" style={{ fontWeight: '500', color: 'var(--text-secondary)', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace' }}>© 2026 Vraj</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </main>
+  )
+} 
