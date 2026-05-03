@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { useRegisterScrollContainer } from '../components/ScrollContext'
-import Hero from '../components/Hero'
-import { SF_PRO } from '../lib/data'
+import { useRegisterScrollContainer } from '../../components/ScrollContext'
+import Hero from '../../components/Hero'
+import { SF_PRO } from '../../lib/data'
 
 const footerLinkStyle = { fontWeight: '500' as const, fontFamily: SF_PRO, letterSpacing: '-0.02em' }
 
