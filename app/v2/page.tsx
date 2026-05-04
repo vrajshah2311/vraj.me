@@ -375,7 +375,7 @@ function ScrollFadeWrapper({ hasMedia, children, className }: { hasMedia: boolea
   const showBottom = canScrollDown
 
   return (
-    <div className={className} style={{ flex: hasMedia ? '0 0 50%' : 1, position: 'relative', maxHeight: '100%' }}>
+    <div className={className} style={{ flex: hasMedia ? '0 0 50%' : 1, position: 'relative', maxHeight: '100%', maxWidth: hasMedia ? undefined : 700 }}>
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 120,
         background: 'linear-gradient(to bottom, var(--bg, #ffffff), transparent)',
