@@ -14,10 +14,25 @@ interface LabCardProps {
   href: string
   cropBottom?: boolean
   noModal?: boolean
+  credit?: string
 }
 
-function VideoModal({ video, title, subtitle, onClose }: { video: string; title: string; subtitle: string; onClose: () => void }) {
+function getCredit(subtitle: string): { text: string; link?: { label: string; href: string } } | null {
+  if (subtitle === 'Peec AI') return { text: 'Design and concept by me' }
+  if (subtitle === 'Profound') return { text: 'Designed and Concept by me, developed by', link: { label: 'Kian Bazza', href: 'https://x.com/kianbazza' } }
+  if (subtitle === 'Context AI') return { text: 'Design and concept by me' }
+  return { text: 'Design and developed by me' }
+}
+
+function VideoModal({ video, title, subtitle, creditOverride, onClose }: { video: string; title: string; subtitle: string; creditOverride?: string; onClose: () => void }) {
   const [visible, setVisible] = useState(false)
+  const credit = creditOverride !== undefined
+    ? creditOverride === 'rayyan'
+      ? { text: 'Designed & Concept by me, developed by', link: { label: 'Rayyan Tariq', href: 'https://x.com/rayyananan_' } }
+      : creditOverride === 'kian'
+      ? { text: 'Designed by me, developed by', link: { label: 'Kian Bazza', href: 'https://x.com/kianbazza' } }
+      : creditOverride ? { text: creditOverride } : null
+    : getCredit(subtitle)
 
   useEffect(() => {
     requestAnimationFrame(() => setVisible(true))
@@ -50,8 +65,9 @@ function VideoModal({ video, title, subtitle, onClose }: { video: string; title:
           background: '#FDFDFD',
           borderRadius: 20,
           overflow: 'hidden',
-          maxWidth: 900,
-          width: '100%',
+          maxWidth: 'calc(100vw - 64px)',
+          maxHeight: 'calc(100vh - 64px)',
+          width: 'auto',
           boxShadow: '0px 24px 80px oklch(0 0 0 / 0.2), 0px 0px 0px 1px oklch(0 0 0 / 0.06)',
           transform: visible ? 'scale(1) translateY(0)' : 'scale(0.96) translateY(8px)',
           opacity: visible ? 1 : 0,
@@ -84,7 +100,7 @@ function VideoModal({ video, title, subtitle, onClose }: { video: string; title:
         </div>
 
         {/* Video */}
-        <div style={{ padding: '0 16px 16px' }}>
+        <div style={{ padding: '0 16px 0' }}>
           <video
             src={video}
             autoPlay
@@ -92,18 +108,33 @@ function VideoModal({ video, title, subtitle, onClose }: { video: string; title:
             muted
             playsInline
             style={{
-              width: '100%', borderRadius: 12, display: 'block',
+              maxWidth: '100%', maxHeight: 'calc(100vh - 210px)', borderRadius: 12, display: 'block',
               boxShadow: '0px 1px 2px -1px rgba(23, 23, 23, 0.08), 0px 1px 3px rgba(23, 23, 23, 0.08), 0px 0px 0px 1px rgba(23, 23, 23, 0.06)',
             }}
           />
         </div>
+
+        {/* Footer */}
+        {credit && (
+          <div style={{
+            height: 52, paddingLeft: 16, paddingRight: 16,
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            flexShrink: 0,
+          }}>
+            <span style={{ fontFamily: geistMono, fontSize: 14, fontWeight: 500, color: 'oklch(0 0 0 / 0.5)' }}>
+              {credit.text}{credit.link && (
+                <>{' '}<a href={credit.link.href} target="_blank" rel="noopener noreferrer" style={{ color: '#171717', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 2 }}>{credit.link.label}</a></>
+              )}
+            </span>
+          </div>
+        )}
       </div>
     </div>,
     document.body
   )
 }
 
-export default function LabCard({ title, subtitle, image, video, href, cropBottom, noModal }: LabCardProps) {
+export default function LabCard({ title, subtitle, image, video, href, cropBottom, noModal, credit: creditProp }: LabCardProps) {
   const [hov, setHov] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -185,7 +216,7 @@ export default function LabCard({ title, subtitle, image, video, href, cropBotto
       </div>
 
       {modalOpen && video && (
-        <VideoModal video={video} title={title} subtitle={subtitle} onClose={() => setModalOpen(false)} />
+        <VideoModal video={video} title={title} subtitle={subtitle} creditOverride={creditProp} onClose={() => setModalOpen(false)} />
       )}
     </>
   )
