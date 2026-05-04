@@ -392,7 +392,7 @@ function ScrollFadeWrapper({ hasMedia, children, className }: { hasMedia: boolea
       }} />
       <div ref={scrollRef} data-scroll-container style={{
         display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
-        padding: 'clamp(20px, 3vw, 32px)' as any, overflowY: 'auto', maxHeight: '100%',
+        padding: 'clamp(20px, 3vw, 32px)' as any, overflowY: 'auto', maxHeight: '100%', WebkitOverflowScrolling: 'touch' as any,
       }}>
         {children}
       </div>
@@ -562,7 +562,7 @@ export default function HomePage() {
       {/* Links view */}
       <div style={{
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        height: '100dvh', padding: 'clamp(20px, 3vw, 32px)' as any, boxSizing: 'border-box' as const,
+        minHeight: '100dvh', padding: 'clamp(20px, 3vw, 32px)' as any, boxSizing: 'border-box' as const,
         opacity: isExpandedVisible ? 0 : 1,
         transform: isExpandedVisible ? 'translateY(-12px)' : 'translateY(0)',
         transition: 'opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
@@ -640,7 +640,10 @@ export default function HomePage() {
       {/* Expanded view */}
       {expandedContent && (
         <div
-          onClick={() => closeExpanded()}
+          onPointerUp={(e) => {
+            // Only close if clicking directly on the overlay, not on scrollable content
+            if (e.target === e.currentTarget) closeExpanded()
+          }}
           style={{
             position: 'fixed', inset: 0,
             display: 'flex', gap: 0,
