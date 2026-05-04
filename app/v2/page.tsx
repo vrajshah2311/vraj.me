@@ -346,7 +346,7 @@ function ProfileImage() {
   )
 }
 
-function ScrollFadeWrapper({ hasMedia, children, className }: { hasMedia: boolean; children: React.ReactNode; className?: string }) {
+function ScrollFadeWrapper({ children, className }: { hasMedia?: boolean; children: React.ReactNode; className?: string }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [scrollTop, setScrollTop] = useState(0)
   const [canScrollDown, setCanScrollDown] = useState(false)
@@ -375,7 +375,7 @@ function ScrollFadeWrapper({ hasMedia, children, className }: { hasMedia: boolea
   const showBottom = canScrollDown
 
   return (
-    <div className={className} style={{ flex: hasMedia ? '0 0 50%' : 1, position: 'relative', maxHeight: '100%', maxWidth: hasMedia ? undefined : 700 }}>
+    <div className={className} style={{ flex: 1, position: 'relative', maxHeight: '100%' }}>
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 120,
         background: 'linear-gradient(to bottom, var(--bg, #ffffff), transparent)',
@@ -553,9 +553,21 @@ export default function V2Page() {
           display: block;
           cursor: pointer;
         }
+        .v2-media-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+          width: 100%;
+        }
+        @media (max-width: 900px) {
+          .v2-media-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+          .v2-media-grid { grid-template-columns: 1fr; }
+        }
         @media (max-width: 768px) {
           .v2-expanded { flex-direction: column !important; }
-          .v2-expanded-text { flex: 1 !important; max-height: none !important; }
+          .v2-expanded-text { flex: 1 !important; max-height: none !important; max-width: none !important; }
           .v2-expanded-media { flex: none !important; max-height: none !important; width: 100% !important; padding: 20px !important; }
         }
       `}</style>
@@ -702,27 +714,29 @@ export default function V2Page() {
               >{expandedContent.cta.label}</a>
             )}
 
-            {/* Images & videos — inline below text */}
-            {expandedContent.videos?.map((src, i) => (
-              <div key={src} style={{
-                width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
-                background: 'oklch(0 0 0 / 0.02)', flexShrink: 0, borderRadius: 12,
-                animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${i * 0.08}s both`,
-                marginBottom: 8,
-              }}>
-                <video src={src} autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            {/* Images & videos grid */}
+            {(expandedContent.videos?.length || expandedContent.images?.length) && (
+              <div className="v2-media-grid">
+                {expandedContent.videos?.map((src, i) => (
+                  <div key={src} style={{
+                    width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
+                    background: 'oklch(0 0 0 / 0.02)', borderRadius: 12,
+                    animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${i * 0.08}s both`,
+                  }}>
+                    <video src={src} autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  </div>
+                ))}
+                {expandedContent.images?.map((src, i) => (
+                  <div key={src} style={{
+                    width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
+                    background: 'oklch(0 0 0 / 0.02)', borderRadius: 12,
+                    animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${(expandedContent.videos?.length ?? 0) * 0.08 + i * 0.05}s both`,
+                  }}>
+                    <Image src={src} alt="" fill style={{ objectFit: 'cover' }} sizes="33vw" />
+                  </div>
+                ))}
               </div>
-            ))}
-            {expandedContent.images?.map((src, i) => (
-              <div key={src} style={{
-                width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
-                background: 'oklch(0 0 0 / 0.02)', flexShrink: 0, borderRadius: 12,
-                animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${(expandedContent.videos?.length ?? 0) * 0.08 + i * 0.05}s both`,
-                marginBottom: 8,
-              }}>
-                <Image src={src} alt="" fill style={{ objectFit: 'cover' }} sizes="100vw" />
-              </div>
-            ))}
+            )}
           </ScrollFadeWrapper>
         </div>
       )}
