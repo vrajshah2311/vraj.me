@@ -5,6 +5,7 @@ import LabCard from '@/components/LabCard'
 
 const labCards = [
   // UI Components
+  { title: 'Tag Input', subtitle: 'UI Component', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/lab/tag-input', noModal: true },
   { title: 'Tab Switcher', subtitle: 'UI Component', image: 'https://placehold.co/429x269/ffffff/ffffff', href: '/lab/tab-switcher', noModal: true },
   // Peec AI
   { title: 'Map', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/peec-ai-map.mp4', href: '/lab/map' },
