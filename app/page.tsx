@@ -229,7 +229,7 @@ const LINKS: { section: string; items: LinkItem[] }[] = [
   ]},
   { section: 'explore', items: [
     { label: 'Lab', href: '/lab' },
-    { label: 'Try it out', href: '/lab' },
+    { label: 'Try it out', href: '/lab/try-it-out' },
   ]},
   { section: 'connect', items: [
     { label: 'X', href: 'https://x.com/shahvraj99', external: true },
@@ -390,9 +390,10 @@ function ScrollFadeWrapper({ hasMedia, children, className }: { hasMedia: boolea
         opacity: showBottom ? 1 : 0,
         transition: 'opacity 0.3s ease',
       }} />
-      <div ref={scrollRef} data-scroll-container style={{
+      <div ref={scrollRef} data-scroll-container onClick={e => e.stopPropagation()} style={{
         display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
         padding: 'clamp(20px, 3vw, 32px)' as any, overflowY: 'auto', maxHeight: '100%', WebkitOverflowScrolling: 'touch' as any,
+        cursor: 'default',
       }}>
         {children}
       </div>
@@ -640,10 +641,7 @@ export default function HomePage() {
       {/* Expanded view */}
       {expandedContent && (
         <div
-          onPointerUp={(e) => {
-            // Only close if clicking directly on the overlay, not on scrollable content
-            if (e.target === e.currentTarget) closeExpanded()
-          }}
+          onClick={() => closeExpanded()}
           style={{
             position: 'fixed', inset: 0,
             display: 'flex', gap: 0,
