@@ -1,10 +1,10 @@
 export const workPages = [
-  { label: 'Peec AI',  href: '/peec-ai'   },
-  { label: 'Hale',     href: '/hale'       },
-  { label: 'Model ML', href: '/model-ml'   },
-  { label: 'Profound', href: '/profound'   },
-  { label: 'nsave',    href: '/nsave'      },
-  { label: 'All work', href: '/all-work'   },
+  { label: 'Peec AI',  href: '/work/peec-ai'   },
+  { label: 'Hale',     href: '/work/hale'       },
+  { label: 'Model ML', href: '/work/model-ml'   },
+  { label: 'Profound', href: '/work/profound'   },
+  { label: 'nsave',    href: '/work/nsave'      },
+  { label: 'All work', href: '/work'            },
 ]
 
 export const footerLinks = [

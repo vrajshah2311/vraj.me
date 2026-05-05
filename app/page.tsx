@@ -242,13 +242,13 @@ type LinkItem = { label: string; href: string; external?: boolean; light?: boole
 const LINKS: { section: string; items: LinkItem[] }[] = [
   { section: 'work', items: [
     { label: 'About', href: '#' },
-    { label: 'Peec AI', href: '/peec-ai' },
-    { label: 'Profound', href: '/profound' },
-    { label: 'nsave', href: '/nsave' },
-    { label: 'Model ML', href: '/model-ml' },
-    { label: 'Hale', href: '/hale' },
+    { label: 'Peec AI', href: '/work/peec-ai' },
+    { label: 'Profound', href: '/work/profound' },
+    { label: 'nsave', href: '/work/nsave' },
+    { label: 'Model ML', href: '/work/model-ml' },
+    { label: 'Hale', href: '/work/hale' },
     { label: 'Expedite', href: '/expedite' },
-    { label: 'Show all', href: '/all-work', light: true },
+    { label: 'Show all', href: '/work', light: true },
   ]},
   { section: 'explore', items: [
     { label: 'Lab', href: '/lab' },
