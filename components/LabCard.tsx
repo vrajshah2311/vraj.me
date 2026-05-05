@@ -137,10 +137,17 @@ function VideoModal({ video, title, subtitle, creditOverride, onClose }: { video
 export default function LabCard({ title, subtitle, image, video, href, cropBottom, noModal, credit: creditProp }: LabCardProps) {
   const [hov, setHov] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
+  const [loaded, setLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   return (
     <>
+      <style>{`
+        @keyframes labSkeleton {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+      `}</style>
       <div
         style={{ textDecoration: 'none', display: 'block', cursor: 'pointer' }}
         onMouseEnter={() => setHov(true)}
@@ -161,6 +168,16 @@ export default function LabCard({ title, subtitle, image, video, href, cropBotto
             position: 'relative', width: '100%', background: '#fff', borderRadius: 16, overflow: 'hidden',
             boxShadow: '0px 1px 2px -1px rgba(23, 23, 23, 0.08), 0px 1px 3px rgba(23, 23, 23, 0.08), 0px 0px 0px 1px rgba(23, 23, 23, 0.06)',
           }}>
+            {/* Skeleton */}
+            <div style={{
+              position: 'absolute', inset: 0, zIndex: 1,
+              background: 'linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%)',
+              backgroundSize: '200% 100%',
+              animation: 'labSkeleton 1.6s ease-in-out infinite',
+              opacity: loaded ? 0 : 1,
+              transition: 'opacity 0.4s ease',
+              pointerEvents: 'none',
+            }} />
             {video ? (
               <video
                 ref={videoRef}
@@ -170,6 +187,7 @@ export default function LabCard({ title, subtitle, image, video, href, cropBotto
                 playsInline
                 autoPlay
                 preload="auto"
+                onCanPlay={() => setLoaded(true)}
                 style={{ width: '100%', aspectRatio: '429 / 269', display: 'block', objectFit: 'cover', objectPosition: cropBottom ? 'center bottom' : undefined }}
               />
             ) : (
@@ -177,6 +195,7 @@ export default function LabCard({ title, subtitle, image, video, href, cropBotto
                 src={image}
                 alt={title}
                 loading="lazy"
+                onLoad={() => setLoaded(true)}
                 style={{ width: '100%', aspectRatio: '429 / 269', display: 'block', objectFit: 'cover', objectPosition: cropBottom ? 'center bottom' : undefined }}
               />
             )}
