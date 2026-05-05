@@ -11,6 +11,10 @@ interface ImageLightboxProps {
   altPrefix?: string
 }
 
+function isVideo(src: string) {
+  return src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.mov')
+}
+
 export default function ImageLightbox({ images, currentIndex, onClose, onNavigate, altPrefix = 'Image' }: ImageLightboxProps) {
   const index = Math.max(0, Math.min(currentIndex, images.length - 1))
   const src = images[index]
@@ -45,17 +49,18 @@ export default function ImageLightbox({ images, currentIndex, onClose, onNavigat
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{ background: '#fdfdfd' }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label="Image lightbox"
+      aria-label="Media lightbox"
     >
-      {/* Close button - top right */}
+      {/* Close button */}
       <button
         type="button"
         onClick={(e) => { e.stopPropagation(); onClose() }}
-        className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full text-white/90 transition hover:bg-white/10 hover:text-white"
+        className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full text-black/40 transition hover:bg-black/06 hover:text-black"
         aria-label="Close"
       >
         <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,25 +68,65 @@ export default function ImageLightbox({ images, currentIndex, onClose, onNavigat
         </svg>
       </button>
 
-      {/* Image - click doesn't close so user can click the dimmed background */}
+      {/* Prev button */}
+      {images.length > 1 && (
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); goPrev() }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full text-black/40 transition hover:bg-black/6 hover:text-black"
+          aria-label="Previous"
+        >
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+      )}
+
+      {/* Next button */}
+      {images.length > 1 && (
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); goNext() }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full text-black/40 transition hover:bg-black/6 hover:text-black"
+          aria-label="Next"
+        >
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      )}
+
+      {/* Media */}
       <div
         className="relative max-h-[calc(100vh-80px)] max-w-[calc(100vw-80px)]"
         onClick={(e) => e.stopPropagation()}
       >
-        <Image
-          src={src}
-          alt={`${altPrefix} ${index + 1}`}
-          width={1920}
-          height={1080}
-          className="max-h-[calc(100vh-80px)] w-auto max-w-[calc(100vw-80px)] object-contain rounded-lg"
-          style={{ maxHeight: 'calc(100vh - 80px)' }}
-        />
+        {isVideo(src) ? (
+          <video
+            key={src}
+            src={src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            style={{ maxHeight: 'calc(100vh - 80px)', maxWidth: 'calc(100vw - 80px)', borderRadius: 8, display: 'block' }}
+          />
+        ) : (
+          <Image
+            src={src}
+            alt={`${altPrefix} ${index + 1}`}
+            width={1920}
+            height={1080}
+            className="max-h-[calc(100vh-80px)] w-auto max-w-[calc(100vw-80px)] object-contain rounded-lg"
+            style={{ maxHeight: 'calc(100vh - 80px)' }}
+          />
+        )}
       </div>
 
-      {/* Optional: show index for multiple images */}
       {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-sm text-white/80">
-          {index + 1} / {images.length}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-sm" style={{ background: 'rgba(0,0,0,0.06)' }}>
+          <span style={{ color: 'rgba(0,0,0,0.4)', fontSize: 13, fontWeight: 500 }}>{index + 1} / {images.length}</span>
         </div>
       )}
     </div>

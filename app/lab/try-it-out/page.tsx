@@ -1,6 +1,9 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import LabCard from '@/components/LabCard'
+
+const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const tryCards = [
   { title: 'Actions', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/actions-01.mp4', href: '/canvas/hallucination', noModal: true },
@@ -10,53 +13,64 @@ const tryCards = [
 ]
 
 export default function TryItOutPage() {
+  const router = useRouter()
+
   return (
-    <>
+    <main style={{ minHeight: '100dvh', background: '#fff' }}>
       <style>{`
-        .lab-grid {
+        :root {
+          --v2-font-size: clamp(28px, 6vw, 44px);
+          --v2-line-height: clamp(30px, 6.2vw, 46px);
+        }
+        @media (min-width: 1720px) {
+          :root { --v2-font-size: 56px; --v2-line-height: 58px; }
+        }
+        .try-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
           width: 100%;
         }
-        @media (max-width: 900px) {
-          .lab-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 560px) {
-          .lab-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 900px) { .try-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .try-grid { grid-template-columns: 1fr; } }
       `}</style>
-      <main className="relative overflow-x-hidden" style={{ backgroundColor: '#fff' }}>
-        <div className="flex justify-center">
-          <div className="w-full max-w-[600px] px-5 sm:px-8 lg:px-[32px]">
-            <div className="pt-[20px] sm:pt-[90px] md:pt-[110px] lg:pt-[130px] xl:pt-[148px] 2xl:pt-[170px]">
-              <h1 className="text-[22px]" style={{
-                fontWeight: '600',
-                color: 'var(--text-primary)',
-                letterSpacing: '-0.02em', lineHeight: '1.1',
-              }}>
-                Try it out
-              </h1>
-            </div>
-          </div>
+
+      {/* Sticky back button */}
+      <div style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff', padding: 'clamp(20px, 3vw, 32px)' as any, paddingBottom: 8, flexShrink: 0 }}>
+        <button
+          onClick={() => router.back()}
+          style={{
+            background: 'none', border: 'none', padding: '4px 0', cursor: 'pointer',
+            fontFamily: font, fontSize: 13, fontWeight: 500, color: 'oklch(0 0 0 / 0.35)',
+            transition: 'color 0.15s ease',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = '#171717')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'oklch(0 0 0 / 0.35)')}
+        >← Back</button>
+      </div>
+
+      {/* Content */}
+      <div style={{ padding: '0 clamp(20px, 3vw, 32px)' as any, paddingBottom: 'clamp(20px, 3vw, 32px)' as any }}>
+        {/* Gray title */}
+        <div style={{
+          fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600,
+          lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em',
+          color: 'oklch(0 0 0 / 0.15)',
+          marginBottom: 8,
+        }}>Try it out</div>
+
+        {/* Description lines */}
+        <div style={{ fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600, lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em', color: '#171717' }}>Live prototypes.</div>
+        <div style={{ fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600, lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em', color: '#171717' }}>Not videos. Not mockups.</div>
+        <div style={{ fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600, lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em', color: '#171717' }}>Real interactions you can</div>
+        <div style={{ fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600, lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em', color: '#171717' }}>click, drag, and feel.</div>
+
+        <div className="try-grid" style={{ marginTop: 48 }}>
+          {tryCards.map(card => (
+            <LabCard key={card.href} {...card} />
+          ))}
         </div>
-        <div style={{ marginTop: 48, padding: '0 32px 32px' }}>
-          <div className="lab-grid" style={{
-            animation: 'labFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          }}>
-            {tryCards.map(card => (
-              <LabCard key={card.href} {...card} />
-            ))}
-          </div>
-        </div>
-        <div style={{ height: 80 }} />
-      </main>
-      <style>{`
-        @keyframes labFadeIn {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-    </>
+      </div>
+    </main>
   )
 }

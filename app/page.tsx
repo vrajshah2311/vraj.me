@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
+import ImageLightbox from '../components/ImageLightbox'
 
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
@@ -171,11 +172,13 @@ const EXPANDED: Record<string, ExpandedContent> = {
   },
   'Model ML': {
     lines: [
-      'B2B machine learning platform.',
-      'Build, deploy, monitor',
-      'AI models at scale.',
+      'AI teammates for finance.',
+      'Automates the most painful',
+      'workflows at the world\'s',
+      'largest financial institutions.',
       '',
-      'Dashboard and data viz.',
+      'Some screens redesigned.',
+      'Some flows built from scratch.',
     ],
     images: [
       '/images/case-studies/model-ml/model-ml-1.png',
@@ -189,9 +192,12 @@ const EXPANDED: Record<string, ExpandedContent> = {
   },
   'Hale': {
     lines: [
-      'Health and wellness platform.',
-      'Sustainable habits through',
-      'coaching and community.',
+      'Health testing at home.',
+      'Know your risks before',
+      'symptoms ever show up.',
+      '',
+      'Led design direction.',
+      '<a href="https://x.com/faizanwr">Faiz</a> on the team.',
     ],
     images: [
       '/images/case-studies/hale/hale-1.png',
@@ -205,6 +211,27 @@ const EXPANDED: Record<string, ExpandedContent> = {
       'Coming soon.',
     ],
   },
+}
+
+// ─── Hover previews for non-expanded links ───────────────────────────────────
+
+const HOVER_IMAGES: Record<string, string[]> = {}
+
+const HOVER_VIDEOS: Record<string, string[]> = {
+  'Lab': [
+    '/videos/peec-ai-map.mp4',
+    '/videos/dropdown.mp4',
+    '/videos/matrix.mp4',
+    '/videos/actions-01.mp4',
+    '/videos/toasts.mp4',
+    '/videos/orb.mp4',
+  ],
+  'Try it out': [
+    '/videos/actions-01.mp4',
+    '/videos/toasts.mp4',
+    '/videos/dropdown.mp4',
+    '/videos/orb.mp4',
+  ],
 }
 
 // ─── Links ───────────────────────────────────────────────────────────────────
@@ -230,7 +257,7 @@ const LINKS: { section: string; items: LinkItem[] }[] = [
     { label: 'X', href: 'https://x.com/shahvraj99', external: true },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vraj-shah-375990199/', external: true },
     { label: 'Resume', href: '/resume' },
-    { label: 'Calendar', href: 'https://cal.com/vraj-shah/say-hello-to-vraj?overlayCalendar=true', external: true },
+    { label: 'Say hi', href: 'https://cal.com/vraj-shah/say-hello-to-vraj?overlayCalendar=true', external: true },
   ]},
 ]
 
@@ -280,70 +307,62 @@ function ScrollLine({ children, isHeader, delay }: { children: React.ReactNode; 
 }
 
 function ProfileImage() {
-  const ref = useRef<HTMLDivElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const innerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const parent = el.closest('[data-scroll-container]') as HTMLElement | null
-    const target = parent || window
+    const wrap = wrapRef.current
+    const inner = innerRef.current
+    if (!wrap || !inner) return
+    const target = wrap.closest('[data-scroll-container]') || window
     let rafId = 0
 
     const update = () => {
-      const scrollContainer = el.closest('[data-scroll-container]') as HTMLElement | null
+      const scrollContainer = wrap.closest('[data-scroll-container]') as HTMLElement | null
       if (!scrollContainer) return
       const scrollTop = scrollContainer.scrollTop
-      // Start shrinking after 50px of scroll, fully hidden by 350px
       const progress = Math.min(1, Math.max(0, (scrollTop - 50) / 300))
-
-      const scale = 1 - progress * 0.65  // shrink to 35%
       const opacity = 1 - progress
-      el.style.transform = `scale(${scale})`
-      el.style.opacity = String(opacity)
-      el.style.marginBottom = `${32 - progress * 32}px`
-      el.style.height = `${266 * (1 - progress)}px`
+      wrap.style.opacity = String(opacity)
+      wrap.style.marginBottom = `${32 - progress * 32}px`
+      // Collapse the wrapper height so text flows up
+      wrap.style.maxHeight = `${120 * (1 - progress)}px`
     }
 
-    const onScroll = () => {
-      cancelAnimationFrame(rafId)
-      rafId = requestAnimationFrame(update)
-    }
-
+    const onScroll = () => { cancelAnimationFrame(rafId); rafId = requestAnimationFrame(update) }
     target.addEventListener('scroll', onScroll, { passive: true })
     update()
     return () => { target.removeEventListener('scroll', onScroll); cancelAnimationFrame(rafId) }
   }, [])
 
   return (
-    <div
-      ref={ref}
-      style={{
-        marginBottom: 'clamp(16px, 3vw, 32px)' as any,
-        width: 'clamp(120px, 30vw, 200px)' as any,
-        height: 'clamp(160px, 40vw, 266px)' as any,
-        borderRadius: 12,
-        overflow: 'hidden',
-        position: 'relative',
-        flexShrink: 0,
-        transformOrigin: 'top left',
-        willChange: 'transform, opacity',
-        animation: 'lineIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) both',
-      }}
-    >
-      <Image
-        src="/images/avatars/profile.png"
-        alt="Vraj Shah"
-        fill
-        style={{ objectFit: 'cover' }}
-        sizes="200px"
-      />
+    <div ref={wrapRef} style={{ overflow: 'hidden', flexShrink: 0, marginBottom: 32, maxHeight: 120, transition: 'none', willChange: 'opacity, max-height, margin-bottom' }}>
+      <div
+        ref={innerRef}
+        style={{
+          width: 120,
+          height: 120,
+          borderRadius: 12,
+          overflow: 'hidden',
+          position: 'relative',
+          flexShrink: 0,
+          animation: 'lineIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) both',
+        }}
+      >
+        <Image
+          src="/images/avatars/profile.png"
+          alt="Vraj Shah"
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center top' }}
+          sizes="120px"
+        />
+      </div>
     </div>
   )
 }
 
 function ScrollFadeWrapper({ children, className }: { hasMedia?: boolean; children: React.ReactNode; className?: string }) {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [scrollTop, setScrollTop] = useState(0)
   const [canScrollDown, setCanScrollDown] = useState(false)
 
   useEffect(() => {
@@ -352,7 +371,6 @@ function ScrollFadeWrapper({ children, className }: { hasMedia?: boolean; childr
     let rafId = 0
 
     const update = () => {
-      setScrollTop(el.scrollTop)
       setCanScrollDown(el.scrollTop + el.clientHeight < el.scrollHeight - 2)
     }
 
@@ -366,18 +384,10 @@ function ScrollFadeWrapper({ children, className }: { hasMedia?: boolean; childr
     return () => { el.removeEventListener('scroll', onScroll); cancelAnimationFrame(rafId) }
   }, [])
 
-  const showTop = scrollTop > 5
   const showBottom = canScrollDown
 
   return (
-    <div className={className} style={{ flex: 1, position: 'relative', maxHeight: '100%' }}>
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0, height: 120,
-        background: 'linear-gradient(to bottom, var(--bg, #ffffff), transparent)',
-        zIndex: 1, pointerEvents: 'none',
-        opacity: showTop ? 1 : 0,
-        transition: 'opacity 0.3s ease',
-      }} />
+    <div className={className} style={{ flex: 1, position: 'relative', overflow: 'hidden', minHeight: 0 }}>
       <div style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, height: 120,
         background: 'linear-gradient(to top, var(--bg, #ffffff), transparent)',
@@ -385,16 +395,28 @@ function ScrollFadeWrapper({ children, className }: { hasMedia?: boolean; childr
         opacity: showBottom ? 1 : 0,
         transition: 'opacity 0.3s ease',
       }} />
-      <div ref={scrollRef} data-scroll-container onClick={e => e.stopPropagation()} style={{
-        display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
-        padding: 'clamp(20px, 3vw, 32px)' as any, overflowY: 'auto', maxHeight: '100%', WebkitOverflowScrolling: 'touch' as any,
-        cursor: 'default',
-      }}>
+      <div ref={scrollRef} data-scroll-container
+        onClick={e => e.stopPropagation()}
+        style={{
+          display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
+          paddingLeft: 'clamp(20px, 3vw, 32px)' as any,
+          paddingRight: 'clamp(20px, 3vw, 32px)' as any,
+          paddingBottom: 'clamp(20px, 3vw, 32px)' as any,
+          paddingTop: 0,
+          overflowY: 'auto',
+          height: '100%',
+          WebkitOverflowScrolling: 'touch' as any,
+          touchAction: 'pan-y',
+          scrollbarWidth: 'none' as any,
+          msOverflowStyle: 'none' as any,
+          cursor: 'default',
+        }}>
         {children}
       </div>
     </div>
   )
 }
+
 
 function HighlightSpan({ text, visible }: { text: string; visible: boolean }) {
   return (
@@ -458,7 +480,7 @@ function ScrollHighlightLine({ line, delay }: { line: string; delay: number }) {
     return () => { target.removeEventListener('scroll', onScroll); cancelAnimationFrame(rafId); observer.disconnect() }
   }, [])
 
-  const parts = line.split(/(<em>.*?<\/em>)/g)
+  const parts = line.split(/(<em>.*?<\/em>|<a href=".*?">.*?<\/a>)/g)
 
   return (
     <div ref={ref} style={{
@@ -472,6 +494,27 @@ function ScrollHighlightLine({ line, delay }: { line: string; delay: number }) {
         if (part.startsWith('<em>')) {
           return <HighlightSpan key={pi} text={part.replace(/<\/?em>/g, '')} visible={visible} />
         }
+        const aMatch = part.match(/^<a href="(.*?)">(.*?)<\/a>$/)
+        if (aMatch) {
+          return (
+            <a key={pi} href={aMatch[1]} target="_blank" rel="noopener noreferrer"
+              onClick={e => e.stopPropagation()}
+              style={{ position: 'relative', display: 'inline', textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+              onMouseEnter={e => { const bg = e.currentTarget.querySelector('.a-highlight-bg') as HTMLElement; if (bg) bg.style.background = 'oklch(0.88 0.12 90 / 0.7)' }}
+              onMouseLeave={e => { const bg = e.currentTarget.querySelector('.a-highlight-bg') as HTMLElement; if (bg) bg.style.background = 'oklch(0.95 0.1 90 / 0.5)' }}
+            >
+              <span className="a-highlight-bg" style={{
+                position: 'absolute', left: -3, right: -3, top: 2, bottom: 2,
+                background: 'oklch(0.95 0.1 90 / 0.5)',
+                borderRadius: 4, zIndex: -1,
+                transform: visible ? 'scaleX(1)' : 'scaleX(0)',
+                transformOrigin: 'left',
+                transition: 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.15s ease',
+              }} />
+              {aMatch[2]}
+            </a>
+          )
+        }
         return <span key={pi}>{part}</span>
       })}
     </div>
@@ -484,9 +527,11 @@ export default function HomePage() {
   const [expanded, setExpanded] = useState<string | null>(null)
   const [closing, setClosing] = useState(false)
   const [displayedExpanded, setDisplayedExpanded] = useState<string | null>(null)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   const closeExpanded = useCallback(() => {
     setClosing(true)
+    setLightboxIndex(null)
     setTimeout(() => {
       setExpanded(null)
       setDisplayedExpanded(null)
@@ -498,12 +543,18 @@ export default function HomePage() {
     if (expanded) {
       setDisplayedExpanded(expanded)
       setClosing(false)
+      // Reset scroll position
+      setTimeout(() => {
+        const sc = document.querySelector('[data-scroll-container]')
+        if (sc) sc.scrollTop = 0
+      }, 50)
     }
   }, [expanded])
 
   const expandedContent = displayedExpanded ? EXPANDED[displayedExpanded] : null
   const isExpandedVisible = !!expanded && !closing
-  const previewImages = hoveredLabel && !expanded ? (EXPANDED[hoveredLabel]?.images ?? null) : null
+  const previewImages = hoveredLabel && !expanded ? (EXPANDED[hoveredLabel]?.images ?? HOVER_IMAGES[hoveredLabel] ?? null) : null
+  const previewVideos = hoveredLabel && !expanded && !previewImages ? (HOVER_VIDEOS[hoveredLabel] ?? null) : null
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape' && expanded) closeExpanded() }
@@ -515,8 +566,10 @@ export default function HomePage() {
     <main style={{
       minHeight: '100vh',
       position: 'relative',
+      background: 'var(--bg, #ffffff)',
     }}>
       <style>{`
+        [data-scroll-container]::-webkit-scrollbar { display: none; }
         @keyframes v2FadeIn {
           from { opacity: 0; transform: translateY(12px); }
           to { opacity: 1; transform: translateY(0); }
@@ -570,7 +623,7 @@ export default function HomePage() {
       {/* Links view */}
       <div style={{
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        minHeight: '100dvh', padding: 'clamp(20px, 3vw, 32px)' as any, boxSizing: 'border-box' as const,
+        height: '100dvh', padding: 'clamp(20px, 3vw, 32px)' as any, boxSizing: 'border-box' as const,
         opacity: isExpandedVisible ? 0 : 1,
         transform: isExpandedVisible ? 'translateY(-12px)' : 'translateY(0)',
         transition: 'opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
@@ -621,14 +674,14 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* Hover image preview — right side */}
+      {/* Hover preview — right side */}
       <div style={{
         position: 'fixed',
         top: 32, right: 32, bottom: 32,
         width: 'calc(50vw - 48px)',
         display: 'flex', flexDirection: 'column', gap: 0,
-        opacity: previewImages ? 1 : 0,
-        transform: previewImages ? 'translateX(0)' : 'translateX(12px)',
+        opacity: (previewImages || previewVideos) ? 1 : 0,
+        transform: (previewImages || previewVideos) ? 'translateX(0)' : 'translateX(12px)',
         transition: 'opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1)',
         pointerEvents: 'none',
         overflowY: 'auto',
@@ -643,6 +696,17 @@ export default function HomePage() {
             <Image src={src} alt="" fill style={{ objectFit: 'cover' }} sizes="50vw" />
           </div>
         ))}
+        {previewVideos && previewVideos.map((src, i) => (
+          <div key={src} style={{
+            width: '100%', padding: 4, background: 'oklch(0 0 0 / 0.04)',
+            borderRadius: 20, flexShrink: 0, marginBottom: 8,
+            animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${i * 0.06}s both`,
+          }}>
+            <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0px 0px 0px 1px oklch(0 0 0 / 0.06)' }}>
+              <video src={src} autoPlay muted loop playsInline style={{ width: '100%', aspectRatio: '429/269', display: 'block', objectFit: 'cover' }} />
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Expanded view */}
@@ -651,7 +715,7 @@ export default function HomePage() {
           onClick={() => closeExpanded()}
           style={{
             position: 'fixed', inset: 0,
-            display: 'flex', gap: 0,
+            display: 'flex', flexDirection: 'column',
             opacity: isExpandedVisible ? 1 : 0,
             transform: isExpandedVisible ? 'translateY(0)' : 'translateY(12px)',
             transition: 'opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
@@ -659,31 +723,35 @@ export default function HomePage() {
           }}
           className="v2-expanded"
         >
-          {/* Single scrollable content */}
-          <ScrollFadeWrapper hasMedia={false} className="v2-expanded-text">
-            {/* Back button */}
+          {/* Fixed back bar */}
+          <div onClick={e => e.stopPropagation()} style={{
+            padding: 'clamp(20px, 3vw, 32px)' as any, paddingBottom: 8, flexShrink: 0,
+            cursor: 'default',
+          }}>
             <button
-              onClick={(e) => { e.stopPropagation(); closeExpanded() }}
+              onClick={closeExpanded}
               style={{
                 background: 'none', border: 'none', padding: '4px 0', cursor: 'pointer',
                 fontSize: 13, fontWeight: 500, color: 'oklch(0 0 0 / 0.35)',
-                display: 'flex', alignItems: 'center', gap: 4,
-                marginBottom: 16, transition: 'color 0.15s ease',
+                transition: 'color 0.15s ease',
                 animation: 'lineIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) both',
               }}
               onMouseEnter={e => (e.currentTarget.style.color = '#171717')}
               onMouseLeave={e => (e.currentTarget.style.color = 'oklch(0 0 0 / 0.35)')}
             >← Back</button>
+          </div>
 
+          {/* Scrollable content */}
+          <ScrollFadeWrapper hasMedia={false} className="v2-expanded-text">
             {/* Label — hide for About */}
-            {expanded !== 'About' && (
+            {displayedExpanded !== 'About' && (
               <div style={{
                 fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600,
                 lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em',
                 color: 'oklch(0 0 0 / 0.15)',
-                marginBottom: 24,
+                marginBottom: 8,
                 animation: 'lineIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) both',
-              }}>{expanded}</div>
+              }}>{displayedExpanded}</div>
             )}
 
             {/* Profile image — About only */}
@@ -693,7 +761,7 @@ export default function HomePage() {
 
             {/* Lines */}
             {expandedContent.lines.map((line, i) => {
-              if (line === '') return <div key={i} style={{ minHeight: 'var(--v2-line-height, 44px)' as any, height: 'var(--v2-line-height, 44px)' as any, flexShrink: 0, width: '100%' }} />
+              if (line === '') return <div key={i} style={{ minHeight: 32, height: 32, flexShrink: 0, width: '100%' }} />
               if (line.startsWith('~')) return (
                 <ScrollLine key={i} isHeader delay={i * 0.04}>
                   <div style={{
@@ -725,29 +793,47 @@ export default function HomePage() {
 
             {/* Images & videos grid */}
             {(expandedContent.videos?.length || expandedContent.images?.length) && (
-              <div className="v2-media-grid">
+              <div className="v2-media-grid" style={{ marginTop: 48 }}>
                 {expandedContent.videos?.map((src, i) => (
-                  <div key={src} style={{
-                    width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
-                    background: 'oklch(0 0 0 / 0.02)', borderRadius: 12,
-                    animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${i * 0.08}s both`,
-                  }}>
-                    <video src={src} autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <div key={src}
+                    onClick={e => { e.stopPropagation(); setLightboxIndex(i) }}
+                    onMouseEnter={e => { const vid = e.currentTarget.querySelector('video') as HTMLElement; if (vid) vid.style.transform = 'scale(1.02)' }}
+                    onMouseLeave={e => { const vid = e.currentTarget.querySelector('video') as HTMLElement; if (vid) vid.style.transform = 'scale(1)' }}
+                    style={{
+                      width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
+                      background: 'oklch(0 0 0 / 0.02)', borderRadius: 12, cursor: 'pointer',
+                      animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${i * 0.08}s both`,
+                    }}>
+                    <video src={src} autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)' }} />
                   </div>
                 ))}
                 {expandedContent.images?.map((src, i) => (
-                  <div key={src} style={{
-                    width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
-                    background: 'oklch(0 0 0 / 0.02)', borderRadius: 12,
-                    animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${(expandedContent.videos?.length ?? 0) * 0.08 + i * 0.05}s both`,
-                  }}>
-                    <Image src={src} alt="" fill style={{ objectFit: 'cover' }} sizes="33vw" />
+                  <div key={src}
+                    onClick={e => { e.stopPropagation(); setLightboxIndex((expandedContent.videos?.length ?? 0) + i) }}
+                    onMouseEnter={e => { const img = e.currentTarget.querySelector('img') as HTMLElement; if (img) img.style.transform = 'scale(1.02)' }}
+                    onMouseLeave={e => { const img = e.currentTarget.querySelector('img') as HTMLElement; if (img) img.style.transform = 'scale(1)' }}
+                    style={{
+                      width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
+                      background: 'oklch(0 0 0 / 0.02)', borderRadius: 12, cursor: 'pointer',
+                      animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${(expandedContent.videos?.length ?? 0) * 0.08 + i * 0.05}s both`,
+                    }}>
+                    <Image src={src} alt="" fill style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)' }} sizes="33vw" />
                   </div>
                 ))}
               </div>
             )}
           </ScrollFadeWrapper>
         </div>
+      )}
+
+      {lightboxIndex !== null && expandedContent && (
+        <ImageLightbox
+          images={[...(expandedContent.videos ?? []), ...(expandedContent.images ?? [])]}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+          altPrefix={displayedExpanded ?? 'Image'}
+        />
       )}
     </main>
   )

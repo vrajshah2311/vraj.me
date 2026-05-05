@@ -396,6 +396,91 @@ function ScrollFadeWrapper({ children, className }: { hasMedia?: boolean; childr
   )
 }
 
+const WORK_ITEMS = ['About', 'Peec AI', 'Profound', 'nsave', 'Model ML', 'Hale', 'Expedite']
+
+function ExpandedNav({ current, onBack, onSwitch }: { current: string | null; onBack: () => void; onSwitch: (label: string) => void }) {
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setDropdownOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  return (
+    <div onClick={e => e.stopPropagation()} style={{
+      position: 'sticky', top: 0, zIndex: 10,
+      padding: 'clamp(20px, 3vw, 32px)' as any, paddingBottom: 12,
+      background: 'var(--bg, #ffffff)',
+      display: 'flex', alignItems: 'center', gap: 12,
+      animation: 'lineIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) both',
+    }}>
+      <button
+        onClick={onBack}
+        style={{
+          background: 'none', border: 'none', padding: '4px 0', cursor: 'pointer',
+          fontSize: 13, fontWeight: 500, color: 'oklch(0 0 0 / 0.35)',
+          transition: 'color 0.15s ease',
+        }}
+        onMouseEnter={e => (e.currentTarget.style.color = '#171717')}
+        onMouseLeave={e => (e.currentTarget.style.color = 'oklch(0 0 0 / 0.35)')}
+      >← Back</button>
+
+      {current && current !== 'About' && (
+        <>
+          <span style={{ color: 'oklch(0 0 0 / 0.15)', fontSize: 13 }}>|</span>
+          <div ref={ref} style={{ position: 'relative' }}>
+            <button
+              onClick={() => setDropdownOpen(o => !o)}
+              style={{
+                background: 'none', border: 'none', padding: '4px 0', cursor: 'pointer',
+                fontSize: 13, fontWeight: 600, color: 'oklch(0 0 0 / 0.5)',
+                display: 'flex', alignItems: 'center', gap: 4,
+                transition: 'color 0.15s ease',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#171717')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'oklch(0 0 0 / 0.5)')}
+            >
+              {current}
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ opacity: 0.5 }}>
+                <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            {dropdownOpen && (
+              <div style={{
+                position: 'absolute', top: '100%', left: 0, marginTop: 8,
+                background: '#fff', borderRadius: 12, padding: 4, minWidth: 160,
+                boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04)',
+                border: '1px solid oklch(0 0 0 / 0.06)',
+                animation: 'lineIn 0.15s ease both',
+              }}>
+                {WORK_ITEMS.filter(w => w !== current && w !== 'About').map(item => (
+                  <button
+                    key={item}
+                    onClick={() => { onSwitch(item); setDropdownOpen(false) }}
+                    style={{
+                      display: 'block', width: '100%', textAlign: 'left',
+                      background: 'none', border: 'none', padding: '6px 10px',
+                      fontSize: 13, fontWeight: 500, color: 'oklch(0 0 0 / 0.5)',
+                      cursor: 'pointer', borderRadius: 8,
+                      transition: 'all 0.1s ease',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.color = '#171717'; e.currentTarget.style.background = 'oklch(0 0 0 / 0.04)' }}
+                    onMouseLeave={e => { e.currentTarget.style.color = 'oklch(0 0 0 / 0.5)'; e.currentTarget.style.background = 'none' }}
+                  >{item}</button>
+                ))}
+              </div>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
 function HighlightSpan({ text, visible }: { text: string; visible: boolean }) {
   return (
     <span style={{ position: 'relative', display: 'inline' }}>
@@ -661,31 +746,8 @@ export default function V2Page() {
         >
           {/* Single scrollable content */}
           <ScrollFadeWrapper hasMedia={false} className="v2-expanded-text">
-            {/* Back button */}
-            <button
-              onClick={(e) => { e.stopPropagation(); closeExpanded() }}
-              style={{
-                background: 'none', border: 'none', padding: '4px 0', cursor: 'pointer',
-                fontSize: 13, fontWeight: 500, color: 'oklch(0 0 0 / 0.35)',
-                display: 'flex', alignItems: 'center', gap: 4,
-                marginBottom: 16, transition: 'color 0.15s ease',
-                animation: 'lineIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) both',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#171717')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'oklch(0 0 0 / 0.35)')}
-            >← Back</button>
-
-            {/* Label — hide for About */}
-            {expanded !== 'About' && (
-              <div style={{
-                fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600,
-                lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em',
-                color: 'oklch(0 0 0 / 0.15)',
-                marginBottom: 24,
-                animation: 'lineIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) both',
-              }}>{expanded}</div>
-            )}
-
+            {/* Sticky nav bar */}
+            <ExpandedNav current={displayedExpanded} onBack={closeExpanded} onSwitch={(label) => { setExpanded(label); setDisplayedExpanded(label) }} />
             {/* Profile image — About only */}
             {displayedExpanded === 'About' && (
               <ProfileImage />
@@ -725,7 +787,7 @@ export default function V2Page() {
 
             {/* Images & videos grid */}
             {(expandedContent.videos?.length || expandedContent.images?.length) && (
-              <div className="v2-media-grid">
+              <div className="v2-media-grid" style={{ marginTop: 48 }}>
                 {expandedContent.videos?.map((src, i) => (
                   <div key={src} style={{
                     width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
