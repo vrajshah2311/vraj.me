@@ -161,8 +161,6 @@ export default function GalleryPage() {
   // Load all images at once
   useEffect(() => {
     const initial = Array.from({ length: baseImages.length }, (_, i) => generateImage(i + 1))
-    console.log('Loading images:', initial)
-    console.log('Base images array:', baseImages)
     setImages(initial)
     
     // Set all images to loading state initially to prevent blank states
@@ -277,7 +275,6 @@ export default function GalleryPage() {
                     loading="lazy"
                     onLoadStart={() => startImageLoadTimer(image.id)}
                     onError={(e) => {
-                      console.error('Failed to load external image in grid:', image.src)
                       setImageLoading(image.id, false)
                       const target = e.target as HTMLImageElement
                       target.style.display = 'none'
@@ -289,10 +286,7 @@ export default function GalleryPage() {
                       `
                       target.parentNode?.appendChild(fallback)
                     }}
-                    onLoad={() => {
-                      console.log('External image loaded in grid:', image.src)
-                      setImageLoading(image.id, false)
-                    }}
+                    onLoad={() => setImageLoading(image.id, false)}
                   />
                 ) : (
                   <Image
@@ -304,15 +298,8 @@ export default function GalleryPage() {
                     loading="lazy"
                     style={{ width: '100%', height: '100%' }}
                     onLoadStart={() => startImageLoadTimer(image.id)}
-                    onError={() => {
-                      console.error('Failed to load local image in grid:', image.src)
-                      console.log('Attempted to load from:', image.src)
-                      setImageLoading(image.id, false)
-                    }}
-                    onLoad={() => {
-                      console.log('Local image loaded in grid:', image.src)
-                      setImageLoading(image.id, false)
-                    }}
+                    onError={() => setImageLoading(image.id, false)}
+                    onLoad={() => setImageLoading(image.id, false)}
                   />
                 )}
                 </div>
@@ -371,8 +358,6 @@ export default function GalleryPage() {
           
           <div className="w-full h-full flex items-center justify-center">
             {(() => {
-              console.log('Rendering modal for image:', selectedImage.src)
-              
               if (selectedImage.src.startsWith('VIDEO:')) {
                 return (
                   <div className="bg-white rounded-xl p-4 max-w-4xl max-h-full">
@@ -396,14 +381,8 @@ export default function GalleryPage() {
                     className="object-contain"
                     style={{ maxWidth: 'calc(100vw - 80px)', maxHeight: 'calc(100vh - 80px)' }}
                     onLoadStart={() => startImageLoadTimer(selectedImage.id)}
-                    onError={() => {
-                      console.error('External image failed in modal:', selectedImage.src)
-                      setImageLoading(selectedImage.id, false)
-                    }}
-                    onLoad={() => {
-                      console.log('External image loaded in modal:', selectedImage.src)
-                      setImageLoading(selectedImage.id, false)
-                    }}
+                    onError={() => setImageLoading(selectedImage.id, false)}
+                    onLoad={() => setImageLoading(selectedImage.id, false)}
                   />
                 )
               }
@@ -419,15 +398,8 @@ export default function GalleryPage() {
                   style={{ maxWidth: 'calc(100vw - 80px)', maxHeight: 'calc(100vh - 80px)' }}
                   quality={100}
                   onLoadStart={() => startImageLoadTimer(selectedImage.id)}
-                  onError={() => {
-                    console.error('Local image failed in modal:', selectedImage.src)
-                    console.log('Attempted to load from:', selectedImage.src)
-                    setImageLoading(selectedImage.id, false)
-                  }}
-                  onLoad={() => {
-                    console.log('Local image loaded in modal:', selectedImage.src)
-                    setImageLoading(selectedImage.id, false)
-                  }}
+                  onError={() => setImageLoading(selectedImage.id, false)}
+                  onLoad={() => setImageLoading(selectedImage.id, false)}
                 />
               )
             })()}

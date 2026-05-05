@@ -247,7 +247,6 @@ const LINKS: { section: string; items: LinkItem[] }[] = [
     { label: 'nsave', href: '/work/nsave' },
     { label: 'Model ML', href: '/work/model-ml' },
     { label: 'Hale', href: '/work/hale' },
-    { label: 'Expedite', href: '/expedite' },
     { label: 'Show all', href: '/work', light: true },
   ]},
   { section: 'explore', items: [
