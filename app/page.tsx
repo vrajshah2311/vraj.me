@@ -117,7 +117,6 @@ const EXPANDED: Record<string, ExpandedContent> = {
       '/images/case-studies/peec-ai/peec-table-1.png',
     ],
     videos: ['/videos/peec-ai-product.mp4'],
-    cta: { label: 'View case study →', href: '/peec-ai' },
   },
   'Profound': {
     lines: [
@@ -145,7 +144,6 @@ const EXPANDED: Record<string, ExpandedContent> = {
       '/images/case-studies/profound/pem6.png',
     ],
     videos: ['/videos/profound-cve.mp4', '/videos/profound-search.mp4'],
-    cta: { label: 'View case study →', href: '/profound' },
   },
   'nsave': {
     lines: [
@@ -170,7 +168,6 @@ const EXPANDED: Record<string, ExpandedContent> = {
       '/images/case-studies/nsave/ns10.png',
       '/images/case-studies/nsave/ns11.png',
     ],
-    cta: { label: 'View case study →', href: '/nsave' },
   },
   'Model ML': {
     lines: [
@@ -189,7 +186,6 @@ const EXPANDED: Record<string, ExpandedContent> = {
       '/images/case-studies/model-ml/model-ml-6.png',
       '/images/case-studies/model-ml/model-ml-7.png',
     ],
-    cta: { label: 'View case study →', href: '/model-ml' },
   },
   'Hale': {
     lines: [
@@ -203,7 +199,6 @@ const EXPANDED: Record<string, ExpandedContent> = {
       '/images/case-studies/hale/hale-3.png',
       '/images/case-studies/hale/hale-4.png',
     ],
-    cta: { label: 'View case study →', href: '/hale' },
   },
   'Expedite': {
     lines: [
