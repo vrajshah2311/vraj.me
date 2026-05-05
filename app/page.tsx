@@ -13,6 +13,7 @@ type ExpandedContent = {
   images?: string[]
   videos?: string[]
   cta?: { label: string; href: string }
+  lockedFrames?: number
 }
 
 const EXPANDED: Record<string, ExpandedContent> = {
@@ -189,6 +190,7 @@ const EXPANDED: Record<string, ExpandedContent> = {
       '/images/case-studies/model-ml/model-ml-6.png',
       '/images/case-studies/model-ml/model-ml-7.png',
     ],
+    lockedFrames: 10,
   },
   'Hale': {
     lines: [
@@ -205,6 +207,7 @@ const EXPANDED: Record<string, ExpandedContent> = {
       '/images/case-studies/hale/hale-3.png',
       '/images/case-studies/hale/hale-4.png',
     ],
+    lockedFrames: 10,
   },
   'Expedite': {
     lines: [
@@ -792,7 +795,7 @@ export default function HomePage() {
             )}
 
             {/* Images & videos grid */}
-            {(expandedContent.videos?.length || expandedContent.images?.length) && (
+            {(expandedContent.videos?.length || expandedContent.images?.length || expandedContent.lockedFrames) && (
               <div className="v2-media-grid" style={{ marginTop: 48 }}>
                 {expandedContent.videos?.map((src, i) => (
                   <div key={src}
@@ -818,6 +821,27 @@ export default function HomePage() {
                       animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${(expandedContent.videos?.length ?? 0) * 0.08 + i * 0.05}s both`,
                     }}>
                     <Image src={src} alt="" fill style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)' }} sizes="33vw" />
+                  </div>
+                ))}
+                {expandedContent.lockedFrames && Array.from({ length: expandedContent.lockedFrames }).map((_, i) => (
+                  <div key={`locked-${i}`}
+                    onMouseEnter={e => { const tip = e.currentTarget.querySelector('.nda-tip') as HTMLElement; if (tip) tip.style.opacity = '1' }}
+                    onMouseLeave={e => { const tip = e.currentTarget.querySelector('.nda-tip') as HTMLElement; if (tip) tip.style.opacity = '0' }}
+                    style={{
+                      width: '100%', aspectRatio: '16/9', borderRadius: 12, background: 'rgba(0,0,0,0.03)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      position: 'relative', cursor: 'default',
+                    }}>
+                    <svg width={20} height={20} viewBox="0 0 20 20" fill="none" style={{ opacity: 0.1 }}>
+                      <rect x={4} y={9} width={12} height={9} rx={2} fill="currentColor" />
+                      <path d="M7 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+                    </svg>
+                    <div className="nda-tip" style={{
+                      position: 'absolute', bottom: 10, left: '50%', transform: 'translateX(-50%)',
+                      background: 'rgba(0,0,0,0.06)', color: 'rgba(0,0,0,0.4)', borderRadius: 6,
+                      padding: '4px 10px', fontSize: 11, fontWeight: 500, whiteSpace: 'nowrap',
+                      fontFamily: font, opacity: 0, transition: 'opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)', pointerEvents: 'none',
+                    }}>Protected under NDA</div>
                   </div>
                 ))}
               </div>

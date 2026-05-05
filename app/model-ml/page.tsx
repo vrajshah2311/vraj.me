@@ -49,6 +49,17 @@ export default function ModelMLPage() {
             <Image src={src} alt={`Model ML ${i + 1}`} width={600} height={375} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading={i < 9 ? 'eager' : 'lazy'} quality={90} />
           </button>
         ))}
+        {Array.from({ length: 10 }).map((_, i) => (
+          <div key={`locked-${i}`} style={{
+            aspectRatio: '16/9', borderRadius: 8, background: '#f5f5f5',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <svg width={20} height={20} viewBox="0 0 20 20" fill="none" style={{ opacity: 0.3 }}>
+              <rect x={4} y={9} width={12} height={9} rx={2} fill="currentColor" />
+              <path d="M7 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+            </svg>
+          </div>
+        ))}
       </div>
 
       {lightboxIndex !== null && <ImageLightbox images={images} currentIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} onNavigate={setLightboxIndex} altPrefix="Model ML" />}
