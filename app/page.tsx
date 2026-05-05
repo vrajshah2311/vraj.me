@@ -362,7 +362,7 @@ function ProfileImage() {
   )
 }
 
-function ScrollFadeWrapper({ children, className }: { hasMedia?: boolean; children: React.ReactNode; className?: string }) {
+function ScrollFadeWrapper({ children, className }: { children: React.ReactNode; className?: string }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [canScrollDown, setCanScrollDown] = useState(false)
 
@@ -743,7 +743,7 @@ export default function HomePage() {
           </div>
 
           {/* Scrollable content */}
-          <ScrollFadeWrapper hasMedia={false} className="v2-expanded-text">
+          <ScrollFadeWrapper className="v2-expanded-text">
             {/* Label — hide for About */}
             {displayedExpanded !== 'About' && (
               <div style={{

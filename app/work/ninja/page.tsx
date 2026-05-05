@@ -3,15 +3,15 @@
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
-import CaseStudySection from "../../../components/CaseStudySection"
-import CaseStudyContent from "../../../components/CaseStudyContent"
+import CaseStudySection from "@/components/CaseStudySection"
+import CaseStudyContent from "@/components/CaseStudyContent"
 
-import CaseStudyHeading from "../../../components/CaseStudyHeading"
-import CaseStudyText from "../../../components/CaseStudyText"
-import CaseStudyLogo from "../../../components/CaseStudyLogo"
+import CaseStudyHeading from "@/components/CaseStudyHeading"
+import CaseStudyText from "@/components/CaseStudyText"
+import CaseStudyLogo from "@/components/CaseStudyLogo"
 
-import ScrollProgress from "../../../components/ScrollProgress"
-import ScrollCarousel from "../../../components/ScrollCarousel"
+import ScrollProgress from "@/components/ScrollProgress"
+import ScrollCarousel from "@/components/ScrollCarousel"
 
 export default function NinjaWorkPage() {
   const router = useRouter()

@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { ScrollProvider } from '../components/ScrollContext'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
-import PerformanceOptimizer from '../components/PerformanceOptimizer'
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { cn } from "@/lib/utils";
@@ -45,10 +43,7 @@ export default function RootLayout({
         <Analytics mode="production" />
       </head>
       <body className="antialiased">
-        <ScrollProvider>
-          {children}
-        </ScrollProvider>
-        <PerformanceOptimizer />
+        {children}
         <SpeedInsights />
       </body>
     </html>
