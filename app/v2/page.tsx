@@ -661,6 +661,20 @@ export default function V2Page() {
         >
           {/* Single scrollable content */}
           <ScrollFadeWrapper hasMedia={false} className="v2-expanded-text">
+            {/* Back button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); closeExpanded() }}
+              style={{
+                background: 'none', border: 'none', padding: '4px 0', cursor: 'pointer',
+                fontSize: 13, fontWeight: 500, color: 'oklch(0 0 0 / 0.35)',
+                display: 'flex', alignItems: 'center', gap: 4,
+                marginBottom: 16, transition: 'color 0.15s ease',
+                animation: 'lineIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) both',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#171717')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'oklch(0 0 0 / 0.35)')}
+            >← Back</button>
+
             {/* Label — hide for About */}
             {expanded !== 'About' && (
               <div style={{
