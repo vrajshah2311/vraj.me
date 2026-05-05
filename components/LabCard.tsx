@@ -171,7 +171,7 @@ export default function LabCard({ title, subtitle, image, video, href, cropBotto
             {/* Skeleton */}
             <div style={{
               position: 'absolute', inset: 0, zIndex: 1,
-              background: 'linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%)',
+              background: 'linear-gradient(90deg, #f5f5f5 25%, #ffffff 50%, #f5f5f5 75%)',
               backgroundSize: '200% 100%',
               animation: 'labSkeleton 1.6s ease-in-out infinite',
               opacity: loaded ? 0 : 1,
