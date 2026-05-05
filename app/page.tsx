@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import ImageLightbox from '../components/ImageLightbox'
+import dynamic from 'next/dynamic'
+const ImageLightbox = dynamic(() => import('../components/ImageLightbox'), { ssr: false })
 
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
@@ -703,7 +704,7 @@ export default function HomePage() {
             animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${i * 0.06}s both`,
           }}>
             <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0px 0px 0px 1px oklch(0 0 0 / 0.06)' }}>
-              <video src={src} autoPlay muted loop playsInline style={{ width: '100%', aspectRatio: '429/269', display: 'block', objectFit: 'cover' }} />
+              <video src={src} autoPlay muted loop playsInline preload="none" style={{ width: '100%', aspectRatio: '429/269', display: 'block', objectFit: 'cover' }} />
             </div>
           </div>
         ))}
@@ -804,7 +805,7 @@ export default function HomePage() {
                       background: 'oklch(0 0 0 / 0.02)', borderRadius: 12, cursor: 'pointer',
                       animation: `imgIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) ${i * 0.08}s both`,
                     }}>
-                    <video src={src} autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)' }} />
+                    <video src={src} autoPlay muted loop playsInline preload="none" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)' }} />
                   </div>
                 ))}
                 {expandedContent.images?.map((src, i) => (

@@ -137,13 +137,19 @@ function VideoModal({ video, title, subtitle, creditOverride, onClose }: { video
 export default function LabCard({ title, subtitle, image, video, href, cropBottom, noModal, credit: creditProp }: LabCardProps) {
   const [hov, setHov] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  const handleMouseEnter = () => {
+    setHov(true)
+    if (video && !videoLoaded) setVideoLoaded(true)
+  }
 
   return (
     <>
       <div
         style={{ textDecoration: 'none', display: 'block', cursor: 'pointer' }}
-        onMouseEnter={() => setHov(true)}
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={() => setHov(false)}
         onClick={e => {
           if (video && !noModal) { e.preventDefault(); setModalOpen(true) }
@@ -164,17 +170,19 @@ export default function LabCard({ title, subtitle, image, video, href, cropBotto
             {video ? (
               <video
                 ref={videoRef}
-                src={video}
+                src={videoLoaded ? video : undefined}
                 muted
                 loop
                 playsInline
                 autoPlay
+                preload="none"
                 style={{ width: '100%', aspectRatio: '429 / 269', display: 'block', objectFit: 'cover', objectPosition: cropBottom ? 'center bottom' : undefined }}
               />
             ) : (
               <img
                 src={image}
                 alt={title}
+                loading="lazy"
                 style={{ width: '100%', aspectRatio: '429 / 269', display: 'block', objectFit: 'cover', objectPosition: cropBottom ? 'center bottom' : undefined }}
               />
             )}
