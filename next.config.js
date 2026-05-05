@@ -13,7 +13,6 @@ const nextConfig = {
     deviceSizes: [640, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 64, 128, 256],
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
-    quality: 80,
   },
   compress: true,
   poweredByHeader: false,
