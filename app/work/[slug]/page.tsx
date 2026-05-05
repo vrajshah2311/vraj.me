@@ -86,7 +86,6 @@ export default function WorkPage() {
   
   const [images, setImages] = useState<ImageItem[]>([])
   const [loading, setLoading] = useState(false)
-  const [, setPage] = useState(1)
   const [isNavbarVisible, setIsNavbarVisible] = useState(true)
   const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -168,8 +167,7 @@ export default function WorkPage() {
           .filter((img): img is ImageItem => img !== null)
         
         setImages(prev => [...prev, ...newImages])
-        setPage(prev => prev + 1)
-        setLoading(false)
+setLoading(false)
       }, 1000) // Simulate loading delay
     }
   }, [images.length, loading, slug])

@@ -218,8 +218,6 @@ const EXPANDED: Record<string, ExpandedContent> = {
 
 // ─── Hover previews for non-expanded links ───────────────────────────────────
 
-const HOVER_IMAGES: Record<string, string[]> = {}
-
 const HOVER_VIDEOS: Record<string, string[]> = {
   'Lab': [
     '/videos/peec-ai-map.mp4',
@@ -556,7 +554,7 @@ export default function HomePage() {
 
   const expandedContent = displayedExpanded ? EXPANDED[displayedExpanded] : null
   const isExpandedVisible = !!expanded && !closing
-  const previewImages = hoveredLabel && !expanded ? (EXPANDED[hoveredLabel]?.images ?? HOVER_IMAGES[hoveredLabel] ?? null) : null
+  const previewImages = hoveredLabel && !expanded ? (EXPANDED[hoveredLabel]?.images ?? null) : null
   const previewVideos = hoveredLabel && !expanded && !previewImages ? (HOVER_VIDEOS[hoveredLabel] ?? null) : null
 
   useEffect(() => {
@@ -690,7 +688,7 @@ export default function HomePage() {
         overflowY: 'auto',
         zIndex: 1,
       }}>
-        {previewImages && previewImages.map((src, i) => (
+        {previewImages && previewImages.map((src: string, i: number) => (
           <div key={src} style={{
             width: '100%', aspectRatio: '16/9', overflow: 'hidden', position: 'relative',
             background: 'oklch(0 0 0 / 0.02)', flexShrink: 0,
