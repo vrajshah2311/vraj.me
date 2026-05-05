@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from "react"
-import Breadcrumb from "../../components/Breadcrumb"
+import Breadcrumb from "@/components/Breadcrumb"
 import Image from "next/image"
-import ImageLightbox from "../../components/ImageLightbox"
-import CaseStudyStickyNav from "../../components/CaseStudyStickyNav"
+import ImageLightbox from "@/components/ImageLightbox"
+import CaseStudyStickyNav from "@/components/CaseStudyStickyNav"
 
 const images = [
   '/images/case-studies/profound/pr1.png',

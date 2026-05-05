@@ -2,9 +2,9 @@
 
 import React, { useState, useRef, useEffect } from "react"
 import Image from "next/image"
-import ImageLightbox from "../../components/ImageLightbox"
-import Breadcrumb from "../../components/Breadcrumb"
-import CaseStudyStickyNav from "../../components/CaseStudyStickyNav"
+import ImageLightbox from "@/components/ImageLightbox"
+import Breadcrumb from "@/components/Breadcrumb"
+import CaseStudyStickyNav from "@/components/CaseStudyStickyNav"
 
 const images = [
   // Recent

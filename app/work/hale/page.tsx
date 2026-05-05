@@ -2,9 +2,9 @@
 
 import React, { useState } from "react"
 import Image from "next/image"
-import ImageLightbox from "../../components/ImageLightbox"
-import Breadcrumb from "../../components/Breadcrumb"
-import CaseStudyStickyNav from "../../components/CaseStudyStickyNav"
+import ImageLightbox from "@/components/ImageLightbox"
+import Breadcrumb from "@/components/Breadcrumb"
+import CaseStudyStickyNav from "@/components/CaseStudyStickyNav"
 
 const images = [
   '/images/case-studies/hale/hale-1.png',
