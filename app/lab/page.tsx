@@ -6,9 +6,6 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
-  { title: 'Tag Input', subtitle: 'UI Component', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tag-input.mp4', href: '/lab/tag-input' },
-  { title: 'Context Menu', subtitle: 'UI Component', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-menu.mp4', href: '/lab/context-menu' },
-  { title: 'Tab Switcher', subtitle: 'UI Component', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tab-switcher.mp4', href: '/lab/tab-switcher' },
   { title: 'Map', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/peec-ai-map.mp4', href: '/lab' },
   { title: 'Agent Analytics', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/aa.mp4', href: '/lab' },
   { title: 'Dropdown', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/dropdown.mp4', href: '/lab/dropdown' },
