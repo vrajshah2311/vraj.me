@@ -17,7 +17,8 @@ type ExpandedContent = {
   lockedFrames?: number
 }
 
-const EXPANDED: Record<string, ExpandedContent> = {
+const EXPANDED: Record<string, ExpandedContent> = ((): Record<string, ExpandedContent> => {
+  const base: Record<string, ExpandedContent> = {
   'About': {
     lines: [
       '~Now',
@@ -155,6 +156,8 @@ const EXPANDED: Record<string, ExpandedContent> = {
       '/images/case-studies/profound/pem4.png',
       '/images/case-studies/profound/pem5.png',
       '/images/case-studies/profound/pem6.png',
+      '/images/case-studies/profound/p10.png',
+      '/images/case-studies/profound/p11.png',
     ],
     videos: ['/videos/profound-cve.mp4', '/videos/profound-search.mp4'],
   },
@@ -220,12 +223,103 @@ const EXPANDED: Record<string, ExpandedContent> = {
     ],
     lockedFrames: 10,
   },
-  'Expedite': {
+  'Ninja': {
     lines: [
-      'Coming soon.',
+      'Crypto / web3 wallet.',
+      'Send, swap, and stake',
+      'across chains in seconds.',
+      '',
+      'Designed core flows —',
+      'onboarding, swap, dashboards.',
+    ],
+    images: [
+      '/images/case-studies/ninja/ninja-1.png',
+      '/images/case-studies/ninja/ninja-2.png',
+      '/images/case-studies/ninja/ninja-3.png',
+      '/images/case-studies/ninja/ninja-4.png',
+      '/images/case-studies/ninja/ninja-5.png',
+      '/images/case-studies/ninja/ninja-6.png',
+      '/images/case-studies/ninja/ninja-7.png',
+      '/images/case-studies/ninja/ninja-8.png',
+      '/images/case-studies/ninja/ninja-9.png',
+      '/images/case-studies/ninja/ninja-10.png',
+      '/images/case-studies/ninja/ninja-11.png',
+      '/images/case-studies/ninja/ninja-12.png',
+      '/images/case-studies/ninja/ninja-13.png',
+      '/images/case-studies/ninja/ninja-14.png',
+      '/images/case-studies/ninja/ninja-15.png',
+      '/images/case-studies/ninja/ninja-16.png',
     ],
   },
-}
+  'Linktree': {
+    lines: [
+      'The link in bio.',
+      'Used by 50M+ creators',
+      'to share everything they make.',
+      '',
+      'Designed parts of the dashboard',
+      'and creator-monetization flows.',
+    ],
+    images: [
+      '/images/case-studies/linktree/linktree-1.png',
+      '/images/case-studies/linktree/linktree-2.png',
+      '/images/case-studies/linktree/linktree-3.png',
+    ],
+  },
+  'Expedite': {
+    lines: [
+      'On-demand delivery, fast.',
+      'Designed key flows across',
+      'consumer ordering and dispatch.',
+    ],
+    images: [
+      '/images/case-studies/expedite/expedite-1.png',
+      '/images/case-studies/expedite/expedite-2.png',
+      '/images/case-studies/expedite/expedite-3.png',
+      '/images/case-studies/expedite/expedite-4.png',
+      '/images/case-studies/expedite/expedite-5.png',
+      '/images/case-studies/expedite/expedite-6.png',
+    ],
+  },
+  'Context AI': {
+    lines: [
+      'AI inside the apps you use.',
+      'Inline assistants for docs,',
+      'search, and team workflows.',
+    ],
+    images: [
+      '/images/case-studies/context-ai/context-ai-2.png',
+      '/images/case-studies/context-ai/context-ai-3.png',
+    ],
+  },
+  'Other': {
+    lines: [
+      'Bits and pieces.',
+      'Side projects and small surfaces',
+      'that didn\'t need their own page.',
+    ],
+    images: [
+      '/images/case-studies/misc/misc-ma-1.png',
+      '/images/case-studies/misc/misc-ma-2.png',
+      '/images/case-studies/misc/misc-mn-1.png',
+      '/images/case-studies/misc/misc-el-1.png',
+      '/images/case-studies/misc/misc-op-1.png',
+    ],
+  },
+  }
+
+  // "Show all" — every image from every case study, aggregated
+  base['Show all'] = {
+    lines: [
+      'Everything in one place.',
+      'Every product, every screen.',
+    ],
+    images: ['Peec AI', 'Profound', 'nsave', 'Model ML', 'Hale', 'Ninja', 'Linktree', 'Context AI', 'Expedite', 'Other']
+      .flatMap(key => base[key]?.images ?? []),
+  }
+
+  return base
+})()
 
 // ─── Hover previews for non-expanded links ───────────────────────────────────
 
@@ -258,6 +352,9 @@ const LINKS: { section: string; items: LinkItem[] }[] = [
     { label: 'nsave', href: '#' },
     { label: 'Model ML', href: '#' },
     { label: 'Hale', href: '#' },
+    { label: 'Ninja', href: '#' },
+    { label: 'Linktree', href: '#' },
+    { label: 'Show all', href: '#', light: true },
   ]},
   { section: 'explore', items: [
     { label: 'Lab', href: '/lab' },
