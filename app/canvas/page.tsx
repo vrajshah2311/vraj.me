@@ -15,15 +15,15 @@ const experiments = [
 export default function CanvasIndex() {
   return (
     <main style={{ minHeight: '100vh', background: '#FDFDFD', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
         {experiments.map(({ label, href }) => (
           <Link key={href} href={href} style={{
-            height: 40, paddingLeft: 16, paddingRight: 16,
+            height: 30, paddingLeft: 12, paddingRight: 12,
             background: '#fff',
             boxShadow: '0px 1px 2px -1px rgba(23,23,23,0.08), 0px 1px 3px rgba(23,23,23,0.08), 0px 0px 0px 1px rgba(23,23,23,0.06)',
-            borderRadius: 12,
+            borderRadius: 9,
             display: 'flex', alignItems: 'center',
-            color: '#171717', fontSize: 14, fontFamily: font, fontWeight: 500,
+            color: '#171717', fontSize: 12, fontFamily: font, fontWeight: 500,
             textDecoration: 'none',
           }}>
             {label}
