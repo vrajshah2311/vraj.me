@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Rich Text Editor', subtitle: 'Floating Format Bar', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/rich-text-editor' },
   { title: 'Number Scrubber', subtitle: 'Scroll to Change', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/number-scrubber' },
   { title: 'Accordion', subtitle: 'Smooth Expand/Collapse', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/accordion' },
   { title: 'Tab Switcher', subtitle: 'Animated Tabs', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/tabs' },
