@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Spacing is punctuation for interfaces', date: '05/16', href: '/thoughts/spacing-is-punctuation-for-interfaces' },
   { title: 'Why I draft in grayscale before color', date: '05/15', href: '/thoughts/why-i-draft-in-grayscale-before-color' },
 ]
 

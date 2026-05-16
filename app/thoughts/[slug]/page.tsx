@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'spacing-is-punctuation-for-interfaces': {
+    title: 'Spacing is punctuation for interfaces',
+    date: '05/16',
+    body: [
+      "I used to think of spacing as the thing you did after the real design work was finished. Padding and margins were numbers you adjusted until things \"looked right\" — an aesthetic instinct, not a structural decision. It took me an embarrassingly long time to realize that spacing is the punctuation of an interface.",
+      "Punctuation in writing tells you where to pause, where a thought ends, where emphasis falls. A comma slows the reader down. A period creates a stop. Whitespace in a layout does the same work. A tight gap between two elements says they belong together. A large margin before a section says: this is something new. The rhythm of a page — whether it feels calm or crowded, scannable or exhausting — is almost entirely a function of how space is distributed.",
+      "What changed for me was noticing how often I could trace a confusing UI back to a spacing problem, not a content problem. A button that felt disconnected from its context turned out to just be too far from the field it submitted. A paragraph that felt out of place had the same margin above it as everything else, so nothing was anchoring it to what came before. Spacing was carrying no semantic weight at all.",
+      "Now I treat spatial decisions the way I treat type decisions: deliberately. Eight pixels versus sixteen is not a preference; it's a statement about relationship. I keep a rough vocabulary — 4 for tight binding, 12 for association, 24 for section separation, 48 for breathing — and try to stay consistent within a screen the same way a writer tries to be consistent with punctuation. Break the rules, but know which rule you're breaking.",
+    ],
+  },
   'why-i-draft-in-grayscale-before-color': {
     title: 'Why I draft in grayscale before color',
     date: '05/15',
