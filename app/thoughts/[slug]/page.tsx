@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'every-hover-state-is-a-micro-promise': {
+    title: 'Every hover state is a micro-promise',
+    date: '05/17',
+    body: [
+      "When I hover over something and it changes, I'm receiving a commitment. The element is telling me: something will happen here, and that thing is predictable. Most of the time hover states get treated as visual decoration — a way to signal interactivity, to acknowledge the cursor. But hover is actually the first half of a contract.",
+      "I noticed this most clearly while auditing a dashboard that users kept describing as confusing. Nothing was technically broken. But hover states were applied inconsistently: some elements changed color on hover with no click action attached, others triggered major state changes with no visible affordance beforehand. The cursor was lying. Users were hovering, seeing nothing change, and assuming nothing was interactive. Or worse: something changed on hover in a way that had no relationship to what clicking would actually do.",
+      "The hover state should telegraph the action. A subtle background fill on a row promises a selection. A deepening shadow on a card promises a click. An underline promises navigation. The visual change isn't decoration — it's preemptive disclosure. It says: this is the thing, and here is roughly what it does. If the hover breaks that promise, the interaction feels arbitrary, even when it works correctly.",
+      "What I try to do now is design hover and active states together, never separately. The hover state is a preview of the active state — the same gesture at lower intensity. If I can't figure out what the hover should look like, that's usually a sign the interaction itself isn't defined clearly enough. The hover problem is rarely a visual problem. It's a clarity problem wearing a visual costume.",
+    ],
+  },
   'spacing-is-punctuation-for-interfaces': {
     title: 'Spacing is punctuation for interfaces',
     date: '05/16',
