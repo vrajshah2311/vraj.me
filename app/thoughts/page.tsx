@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'I stopped writing "Submit" on buttons', date: '05/18', href: '/thoughts/i-stopped-writing-submit-on-buttons' },
   { title: 'Every hover state is a micro-promise', date: '05/17', href: '/thoughts/every-hover-state-is-a-micro-promise' },
   { title: 'Spacing is punctuation for interfaces', date: '05/16', href: '/thoughts/spacing-is-punctuation-for-interfaces' },
   { title: 'Why I draft in grayscale before color', date: '05/15', href: '/thoughts/why-i-draft-in-grayscale-before-color' },

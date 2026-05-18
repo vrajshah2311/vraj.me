@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-stopped-writing-submit-on-buttons': {
+    title: 'I stopped writing "Submit" on buttons',
+    date: '05/18',
+    body: [
+      '"Submit" is a data-processing term. It describes what the form does — it submits data to a server. It says nothing about what you get back, what happens next, or whether you should be nervous about clicking it.',
+      'I stopped writing "Submit" on buttons a couple years ago, after watching someone pause on a checkout form and ask out loud: "Wait, is this going to charge me right now?" The button said "Submit." The answer was yes. There was nothing in that word that prepared them for that.',
+      'Button text is a prediction. It should tell you the next state of the world. "Send Message" says something went somewhere. "Create Account" says something now exists. "Place Order" says a transaction is about to happen. Each of these carries weight, obligation, specificity. They require you to have thought through the consequence of the action — which means they also force clarity on the rest of the interaction.',
+      'When I can\'t find a better word than "Submit," that\'s usually a symptom: either the action is unclear, or the screen is doing too many things and I haven\'t figured out what the user is actually committing to. The generic label becomes a placeholder for unresolved design thinking.',
+      'I\'ve started treating button text as a diagnostic. If the word fits interchangeably with every other button on the screen, something is wrong. Good button copy is almost never transferable. "Continue" works on a multi-step flow. It would be strange on a payment confirmation. The specificity of the label is a measure of how well I understand my own design.',
+    ],
+  },
   'every-hover-state-is-a-micro-promise': {
     title: 'Every hover state is a micro-promise',
     date: '05/17',
