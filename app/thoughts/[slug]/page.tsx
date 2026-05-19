@@ -10,6 +10,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'icons-that-need-tooltips-have-already-failed': {
+    title: 'Icons that need tooltips have already failed',
+    date: '05/19',
+    body: [
+      "There's a test I run on icon-only toolbars: I cover the tooltips and ask someone who hasn't used the product to tell me what each button does. The results are almost always humbling.",
+      "An icon is a bet that the image carries enough meaning on its own. Most icons don't. The pencil means \"edit\" only because you've learned it means \"edit\" from a hundred other apps. The three horizontal lines means \"menu\" by convention, not by logic. An icon is borrowed meaning, and borrowed meaning can fail silently.",
+      "The tooltip is a confession. When an icon needs a tooltip to be understood, the interface has already asked too much of the user — they had to hover, wait, read, and then form their intention. That's three extra steps for what should be instant recognition. The hover-to-understand pattern treats confusion as a feature.",
+      "What I've started doing is designing icon + label pairs first, then asking whether the label can go. Sometimes it can — a trash can next to a \"Delete\" label isn't adding clarity, it's just noise. But more often than I expected, the label is doing real work, and removing it would leave a gap. That's when I keep both.",
+      "The cases where icons work alone are narrower than UI conventions would suggest: play and pause on a video player, send on a chat box, close on a modal. These are high-frequency actions tied to physical metaphors with decades of reinforcement. Outside that small set, the label earns its space.",
+      "An interface that requires discovery to use is not minimal — it's incomplete.",
+    ],
+  },
   'i-stopped-writing-submit-on-buttons': {
     title: 'I stopped writing "Submit" on buttons',
     date: '05/18',
