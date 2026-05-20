@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'animations-should-feel-inevitable-not-impressive': {
+    title: 'Animations should feel inevitable, not impressive',
+    date: '05/20',
+    body: [
+      "The first time I noticed it was in a design review. The prototype had this elastic bounce on a modal entrance — satisfying to trigger, clearly thought through. Everyone in the room said \"ooh.\" I said it too.",
+      "We shipped it. Two weeks later, nobody talked about it anymore. And three months later, I started noticing that the bounce was slightly annoying — like someone finishing your sentence with a little flourish. It called attention to itself every single time, even after the novelty was gone.",
+      "Good animation isn't applause. It's comprehension. The job of a transition is to help you understand what just happened spatially — where did this thing come from, where did it go, what's the relationship between the thing I just had and the thing I now have? When it answers those questions clearly, it disappears. You don't experience it as animation; you just experience the interface as making sense.",
+      "What I try to ask now when reviewing motion is: does this teach something, or does it perform? A panel sliding in from the right teaches: there's a hierarchy, this is a child of the thing you were just on. A card flipping to reveal a back side teaches: these two surfaces are related, you're toggling between faces. A checkmark bouncing after form submission teaches nothing — it just celebrates.",
+      "The animations I'm proudest of are the ones nobody notices. They serve the exact moment they were designed for, then step aside. When someone using a product says \"it just feels right,\" that's often the motion doing its job invisibly. That's what I'm going for.",
+    ],
+  },
   'icons-that-need-tooltips-have-already-failed': {
     title: 'Icons that need tooltips have already failed',
     date: '05/19',

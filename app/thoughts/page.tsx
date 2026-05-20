@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Animations should feel inevitable, not impressive', date: '05/20', href: '/thoughts/animations-should-feel-inevitable-not-impressive' },
   { title: 'Icons that need tooltips have already failed', date: '05/19', href: '/thoughts/icons-that-need-tooltips-have-already-failed' },
   { title: 'I stopped writing "Submit" on buttons', date: '05/18', href: '/thoughts/i-stopped-writing-submit-on-buttons' },
   { title: 'Every hover state is a micro-promise', date: '05/17', href: '/thoughts/every-hover-state-is-a-micro-promise' },
