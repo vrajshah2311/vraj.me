@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Number Input', subtitle: 'Drag, Scroll & Type', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/number-input' },
   { title: 'Tab Switcher', subtitle: 'Sliding Indicator', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/tab-switcher' },
   { title: 'Color Picker', subtitle: 'HSB + Hex + Presets', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/color-picker' },
   { title: 'Date Picker', subtitle: 'Smooth Calendar Input', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/date-picker' },
