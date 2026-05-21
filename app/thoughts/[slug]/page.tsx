@@ -10,6 +10,19 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'placeholders-are-not-a-substitute-for-labels': {
+    title: 'Placeholders are not a substitute for labels',
+    date: '05/21',
+    body: [
+      "For a long time, I used placeholder text as a shortcut. The label above a text input felt redundant when the placeholder was already doing the job — \"Enter your email\" sat right there in the field, saving vertical space, keeping things clean. Removing the label felt minimal. It looked like restraint.",
+      "Then I started watching people actually fill out forms.",
+      "The moment you type a single character, the placeholder disappears. That's by design — it clears the field for your input. But it also clears the instruction. If you second-guess yourself halfway through typing, you have no reference. If the field validation fails and you have to correct your answer, the hint is gone. You're left trying to remember what the form asked for.",
+      "This is especially bad on mobile, where the virtual keyboard hides half the screen. Users jump between fields, lose context, backspace and re-enter. The placeholder was there for the empty state — which is the shortest moment in a form's life.",
+      "A label above the field is always present. It doesn't have a lifecycle; it just sits there, grounding the field no matter what state it's in. Placeholder text has a lifecycle — it exists only until the input begins. Designing as if those are interchangeable is designing for the best case instead of the actual case.",
+      "What I try to do now is treat placeholder text as a hint, not a label. If the field says \"Email address\" as a label, the placeholder can say \"you@example.com\" — it adds specificity, but losing it doesn't break the interaction. The label carries the essential meaning. The placeholder is a refinement.",
+      "The savings in vertical space aren't worth the confusion downstream.",
+    ],
+  },
   'animations-should-feel-inevitable-not-impressive': {
     title: 'Animations should feel inevitable, not impressive',
     date: '05/20',

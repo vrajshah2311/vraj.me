@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Placeholders are not a substitute for labels', date: '05/21', href: '/thoughts/placeholders-are-not-a-substitute-for-labels' },
   { title: 'Animations should feel inevitable, not impressive', date: '05/20', href: '/thoughts/animations-should-feel-inevitable-not-impressive' },
   { title: 'Icons that need tooltips have already failed', date: '05/19', href: '/thoughts/icons-that-need-tooltips-have-already-failed' },
   { title: 'I stopped writing "Submit" on buttons', date: '05/18', href: '/thoughts/i-stopped-writing-submit-on-buttons' },
