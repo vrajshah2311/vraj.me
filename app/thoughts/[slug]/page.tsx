@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'error-messages-should-sound-like-a-person': {
+    title: 'Error messages should sound like a person',
+    date: '05/22',
+    body: [
+      "Most error messages are written for the system, not the user. They surface internal state — \"Error: invalid_grant,\" \"Request failed with status 422,\" \"NullReferenceException\" — as if the person reading them shares the same mental model as the engineer who wrote the handler. They don't. They just clicked a button and something didn't work.",
+      "Good error messages require you to imagine the specific person who will read them. They're already a little frustrated. They don't know what token validation means. They want to know two things: what went wrong, and what should I do next? Almost every error I've ever read fails on at least one of those.",
+      "The format I keep coming back to is simple: one sentence for what happened, one sentence for the next action. \"We couldn't process your payment — please check your card details and try again.\" That's it. No jargon, no stack traces, no passive voice. The passive voice is especially corrosive. \"An error occurred\" assigns no agency and suggests no resolution. It reads like the interface shrugging.",
+      "What changed my practice was starting to write error messages before writing success states. If I can describe every failure mode in plain language — and draft a response that actually helps — it usually means I understand the interaction well enough to build it right. When I struggle to write the error, it's almost always because the interaction itself is underspecified. Error messages are a forcing function for clarity.",
+      "The most common failure I see isn't too little information. It's impersonal information. The system clearly knows something went wrong. It just never bothered to translate that knowledge into a message worth reading.",
+    ],
+  },
   'placeholders-are-not-a-substitute-for-labels': {
     title: 'Placeholders are not a substitute for labels',
     date: '05/21',
