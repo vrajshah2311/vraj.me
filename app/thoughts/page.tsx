@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Disabled buttons are a failure of information design', date: '05/23', href: '/thoughts/disabled-buttons-are-a-failure-of-information-design' },
   { title: 'Error messages should sound like a person', date: '05/22', href: '/thoughts/error-messages-should-sound-like-a-person' },
   { title: 'Placeholders are not a substitute for labels', date: '05/21', href: '/thoughts/placeholders-are-not-a-substitute-for-labels' },
   { title: 'Animations should feel inevitable, not impressive', date: '05/20', href: '/thoughts/animations-should-feel-inevitable-not-impressive' },

@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'disabled-buttons-are-a-failure-of-information-design': {
+    title: 'Disabled buttons are a failure of information design',
+    date: '05/23',
+    body: [
+      "Most forms I've worked on have a button that goes gray when something's wrong. Fields are empty, conditions aren't met, and the submit button just sits there, unreachable. The designer's intention is clear — protect the user from submitting an incomplete form. But the experience for the user is different: they see a target they can't reach and no explanation for why.",
+      "I spent a long time thinking this was right. It feels protective. You're guiding the user. But a disabled button without explanation is just withholding. It signals something is wrong without saying what, so the user goes hunting. Is it the email? A missed required field? A password rule I didn't notice? You've introduced a puzzle where there should be guidance.",
+      "The pattern I keep reaching for is an always-active button that fails gracefully. Let the user click. When they do, surface what's missing, exactly where it's missing. This treats the click as a request for feedback rather than a transgression to block. Most users who see a disabled submit button are already hunting for what's wrong — make the button the way to do that.",
+      "There are cases where disabling makes sense — a \"Save\" button on a form that hasn't been touched, where making it active would imply unsaved changes. But even then, the disabled state should be communicative. A tooltip on hover, inline messaging, something that doesn't make the user feel like they're failing silently.",
+      "What I've learned is that a disabled button is a design decision that pushes work onto the user. If I'm going to use one, I owe an explanation. If I can't articulate that explanation clearly, I probably should rethink the pattern entirely.",
+    ],
+  },
   'error-messages-should-sound-like-a-person': {
     title: 'Error messages should sound like a person',
     date: '05/22',
