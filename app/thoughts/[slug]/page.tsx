@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-design-the-empty-state-first-now': {
+    title: 'I design the empty state first now',
+    date: '05/24',
+    body: [
+      "The empty state is the first thing a user sees when they arrive somewhere new — no data, no history, nothing yet. For a long time I designed empty states last. I'd finish the filled version of a feature, ship it, and backfill whatever illustration or placeholder copy was needed to cover the blank screen. It always felt like a formality.",
+      "At some point I started doing it the other way around, and it changed how I think about features entirely.",
+      "Designing the empty state first forces a question most product specs don't ask: what does someone do here before they have anything? If the answer is unclear, the feature is underspecified. If I can't write copy that explains why this section exists before it contains anything, I don't fully understand what it's for. The empty state becomes a test — of clarity, of value, of whether the space earns its place in the product.",
+      "It also surfaces something structural. Most features are designed in their populated state and encountered first as blank screens. That means the worst moment of the experience often gets the least design attention. Users arrive, see nothing, and have to infer what should come next. The emptiness is treated as temporary, so it gets temporary treatment.",
+      "What I've found since reversing the order is that I rarely need to go back and design the empty state separately. Starting there shapes the layout, clarifies the call to action, and makes the copy ladder obvious. The empty state stops being an afterthought and becomes the foundation. Everything else just fills in around it.",
+    ],
+  },
   'disabled-buttons-are-a-failure-of-information-design': {
     title: 'Disabled buttons are a failure of information design',
     date: '05/23',
