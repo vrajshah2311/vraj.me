@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'defaults-are-your-most-consequential-design-decision': {
+    title: 'Defaults are your most consequential design decision',
+    date: '05/25',
+    body: [
+      "Most design decisions feel like choices. A button placement, a color, a label — these are things you think about deliberately, iterate on, test. Defaults are different. They're the decisions that get made before the user arrives, and they stay in force until someone deliberately overrides them. In my experience, defaults shape behavior more than almost anything else on the screen.",
+      "I realized this while working on a notifications settings page. Every option was off by default. The intention was to be respectful — opt-in felt more ethical than opt-out. But in practice, almost no one changed the defaults. Which meant almost no one received notifications. Not because they didn't want them, but because they never decided either way. The default was making the decision on their behalf, silently.",
+      "A default isn't neutral. It says: in the absence of input from you, this is what we think is right. That's a position. It encodes an opinion about who your user is and what they need. A form that defaults to the most restrictive privacy settings says something different about the product's values than one that defaults to sharing. Neither is passive.",
+      "What I try to do now is treat every default as a commitment I need to be able to defend. If a toggle is on, why? If a text field has a pre-filled value, whose interest does that serve? The question isn't which default looks cleaner — it's which default reflects what most users in most contexts actually want. That often requires research, not intuition.",
+      "The defaults I've set carelessly have caused more unintended behavior than almost anything else I've shipped.",
+    ],
+  },
   'i-design-the-empty-state-first-now': {
     title: 'I design the empty state first now',
     date: '05/24',
