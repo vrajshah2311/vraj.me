@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Truncation is a judgment call, not a solution', date: '05/26', href: '/thoughts/truncation-is-a-judgment-call-not-a-solution' },
   { title: 'Defaults are your most consequential design decision', date: '05/25', href: '/thoughts/defaults-are-your-most-consequential-design-decision' },
   { title: 'I design the empty state first now', date: '05/24', href: '/thoughts/i-design-the-empty-state-first-now' },
   { title: 'Disabled buttons are a failure of information design', date: '05/23', href: '/thoughts/disabled-buttons-are-a-failure-of-information-design' },

@@ -10,6 +10,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'truncation-is-a-judgment-call-not-a-solution': {
+    title: 'Truncation is a judgment call, not a solution',
+    date: '05/26',
+    body: [
+      "Every time I truncate text, I'm making a decision about what the user needs to know right now. That framing changed how I approach it.",
+      "For a long time I treated truncation as an engineering inevitability — text is long, containers are fixed, ellipsis fills the gap. But an ellipsis is a signal: there's more, and I've decided you don't need it. That's a real choice. It carries an opinion about what's worth surfacing.",
+      "The problem with most truncation isn't the truncation itself — it's that it pretends to be complete. A truncated label in a table cell looks like a label. The ellipsis at the end is easy to miss. Users make decisions based on what they can see, and what they see is partial. When they eventually discover the rest, the interface has already misled them.",
+      "The pattern I keep trying to avoid is truncation plus tooltip. It's seductive because it feels responsible — the information is technically accessible. But it buries content behind a gesture most users won't make. If the full text matters enough to reveal on hover, it usually matters enough to show.",
+      "What I ask myself now is: what created the constraint that made truncation necessary? Sometimes the container is too small for the content and the layout needs to flex. Sometimes the content is genuinely too long and the problem is upstream — in the content model, or in how the feature was specified. Truncation that solves a layout problem without acknowledging the content problem just relocates the issue.",
+      "When I do truncate, I try to make the incompleteness obvious: a fade rather than ellipsis, an explicit \"See more,\" something that signals the clip point clearly. The ellipsis is a polite lie. I'd rather be upfront about what I'm hiding.",
+    ],
+  },
   'defaults-are-your-most-consequential-design-decision': {
     title: 'Defaults are your most consequential design decision',
     date: '05/25',
