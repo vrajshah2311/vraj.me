@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'alignment-reveals-what-you-actually-believe-about-hierarchy': {
+    title: 'Alignment reveals what you actually believe about hierarchy',
+    date: '05/27',
+    body: [
+      "Most of the time when I adjust alignment, I'm pretending it's aesthetic. I move something from left to center, or nudge a caption to match the column it lives in, and I tell myself I'm cleaning up the visual surface. Then I started noticing that I could trace almost every alignment choice back to a belief about relationships — about what belongs to what, and what should feel separate.",
+      "Left-aligned text in a card says: this content is in a list, each card is a unit, the edges create a rhythm. Center-aligned text says: this is isolated, this needs to feel considered on its own terms. When I mix both in the same view without thinking about it, I'm not making a design choice — I'm making a disagreement visible. The eye catches it, even when the user can't name it.",
+      "The alignment decisions I've regretted most came from copying what looked good in isolation. A center-aligned headline felt editorial in a hero section, so I tried it for section labels too. It fell apart. The labels were navigational, not expressive — they needed to sit flush with the content they introduced, not float above it as if they were titles of their own. Same technique, wrong context.",
+      "What I've started doing is asking: what's the primary axis of this layout, and do my alignment choices reinforce or fight it? A grid-heavy page wants left and right edges to register. A long-form reading experience might want centered type to slow you down. Once I can answer that honestly, most alignment problems resolve themselves. The ones that don't usually mean the layout itself is unclear — and alignment is just the symptom showing up first.",
+    ],
+  },
   'truncation-is-a-judgment-call-not-a-solution': {
     title: 'Truncation is a judgment call, not a solution',
     date: '05/26',
