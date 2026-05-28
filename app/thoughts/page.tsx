@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'I stopped adding borders and started adding space', date: '05/28', href: '/thoughts/i-stopped-adding-borders-and-started-adding-space' },
   { title: 'Alignment reveals what you actually believe about hierarchy', date: '05/27', href: '/thoughts/alignment-reveals-what-you-actually-believe-about-hierarchy' },
   { title: 'Truncation is a judgment call, not a solution', date: '05/26', href: '/thoughts/truncation-is-a-judgment-call-not-a-solution' },
   { title: 'Defaults are your most consequential design decision', date: '05/25', href: '/thoughts/defaults-are-your-most-consequential-design-decision' },

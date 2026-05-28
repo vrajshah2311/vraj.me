@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-stopped-adding-borders-and-started-adding-space': {
+    title: 'I stopped adding borders and started adding space',
+    date: '05/28',
+    body: [
+      "Borders are a crutch I used for years. Whenever a section felt unclear, whenever two elements seemed to bleed into each other, my first instinct was to draw a line between them. It looked decisive. It felt like I was solving something.",
+      "But a border is an admission. When I add a divider between two rows in a form, I'm confessing that my spacing isn't doing enough work to show they're distinct. A horizontal rule in the middle of a settings panel usually means the groupings weren't clear before it showed up. The border patches the layout without fixing the problem underneath.",
+      "What changed for me was sitting with Gestalt principles more seriously — specifically proximity. Elements that are close together are perceived as a group without any marking at all. Enough white space between two things can separate them more cleanly than a line ever could. The border becomes redundant when the space is doing its job.",
+      "I audit borders now with a simple test: if I remove this, do things still make sense? More often than I expect, the answer is yes. The border was compensating for insufficient margin, or masking the fact that I hadn't decided what belonged together. When I delete it, I have to solve the real problem — tightening the related things and increasing the gap to the unrelated ones.",
+      "There are borders I keep: table rows with repeating data, ruled lines in long-form editorial layouts, hairline dividers in dense UIs where space is genuinely constrained. But those are justified exceptions, not reflexes. If I can't explain why a border is there, it usually shouldn't be.",
+    ],
+  },
   'alignment-reveals-what-you-actually-believe-about-hierarchy': {
     title: 'Alignment reveals what you actually believe about hierarchy',
     date: '05/27',
