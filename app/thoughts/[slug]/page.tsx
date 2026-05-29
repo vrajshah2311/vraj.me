@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'loading-states-tell-the-truth-about-your-architecture': {
+    title: 'Loading states tell the truth about your architecture',
+    date: '05/29',
+    body: [
+      "There's a moment after you click something — before the result appears — where the interface either earns your trust or loses it. Most teams treat loading states as an afterthought: a spinner placed last, or nothing at all. But I've come to see them as one of the most honest parts of a product.",
+      "A loading state that drags too long means something is slow. A skeleton that doesn't match the real content layout reveals that the loading UI was designed separately from the destination. A spinner with no sense of timing implies the team never thought about how long the operation takes. All of that is legible, if you know what to look for.",
+      "When I'm using a product I've never seen before, I watch the loading states the way you'd watch someone's face when asked a hard question. The delay, the shape, the entrance transition — they tell you how much attention was paid to the space between intention and result. A thoughtful loading state means someone modeled the user's experience, not just the server's.",
+      "I've started using loading state design as a diagnostic for my own work. When I can't sketch a skeleton screen, it usually means I don't fully understand the final layout yet. When the perceived wait feels wrong, something in the data structure or fetch logic needs rethinking. The loading state is the symptom. The architecture is the cause.",
+      "Most users won't name this. They'll just say the product feels fast or slow, polished or rough. The loading states are usually why.",
+    ],
+  },
   'i-stopped-adding-borders-and-started-adding-space': {
     title: 'I stopped adding borders and started adding space',
     date: '05/28',
