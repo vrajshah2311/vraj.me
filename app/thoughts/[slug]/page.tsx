@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'line-length-is-the-most-ignored-typographic-decision': {
+    title: 'Line length is the most ignored typographic decision',
+    date: '05/30',
+    body: [
+      "Most typographic advice circles around the same decisions: which typeface, what size, how much weight. These are visible choices — easy to compare, easy to debate. Line length is different. It gets set once, usually as a side effect of the container width, and then it's essentially forgotten.",
+      "I noticed it on a product I used daily for months before something clicked. The body copy was exhausting to read, and I kept attributing it to the font. Then I put a character counter on it: lines were running to about 110 characters. That's nearly double the range that makes reading comfortable.",
+      "The research on this is old and consistent. Somewhere between 55 and 75 characters per line is where reading feels natural — it matches how the eye moves across a line and returns to find the start of the next one. Too short and the rhythm becomes choppy. Too long and the eye drifts, loses its place, or gives up. Most people don't consciously notice when it's wrong. They just find the reading tiring.",
+      "The problem in digital design is that column width usually comes from layout constraints, not reading ones. A container is 720px wide because the grid is 720px wide, not because anyone asked what the optimal measure would be at that typeface and size. The type fits, so no one questions it.",
+      "What I try to do now is treat line length as an input, not an output. I pick a measure I'd want to read, then derive the container size from it — not the other way around. It's a small inversion, but it puts the reading experience first instead of last.",
+    ],
+  },
   'loading-states-tell-the-truth-about-your-architecture': {
     title: 'Loading states tell the truth about your architecture',
     date: '05/29',
