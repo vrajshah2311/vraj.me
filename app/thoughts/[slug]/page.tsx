@@ -10,6 +10,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-used-to-remove-focus-rings': {
+    title: 'I used to remove focus rings',
+    date: '05/31',
+    body: [
+      "The first production stylesheet I ever shipped had `outline: none` in it. I was building something in a hurry, and the blue ring that appeared on clicked buttons felt accidental — a leftover from a browser making its best guess at a UI I'd already designed. Removing it took one line. Done.",
+      "I removed focus rings reflexively for years after that. They were always in the way of something cleaner. They clashed with the rounded corners I'd carefully chosen. They appeared on things I assumed users would never navigate to with a keyboard. And then I watched someone actually use a keyboard to navigate a product I'd built.",
+      "They hit Tab to get to a form field, and nothing happened. The field received focus — the cursor was there — but there was no visible indicator of where they were on the page. They tabbed through it twice before giving up.",
+      "The ring isn't decorative. It's a cursor for people who don't use a mouse. Removing it because it looks bad doesn't eliminate the need — it just means the need goes unmet invisibly. That's worse than the default browser styling. At least the ugly ring told you something true.",
+      "What I do now is treat the focus style as a design constraint, not a browser default to override. The question isn't whether to show a focus indicator, but what it should look like in this specific system. A 2px offset ring in the brand's accent color tends to feel intentional rather than leftover. If the browser default clashes, the answer is to design a better one, not to hide it.",
+      "The `:focus-visible` pseudo-class helped me let go of the original complaint. It restricts the ring to keyboard navigation, so it doesn't appear on click. Most of what I was removing wasn't actually a problem with the ring — it was a problem with when it appeared. The solution was precision, not suppression.",
+    ],
+  },
   'line-length-is-the-most-ignored-typographic-decision': {
     title: 'Line length is the most ignored typographic decision',
     date: '05/30',
