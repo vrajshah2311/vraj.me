@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'numbers-lie-about-where-the-center-is': {
+    title: 'Numbers lie about where the center is',
+    date: '06/01',
+    body: [
+      "There's a version of centered that CSS computes and a version that your eye perceives, and they're almost never the same thing.",
+      "I spent a long time treating centering as a solved problem. `margin: 0 auto` on a container, `align-items: center` on a flex parent — done. But when I started paying close attention to whether things actually looked centered, not just computed to be centered, I kept finding they didn't.",
+      "An icon with visual weight distributed toward the bottom looks high when placed at the mathematical center of a button. Move it one or two pixels down and suddenly it looks right. The math didn't change; the perception did. This happens constantly with common icons — a house, a lock, a trash can — shapes that carry most of their mass in their lower half.",
+      "The same thing happens with text inside capsule buttons. Equal padding above and below the label often looks like the text is sitting too low. Capital letters have tall ascenders and shallow descenders, so the eye reads the visual midpoint differently than the arithmetic one. Type designers compensate for this manually, even in digital type. They call it optical adjustment. I didn't know that word for years, but I kept bumping into the problem.",
+      "What this has taught me is that design is a perceptual discipline before it's a mathematical one. Numbers define starting points and systems of constraint. But the final call is always about what reads as right — as balanced, centered, stable — to the eye receiving it. When I override a technically correct value with something that just works visually, I'm not being imprecise. I'm finishing the job.",
+    ],
+  },
   'i-used-to-remove-focus-rings': {
     title: 'I used to remove focus rings',
     date: '05/31',
