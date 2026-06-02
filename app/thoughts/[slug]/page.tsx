@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'contrast-ratios-changed-how-i-see-everything': {
+    title: 'Contrast ratios changed how I see everything',
+    date: '06/02',
+    body: [
+      "I started paying attention to contrast ratios because of an accessibility audit. The kind where a tool highlights your text in red and tells you it fails WCAG AA. At first I treated it like a compliance checkbox — adjust the color until the number passes, move on.",
+      "But then I started actually reading the numbers. A 2.5:1 ratio versus a 7:1 ratio isn't just a technical distinction. It's the difference between text that asks to be read and text that demands to be. Understanding that forced me to think about why I was choosing low contrast in the first place.",
+      "Mostly I was doing it to look sophisticated. Subtle grays felt more refined than stark black. But sophistication was getting confused with legibility. I was making users work harder to extract information so the interface could look calm.",
+      "Now I think about contrast as structure. High contrast draws the eye first. Medium contrast fills the supporting role. Low contrast creates texture without competing. When I lay out a page this way deliberately — not just adjusting until things pass — the hierarchy emerges from the values themselves rather than from spacing or size tricks.",
+      "The numbers give you a language. 4.5:1 is the floor for readable text. 7:1 is where things become effortless. Anything below 3:1 is decorative at best. Knowing these anchors didn't make me a more mechanical designer — it gave me precision where I used to have intuition. And the intuition got sharper for it.",
+    ],
+  },
   'numbers-lie-about-where-the-center-is': {
     title: 'Numbers lie about where the center is',
     date: '06/01',

@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Contrast ratios changed how I see everything', date: '06/02', href: '/thoughts/contrast-ratios-changed-how-i-see-everything' },
   { title: 'Numbers lie about where the center is', date: '06/01', href: '/thoughts/numbers-lie-about-where-the-center-is' },
   { title: 'I used to remove focus rings', date: '05/31', href: '/thoughts/i-used-to-remove-focus-rings' },
   { title: 'Line length is the most ignored typographic decision', date: '05/30', href: '/thoughts/line-length-is-the-most-ignored-typographic-decision' },
