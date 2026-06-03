@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'naming-things-forced-me-to-think-more-clearly': {
+    title: 'Naming things forced me to think more clearly',
+    date: '06/03',
+    body: [
+      "I used to name things generically. A button was primary-button. A card was product-card. Modals were modal-1, modal-2, until they weren't. The names held as long as the design did, and then they didn't hold at all.",
+      "The moment I started working more seriously on a component system, the naming fell apart immediately. I had two things that looked like cards but did different jobs. One showed summary information and linked out. The other allowed inline editing. I kept calling them both \"cards,\" which meant I couldn't talk about them without a paragraph of context, and I couldn't scan a page map and know which was which.",
+      "When I finally forced myself to name them based on what they did — not what they looked like — I had to understand them clearly enough to write one word that captured their purpose. That exercise surfaced something uncomfortable: I hadn't actually decided what each component was for. I was describing their appearance because I hadn't finished thinking through their role.",
+      "This happens in product design too, not just systems. When I find myself calling something \"the detail view\" or \"the settings section,\" that vagueness is usually a sign the purpose is still blurry. Meaningful names require resolved intent. You can't name a thing you haven't defined.",
+      "Now I treat naming difficulty as a design signal. If I'm struggling to describe a component in one to three words, the design isn't done. The name is a test I give myself: does this concept have a center of gravity? If I pass, I know I understand it. If I fail, I know exactly what to go back and figure out.",
+    ],
+  },
   'contrast-ratios-changed-how-i-see-everything': {
     title: 'Contrast ratios changed how I see everything',
     date: '06/02',
