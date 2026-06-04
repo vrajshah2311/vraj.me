@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Tilt Card', subtitle: '3D Perspective on Hover', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/tilt-card' },
   { title: 'Inline Edit', subtitle: 'Click-to-Edit Text Fields', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/inline-edit' },
   { title: 'Split Pane', subtitle: 'Resizable Panel Layout', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/split-pane' },
   { title: 'Timeline', subtitle: 'Animated Activity Feed', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/timeline' },
