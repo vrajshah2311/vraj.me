@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'monospace-numbers-made-my-tables-easier-to-read': {
+    title: 'Monospace numbers made my tables easier to read',
+    date: '06/04',
+    body: [
+      "For years, my data tables looked subtly wrong and I couldn't figure out why. Columns of numbers never quite aligned the way they should. I'd try adjusting spacing, tweaking padding, wondering if the font was the problem. Then I learned about tabular numbers.",
+      "Most typefaces render digits proportionally — a \"1\" takes up less horizontal space than an \"8,\" just like letters do. This is fine for body copy. Numbers in a sentence don't need to line up vertically. But in a table, column, or any numeric sequence meant to be read top to bottom, proportional digits create misalignment that looks like a spacing error when it's actually a typography feature doing the wrong job.",
+      "The fix is one CSS property: `font-variant-numeric: tabular-nums`. It switches the font to its tabular numeral variant, where every digit occupies the same horizontal width. The difference is subtle but immediate — columns of prices, quantities, and dates suddenly read as columns instead of staggered noise.",
+      "What surprised me was how long I'd been approximating this with monospace fallbacks or manual letter-spacing tweaks. I'd sometimes swap in a monospace font just for number columns, which introduced a new problem: the type character changed. `tabular-nums` doesn't change the typeface, just the glyph metrics. The numbers still belong to the same visual system.",
+      "Now I apply it anytime I display numbers meant to register vertically: data tables, stat blocks, timestamps in logs. It's one of those typography features that sits hidden until you need it, and then you can't unsee the problem it solves.",
+    ],
+  },
   'naming-things-forced-me-to-think-more-clearly': {
     title: 'Naming things forced me to think more clearly',
     date: '06/03',
