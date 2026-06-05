@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'I cut half my font sizes and gained hierarchy', date: '06/05', href: '/thoughts/i-cut-half-my-font-sizes-and-gained-hierarchy' },
   { title: 'Monospace numbers made my tables easier to read', date: '06/04', href: '/thoughts/monospace-numbers-made-my-tables-easier-to-read' },
   { title: 'Naming things forced me to think more clearly', date: '06/03', href: '/thoughts/naming-things-forced-me-to-think-more-clearly' },
   { title: 'Contrast ratios changed how I see everything', date: '06/02', href: '/thoughts/contrast-ratios-changed-how-i-see-everything' },

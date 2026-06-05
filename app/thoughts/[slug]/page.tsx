@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-cut-half-my-font-sizes-and-gained-hierarchy': {
+    title: 'I cut half my font sizes and gained hierarchy',
+    date: '06/05',
+    body: [
+      "For most of my early design career, I thought hierarchy was a size problem. A heading should be big. A subheading slightly smaller. Body copy smaller still. I'd end up with six or seven distinct sizes on a single screen — 32, 24, 20, 16, 14, 12, 11 — and wonder why the page felt cluttered even when the spacing was generous.",
+      "The turning point was working within a design system that had already constrained the type scale to three sizes: 18, 14, and 12. At first it felt limiting. I didn't see how I could create the hierarchy I needed without pulling from more rungs on the ladder. Then I started building with those three sizes, and something clicked.",
+      "Hierarchy doesn't come from size alone. When you don't have a fourth size to reach for, you use weight, color, and letter-spacing to do the work. A section label at 12px in uppercase, widely tracked, in a tertiary color becomes visually subordinate to 14px body text in a primary color — even though a label traditionally precedes content and carries some authority. The hierarchy is built through contrast across multiple dimensions at once, not just one.",
+      "What I found is that fewer sizes force you to be deliberate about everything else. You can't hide a weak color decision behind a dramatic size jump. The type scale becomes a constraint that sharpens the rest of your choices.",
+      "I still choose type scales carefully. But my starting point is now \"how few sizes can I use?\" rather than \"which sizes do I need?\" The smaller the scale, the more honest the hierarchy has to be.",
+    ],
+  },
   'monospace-numbers-made-my-tables-easier-to-read': {
     title: 'Monospace numbers made my tables easier to read',
     date: '06/04',
