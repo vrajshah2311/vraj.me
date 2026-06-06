@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'friction-reveals-what-users-actually-want': {
+    title: 'Friction reveals what users actually want',
+    date: '06/06',
+    body: [
+      "Friction is usually treated as a problem to eliminate. But when I started watching people actually use things I'd built — not in usability studies, but in the real messy ways people use software — I noticed that where users slowed down or worked around something told me more about their actual goals than anything they said out loud.",
+      "There's a feature I spent three weeks designing: a way to bulk-edit records. Clean UI, keyboard shortcuts, intuitive selection model. Almost nobody used it. Instead, they kept opening individual records one at a time, making the same edit, closing, opening the next. I initially read this as a discoverability failure. Then I watched more closely. They weren't failing to find bulk edit — they were reading each record while they edited it. The task wasn't \"apply this value to all these records.\" It was \"evaluate each record and decide whether this edit applies.\" The friction was the workflow.",
+      "Removing the friction would have meant removing the pauses. The individual opens were the feature. I'd designed a time-saver for a task that wasn't meant to be fast.",
+      "Now I try to distinguish between friction that harms and friction that informs. Friction that harms is the field you can't tab out of, the error that doesn't explain itself, the step that exists for the system's sake rather than yours. Friction that informs is the hesitation before clicking Delete, the moment a user re-reads a confirmation, the pause before committing. That second kind is something I've started protecting rather than smoothing away.",
+      "The patterns people invent around your design are a more accurate product brief than any spec doc. They're showing you what they need when the designed path doesn't quite fit.",
+    ],
+  },
   'i-cut-half-my-font-sizes-and-gained-hierarchy': {
     title: 'I cut half my font sizes and gained hierarchy',
     date: '06/05',
