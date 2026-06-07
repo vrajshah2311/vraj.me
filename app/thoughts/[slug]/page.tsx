@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-design-with-real-data-now-always': {
+    title: 'I design with real data now, always',
+    date: '06/07',
+    body: [
+      "For a long time I used lorem ipsum and placeholder content while designing. The layouts looked clean, the cards felt balanced, everything sat exactly where I put it. Then I'd hand off to an engineer and within a week something would break — a name too long for its container, a description that pushed a button off screen, a number with too many digits for the column I'd allocated.",
+      "The mistake wasn't in the engineering handoff. The mistake was mine. I'd been designing for the best possible input, not the real one. Lorem ipsum is about 40 characters on average. Real product descriptions are sometimes 400. Real user names aren't \"John Smith\" — they're \"María José Rodríguez-Hernández\" or a single initial followed by nothing.",
+      "Now I pull real data from the actual product before I touch a single layout decision. I paste in the longest names, the most verbose descriptions, the edge-case numbers. What happens is useful: designs that looked tight suddenly look cramped, hierarchies collapse, elements I thought were secondary turn out to be primary once I see how often they actually appear.",
+      "Real data is like a stress test for hierarchy. It shows you what your layout actually thinks is important versus what you wanted it to think. The discomfort of watching a design break under real content is worth more than the comfort of a layout that only ever held ideal input. I don't reach for placeholder text anymore — the real stuff is always more honest about what I still have to solve.",
+    ],
+  },
   'friction-reveals-what-users-actually-want': {
     title: 'Friction reveals what users actually want',
     date: '06/06',

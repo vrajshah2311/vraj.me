@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'I design with real data now, always', date: '06/07', href: '/thoughts/i-design-with-real-data-now-always' },
   { title: 'Friction reveals what users actually want', date: '06/06', href: '/thoughts/friction-reveals-what-users-actually-want' },
   { title: 'I cut half my font sizes and gained hierarchy', date: '06/05', href: '/thoughts/i-cut-half-my-font-sizes-and-gained-hierarchy' },
   { title: 'Monospace numbers made my tables easier to read', date: '06/04', href: '/thoughts/monospace-numbers-made-my-tables-easier-to-read' },
