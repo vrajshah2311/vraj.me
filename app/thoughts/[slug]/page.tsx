@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'shadows-only-work-when-the-light-source-agrees': {
+    title: 'Shadows only work when the light source agrees',
+    date: '06/08',
+    body: [
+      "There's a habit I fell into early: adding box shadows to elements one at a time, adjusting each until it looked right in isolation. A card got a soft shadow. A modal got a heavier one. A dropdown had its own. When I laid them all out together, something felt off — not broken, just slightly unconvincing. The kind of thing you sense before you can name it.",
+      "The problem was the light source. Every shadow implies one. A shadow offset below and to the right means the light is above and to the left. When I'd been tuning shadows individually, I'd quietly introduced three or four different implied light sources into the same screen. Nothing agreed. The depth was technically present but spatially incoherent.",
+      "Real objects in real light exist in the same environment. A card and a modal and a dropdown aren't three separate decisions — they live in the same interface, under the same implied sun. When I started treating light direction as a fixed constant — one offset direction for the whole system, one elevation scale where deeper layers cast longer and softer shadows — the UI felt more grounded. Not dramatically better, but unambiguously more real.",
+      "The test I use now is to look at a screen and ask: where is the light coming from? If I can't answer that consistently across every raised element, the shadows need another pass. Shadows that don't agree are worse than no shadows at all. They introduce a quiet contradiction the eye keeps trying to resolve, and most users will just feel something is slightly off without ever knowing why.",
+    ],
+  },
   'i-design-with-real-data-now-always': {
     title: 'I design with real data now, always',
     date: '06/07',
