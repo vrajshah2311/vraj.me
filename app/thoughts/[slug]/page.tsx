@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-started-treating-density-as-a-user-promise': {
+    title: 'I started treating density as a user promise',
+    date: '06/09',
+    body: [
+      "Most arguments about density go nowhere useful. How much information per screen, how tight to make the rows, whether to collapse or expand by default — these get treated as aesthetic questions. Do you want it to breathe? Does it look modern? The conversation stays abstract because nobody's anchored it to a user.",
+      "Density is a promise. A sparse layout says: take your time, nothing here requires prior knowledge, newcomers are welcome. That's useful at the right moment — onboarding, consumer flows, anything where a first-timer's comfort matters. But the promise has a shelf life. Once someone uses the product every day and knows exactly what they're doing, the whitespace stops being welcoming. Every scroll to reach a value they need, every extra click through an expanded container, is friction on behalf of a user who isn't there anymore.",
+      "Dense layouts make the opposite promise: this was built for someone who already knows what they want. They're faster, more navigable when you're fluent, and genuinely hostile when you're not. This is why trading platforms and code editors and administrative tools feel impenetrable to newcomers — not because they're poorly designed, but because they were optimized honestly for a different person.",
+      "The mistake I kept making was treating density as a visual setting I could adjust independently of everything else. Once I started understanding it as a contract, I had to ask a different question first: how often does the primary user return, and what do they already know when they arrive? Daily, expert, high-frequency — make it dense. Occasional, varied, exploratory — give it room. The density should flow from the answer to that question, not from how many things I wanted to fit on the screen.",
+    ],
+  },
   'shadows-only-work-when-the-light-source-agrees': {
     title: 'Shadows only work when the light source agrees',
     date: '06/08',
