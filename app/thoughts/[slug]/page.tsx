@@ -10,6 +10,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'gray-has-temperature-and-it-changes-everything': {
+    title: 'Gray has temperature and it changes everything',
+    date: '06/10',
+    body: [
+      "For years, I thought gray was the safe choice. Not a color, really — just absence. Wherever I wasn't sure what to do, I reached for gray: backgrounds, borders, secondary text, disabled states. It felt like restraint.",
+      "Then I started noticing that some of my interfaces felt fractured in a way I couldn't diagnose. Everything was aligned, the type was right, the spacing was consistent — but something was off. It took me a while to trace it to the grays.",
+      "Grays have temperature. A gray with a slight blue cast and a gray with a slight yellow cast can have identical lightness values and still feel like strangers next to each other. One reads as cool, clinical, modern. The other reads as warm, organic, slightly aged. When you mix them — even subtly — the interface carries an internal disagreement that the eye picks up and the brain calls discomfort.",
+      "I'd been pulling grays from different sources without realizing they had incompatible temperatures. The border came from one system, the background from another, the disabled text from a copied snippet. Each one worked in isolation. Together, they didn't.",
+      "What helped was picking a direction first. Warm or cool? One temperature decision, applied everywhere. My backgrounds, borders, dividers, placeholder text, and disabled states all draw from the same hue angle. They may be different lightness levels, but they're related. They belong to the same light.",
+      "The discipline matters in dark mode too, maybe more. Cool blacks and warm charcoals on the same screen feel like two different products sharing a viewport. Choosing your gray temperature is one of the quietest, most load-bearing decisions a visual system can make.",
+    ],
+  },
   'i-started-treating-density-as-a-user-promise': {
     title: 'I started treating density as a user promise',
     date: '06/09',

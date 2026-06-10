@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Gray has temperature and it changes everything', date: '06/10', href: '/thoughts/gray-has-temperature-and-it-changes-everything' },
   { title: 'I started treating density as a user promise', date: '06/09', href: '/thoughts/i-started-treating-density-as-a-user-promise' },
   { title: 'Shadows only work when the light source agrees', date: '06/08', href: '/thoughts/shadows-only-work-when-the-light-source-agrees' },
   { title: 'I design with real data now, always', date: '06/07', href: '/thoughts/i-design-with-real-data-now-always' },
