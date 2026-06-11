@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'touch-targets-made-me-more-generous-everywhere': {
+    title: 'Touch targets made me more generous everywhere',
+    date: '06/11',
+    body: [
+      "Designing for touch first changed something in how I think about interactive space, even on desktop. A 44px minimum tap target is the kind of rule that sounds arbitrary until you try hitting a 20px icon with your thumb while scrolling. Then it stops being a guideline — it becomes a physical fact about hands.",
+      "What surprised me was how much this thinking started to influence my desktop work. I'd spent years sizing clickable elements to look right without considering the actual interactive area. A 12px \"edit\" link in a table cell looked clean. But to click it, you had to park a cursor on a narrow strip of text and press — which felt fine with a mouse until I watched someone navigate that same table with a trackpad.",
+      "Trackpads aren't mice. Precision on a trackpad takes effort. The distance between a cell and an edit action two rows down is a real cost, even when the visual design doesn't acknowledge it. I started adding invisible padding — extending hit areas without changing how anything looked. Nobody sees it. Most people feel it as the vague sense that something is easy to use.",
+      "The generous target is a form of trust. It says: I expected you might not land perfectly. That quality — the sense that an interface accommodates you rather than requiring you to accommodate it — is hard to name but easy to feel. It shows up in feedback as \"it just feels nice\" without anyone ever explaining why.",
+      "I now apply touch-scale thinking to all my interactive targets, even on interfaces that will never see a phone. The discipline of mobile constraints made my desktop work more human. Sometimes the most useful design rules come from a context you're not building for.",
+    ],
+  },
   'gray-has-temperature-and-it-changes-everything': {
     title: 'Gray has temperature and it changes everything',
     date: '06/10',
