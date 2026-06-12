@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Toggle Switch', subtitle: 'Spring-Physics On/Off', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/toggle-switch' },
   { title: 'Tree View', subtitle: 'Collapsible File Explorer', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/tree-view' },
   { title: 'Star Rating', subtitle: 'Rate, Display & Review', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/star-rating' },
   { title: 'Pagination', subtitle: 'Sliding Pill Page Nav', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/pagination' },
