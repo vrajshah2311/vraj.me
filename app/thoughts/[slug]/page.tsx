@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'border-radius-is-a-personality-decision': {
+    title: 'Border radius is a personality decision',
+    date: '06/13',
+    body: [
+      "For a long time I treated border-radius as a finishing detail. I'd build everything and then dial the corners until they felt right — which usually meant copying whatever the design system defaulted to. Four pixels was common. Eight when I wanted things to feel more modern. The choice felt aesthetic, minor. I wasn't really deciding anything.",
+      "I started to see otherwise when I worked on two products at once: one for enterprise finance, one for a consumer journaling app. I applied similar radius values to both. The journaling app felt clinical. The finance product looked like it was trying too hard to be friendly. Same corners, two wrong answers. That's when I started thinking about radius as a voice, not a detail.",
+      "Sharp corners read as precise, formal, capable. Fully rounded shapes feel warm, accessible, a little casual. Neither is better — they're positioning decisions. A business intelligence tool and a meditation app sit in very different places on that spectrum, and the right radius for each isn't arbitrary. It reflects what the product is actually trying to make people feel.",
+      "What I do now is decide on a stance before touching components. Not a number — a direction. Capable and serious, or approachable and human? Once I've answered that, the right value becomes much easier to find. And I apply it consistently. Mixed radii — a rounded button next to a sharp card — communicate indecision. Consistency is how you make a stance legible.",
+    ],
+  },
   'touch-targets-made-me-more-generous-everywhere': {
     title: 'Touch targets made me more generous everywhere',
     date: '06/11',

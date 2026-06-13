@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Border radius is a personality decision', date: '06/13', href: '/thoughts/border-radius-is-a-personality-decision' },
   { title: 'Touch targets made me more generous everywhere', date: '06/11', href: '/thoughts/touch-targets-made-me-more-generous-everywhere' },
   { title: 'Gray has temperature and it changes everything', date: '06/10', href: '/thoughts/gray-has-temperature-and-it-changes-everything' },
   { title: 'I started treating density as a user promise', date: '06/09', href: '/thoughts/i-started-treating-density-as-a-user-promise' },
