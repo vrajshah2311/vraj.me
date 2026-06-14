@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'color-modes-taught-me-what-was-actually-structural': {
+    title: 'Color modes taught me what was actually structural',
+    date: '06/14',
+    body: [
+      "Dark mode was the most revealing audit I've done as a designer. Not because implementing it was technically hard, but because it forced a question I'd been quietly avoiding: why does each color exist?",
+      "Most of my early color work was intuitive. I'd adjust values until things looked right — a warm background, a medium gray for borders, a particular blue for links. The choices held together in light mode because they'd evolved together, each value reacting to the others. When I tried to translate the system to dark, the intuition broke. I couldn't just invert the values. Things looked wrong in ways I couldn't name.",
+      "What I had to do was go back to the intent behind each choice. The white background wasn't white because white is default — it was white because that surface is the highest layer in the visual stack. The gray border existed to separate surfaces, not to look neutral. The secondary text color was a subordination decision. Every color had a role. Understanding the role told me what dark mode actually needed.",
+      "Surfaces that carry meaning translate across modes. Surfaces that are just 'how it looked' don't. That distinction showed me which parts of my system were designed and which parts had just accumulated. Structural decisions — surface hierarchy, contrast levels, affordance colors — mapped cleanly. Decorative ones had to be reinvented.",
+      "Now I design with both modes in mind from the start, not as a requirement but as a test. If I can explain why a color exists in terms of its role, I can make it work in any context. If I can't, I haven't finished. Dark mode didn't change my thinking. It showed me where the thinking hadn't happened.",
+    ],
+  },
   'border-radius-is-a-personality-decision': {
     title: 'Border radius is a personality decision',
     date: '06/13',
