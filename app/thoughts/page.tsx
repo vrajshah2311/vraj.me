@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Keyboard order showed me my true layout hierarchy', date: '06/15', href: '/thoughts/keyboard-order-showed-me-my-true-layout-hierarchy' },
   { title: 'Color modes taught me what was actually structural', date: '06/14', href: '/thoughts/color-modes-taught-me-what-was-actually-structural' },
   { title: 'Border radius is a personality decision', date: '06/13', href: '/thoughts/border-radius-is-a-personality-decision' },
   { title: 'Touch targets made me more generous everywhere', date: '06/11', href: '/thoughts/touch-targets-made-me-more-generous-everywhere' },

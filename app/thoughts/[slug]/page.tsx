@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'keyboard-order-showed-me-my-true-layout-hierarchy': {
+    title: 'Keyboard order showed me my true layout hierarchy',
+    date: '06/15',
+    body: [
+      "Tab order exposed something in my layouts that spacing and sizing had hidden. When I pressed Tab through forms I'd built, the focus jumped around in ways that made no sense — not randomly, but in the order I'd written the HTML, which wasn't always the order I'd designed the visual flow. The sequence was technically correct; the intent was invisible to it.",
+      "I started paying attention to this after watching someone navigate a settings page with only a keyboard. They were fast — more efficient with keyboard than most mouse users — and they got genuinely stuck. The tab sequence skipped over a conditionally visible section, then circled back to a nav link they'd already passed. It wasn't broken. It just wasn't designed.",
+      "The thing I keep coming back to is that keyboard order is a layout opinion. A visual design can imply hierarchy through size, position, and weight, but the tab sequence has to commit. It can't equivocate. When I finally started explicitly reasoning about what should come first, second, and third under keyboard navigation, I found myself resolving ambiguities I hadn't known were there. Should this secondary action come before or after the primary one? In tab order, you can't defer that question.",
+      "Now I press Tab early in the design process, not just at the end during accessibility review. The order usually needs adjustment, which means the DOM order needs adjustment, which sometimes means the visual layout was misleading about what it actually thought the flow should be. The keyboard catches what the eye lets pass.",
+    ],
+  },
   'color-modes-taught-me-what-was-actually-structural': {
     title: 'Color modes taught me what was actually structural',
     date: '06/14',
