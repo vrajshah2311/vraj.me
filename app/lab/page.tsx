@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Circular Progress', subtitle: 'Animated SVG Ring & Multi-Ring', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/circular-progress' },
   { title: 'Avatar Stack', subtitle: 'Overlap, Expand & Reveal', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/avatar-stack' },
   { title: 'Password Strength', subtitle: 'Real-time Strength Meter', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/password-strength' },
   { title: 'Toggle Switch', subtitle: 'Spring-Physics On/Off', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/toggle-switch' },
