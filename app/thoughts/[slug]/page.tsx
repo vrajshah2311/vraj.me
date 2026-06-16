@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'input-width-tells-users-how-much-to-write': {
+    title: 'Input width tells users how much to write',
+    date: '06/16',
+    body: [
+      "The width of a text field is part of the question. I didn't think about this consciously for years — I sized inputs to fit the grid, to align with other fields, to look proportional. The width was a layout decision. Then I started noticing how fields were leading users toward certain kinds of answers.",
+      "A narrow input communicates: short. A first name field at 120px wide feels right. A phone number field should be about the length of a phone number. When I put a notes field at the same width as a single-line name field, something felt off — not because of any visible error, but because the spatial contract implied \"write a bit\" when I actually wanted \"write as much as you need.\" The textarea needed to be wider and taller, not as an aesthetic choice but as an instruction.",
+      "I noticed this most sharply on a form where someone had crammed a long free-text field into the same narrow column as a zip code. Users were writing one-sentence answers to a question we'd intended to be open-ended. The field was telling them to be brief. They listened.",
+      "Width isn't just layout; it's communication. A form field that asks \"describe your project\" should feel spacious before the user types a single character. The proportion of the field predicts what's expected. A mismatch between the field's size and the expected answer length creates a quiet dissonance — users either under-fill or feel like they're overflowing something that wasn't designed for them.",
+      "Now I size form fields based on what they're asking for. Short codes get narrow fields. Open-ended prompts get generous ones. The width becomes part of the question, not a side effect of the grid.",
+    ],
+  },
   'keyboard-order-showed-me-my-true-layout-hierarchy': {
     title: 'Keyboard order showed me my true layout hierarchy',
     date: '06/15',
