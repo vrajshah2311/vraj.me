@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-stopped-designing-at-150-zoom': {
+    title: 'I stopped designing at 150% zoom',
+    date: '06/17',
+    body: [
+      "Working at 150% zoom in Figma became so normal that I stopped noticing I was doing it. The canvas felt comfortable. Fine details were easy to see. I could adjust spacing precisely, read small type, and evaluate alignment without straining. My designs looked considered and deliberate at that scale.",
+      "Then they'd get implemented, and I'd open the page on my laptop and something felt wrong. Buttons that looked spacious in the file were cramped on screen. The body copy I'd set at 14px seemed smaller than I remembered. The secondary text at 12px was genuinely hard to read. I kept sending back feedback that felt like nitpicks — \"can we increase the padding here?\" — without understanding why I kept needing to.",
+      "The problem was that I was making judgment calls against a version of the design that didn't exist anywhere except my canvas. At 150%, a 16px font renders roughly as large as 24px text would appear on screen. My visual quality sense was calibrated to a size my users would never see.",
+      "When I made a rule to preview at 100% before any design decision felt final, everything shifted. Padding that seemed generous at scale looked thin. Hit targets that had appeared comfortable were barely at the minimum. Details I'd considered deliberate disappeared into ambiguity. I started sizing up from what worked at actual size, not refining down from what worked inflated.",
+      "The zoomed-in view is still useful — for fine pixel work, for evaluating type rendering, for precisely aligning small elements. But the decision layer belongs at 100%. That's the only canvas that corresponds to a screen someone will actually look at.",
+    ],
+  },
   'input-width-tells-users-how-much-to-write': {
     title: 'Input width tells users how much to write',
     date: '06/16',
