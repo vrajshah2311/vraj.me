@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'fixed-elements-are-a-contract-not-a-convenience': {
+    title: 'Fixed elements are a contract, not a convenience',
+    date: '06/18',
+    body: [
+      "Sticky positioning feels generous. The user scrolls away from an important button, and instead of letting them lose it, you bring it along. The intent is helpful. But making something fixed also makes an argument about relevance: this element matters everywhere on this page, at every scroll depth, in every context. That's a strong claim. Most sticky elements can't defend it.",
+      "I started auditing sticky components the same way I audit copy: by asking whether the claim was true. A sticky nav bar says navigation matters everywhere on this page. Usually that's right. A sticky action bar at the bottom of a long form says this action is always available — also defensible, since the form is continuous and the submit button should follow. But a sticky sidebar CTA on a blog post? That's saying \"sign up for the newsletter\" is relevant no matter what part of the article you're reading. It's not. It's just optimizing for the edge where the user forgets they're supposed to convert.",
+      "When designers reach for sticky as a rescue for a button that gets scrolled away, the question isn't \"should this be sticky?\" It's \"why is this button getting abandoned?\" Usually the answer is that the page is too long, the CTA came too early, or the hierarchy is making something feel lower priority than it is. Sticky masks the symptom. The layout still needs to be fixed.",
+      "I've started treating every sticky element as a claim I have to make aloud: this information is always relevant at this point in the flow. If I can't say it with confidence, I take the sticky off and solve the real problem.",
+    ],
+  },
   'i-stopped-designing-at-150-zoom': {
     title: 'I stopped designing at 150% zoom',
     date: '06/17',

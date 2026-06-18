@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Fixed elements are a contract, not a convenience', date: '06/18', href: '/thoughts/fixed-elements-are-a-contract-not-a-convenience' },
   { title: 'I stopped designing at 150% zoom', date: '06/17', href: '/thoughts/i-stopped-designing-at-150-zoom' },
   { title: 'Input width tells users how much to write', date: '06/16', href: '/thoughts/input-width-tells-users-how-much-to-write' },
   { title: 'Keyboard order showed me my true layout hierarchy', date: '06/15', href: '/thoughts/keyboard-order-showed-me-my-true-layout-hierarchy' },
