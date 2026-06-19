@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Flip Card', subtitle: '3D Perspective Flip', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/flip-card' },
   { title: 'Notification Bell', subtitle: 'Badge, Shake & Dropdown', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/notification-bell' },
   { title: 'Emoji Reactions', subtitle: 'Animated Reaction Picker', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/emoji-reactions' },
   { title: 'Image Compare', subtitle: 'Drag-to-Reveal Before & After', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/image-compare' },
