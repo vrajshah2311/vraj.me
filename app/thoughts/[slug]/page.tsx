@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'consistency-revealed-what-i-hadnt-actually-decided': {
+    title: "Consistency revealed what I hadn't actually decided",
+    date: '06/19',
+    body: [
+      "Components look finished when they're built for one context. The button works, the card renders, the modal opens and closes. Everything is tested against the scenario you had in mind when you designed it. Then you start using the component everywhere, and the edges show.",
+      "I've found that inconsistency in a design system is rarely caused by carelessness. It's caused by incompleteness. A card component that works for a product listing breaks on a profile page not because someone made a mistake, but because the card was never designed to hold a human face and a timestamp and a paragraph of unstructured text. The card knew one thing: it knew the data it was designed for.",
+      "Applying a component consistently is a test. It finds the decisions that were deferred, the assumptions that were baked in, the questions that felt obvious when you had one example and become real when you have ten. A button that looks fine with two words of copy can feel meaningless with eight. A tooltip designed for a short label wraps awkwardly with a full sentence.",
+      "What I started doing is designing with at least three different content shapes before I finalize any component. Not just the clean example, but the short version, the long version, and the broken version — something with missing data, something with text that wraps. The third example is always the most revealing. It shows me what the component was actually designed to handle, and what I was quietly hoping wouldn't happen.",
+      "Consistency doesn't create problems. It surfaces them. If applying a component creates awkwardness, the awkwardness was already there — hiding in the first example I let stand.",
+    ],
+  },
   'fixed-elements-are-a-contract-not-a-convenience': {
     title: 'Fixed elements are a contract, not a convenience',
     date: '06/18',
