@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Whitespace I tried to reclaim was load-bearing', date: '06/20', href: '/thoughts/whitespace-i-tried-to-reclaim-was-load-bearing' },
   { title: "Consistency revealed what I hadn't actually decided", date: '06/19', href: '/thoughts/consistency-revealed-what-i-hadnt-actually-decided' },
   { title: 'Fixed elements are a contract, not a convenience', date: '06/18', href: '/thoughts/fixed-elements-are-a-contract-not-a-convenience' },
   { title: 'I stopped designing at 150% zoom', date: '06/17', href: '/thoughts/i-stopped-designing-at-150-zoom' },

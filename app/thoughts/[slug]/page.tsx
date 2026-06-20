@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'whitespace-i-tried-to-reclaim-was-load-bearing': {
+    title: 'Whitespace I tried to reclaim was load-bearing',
+    date: '06/20',
+    body: [
+      "There's a kind of whitespace that looks wasteful until you remove it. For a long time I treated generous padding as a sign the layout wasn't finished — too much room between things meant I hadn't figured out where they belonged. My instinct was to tighten.",
+      "I kept hitting the same problem. Compressing the margins made things that had seemed readable feel busy. Not obviously crowded — just harder to parse. I'd gained nothing visible and lost something I couldn't name.",
+      "What I eventually understood is that whitespace carries meaning, not just air. The space around a section header isn't decorating the header — it's separating it from what came before and binding it to what follows. The padding inside a card isn't generosity — it's the visual boundary that makes the card a unit. When I removed those gaps, I wasn't being efficient. I was dismantling structure I'd already built.",
+      "The test I use now is to ask: if I remove this space, does anything become ambiguous? Usually something does. Two sections merge visually. A label floats loose from what it belongs to. An action stops feeling distinct from the content it operates on. That ambiguity was always latent — the space was suppressing it.",
+      "There's room in every layout to tighten some things and loosen others. But I've learned to distinguish space that's filling from space that's working. The filling kind can go. The working kind has a job. Before I cut a margin, I want to know what it was doing.",
+    ],
+  },
   'consistency-revealed-what-i-hadnt-actually-decided': {
     title: "Consistency revealed what I hadn't actually decided",
     date: '06/19',
