@@ -10,6 +10,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-test-at-browser-zoom-200-now': {
+    title: 'I test at browser zoom 200% now',
+    date: '06/21',
+    body: [
+      "Most accessibility checklists include browser zoom as a line item. Press CMD and plus a few times, see if it breaks. In practice it gets tested once, declared acceptable, and forgotten. I was doing the same thing until someone on my team mentioned they used their browser at 175% permanently — not because of a visual impairment, but because they found it more comfortable. That reframe hit differently.",
+      "Zoom isn't an edge case. It's a preference. Anyone who sets a larger default font size, anyone on a high-DPI display with a small physical screen, anyone who gets headaches reading small type — they all exist on a spectrum the same zoom tests cover. Designing as if 100% is the only viewport is designing for a narrow assumption about how people use computers.",
+      "What 200% zoom breaks consistently: sticky elements that cover too much of the screen when text is large, fixed-width containers that force horizontal scrolling, absolute-positioned decorative elements that overlap content. These aren't exotic failures. They're everywhere, and they only show up when you actually look.",
+      "The test I use now is to zoom to 200%, do the core task of whatever I'm designing, and see if I get stuck. Usually I do, at least once. A label that was one line wraps and now stacks awkwardly over its input. A tooltip clips the viewport. An illustration that looked balanced at default size now dominates half the visible area.",
+      "None of these feel like problems when you're working at a comfortable zoom level. That's the trap. Testing at 200% is fast — maybe three minutes — and it consistently finds issues that no static review or design critique would surface. I added it to my own definition of done, not as an accessibility checkbox, but as a basic check on whether the layout actually holds.",
+    ],
+  },
   'whitespace-i-tried-to-reclaim-was-load-bearing': {
     title: 'Whitespace I tried to reclaim was load-bearing',
     date: '06/20',
