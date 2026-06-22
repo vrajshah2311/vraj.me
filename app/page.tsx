@@ -628,6 +628,92 @@ function ScrollHighlightLine({ line, delay }: { line: string; delay: number }) {
   )
 }
 
+// ─── Drawer tabs (above the bottom-sheet) ────────────────────────────────────
+
+const DRAWER_TABS = ['Peec AI', 'Profound', 'nsave', 'Model ML', 'Hale', 'Ninja', 'Linktree', 'Context AI', 'Expedite', 'Other', 'Show all']
+
+function DrawerTabs({ active, onChange }: { active: string | null; onChange: (s: string) => void }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  // Keep the active tab scrolled into view (centered horizontally) when it changes
+  useEffect(() => {
+    if (!scrollRef.current || !active) return
+    const btn = scrollRef.current.querySelector(`[data-tab="${active}"]`) as HTMLButtonElement | null
+    btn?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })
+  }, [active])
+
+  return (
+    // Outer wrapper handles horizontal scroll without clipping vertical shadows.
+    // Padding gives the inner container's outline shadow room to render.
+    <div
+      ref={scrollRef}
+      className="drawer-tabs-scroll"
+      style={{
+        maxWidth: '100%',
+        overflowX: 'auto',
+        overflowY: 'visible',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
+        padding: '4px 4px',     // breathing room for the active button's outer ring + drop shadow
+        margin: '-4px -4px',    // cancel the visual gap we just added
+      }}
+    >
+      <div
+        style={{
+          display: 'inline-flex',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          gap: 2,
+          background: 'rgba(23, 23, 23, 0.04)',
+          borderRadius: 10,
+          userSelect: 'none',
+        }}
+      >
+      {DRAWER_TABS.map(tab => {
+        const isActive = active === tab
+        return (
+          <button
+            key={tab}
+            data-tab={tab}
+            onClick={() => onChange(tab)}
+            style={{
+              display: 'inline-flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 5,
+              height: 28,
+              paddingLeft: 6, paddingRight: 6,
+              borderRadius: 8,
+              border: 'none',
+              cursor: 'pointer',
+              overflow: 'hidden',
+              flexShrink: 0,
+              whiteSpace: 'nowrap',
+              outline: 'none',
+              // Outlined when active, Ghost when inactive
+              background: isActive ? '#FDFDFD' : 'transparent',
+              boxShadow: isActive
+                ? 'inset 0 -1px 0 rgba(23, 23, 23, 0.04), 0 1px 3px rgba(23, 23, 23, 0.08), 0 0 0 1px rgba(23, 23, 23, 0.06)'
+                : 'none',
+              color: isActive ? '#171717' : 'rgba(23, 23, 23, 0.60)',
+              fontFamily: font,
+              fontSize: 14,
+              fontWeight: 500,
+              lineHeight: '14px',
+              transition: 'background 180ms cubic-bezier(0.32, 0.72, 0, 1), box-shadow 180ms cubic-bezier(0.32, 0.72, 0, 1), color 150ms ease',
+            }}
+            onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = 'rgba(23, 23, 23, 0.85)' }}
+            onMouseLeave={e => { if (!isActive) e.currentTarget.style.color = 'rgba(23, 23, 23, 0.60)' }}
+          >
+            {tab}
+          </button>
+        )
+      })}
+      </div>
+    </div>
+  )
+}
+
 export default function HomePage() {
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(null)
   const [hoveredIdx, setHoveredIdx] = useState<string | null>(null)
@@ -636,7 +722,7 @@ export default function HomePage() {
   const [displayedExpanded, setDisplayedExpanded] = useState<string | null>(null)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
-  // ── Hover feedback: short mechanical tick + haptic on link hover ────────
+  // ── Hover feedback: short tick + haptic on link hover ───────────────────
   const audioCtxRef = useRef<AudioContext | null>(null)
   const audioUnlockedRef = useRef(false)
 
@@ -648,6 +734,7 @@ export default function HomePage() {
       if (!audioCtxRef.current) audioCtxRef.current = new Ctx()
       const ctx = audioCtxRef.current!
       if (ctx.state === 'suspended') ctx.resume()
+      // Play a silent buffer to fully unlock on iOS
       const buf = ctx.createBuffer(1, 1, 22050)
       const src = ctx.createBufferSource()
       src.buffer = buf
@@ -671,6 +758,8 @@ export default function HomePage() {
     const ctx = audioCtxRef.current
     if (ctx.state === 'suspended') ctx.resume()
     const now = ctx.currentTime
+    // Short white-noise burst, band-passed to ~2.5kHz, with a sharp attack
+    // and ~25ms decay — the "tk" of a key bottoming out.
     const dur = 0.03
     const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * dur), ctx.sampleRate)
     const data = buffer.getChannelData(0)
@@ -692,7 +781,6 @@ export default function HomePage() {
     noise.start(now)
     noise.stop(now + dur)
   }, [])
-
   const onLinkHover = useCallback(() => {
     playTick()
     if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(8)
@@ -707,6 +795,80 @@ export default function HomePage() {
       setClosing(false)
     }, 400)
   }, [])
+
+  // ── Drag-to-dismiss (Emil Kowalski's drawer principles) ───────────────────
+  const drawerRef    = useRef<HTMLDivElement>(null)
+  const backdropRef  = useRef<HTMLDivElement>(null)
+  const tabsBarRef   = useRef<HTMLDivElement>(null)
+  const dragRef      = useRef<{
+    active: boolean
+    pointerId: number
+    startY: number
+    lastY: number
+    lastT: number
+    velocity: number
+    height: number
+  } | null>(null)
+
+  // Iframely-iOS easing — same curve Emil uses
+  const DRAWER_EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'
+
+  const onDragStart = useCallback((e: React.PointerEvent) => {
+    if (!drawerRef.current) return
+    if (dragRef.current?.active) return
+    const h = drawerRef.current.offsetHeight
+    dragRef.current = {
+      active: true,
+      pointerId: e.pointerId,
+      startY: e.clientY,
+      lastY: e.clientY,
+      lastT: performance.now(),
+      velocity: 0,
+      height: h,
+    }
+    // Only the drawer itself loses its transition during drag.
+    // Tabs and backdrop stay put — owned by React.
+    drawerRef.current.style.transition = 'none'
+    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+  }, [])
+
+  const onDragMove = useCallback((e: React.PointerEvent) => {
+    const d = dragRef.current
+    if (!d?.active || d.pointerId !== e.pointerId || !drawerRef.current) return
+    let delta = e.clientY - d.startY
+    // Ignore tiny jitter (so a click doesn't move anything)
+    if (Math.abs(delta) < 2) return
+    // Damping when dragging up (overscroll resistance)
+    if (delta < 0) delta = -Math.pow(-delta, 0.6) * 1.4
+    drawerRef.current.style.transform = `translateY(${delta}px)`
+    // Velocity for flick detection
+    const now = performance.now()
+    const dt = Math.max(1, now - d.lastT)
+    d.velocity = (e.clientY - d.lastY) / dt
+    d.lastY = e.clientY
+    d.lastT = now
+  }, [])
+
+  const onDragEnd = useCallback((e: React.PointerEvent) => {
+    const d = dragRef.current
+    if (!d?.active || d.pointerId !== e.pointerId || !drawerRef.current) return
+    d.active = false
+
+    const delta = e.clientY - d.startY
+    const shouldClose = delta > d.height * 0.25 || d.velocity > 0.5
+
+    drawerRef.current.style.transition = `transform 0.42s ${DRAWER_EASE}`
+
+    if (shouldClose) {
+      drawerRef.current.style.transform = 'translateY(100%)'
+      setTimeout(() => closeExpanded(), 0)
+    } else {
+      drawerRef.current.style.transform = 'translateY(0)'
+      setTimeout(() => {
+        if (drawerRef.current) { drawerRef.current.style.transform = ''; drawerRef.current.style.transition = '' }
+      }, 460)
+    }
+  }, [closeExpanded])
 
   useEffect(() => {
     if (expanded) {
@@ -879,50 +1041,106 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* Expanded view */}
+      {/* Expanded view — bottom-sheet drawer with tabs floating above */}
       {expandedContent && (
-        <div
-          onClick={() => closeExpanded()}
-          style={{
-            position: 'fixed', inset: 0,
-            display: 'flex', flexDirection: 'column',
-            opacity: isExpandedVisible ? 1 : 0,
-            transform: isExpandedVisible ? 'translateY(0)' : 'translateY(12px)',
-            transition: 'opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
-            cursor: 'pointer', zIndex: 3, background: 'var(--bg, #ffffff)',
-          }}
-          className="v2-expanded"
-        >
-          {/* Fixed back bar */}
-          <div onClick={e => e.stopPropagation()} style={{
-            padding: 'clamp(20px, 3vw, 32px)' as any, paddingBottom: 8, flexShrink: 0,
-            cursor: 'default',
-          }}>
-            <button
-              onClick={closeExpanded}
-              style={{
-                background: 'none', border: 'none', padding: '4px 0', cursor: 'pointer',
-                fontSize: 13, fontWeight: 500, color: 'oklch(0 0 0 / 0.35)',
-                transition: 'color 0.15s ease',
-                animation: 'lineIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) both',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#171717')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'oklch(0 0 0 / 0.35)')}
-            >← Back</button>
+        <>
+          {/* Backdrop — clean white over the page */}
+          <div
+            ref={backdropRef}
+            onClick={() => closeExpanded()}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 3,
+              background: 'rgba(255, 255, 255, 0.92)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)' as any,
+              opacity: isExpandedVisible ? 1 : 0,
+              transition: 'opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)',
+              cursor: 'pointer',
+            }}
+          />
+
+          {/* Tabs above the drawer */}
+          <div
+            ref={tabsBarRef}
+            style={{
+              position: 'fixed', zIndex: 5,
+              left: '50%',
+              bottom: 'calc(92vh + 14px)',
+              transform: `translateX(-50%) translateY(${isExpandedVisible ? 0 : 16}px)`,
+              opacity: isExpandedVisible ? 1 : 0,
+              transition: 'transform 0.45s cubic-bezier(0.32, 0.72, 0, 1) 0.05s, opacity 0.4s ease 0.05s',
+              maxWidth: 'calc(100vw - 24px)',
+              pointerEvents: isExpandedVisible ? 'auto' : 'none',
+            }}
+          >
+            <DrawerTabs active={displayedExpanded} onChange={setExpanded} />
           </div>
 
-          {/* Scrollable content */}
-          <ScrollFadeWrapper className="v2-expanded-text">
-            {/* Label — hide for About */}
-            {displayedExpanded !== 'About' && (
-              <div style={{
-                fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600,
-                lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em',
-                color: 'oklch(0 0 0 / 0.15)',
-                marginBottom: 8,
-                animation: 'lineIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) both',
-              }}>{displayedExpanded}</div>
-            )}
+          {/* Drawer */}
+          <div
+            ref={drawerRef}
+            style={{
+              position: 'fixed', zIndex: 4,
+              bottom: 0, left: 0, right: 0,
+              height: '92vh',
+              background: '#ffffff',
+              borderRadius: '24px 24px 0 0',
+              transform: `translateY(${isExpandedVisible ? '0' : '100%'})`,
+              transition: 'transform 0.5s cubic-bezier(0.32, 0.72, 0, 1)',
+              overflow: 'hidden',
+              boxShadow: '0 -1px 0 rgba(10,10,10,0.06), 0 -16px 48px rgba(10,10,10,0.10)',
+              display: 'flex', flexDirection: 'column',
+              touchAction: 'none',
+            }}
+          >
+            {/* Drag handle zone — drag from anywhere in this strip to dismiss */}
+            <div
+              onPointerDown={onDragStart}
+              onPointerMove={onDragMove}
+              onPointerUp={onDragEnd}
+              onPointerCancel={onDragEnd}
+              style={{
+                flexShrink: 0,
+                padding: '10px 0 8px',
+                display: 'flex', justifyContent: 'center',
+                touchAction: 'none',
+                cursor: 'grab',
+              }}
+            >
+              <div style={{ width: 40, height: 4, borderRadius: 2, background: 'rgba(0,0,0,0.18)', pointerEvents: 'none' }} />
+            </div>
+
+            {/* Close button */}
+            <button
+              onClick={closeExpanded}
+              aria-label="Close"
+              style={{
+                position: 'absolute', top: 14, right: 16, zIndex: 2,
+                background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: 999,
+                width: 32, height: 32, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'background 0.15s ease',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,0,0,0.10)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,0,0,0.05)')}
+            >
+              <svg width={14} height={14} viewBox="0 0 14 14" fill="none">
+                <path d="M3 3l8 8M11 3l-8 8" stroke="rgba(0,0,0,0.55)" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+
+            {/* Scrollable content (key forces remount on tab switch so animations replay) */}
+            <ScrollFadeWrapper key={displayedExpanded ?? ''} className="v2-expanded-text">
+              {/* Label — hide for About */}
+              {displayedExpanded !== 'About' && (
+                <div style={{
+                  fontFamily: font, fontSize: 'var(--v2-font-size, 44px)' as any, fontWeight: 600,
+                  lineHeight: 'var(--v2-line-height, 44px)' as any, letterSpacing: '-0.05em',
+                  color: 'oklch(0 0 0 / 0.15)',
+                  marginBottom: 8,
+                  animation: 'lineIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) both',
+                }}>{displayedExpanded}</div>
+              )}
 
             {/* Profile image — About only */}
             {displayedExpanded === 'About' && (
@@ -1014,7 +1232,8 @@ export default function HomePage() {
               </div>
             )}
           </ScrollFadeWrapper>
-        </div>
+          </div>
+        </>
       )}
 
       {lightboxIndex !== null && expandedContent && (
