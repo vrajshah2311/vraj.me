@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'

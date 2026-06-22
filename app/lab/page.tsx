@@ -6,46 +6,9 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
-  { title: 'Confirmation Dialog', subtitle: 'Animated Modal & Backdrop', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/confirmation-dialog' },
-  { title: 'Kanban Board', subtitle: 'Drag-and-Drop Task Board', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/kanban-board' },
-  { title: 'Floating Dock', subtitle: 'Magnification on Hover', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/floating-dock' },
-  { title: 'Flip Card', subtitle: '3D Perspective Flip', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/flip-card' },
-  { title: 'Notification Bell', subtitle: 'Badge, Shake & Dropdown', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/notification-bell' },
-  { title: 'Emoji Reactions', subtitle: 'Animated Reaction Picker', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/emoji-reactions' },
-  { title: 'Image Compare', subtitle: 'Drag-to-Reveal Before & After', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/image-compare' },
-  { title: 'Circular Progress', subtitle: 'Animated SVG Ring & Multi-Ring', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/circular-progress' },
-  { title: 'Avatar Stack', subtitle: 'Overlap, Expand & Reveal', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/avatar-stack' },
-  { title: 'Password Strength', subtitle: 'Real-time Strength Meter', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/password-strength' },
-  { title: 'Toggle Switch', subtitle: 'Spring-Physics On/Off', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/toggle-switch' },
-  { title: 'Tree View', subtitle: 'Collapsible File Explorer', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/tree-view' },
-  { title: 'Star Rating', subtitle: 'Rate, Display & Review', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/star-rating' },
-  { title: 'Pagination', subtitle: 'Sliding Pill Page Nav', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/pagination' },
-  { title: 'Marquee', subtitle: 'Infinite Scroll Ticker', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/marquee' },
-  { title: 'Swipe Cards', subtitle: 'Drag-to-Dismiss Stack', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/swipe-cards' },
-  { title: 'Magnetic Button', subtitle: 'Cursor-Attracted CTA', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/magnetic-button' },
-  { title: 'File Drop', subtitle: 'Drag & Drop Upload Zone', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/file-drop' },
-  { title: 'Tilt Card', subtitle: '3D Perspective on Hover', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/tilt-card' },
-  { title: 'Inline Edit', subtitle: 'Click-to-Edit Text Fields', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/inline-edit' },
-  { title: 'Split Pane', subtitle: 'Resizable Panel Layout', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/split-pane' },
-  { title: 'Timeline', subtitle: 'Animated Activity Feed', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/timeline' },
-  { title: 'Spotlight Cards', subtitle: 'Mouse-Follow Illumination', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/spotlight-cards' },
-  { title: 'Carousel', subtitle: 'Drag & Momentum Slider', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/carousel' },
-  { title: 'Stepper', subtitle: 'Step Progress Indicator', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/stepper' },
-  { title: 'Skeleton', subtitle: 'Shimmer Loading State', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/skeleton' },
-  { title: 'Popover', subtitle: 'Smooth Floating Panel', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/popover' },
-  { title: 'Number Roll', subtitle: 'Animated Digit Counter', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/number-roll' },
-  { title: 'Morphing Button', subtitle: 'State Transition Animation', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/morphing-button' },
-  { title: 'Combobox', subtitle: 'Searchable Select', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/combobox' },
-  { title: 'Slider', subtitle: 'Draggable Range Input', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/slider' },
-  { title: 'Number Input', subtitle: 'Drag, Scroll & Type', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/number-input' },
-  { title: 'Color Picker', subtitle: 'HSB + Hex + Presets', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/color-picker' },
-  { title: 'Date Picker', subtitle: 'Smooth Calendar Input', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/date-picker' },
-  { title: 'PIN / OTP Input', subtitle: 'Animated Code Entry', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/pin-input' },
-  { title: 'Hover Card', subtitle: 'Smooth Profile Reveal', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/hover-card' },
-  { title: 'Rich Text Editor', subtitle: 'Floating Format Bar', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/tabs.mp4', href: '/lab/rich-text-editor' },
   { title: 'Map', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/peec-ai-map.mp4', href: '/lab' },
   { title: 'Agent Analytics', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/aa.mp4', href: '/lab' },
-  { title: 'Dropdown', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/dropdown.mp4', href: '/lab/dropdown' },
+  { title: 'Dropdown', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/dropdown.mp4', href: '/lab' },
   { title: 'Export Chart', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/export-chart.mp4', href: '/lab' },
   { title: 'MCP', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/mcp-animation.mp4', href: '/lab' },
   { title: 'Matrix', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/matrix.mp4', href: '/lab' },
@@ -55,14 +18,14 @@ const labCards = [
   { title: 'Actions Pt.4', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/actions-04.mp4', href: '/lab' },
   { title: 'CVE Analysis', subtitle: 'Profound', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/profound-cve.mp4', href: '/lab' },
   { title: 'Fluid Search', subtitle: 'Profound', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/profound-search.mp4', href: '/lab' },
-  { title: 'Toast Stack', subtitle: 'Notifications', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/toasts.mp4', href: '/lab/toast-stack' },
+  { title: 'Toast Stack', subtitle: 'Notifications', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/toasts.mp4', href: '/lab' },
   { title: 'Progressive Blur', subtitle: 'Scroll Effect', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/lab-preview.mp4', href: '/lab/progressive-blur', cropBottom: true },
   { title: 'Insights', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-insights.mp4', href: '/lab' },
   { title: 'Minipilot', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-minipilot.mp4', href: '/lab' },
   { title: 'Docs', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-docs.mp4', href: '/lab' },
   { title: 'Teams', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-teams.mp4', href: '/lab' },
   { title: 'Landing', subtitle: 'Context AI', image: '/images/context-ai.png', video: '/videos/context-landing.mp4', href: '/lab', credit: 'rayyan' },
-  { title: 'Tooltip', subtitle: 'Context AI', image: '/images/context-tooltip.png', video: '/videos/context-tooltip.mp4', href: '/lab/tooltip', credit: 'rayyan' },
+  { title: 'Tooltip', subtitle: 'Context AI', image: '/images/context-tooltip.png', video: '/videos/context-tooltip.mp4', href: '/lab', credit: 'rayyan' },
 ]
 
 export default function LabPage() {
@@ -120,7 +83,7 @@ export default function LabPage() {
 
         <div className="lab-grid" style={{ marginTop: 48 }}>
           {labCards.map(card => (
-            <LabCard key={card.href} {...card} />
+            <LabCard key={card.href + card.title} {...card} />
           ))}
         </div>
       </div>
