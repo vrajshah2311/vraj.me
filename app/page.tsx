@@ -636,6 +636,68 @@ export default function HomePage() {
   const [displayedExpanded, setDisplayedExpanded] = useState<string | null>(null)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
+  // ── Hover feedback: short mechanical tick + haptic on link hover ────────
+  const audioCtxRef = useRef<AudioContext | null>(null)
+  const audioUnlockedRef = useRef(false)
+
+  useEffect(() => {
+    const unlock = () => {
+      if (audioUnlockedRef.current) return
+      const Ctx = window.AudioContext || (window as any).webkitAudioContext
+      if (!Ctx) return
+      if (!audioCtxRef.current) audioCtxRef.current = new Ctx()
+      const ctx = audioCtxRef.current!
+      if (ctx.state === 'suspended') ctx.resume()
+      const buf = ctx.createBuffer(1, 1, 22050)
+      const src = ctx.createBufferSource()
+      src.buffer = buf
+      src.connect(ctx.destination)
+      src.start(0)
+      audioUnlockedRef.current = true
+    }
+    window.addEventListener('pointerdown', unlock, { once: true, passive: true })
+    window.addEventListener('keydown', unlock, { once: true })
+    return () => {
+      window.removeEventListener('pointerdown', unlock)
+      window.removeEventListener('keydown', unlock)
+    }
+  }, [])
+
+  const playTick = useCallback(() => {
+    if (typeof window === 'undefined') return
+    const Ctx = window.AudioContext || (window as any).webkitAudioContext
+    if (!Ctx) return
+    if (!audioCtxRef.current) audioCtxRef.current = new Ctx()
+    const ctx = audioCtxRef.current
+    if (ctx.state === 'suspended') ctx.resume()
+    const now = ctx.currentTime
+    const dur = 0.03
+    const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * dur), ctx.sampleRate)
+    const data = buffer.getChannelData(0)
+    for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1
+    const noise = ctx.createBufferSource()
+    noise.buffer = buffer
+    const bp = ctx.createBiquadFilter()
+    bp.type = 'bandpass'
+    bp.frequency.setValueAtTime(2400, now)
+    bp.Q.setValueAtTime(2.5, now)
+    const hp = ctx.createBiquadFilter()
+    hp.type = 'highpass'
+    hp.frequency.setValueAtTime(800, now)
+    const gain = ctx.createGain()
+    gain.gain.setValueAtTime(0, now)
+    gain.gain.linearRampToValueAtTime(0.08, now + 0.001)
+    gain.gain.exponentialRampToValueAtTime(0.0005, now + 0.025)
+    noise.connect(bp).connect(hp).connect(gain).connect(ctx.destination)
+    noise.start(now)
+    noise.stop(now + dur)
+  }, [])
+
+  const onLinkHover = useCallback(() => {
+    playTick()
+    if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(8)
+  }, [playTick])
+
   const closeExpanded = useCallback(() => {
     setClosing(true)
     setLightboxIndex(null)
@@ -755,7 +817,8 @@ export default function HomePage() {
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   className="v2-link"
                   onClick={hasExpanded ? (e) => { e.preventDefault(); setExpanded(link.label) } : undefined}
-                  onMouseEnter={() => { setHoveredIdx(id); setHoveredLabel(link.label) }}
+                  onMouseEnter={() => { setHoveredIdx(id); setHoveredLabel(link.label); onLinkHover() }}
+                  onFocus={onLinkHover}
                   onMouseLeave={() => { setHoveredIdx(null); setHoveredLabel(null) }}
                   style={{
                     fontFamily: font,
