@@ -10,6 +10,16 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'overflow-told-me-what-i-was-afraid-to-decide': {
+    title: 'Overflow told me what I was afraid to decide',
+    date: '06/22',
+    body: [
+      "Overflow was my most reliable sign of unfinished thinking. Not the CSS property — the behavior. When a component started doing something unexpected with content that exceeded its container, I'd usually jump to fix the visible symptom. Add ellipsis. Set a max-height. Clip it. The overflow would stop being visible, and I'd move on without ever asking why it happened.",
+      "The question I kept avoiding was: what happens when there's too much? For a card component holding a product name, that's obvious enough to resolve. But for anything more open-ended — a user bio, an event description, a note — the overflow was exposing a decision I'd deferred. How long can this be? What happens when someone writes more than expected? Who decides?",
+      "I started treating every overflow occurrence as a design failure of a specific kind — not a visual problem but a missing constraint. Either the content model didn't have limits that matched the layout, or the layout didn't adapt to the content model, or both were undefined and one happened to be shorter than the other during testing. Scrollable, clipped, or elastic — each overflow strategy implies a different model of the component. Choosing the right one requires knowing what the component is actually for.",
+      "What helped me was deciding overflow behavior before styling anything. Not at the end, not as a visual patch. At the beginning, alongside the question of what the component needs to hold. When I do it in that order, the behavior I choose shapes the layout rather than the other way around. The ellipsis I would have added by reflex turns into a genuine constraint — a character limit, a fixed-height scroll region, or a layout that can stretch. The overflow becomes a choice instead of an accident.",
+    ],
+  },
   'i-test-at-browser-zoom-200-now': {
     title: 'I test at browser zoom 200% now',
     date: '06/21',

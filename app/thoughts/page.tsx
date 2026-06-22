@@ -3,6 +3,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Overflow told me what I was afraid to decide', date: '06/22', href: '/thoughts/overflow-told-me-what-i-was-afraid-to-decide' },
   { title: 'I test at browser zoom 200% now', date: '06/21', href: '/thoughts/i-test-at-browser-zoom-200-now' },
   { title: 'Whitespace I tried to reclaim was load-bearing', date: '06/20', href: '/thoughts/whitespace-i-tried-to-reclaim-was-load-bearing' },
   { title: "Consistency revealed what I hadn't actually decided", date: '06/19', href: '/thoughts/consistency-revealed-what-i-hadnt-actually-decided' },
