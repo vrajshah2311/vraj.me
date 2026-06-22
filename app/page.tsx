@@ -649,6 +649,7 @@ function DrawerTabs({ active, onChange }: { active: string | null; onChange: (s:
       ref={scrollRef}
       className="drawer-tabs-scroll"
       style={{
+        display: 'inline-block',
         maxWidth: '100%',
         overflowX: 'auto',
         overflowY: 'visible',
