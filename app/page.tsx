@@ -650,11 +650,6 @@ function DrawerTabs({ active, onChange }: { active: string | null; onChange: (s:
       className="drawer-tabs-scroll"
       style={{
         display: 'inline-block',
-        maxWidth: '100%',
-        overflowX: 'auto',
-        overflowY: 'visible',
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none',
         padding: '4px 4px',     // breathing room for the active button's outer ring + drop shadow
         margin: '-4px -4px',    // cancel the visual gap we just added
       }}
@@ -1070,7 +1065,6 @@ export default function HomePage() {
               transform: `translateX(-50%) translateY(${isExpandedVisible ? 0 : 16}px)`,
               opacity: isExpandedVisible ? 1 : 0,
               transition: 'transform 0.45s cubic-bezier(0.32, 0.72, 0, 1) 0.05s, opacity 0.4s ease 0.05s',
-              maxWidth: 'calc(100vw - 24px)',
               pointerEvents: isExpandedVisible ? 'auto' : 'none',
             }}
           >
