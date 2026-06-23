@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'writing-the-label-first-changed-what-i-designed': {
+    title: 'Writing the label first changed what I designed',
+    date: '06/23',
+    body: [
+      "For most of my early work, copy was a placeholder. Lorem ipsum in the layout, \"Button\" on the button, \"Title\" in the heading slot. The design came first and the words fit into it afterward. It felt efficient — I'd solve the structure and fill in the specifics later.",
+      "The problem showed up in reviews. I'd present a screen and someone would ask what this button does, and I'd explain it with words I hadn't put on the button yet. The design made sense when I talked over it. It didn't make sense on its own.",
+      "I started reversing the order. Before placing any component, I'd write the label, the heading, the call to action. What is the user deciding here? What word best names that decision? This forced a kind of specificity that a shape on a grid never does. A rectangle labeled \"Button\" can mean anything. A rectangle labeled \"Delete account permanently\" has a specific weight — it shapes how large it should feel, where it belongs on the page, how much breathing room it needs.",
+      "What I found is that when the words are right, the layout almost writes itself. The length of the label determines the component's minimum size. The stakes of the action determine its visual prominence. The user's mental model of what they're doing — which the label has to reflect — tells you what they need to see before they get there.",
+      "The screens I've been least satisfied with are usually the ones where I designed first and wrote later. The copy ends up shoehorned into a shape that was never really made for it. Words are thinking. Starting with them means the design has already done that work.",
+    ],
+  },
   'overflow-told-me-what-i-was-afraid-to-decide': {
     title: 'Overflow told me what I was afraid to decide',
     date: '06/22',
