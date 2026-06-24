@@ -5,6 +5,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'I squint at every screen before I ship', date: '06/24', href: '/thoughts/i-squint-at-every-screen-before-i-ship' },
   { title: 'Writing the label first changed what I designed', date: '06/23', href: '/thoughts/writing-the-label-first-changed-what-i-designed' },
   { title: 'Overflow told me what I was afraid to decide', date: '06/22', href: '/thoughts/overflow-told-me-what-i-was-afraid-to-decide' },
   { title: 'I test at browser zoom 200% now', date: '06/21', href: '/thoughts/i-test-at-browser-zoom-200-now' },

@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-squint-at-every-screen-before-i-ship': {
+    title: 'I squint at every screen before I ship',
+    date: '06/24',
+    body: [
+      "Squinting sounds like a joke. I used to think so too. But at some point I started closing my eyes almost all the way when reviewing a layout, and what I saw changed how I worked.",
+      "When you squint, sharp edges blur and color flattens into approximate masses. Text disappears. What remains is light and dark, large and small — the visual weight of each element at its most essential. If something is supposed to be the first thing someone sees, it should read that way even to half-closed eyes. If it doesn't, the design hasn't actually done the work.",
+      "The first time I tried it deliberately, I was looking at a product page I thought was clean. Squinting, the most prominent shape was a secondary navigation bar I'd styled with too much contrast. The primary call to action, which I'd intended to be obvious, was nearly invisible in the blurred view. I'd been polishing the wrong thing.",
+      "What squinting tests is hierarchy of attention — not which elements are labeled important, but which elements actually pull the eye first. You can declare a button primary all day through props and naming conventions. The blur test doesn't care about intentions. It shows you what the visual weight is actually doing.",
+      "I now do it twice: once midway through a layout, and once before I mark something ready. It takes ten seconds. It's caught things that hours of detailed review missed — a card that reads darker than the content it frames, a headline that competes with the background color, text-heavy sections that collapse into unreadable mass when the type details disappear. The blur test is honest in a way that close inspection isn't.",
+    ],
+  },
   'writing-the-label-first-changed-what-i-designed': {
     title: 'Writing the label first changed what I designed',
     date: '06/23',
