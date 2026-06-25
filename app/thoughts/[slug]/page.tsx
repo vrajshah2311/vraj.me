@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'every-second-of-hesitation-is-a-design-problem': {
+    title: 'Every second of hesitation is a design problem',
+    date: '06/25',
+    body: [
+      "When I watch someone use a product I've built, I'm not watching for errors. I'm watching for hesitation.",
+      "A half-second pause before clicking. A cursor that drifts to the wrong element before correcting course. Eyes that move to the label again after they've already read it. These are the moments that carry the most information, and they happen so fast that usability sessions almost miss them.",
+      "Hesitation means the next step wasn't obvious. Not wrong — not inaccessible — just not immediately legible. The person figured it out, because people are adaptive, but they spent something to do it. A fraction of their attention. A moment of uncertainty. Over the course of an interface, those fractions add up. They're the difference between using something that feels effortless and something that takes work you never consciously notice doing.",
+      "I started logging hesitation events the way I log errors. Where did you pause? What were you looking for? Did you find it before or after you acted? The pattern that usually emerges is that the same two or three spots catch everyone. A button that looks like a label. A confirmation that came too fast after the action. A field that wasn't clearly tied to what it was asking about.",
+      "What I've had to accept is that the clear design is never as clear as it felt when I made it. I know what everything does. My confidence is the thing getting in the way. Watching hesitation is how I see my own interface without my own context — which is the only way to know whether it actually works.",
+    ],
+  },
   'i-squint-at-every-screen-before-i-ship': {
     title: 'I squint at every screen before I ship',
     date: '06/24',
