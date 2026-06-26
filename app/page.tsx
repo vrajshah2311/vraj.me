@@ -718,6 +718,22 @@ export default function HomePage() {
   const [displayedExpanded, setDisplayedExpanded] = useState<string | null>(null)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
+  // ── Debounced hover label for the preview rail (avoids strobing on flick) ─
+  const hoverLabelTimerRef = useRef<number | null>(null)
+  const setHoveredLabelDebounced = useCallback((label: string | null) => {
+    if (hoverLabelTimerRef.current) {
+      window.clearTimeout(hoverLabelTimerRef.current)
+      hoverLabelTimerRef.current = null
+    }
+    if (label === null) {
+      setHoveredLabel(null)
+      return
+    }
+    hoverLabelTimerRef.current = window.setTimeout(() => {
+      setHoveredLabel(label)
+    }, 80)
+  }, [])
+
   // ── Hover feedback: short tick + haptic on link hover ───────────────────
   const audioCtxRef = useRef<AudioContext | null>(null)
   const audioUnlockedRef = useRef(false)
@@ -947,6 +963,27 @@ export default function HomePage() {
         }
       `}</style>
 
+      {/* Identity sub-label — top-right corner anchor */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 'clamp(20px, 3vw, 32px)' as any,
+          right: 'clamp(20px, 3vw, 32px)' as any,
+          fontFamily: 'var(--font-geist-mono), ui-monospace, monospace',
+          fontSize: 12,
+          fontWeight: 500,
+          letterSpacing: '0.04em',
+          color: 'oklch(0 0 0 / 0.45)',
+          opacity: isExpandedVisible ? 0 : 1,
+          transition: 'opacity 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+          animation: `v2FadeIn 0.6s cubic-bezier(0.32, 0.72, 0, 1) 0.1s both`,
+          zIndex: 3,
+          pointerEvents: 'none',
+        }}
+      >
+        Founding Designer · Berlin
+      </div>
+
       {/* Links view */}
       <div style={{
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
@@ -961,6 +998,21 @@ export default function HomePage() {
           <div key={section.section} style={{
             animation: `v2FadeIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) ${si * 0.08}s both`,
           }}>
+            <div
+              style={{
+                fontFamily: 'var(--font-geist-mono), ui-monospace, monospace',
+                fontSize: 11,
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'oklch(0 0 0 / 0.32)',
+                marginBottom: 8,
+                opacity: isExpandedVisible ? 0 : 1,
+                transition: 'opacity 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+              }}
+            >
+              {section.section}
+            </div>
             {section.items.map((link, li) => {
               const id = `${si}-${li}`
               const isHovered = hoveredIdx === id
@@ -975,9 +1027,9 @@ export default function HomePage() {
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   className="v2-link"
                   onClick={hasExpanded ? (e) => { e.preventDefault(); setExpanded(link.label) } : undefined}
-                  onMouseEnter={() => { setHoveredIdx(id); setHoveredLabel(link.label); onLinkHover() }}
+                  onMouseEnter={() => { setHoveredIdx(id); setHoveredLabelDebounced(link.label); onLinkHover() }}
                   onFocus={onLinkHover}
-                  onMouseLeave={() => { setHoveredIdx(null); setHoveredLabel(null) }}
+                  onMouseLeave={() => { setHoveredIdx(null); setHoveredLabelDebounced(null) }}
                   style={{
                     fontFamily: font,
                     fontSize: 'var(--v2-font-size, 44px)' as any,
@@ -987,10 +1039,10 @@ export default function HomePage() {
                     color: isHovered
                       ? '#171717'
                       : anyHovered
-                      ? 'oklch(0 0 0 / 0.18)'
+                      ? 'oklch(0 0 0 / 0.28)'
                       : link.light ? 'oklch(0 0 0 / 0.32)' : 'oklch(0 0 0 / 0.55)',
                     padding: '1px 0',
-                    transition: 'color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    transition: 'color 0.45s cubic-bezier(0.32, 0.72, 0, 1)',
                     animation: `v2FadeIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) ${si * 0.08 + li * 0.04}s both`,
                   }}
                 >
