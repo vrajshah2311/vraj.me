@@ -12,6 +12,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'destructive-actions-taught-me-to-design-with-weight': {
+    title: 'Destructive actions taught me to design with weight',
+    date: '06/26',
+    body: [
+      "For most of my design career, I treated button hierarchy as a binary: primary buttons are big and prominent, secondary buttons are smaller and quieter. The framework felt clean. It covered most cases without much thought.",
+      "Then I started paying more attention to destructive actions. A \"Delete account\" option sitting at the bottom of a settings page, styled as a secondary link in muted gray — technically correct, visually understated, and quietly wrong. Users who shouldn't click it barely registered it. Users who needed to find it missed it entirely.",
+      "The problem was that I'd been conflating prominence with priority. Primary means \"the action I want users to take most.\" But destructive actions aren't primary or secondary in that sense — they're orthogonal. They need to be findable for the people who need them and impossible to click accidentally by everyone else.",
+      "What I've started doing is thinking about button weight in terms of consequence rather than hierarchy. An action that creates something can be quiet — it costs little to undo. An action that destroys something irreversibly needs a different visual strategy: visible enough to find deliberately, shaped to avoid accidental activation. That might mean size, color, or placement. Usually it means all three, calibrated together.",
+      "The detail that changed my practice was spacing. A \"Delete\" button that sits far from the primary action, with clear separation — not just a different color — communicates that these are distinct decisions, not continuation steps. Users navigate to it intentionally instead of arriving there by momentum. That spatial distance does more work than any red color has ever done in my designs.",
+      "Visual weight and visual danger aren't the same signal. I used to assume prominent meant safe and quiet meant careful. Now I think prominence is about discoverability, and weight is about consequence — and getting them right together is the actual problem.",
+    ],
+  },
   'every-second-of-hesitation-is-a-design-problem': {
     title: 'Every second of hesitation is a design problem',
     date: '06/25',
