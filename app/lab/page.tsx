@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Tag Input', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/tag-input' },
   { title: 'Context Menu', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/context-menu' },
   { title: 'Draggable List', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/draggable-list' },
   { title: 'Command Palette', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/command-palette' },
