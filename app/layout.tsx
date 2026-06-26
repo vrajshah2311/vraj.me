@@ -7,8 +7,8 @@ import { GeistMono } from "geist/font/mono";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: 'Vraj - Designer & Developer',
-  description: 'Portfolio of Vraj - A creative designer and developer building beautiful digital experiences.',
+  title: 'Vraj Shah — Founding Product Designer | AI · Fintech · 0→1',
+  description: 'Founding Designer working on 0→1 products at fast-moving startups across AI, fintech, and health. Currently at Peec AI, Berlin.',
   keywords: ['designer', 'developer', 'portfolio', 'web design', 'UI/UX'],
   authors: [{ name: 'Vraj' }],
   creator: 'Vraj',

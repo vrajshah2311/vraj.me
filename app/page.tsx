@@ -308,8 +308,8 @@ const EXPANDED: Record<string, ExpandedContent> = ((): Record<string, ExpandedCo
   },
   }
 
-  // "Show all" — every image from every case study, aggregated
-  base['Show all'] = {
+  // "All projects" — every image from every case study, aggregated
+  base['All projects'] = {
     lines: [
       'Everything in one place.',
       'Every product, every screen.',
@@ -354,7 +354,7 @@ const LINKS: { section: string; items: LinkItem[] }[] = [
     { label: 'Hale', href: '#' },
     { label: 'Ninja', href: '#' },
     { label: 'Linktree', href: '#' },
-    { label: 'Show all', href: '#', light: true },
+    { label: 'All projects', href: '#', light: true },
   ]},
   { section: 'explore', items: [
     { label: 'Lab', href: '/lab' },
@@ -630,7 +630,7 @@ function ScrollHighlightLine({ line, delay }: { line: string; delay: number }) {
 
 // ─── Drawer tabs (above the bottom-sheet) ────────────────────────────────────
 
-const DRAWER_TABS = ['Peec AI', 'Profound', 'nsave', 'Model ML', 'Hale', 'Ninja', 'Linktree', 'Context AI', 'Expedite', 'Other', 'Show all']
+const DRAWER_TABS = ['Peec AI', 'Profound', 'nsave', 'Model ML', 'Hale', 'Ninja', 'Linktree', 'Context AI', 'Expedite', 'Other', 'All projects']
 
 function DrawerTabs({ active, onChange }: { active: string | null; onChange: (s: string) => void }) {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -987,8 +987,8 @@ export default function HomePage() {
                     color: isHovered
                       ? '#171717'
                       : anyHovered
-                      ? 'oklch(0 0 0 / 0.12)'
-                      : link.light ? 'oklch(0 0 0 / 0.18)' : 'oklch(0 0 0 / 0.3)',
+                      ? 'oklch(0 0 0 / 0.18)'
+                      : link.light ? 'oklch(0 0 0 / 0.32)' : 'oklch(0 0 0 / 0.55)',
                     padding: '1px 0',
                     transition: 'color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1)',
                     animation: `v2FadeIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) ${si * 0.08 + li * 0.04}s both`,
