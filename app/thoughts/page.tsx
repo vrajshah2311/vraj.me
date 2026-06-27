@@ -5,6 +5,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'The wrong cursor made my design feel broken', date: '06/27', href: '/thoughts/the-wrong-cursor-made-my-design-feel-broken' },
   { title: 'Destructive actions taught me to design with weight', date: '06/26', href: '/thoughts/destructive-actions-taught-me-to-design-with-weight' },
   { title: 'Every second of hesitation is a design problem', date: '06/25', href: '/thoughts/every-second-of-hesitation-is-a-design-problem' },
   { title: 'I squint at every screen before I ship', date: '06/24', href: '/thoughts/i-squint-at-every-screen-before-i-ship' },

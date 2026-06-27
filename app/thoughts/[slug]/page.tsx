@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'the-wrong-cursor-made-my-design-feel-broken': {
+    title: 'The wrong cursor made my design feel broken',
+    date: '06/27',
+    body: [
+      "For a long time I applied `cursor: pointer` to everything interactive without much thought. Cards, expandable rows, inline tags, section labels. The pointer finger was shorthand for clickable, which felt like honest communication — if it does something, show the hand.",
+      "Then I watched someone hover over a section header I'd built. It had a click handler that toggled a tooltip, not a navigation event. They hesitated for half a second, then clicked expecting to go somewhere. The cursor had implied a link. The interaction delivered something quieter. Nothing was broken, but something felt off — and they felt it too.",
+      "Cursor style is the first affordance signal a user receives, before any visible state change. `pointer` carries the weight of navigation: follow this somewhere, do something significant. `default` says information lives here, or interaction is understated. `grab` says this can be repositioned. Each implies a different contract, and users read them before any click fires.",
+      "What I started doing is being intentional about which cursor each pattern deserves. Toggles and expandable rows often read more accurately with `default` — the action is contextual, not navigational. The finger icon signals more urgency than most of those interactions warrant. Overusing `pointer` dilutes the signal until it means nothing at all.",
+      "When users describe a product as feeling slightly off on hover — not broken, just slightly wrong — cursor mismatch is often the cause. It doesn't surface in bug reports. It just adds a thin layer of static between the user and the interface. Getting it right is one of those invisible details that nobody notices, which is exactly the point.",
+    ],
+  },
   'destructive-actions-taught-me-to-design-with-weight': {
     title: 'Destructive actions taught me to design with weight',
     date: '06/26',
