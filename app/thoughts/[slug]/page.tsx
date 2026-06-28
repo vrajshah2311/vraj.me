@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'two-column-forms-fragment-what-should-be-one-thought': {
+    title: 'Two-column forms fragment what should be one thought',
+    date: '06/28',
+    body: [
+      "Two-column form layouts have a particular appeal on wide screens. They look organized. First name next to last name, city next to state — the pairing reads as intentional structure. The symmetry suggests the designer was in control. I used them for years before I understood what they were doing to the people filling them out.",
+      "The problem is reading direction. Users navigate forms with an expectation about order: this field, then the next, then the one after. In a single-column form, that sequence is unambiguous. In a two-column layout, the order depends on which reading convention you apply — do you go left column first, top to bottom, then right column? Or left to right across each row? Neither is obviously correct. That ambiguity is small, but forms are rarely one decision. Multiplied across fifteen fields, the user is navigating layout before they're engaging with content.",
+      "What made this concrete for me was watching someone fill out a checkout form I'd designed. First name and last name side by side, shipping address below, then city and state side by side, zip code next to it. The user tabbed through and immediately lost the thread. They weren't confused by the questions — they were confused by the path. The spatial pattern implied left-to-right, then broke it, then implied it again. The form was a zigzag, not a flow.",
+      "The exception I've kept is fields where the pairing carries genuine meaning, not just spatial efficiency. First and last name belong together because they're a single concept. But city and state are only adjacent because of a mailing address convention. Putting them side by side to save vertical space treats layout compactness as a user benefit — it's not. It's a designer preference.",
+      "Single-column forms take longer to scroll and less time to complete. That tradeoff is worth making almost every time.",
+    ],
+  },
   'the-wrong-cursor-made-my-design-feel-broken': {
     title: 'The wrong cursor made my design feel broken',
     date: '06/27',
