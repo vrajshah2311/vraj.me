@@ -12,6 +12,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'i-stopped-trusting-my-color-calls-after-6-pm': {
+    title: 'I stopped trusting my color calls after 6 PM',
+    date: '06/29',
+    body: [
+      "There's a rule I gave myself a while back: no final color decisions after dark. It sounds superstitious. It isn't.",
+      "The problem started with a project I was working late into the night to finish. The background color I'd been agonizing over looked perfect at 11 PM — warm, muted, sophisticated. I shipped it. In the morning, on the same laptop in daylight, it looked greenish and slightly sick. Nothing had changed in the file. Everything had changed in how I was seeing.",
+      "Color perception is context-dependent in ways we mostly ignore. The ambient light in a room shifts the reference point your eyes use to evaluate any color on screen. A warm incandescent lamp at night makes everything feel warmer, including your screen, and you compensate unconsciously — pulling colors cooler to balance. In daylight, those compensations are exposed. The same hex value looks different.",
+      "Eye fatigue makes it worse. After six hours at a screen, the eye's ability to discriminate subtle hue differences degrades. Colors that looked distinct start to flatten. Decisions that seemed precise turn out to be educated guesses made by tired hardware.",
+      "What I do now is flag any color decision made past 6 PM and revisit it the next morning before committing. Not change it — just check. Most of the time it still holds. But enough times it doesn't that the habit is worth the delay. A background that seemed to warm the whole interface the night before just looks slightly dingy. A brand color that felt energetic reads as aggressive in a rested morning light.",
+      "Design software can't tell you what the eye sees at 11 PM. That's exactly the problem.",
+    ],
+  },
   'two-column-forms-fragment-what-should-be-one-thought': {
     title: 'Two-column forms fragment what should be one thought',
     date: '06/28',
