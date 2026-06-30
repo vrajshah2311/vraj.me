@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'dark-mode-showed-me-spacing-was-never-absolute': {
+    title: 'Dark mode showed me spacing was never absolute',
+    date: '06/30',
+    body: [
+      "The first time I designed a dark mode interface seriously — not just swapping colors but actually thinking about how the layout felt — something was off. I'd taken the exact same spacing values from the light version. Same 32px section gaps, same 16px inner padding, same 8px between a label and its input. Everything was correct in the file. It felt cramped on screen.",
+      "I spent a while adjusting individual components before I noticed the pattern: almost every spacing value I'd brought over from light mode needed to be increased. Not dramatically — maybe 20 to 30 percent — but consistently. The dark version of the design needed more air.",
+      "The reason, I think, has to do with how light behaves. In a light interface, whitespace is literally bright. A 32px gap between two cards isn't just spatial distance — it's a band of high luminance that reads as expansive. The eye sees brightness as openness. In a dark interface, that same 32px gap is now dark. The spatial distance hasn't changed, but the visual cue that communicated distance has been stripped away. What's left is proximity with no light telling you to perceive it as separated.",
+      "What this taught me is that spacing values are not intrinsic — they're relative to the surfaces they exist between. Sixteen pixels of gap adjacent to white has more perceived space than sixteen pixels adjacent to near-black. The number is the same. The experience is different.",
+      "I now do a light-mode and dark-mode pass on the same layout, adjusting spacing independently for each. The components that need the most recalibration are usually the densest ones: data tables, nested content, form fields grouped closely together. They feel fine in light and claustrophobic in dark until I add the right amount of room back in.",
+    ],
+  },
   'i-stopped-trusting-my-color-calls-after-6-pm': {
     title: 'I stopped trusting my color calls after 6 PM',
     date: '06/29',
