@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Toast Stack', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/toast-stack' },
   { title: 'Segmented Control', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/segmented-control' },
   { title: 'Bottom Sheet', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/bottom-sheet' },
   { title: 'Multi-Step Form', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/multi-step-form' },
@@ -25,7 +26,6 @@ const labCards = [
   { title: 'Actions Pt.4', subtitle: 'Peec AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/actions-04.mp4', href: '/lab' },
   { title: 'CVE Analysis', subtitle: 'Profound', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/profound-cve.mp4', href: '/lab' },
   { title: 'Fluid Search', subtitle: 'Profound', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/profound-search.mp4', href: '/lab' },
-  { title: 'Toast Stack', subtitle: 'Notifications', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/toasts.mp4', href: '/lab' },
   { title: 'Progressive Blur', subtitle: 'Scroll Effect', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/lab-preview.mp4', href: '/lab/progressive-blur', cropBottom: true },
   { title: 'Insights', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-insights.mp4', href: '/lab' },
   { title: 'Minipilot', subtitle: 'Context AI', image: 'https://placehold.co/429x269/ffffff/ffffff', video: '/videos/context-minipilot.mp4', href: '/lab' },
