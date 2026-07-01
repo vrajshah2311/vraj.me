@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'the-browser-is-where-i-finish-my-designs': {
+    title: 'The browser is where I finish my designs',
+    date: '07/01',
+    body: [
+      "There's a version of a design that lives in Figma and a version that lives in a browser, and I've learned they're not the same thing.",
+      "For a long time I treated the handoff as the end of my work. The file was clean, the components were named, the spacing tokens were applied. What happened after felt like someone else's problem — the engineer's job was to reproduce what I'd made. But the browser kept returning with questions the file hadn't answered.",
+      "The first time I really noticed this, someone sent me a screenshot of a modal I'd designed. It looked fine in my mockup. In the browser, on their laptop, the modal sat a little low — the content was shorter than I'd anticipated, and the centered positioning exposed that. I'd designed for fullness. The empty, shorter state was a layout decision I'd never actually made.",
+      "What happens in a browser that can't happen in a design tool: real text wraps. Hover states have timing, not just a second frame. A scrollable container hits its actual scroll behavior. An animation has a real duration you can feel. These aren't implementation details — they're the experience. And they only exist in the medium they'll be used in.",
+      "Now I try to see designs in-browser before I call anything done. Not a high-fidelity prototype — the actual implementation, or something close to it. What I'm looking for isn't correctness. It's whether the decisions I made in the file still hold up under real interaction. Some do. Plenty don't. The browser is honest in ways a static frame can't be, and I've started treating that honesty as the last step of design, not a surprise after it.",
+    ],
+  },
   'dark-mode-showed-me-spacing-was-never-absolute': {
     title: 'Dark mode showed me spacing was never absolute',
     date: '06/30',
