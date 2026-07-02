@@ -12,6 +12,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'reduced-motion-showed-me-which-transitions-were-necessary': {
+    title: 'Reduced motion showed me which transitions were necessary',
+    date: '07/02',
+    body: [
+      "When I first added `prefers-reduced-motion` support to a product, I treated it as an accessibility checkbox — wrap the animations in a media query, cut the durations. It took less than an afternoon. Then I started actually using the product with motion off, and something was wrong. Not broken — wrong. Some interactions felt incomplete, as if a step had been skipped.",
+      "That was when I understood the difference between motion that performs and motion that explains.",
+      "The transitions I'd disabled split into two groups based on how much their absence mattered. A fading tooltip at 0.2s? Nobody missed it. The expand-collapse on a sidebar accordion? Without motion, the panel just jumped — you'd open it and immediately lose track of what had changed. The content was there but the spatial story was gone. No slide meant no signal that the layout had grown, not been replaced.",
+      "I'd talked about animation as UI storytelling in the abstract. Reduced motion made it specific. If disabling a transition left the interface confusing, that transition was doing work I hadn't designed a non-motion alternative for. If disabling it changed nothing important, it was decoration.",
+      "What I try to do now is design the static and motion states together, not motion as an enhancement layer on top of a finished static design. The reduced-motion version should be a fully coherent UI, not a degraded one. When I can't make it work without motion, I have to ask: what information is the motion carrying? Can a color shift, a size change, or a different layout carry that information instead? Sometimes yes. Sometimes the whole interaction needs rethinking.",
+      "The users who prefer reduced motion aren't experiencing a lesser version of the product. They're experiencing the version that has to make sense entirely on its own — and that's the version worth getting right first.",
+    ],
+  },
   'the-browser-is-where-i-finish-my-designs': {
     title: 'The browser is where I finish my designs',
     date: '07/01',
