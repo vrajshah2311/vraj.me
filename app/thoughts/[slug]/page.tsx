@@ -12,6 +12,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'wrong-easing-made-a-confident-animation-feel-apologetic': {
+    title: 'Wrong easing made a confident animation feel apologetic',
+    date: '07/03',
+    body: [
+      "Someone described a product I'd spent months on as feeling \"tentative.\" The visual design was strong — I'd checked everything else. Then I started looking at the motion.",
+      "The animations were technically correct: right durations, composited properties, nothing janked. But most of them started slow and ended slow. I'd reached for the browser default and moved on without much thought.",
+      "The difference between ease-in and ease-out is more than curve geometry. Ease-in starts slow — the element gathers speed, entering the frame tentatively. Ease-out starts fast: motion arrives with momentum already built and comes to rest with confidence. That difference reads small in a spec doc. In real interfaces, the wrong easing makes a confident design feel like it's second-guessing itself.",
+      "I changed entry animations to ease-out. Things entering the frame now arrived with weight — already in motion, landing where they belonged. Exit animations became ease-in, because something leaving the scene should feel like it's releasing hold, not launching. Those two decisions made the product feel more decisive without touching a single visual component.",
+      "What I hadn't understood until then is that easing communicates agency. An ease-out entrance says: this element was already confident before it arrived. An ease-in entrance says: I wasn't sure I should come in. For a product that was supposed to feel capable, I'd been making every element apologize before speaking.",
+      "Now I pick easing the same way I pick button copy — with the character of the moment in mind. Quick entries with ease-out, deliberate transitions with custom curves, exits that feel like release. The math is in the cubic bezier. The meaning is in what it implies about how your product carries itself.",
+    ],
+  },
   'reduced-motion-showed-me-which-transitions-were-necessary': {
     title: 'Reduced motion showed me which transitions were necessary',
     date: '07/02',
