@@ -12,6 +12,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'real-users-showed-me-id-designed-for-myself': {
+    title: "Real users showed me I'd designed for myself",
+    date: '07/04',
+    body: [
+      "The most humbling design sessions I've had weren't formal usability studies. They were watching someone try to accomplish a task I'd spent a week on, and realizing within two minutes that every assumption baked into the design was mine, not theirs.",
+      "I'd been building an onboarding flow with a specific kind of user in mind — technically fluent, probably rushing, probably annoyed by explanation. I stripped out all the contextual framing, kept everything dense, made the UI expect familiarity. It was efficient. I was proud of it.",
+      "The first person I watched go through it was a project manager — sharp, experienced with software, exactly the kind of person the product was for. She stopped at the second screen and just waited. Not for the app to load. She was waiting for orientation that she expected the screen to provide, and I'd removed it because I thought it would feel condescending. She needed it because she was entering a new tool and wanted a foothold.",
+      "What I'd done was design for the version of the user I was most comfortable imagining — the one who moved like me, needed what I needed, found what I found obvious. That person exists in the user base. They're not the majority.",
+      "I added back the orientation layer I'd stripped out. Not as a forced tour or a modal wall — just enough spatial and contextual grounding for someone unfamiliar to find their footing. The feature didn't get slower for the advanced user. It stopped confusing everyone else.",
+      "The humbling part wasn't getting it wrong. It was that I couldn't see why it was wrong until someone who wasn't me used it. My fluency had become a blind spot, and no amount of staring at the file was going to reveal that.",
+    ],
+  },
   'wrong-easing-made-a-confident-animation-feel-apologetic': {
     title: 'Wrong easing made a confident animation feel apologetic',
     date: '07/03',
