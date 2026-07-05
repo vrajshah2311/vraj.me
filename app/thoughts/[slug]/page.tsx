@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'early-validation-made-my-forms-feel-hostile': {
+    title: 'Early validation made my forms feel hostile',
+    date: '07/05',
+    body: [
+      "The first time I noticed this was watching someone fill out a registration form I'd built. They were typing an email address — not finished, somewhere in the middle of the domain — and a red error message appeared below the field: \"Please enter a valid email.\" They paused, looked at the message, then back at their hands. They weren't done. The form knew that. It flagged them anyway.",
+      "Keystroke-level validation is technically correct in the narrowest sense — an incomplete email isn't valid. But the timing converts a useful signal into an accusation. You're marked wrong while you're still in the middle of being right.",
+      "I switched to validating on blur: errors appear after the user leaves the field, not while they're still in it. The change made the same form feel completely different. People typed without interruption, made mistakes, corrected them naturally, moved on. The error that had been chasing their cursor now arrived after a decision had been made — not before one was finished.",
+      "The exception I've kept is positive feedback. Showing a checkmark while a field fills correctly is welcome. It confirms the right direction without implying failure. Encouragement during the act is different from correction during the act.",
+      "What this actually taught me is that timing is part of the message. Feedback delivered too early isn't helpful — it's intrusive. The content can be identical: the same red border, the same message text. But shown mid-keystroke versus after-focus-leave, it communicates entirely different things about what the form expects from you. One says \"you're getting it wrong.\" The other says \"here's what to fix.\" The moment you surface a signal shapes what that signal means.",
+    ],
+  },
   'real-users-showed-me-id-designed-for-myself': {
     title: "Real users showed me I'd designed for myself",
     date: '07/04',
