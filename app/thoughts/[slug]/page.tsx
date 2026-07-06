@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'hover-states-are-invisible-to-half-my-users': {
+    title: 'Hover states are invisible to half my users',
+    date: '07/06',
+    body: [
+      "I spent years perfecting hover states. The subtle background fill on a table row, the shadow deepening on a card, the underline appearing as you approach a link. These felt like essential design work — the layer that told users what was interactive and what wasn't. I was proud of how considered they were.",
+      "Then I actually looked at the analytics for one of those products. Fifty-eight percent of sessions were on mobile. Hover doesn't exist on touch. Every affordance signal I'd been building and refining was invisible to the majority of my users.",
+      "The uncomfortable truth is that if hover is the primary signal that something is interactive, you've made the interaction legible only to people using a mouse. A row with no visible border, no underline, no contained shape — one that only reveals its clickability when a cursor passes over it — reads as static content on a phone. Users either tap and discover by accident, or they never tap at all.",
+      "What I changed was treating the static state as the actual design. Does this element read as interactive before any cursor comes near it? Linked text in body copy gets underlines now, not just color. Tappable rows get enough visual enclosure that they register as distinct units. Interactive cards get borders that make them look like cards, not just content blocks floating on a background.",
+      "Hover became an enhancement rather than the foundation. A deepening shadow on hover is a nice confirmation of intent — but the element beneath it has to already be doing the work. If I strip out every hover style and the interface still communicates what's interactive, I've built something that holds across every device. If it doesn't, I've been designing a layer that half my users can't see.",
+    ],
+  },
   'early-validation-made-my-forms-feel-hostile': {
     title: 'Early validation made my forms feel hostile',
     date: '07/05',
