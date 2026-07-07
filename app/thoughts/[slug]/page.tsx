@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'a-tentative-layout-makes-users-tentative-too': {
+    title: 'A tentative layout makes users tentative too',
+    date: '07/07',
+    body: [
+      "For a long time I thought visual restraint was always virtue. Quiet interfaces, muted palettes, nothing competing for attention. I associated that aesthetic with taste. Then I started watching people hesitate on screens I'd designed in that mode, and I stopped being so sure.",
+      "A layout that never commits to a primary action makes users uncertain about what to do. If the submit button is the same weight as the field labels, the same color as the navigation, floating at the bottom of the form without visual distinction — the user doesn't know how confident they should feel about clicking it. The design hasn't told them. They sense that if they click something will happen, but the visual environment hasn't endorsed the action. So they pause.",
+      "I noticed this after a usability session where someone spent nearly thirty seconds on a simple one-field form. There was only one thing they could do on the screen. They did it, eventually, but with visible uncertainty — leaning forward, reading everything twice. I'd styled the button to match everything else: same border radius, same gray weight, same muted hover. It blended in because I hadn't wanted it to dominate.",
+      "What I changed was treating visual confidence as part of the message. A strong primary action, clearly the most prominent thing on a screen, tells users: you're in the right place, this is what you're here to do, this is safe to click. The visual weight isn't showing off. It's reassuring. It's the design saying: I know what you want, and it's this.",
+      "The restraint I've learned is different now. It's not about making everything quiet. It's about making most things quiet so the important things can speak. That contrast is the design doing its job — and users feel it as confidence rather than confusion.",
+    ],
+  },
   'hover-states-are-invisible-to-half-my-users': {
     title: 'Hover states are invisible to half my users',
     date: '07/06',
