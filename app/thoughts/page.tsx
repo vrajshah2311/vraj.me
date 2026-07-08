@@ -5,6 +5,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'The success screen is where trust is built', date: '07/08', href: '/thoughts/the-success-screen-is-where-trust-is-built' },
   { title: 'A tentative layout makes users tentative too', date: '07/07', href: '/thoughts/a-tentative-layout-makes-users-tentative-too' },
   { title: 'Hover states are invisible to half my users', date: '07/06', href: '/thoughts/hover-states-are-invisible-to-half-my-users' },
   { title: 'Early validation made my forms feel hostile', date: '07/05', href: '/thoughts/early-validation-made-my-forms-feel-hostile' },

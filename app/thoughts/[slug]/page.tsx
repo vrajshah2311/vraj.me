@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'the-success-screen-is-where-trust-is-built': {
+    title: 'The success screen is where trust is built',
+    date: '07/08',
+    body: [
+      "The form submits, the server responds, and then comes the screen nobody talks about in reviews. I spent years thinking of success states as confirmation — a brief receipt for the transaction, the end of the flow. What I stopped treating as designed, the user experienced as the conclusion of a negotiation.",
+      "The issue surfaced when I was working on an onboarding flow. The final step handed the user a generic \"You're all set!\" message and a button back to the dashboard. We tested it, nobody complained, and I moved on. Three months later, someone shared a session recording of a user pausing on that screen for over twenty seconds, reading what it said, rereading it, then clicking through looking slightly uncertain. They weren't confused about what happened. They weren't sure they should be confident about it.",
+      "\"You're all set\" tells someone the process is complete. It doesn't tell them what they can do now, what changed because of what they just did, or what they should expect next. It confirms the system's perspective, not the user's. The success screen I'd written was technically correct and emotionally empty.",
+      "What I changed was treating the success state as a summary for the user, not a status report for the system. A sentence about what's ready. A specific next step if there is one. Some acknowledgment that something meaningful just happened. Not lengthy — two or three lines at most — but pointed. Designed for the person standing at the edge of a new thing who wants to know they're in the right place.",
+      "The success screen is the last thing someone sees before they form their lasting impression of the flow. I was treating it as an afterthought. It was the moment I should have been most deliberate.",
+    ],
+  },
   'a-tentative-layout-makes-users-tentative-too': {
     title: 'A tentative layout makes users tentative too',
     date: '07/07',
