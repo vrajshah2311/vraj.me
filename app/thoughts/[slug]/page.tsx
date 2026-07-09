@@ -12,6 +12,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'skeleton-screens-showed-me-which-layouts-had-structure': {
+    title: 'Skeleton screens showed me which layouts had structure',
+    date: '07/09',
+    body: [
+      "When I first designed skeleton loading states, I thought the task was visual — match the shape of what will eventually appear. A wide rectangle for the heading, three narrower ones for the body, a small circle for the avatar. I was tracing the destination.",
+      "What I didn't understand at the time is that a skeleton reveals something the filled layout doesn't: whether the structure makes sense without content at all.",
+      "I noticed this while working on a list view with three card types — editorial content, user posts, recommendations. In filled form, the list felt organized. Different content made each type feel distinct. Then I built the skeleton version. Every card looked identical. The gray blocks varied in height but followed the same pattern regardless of type. A user post and an editorial piece and a recommendation were indistinguishable in their empty form.",
+      "That should have been a design signal. If three fundamentally different content types look the same as loading states, the layout isn't differentiating them — the content is. Remove the words and images, and there's no underlying structure telling you these are different things.",
+      "The test I use now is to sketch a layout's skeleton early, before the component feels finished. A skeleton that reads clearly — where you can see something is prominent, something secondary, this area holds an action and that one holds a description — tells me the layout itself is doing structural work. A skeleton that just looks like a generic loading screen tells me I've been relying on content to carry the hierarchy.",
+      "The skeleton isn't the destination. It's an X-ray. And an X-ray that shows nothing is worth finding out early.",
+    ],
+  },
   'the-success-screen-is-where-trust-is-built': {
     title: 'The success screen is where trust is built',
     date: '07/08',
