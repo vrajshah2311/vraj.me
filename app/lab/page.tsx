@@ -6,6 +6,7 @@ import LabCard from '@/components/LabCard'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const labCards = [
+  { title: 'Spotlight Cards', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/spotlight-cards' },
   { title: 'OTP Input', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/otp-input' },
   { title: 'Morphing Button', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/morphing-button' },
   { title: 'Tooltip', subtitle: 'UI Component', image: 'https://placehold.co/429x269/f0f1f4/0a0a0a', href: '/lab/tooltip' },
