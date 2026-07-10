@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'slow-network-mode-showed-me-what-actually-mattered': {
+    title: 'Slow network mode showed me what actually mattered',
+    date: '07/10',
+    body: [
+      "Enabling Slow 3G in the browser DevTools took about two seconds. What I saw afterward changed how I thought about information hierarchy in a way that three months of design reviews hadn't.",
+      "The page loaded, but not the way I'd intended. Text appeared first — the navigation, then a scattered set of card titles, then slowly some descriptors. The hero image, which I'd designed to anchor the entire page and establish the mood, arrived near the end. For about four seconds, the layout looked completely different from anything I'd designed. The card titles were prominent without their images, which meant the copy was doing the heavy lifting. The copy wasn't written to carry that weight.",
+      "That gap between designed load order and actual load order showed me something: I'd been treating visual hierarchy as a static thing, set once and always true. But hierarchy is temporal. Elements arrive in sequence, and whatever arrives first is de facto the most important thing, regardless of what the finished layout intends. I'd designed for the final state without thinking about the journey through it.",
+      "What I started doing was loading everything through throttled connections before calling anything done. Not to test performance in the DevTools sense, but to watch the layout come alive in sequence and ask whether that sequence made sense. Often it didn't. Images I'd weighted visually would lag, and the text they were supposed to contextualize would arrive orphaned. I'd move things. Defer what could be deferred. Write copy that held up without the images it was supposed to accompany.",
+      "Loading order is a design decision I used to hand entirely to engineers. It isn't.",
+    ],
+  },
   'skeleton-screens-showed-me-which-layouts-had-structure': {
     title: 'Skeleton screens showed me which layouts had structure',
     date: '07/09',

@@ -5,6 +5,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Slow network mode showed me what actually mattered', date: '07/10', href: '/thoughts/slow-network-mode-showed-me-what-actually-mattered' },
   { title: 'Skeleton screens showed me which layouts had structure', date: '07/09', href: '/thoughts/skeleton-screens-showed-me-which-layouts-had-structure' },
   { title: 'The success screen is where trust is built', date: '07/08', href: '/thoughts/the-success-screen-is-where-trust-is-built' },
   { title: 'A tentative layout makes users tentative too', date: '07/07', href: '/thoughts/a-tentative-layout-makes-users-tentative-too' },
