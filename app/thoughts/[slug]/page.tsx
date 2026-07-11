@@ -12,6 +12,18 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'presenting-without-narrating-taught-me-what-actually-failed': {
+    title: 'Presenting without narrating taught me what actually failed',
+    date: '07/11',
+    body: [
+      "The habit started from necessity. I was pitching a redesign to a product team I didn't know well, and one of their engineers interrupted me two minutes in to say the interface was confusing — not as a critique, but as a live observation while I was talking over it. He hadn't understood what the flow was supposed to do, and I'd moved past that explanation before he'd processed it.",
+      "After that, I stopped narrating. Not always, not in every context — but in reviews where I wanted honest signal, I'd share the screen and stay quiet. Let the viewer do what a real user would do: look at it, form impressions, try to understand it without my voice filling in the gaps.",
+      "What I found was immediately useful and sometimes uncomfortable. Things I'd assumed were self-evident weren't. Labels I'd polished for three days were read once and misunderstood. A flow I'd thought was obvious required context I'd been supplying unconsciously for so long that I'd stopped noticing I was doing it.",
+      "The narration is a scaffold. It catches the design wherever the design fails to hold its own weight. Removing the scaffold doesn't break the structure — it just reveals which parts were only standing because of external support.",
+      "Now I have two kinds of presentations: explained and silent. The silent ones are for me. I share the file with someone and watch their face without saying anything. The responses I get in those sessions are the honest ones — not filtered through politeness or shaped by my framing. They're what the design actually communicates when it has to do it alone.",
+      "The ones that need narrating usually need redesigning.",
+    ],
+  },
   'slow-network-mode-showed-me-what-actually-mattered': {
     title: 'Slow network mode showed me what actually mattered',
     date: '07/10',
