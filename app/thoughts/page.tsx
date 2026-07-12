@@ -5,6 +5,7 @@ import Link from 'next/link'
 const font = 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif'
 
 const articles = [
+  { title: 'Print preview showed me which information actually mattered', date: '07/12', href: '/thoughts/print-preview-showed-me-which-information-actually-mattered' },
   { title: 'Presenting without narrating taught me what actually failed', date: '07/11', href: '/thoughts/presenting-without-narrating-taught-me-what-actually-failed' },
   { title: 'Slow network mode showed me what actually mattered', date: '07/10', href: '/thoughts/slow-network-mode-showed-me-what-actually-mattered' },
   { title: 'Skeleton screens showed me which layouts had structure', date: '07/09', href: '/thoughts/skeleton-screens-showed-me-which-layouts-had-structure' },

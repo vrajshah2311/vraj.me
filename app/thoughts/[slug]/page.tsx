@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'print-preview-showed-me-which-information-actually-mattered': {
+    title: 'Print preview showed me which information actually mattered',
+    date: '07/12',
+    body: [
+      "I started using print preview as a design audit tool by accident. I was preparing to print a product page for an in-person meeting and opened the browser's print dialog first just to make sure it was readable. What I saw was almost nothing — the page had been built entirely around its interactive shell. Strip away the navigation, the sidebar you reached by scrolling, the hover actions that revealed secondary content, and what was left was a thin column of text with no apparent structure.",
+      "The page existed for one goal: helping someone evaluate a product well enough to decide. In the browser, that goal was served through a combination of hierarchy, interactivity, and layout cues. In print, the interactivity vanished, and the hierarchy came with it. What I thought was organized content turned out to be organized chrome. The important information — key features, pricing, the comparison I'd buried in a hover tooltip — wasn't accessible in the remaining form.",
+      "I started doing it deliberately after that. Before calling anything done, I'd open print preview and look at what survived. Not because users were printing the pages, but because print strips away everything interactive and leaves the content standing alone. The question it answers is specific: if I remove every visual affordance, does the information still make sense in order? Can someone read through the remaining text and arrive at the thing I was trying to communicate?",
+      "What it catches consistently is pages where the layout is carrying information that the content should be carrying. A card grid that reads as organized in the browser becomes a wall of equal-weight text in print, because the separation was coming from background fills and borders, not content structure. A pricing table that works when the toggle is interactive becomes an undifferentiated data block when the interaction disappears.",
+      "Print preview doesn't care about your animation budget or your brand voice. It's the harshest possible simplification of what you built. And it's precise about where the design is relying on its medium to carry meaning it hasn't actually designed. Most of the time, when a page fails the print test, it's not a printing problem — it's a hierarchy problem that the browser was covering up.",
+    ],
+  },
   'presenting-without-narrating-taught-me-what-actually-failed': {
     title: 'Presenting without narrating taught me what actually failed',
     date: '07/11',
