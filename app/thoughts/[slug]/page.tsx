@@ -12,6 +12,17 @@ type Article = {
 }
 
 const articles: Record<string, Article> = {
+  'german-translations-exposed-layouts-i-thought-were-flexible': {
+    title: 'German translations exposed layouts I thought were flexible',
+    date: '07/13',
+    body: [
+      "I shipped a product in English and assumed it was done. The labels were short. The buttons fit their containers. The navigation stack felt tight and right. Then someone handed it to a translator and the German version arrived, and I understood what I'd actually built.",
+      "German compounds words like \"Einstellungen\" for settings and \"Benachrichtigungseinstellungen\" for notification settings. Navigation labels I'd designed at 80px wide overflowed. Buttons labeled \"Speichern\" rather than \"Save\" pushed against their padding. Dropdown items that had sat comfortably on one line started wrapping. The interface looked fragile in ways that were invisible when it was only ever holding English.",
+      "What this exposed wasn't a translation problem — it was a layout assumption I'd made and never questioned. Every decision about container width, every tight padding value, every icon-and-label pair had been calibrated to English copy length. I was designing for words I knew, not for the concept the word expressed. The container wasn't holding \"Settings\" — it was holding that specific six-letter string.",
+      "I started designing with the longest plausible label first after that. Not lorem ipsum — the word I expected, and then the equivalent in German or French or Portuguese. A navigation item that held \"Notification Preferences\" comfortably, in full, was a container I could trust. One that was sized for \"Alerts\" was just optimism.",
+      "What the German version taught me is that English is unusually compact. Most other languages take more room to say the same thing. Designing only in English is a bit like testing your layout only with one-word inputs — technically it works, but you've set yourself up for surprises the moment reality shows up in a different form.",
+    ],
+  },
   'print-preview-showed-me-which-information-actually-mattered': {
     title: 'Print preview showed me which information actually mattered',
     date: '07/12',
