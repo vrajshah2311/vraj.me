@@ -1,0 +1,965 @@
+<meta charset="utf-8">
+<title>Signal to Published</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Tokens inherited from the prototype's styles.css, extended for long-form
+   reading and a dark counterpart. Light values are unchanged. */
+:root{
+  --ground:#f7f7f6;
+  --surface:#ffffff;
+  --surface-2:#fcfcfb;
+  --ink:#1b1b19;
+  --ink-2:#57574f;
+  --ink-3:#8b8b82;
+  --ink-4:#a3a39a;
+  --rule:#e9e9e6;
+  --rule-soft:#efefec;
+  --accent:#c2560c;
+  --accent-soft:#fbeedd;
+  --live:#1f8a4c;
+  --live-soft:#e4f5ea;
+  --caution:#96690d;
+  --caution-soft:#fbf1dd;
+  --risk:#b0442a;
+  --risk-soft:#fbe9e2;
+  --on-accent:#ffffff;
+  --shadow:0 1px 2px rgba(20,20,15,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#121210;
+    --surface:#1a1a18;
+    --surface-2:#201f1d;
+    --ink:#f3f3ef;
+    --ink-2:#b6b6ac;
+    --ink-3:#8a8a80;
+    --ink-4:#6e6e65;
+    --rule:#2c2c28;
+    --rule-soft:#242421;
+    --accent:#e9954f;
+    --accent-soft:#38230f;
+    --live:#5cbc83;
+    --live-soft:#16301f;
+    --caution:#d9ac47;
+    --caution-soft:#33280f;
+    --risk:#e57d63;
+    --risk-soft:#3a1e16;
+    --on-accent:#1a1208;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121210;
+  --surface:#1a1a18;
+  --surface-2:#201f1d;
+  --ink:#f3f3ef;
+  --ink-2:#b6b6ac;
+  --ink-3:#8a8a80;
+  --ink-4:#6e6e65;
+  --rule:#2c2c28;
+  --rule-soft:#242421;
+  --accent:#e9954f;
+  --accent-soft:#38230f;
+  --live:#5cbc83;
+  --live-soft:#16301f;
+  --caution:#d9ac47;
+  --caution-soft:#33280f;
+  --risk:#e57d63;
+  --risk-soft:#3a1e16;
+  --on-accent:#1a1208;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+h1,h2,h3,h4,h5,p,ul,ol,figure,table{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+
+.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:1px solid var(--rule);
+  background:var(--surface);
+}
+.masthead-in{
+  max-width:1080px;margin:0 auto;padding:26px 28px 24px;
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+}
+.eyebrow{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-4);
+}
+.masthead h1{
+  font-size:19px;font-weight:600;letter-spacing:-.018em;
+}
+.masthead .sep{color:var(--ink-4)}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px 96px}
+.prose{max-width:680px}
+section{padding:46px 0;border-bottom:1px solid var(--rule)}
+section:last-of-type{border-bottom:0}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
+.sec-num{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.08em;
+  flex:none;padding-top:2px;
+}
+h2{font-size:23px;font-weight:600;letter-spacing:-.024em;text-wrap:balance;line-height:1.25}
+h3{font-size:16px;font-weight:600;letter-spacing:-.012em;margin-top:26px;text-wrap:balance}
+p+p{margin-top:14px}
+h3+p{margin-top:8px}
+.lede{font-size:17px;line-height:1.6;color:var(--ink-2);letter-spacing:-.006em}
+.dim{color:var(--ink-2)}
+strong{font-weight:600;color:var(--ink)}
+em{font-style:italic}
+code{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.88em;
+  background:var(--surface-2);border:1px solid var(--rule-soft);border-radius:4px;
+  padding:1px 5px;color:var(--ink-2);
+}
+
+ul.tight{list-style:none;padding:0;margin-top:12px;display:flex;flex-direction:column;gap:9px}
+ul.tight li{position:relative;padding-left:18px;color:var(--ink-2)}
+ul.tight li::before{
+  content:"";position:absolute;left:2px;top:.62em;
+  width:5px;height:5px;border-radius:50%;background:var(--ink-4);
+}
+ul.tight li strong{color:var(--ink)}
+
+/* pull quote — the brief's own sentence */
+.pull{
+  margin:22px 0 0;padding:18px 22px;
+  border-left:2px solid var(--accent);
+  background:var(--accent-soft);
+  border-radius:0 8px 8px 0;
+  font-size:16px;line-height:1.55;color:var(--ink);letter-spacing:-.008em;
+}
+.pull cite{display:block;margin-top:8px;font-style:normal;font-size:12px;color:var(--ink-3)}
+
+/* answer card */
+.claim{
+  margin-top:22px;border:1px solid var(--rule);border-radius:10px;
+  background:var(--surface);box-shadow:var(--shadow);overflow:hidden;
+}
+.claim-row{padding:20px 22px}
+.claim-row+.claim-row{border-top:1px solid var(--rule-soft);background:var(--surface-2)}
+.claim .label{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);
+}
+.claim p{margin-top:9px;font-size:16px;letter-spacing:-.008em;line-height:1.55}
+.claim-row+.claim-row p{font-size:15px}
+
+/* ---------- the loop ---------- */
+.loop{margin-top:8px}
+.loop-track{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:9px;align-items:stretch;
+}
+.stage{
+  background:var(--surface);border:1px solid var(--rule);border-radius:10px;
+  padding:13px 14px 15px;position:relative;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:6px;
+}
+.stage-n{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;font-weight:600;letter-spacing:.09em;color:var(--accent);
+}
+.stage-t{font-size:14.5px;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+.stage-io{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.01em;color:var(--ink-4);line-height:1.4;
+}
+.stage-q{font-size:12.5px;line-height:1.45;color:var(--ink-3);letter-spacing:-.003em;margin-top:2px}
+.stage-out{
+  margin-top:auto;padding-top:9px;border-top:1px solid var(--rule-soft);
+  min-height:4.2em;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.03em;color:var(--ink-2);
+}
+.stage.is-new{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent-soft),var(--shadow)}
+.loop-return{
+  margin-top:10px;display:flex;align-items:center;gap:12px;
+  padding:12px 16px;border:1px dashed var(--rule);border-radius:10px;
+  background:var(--surface-2);
+}
+.loop-return .rk{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;font-weight:600;letter-spacing:.09em;color:var(--live);flex:none;
+}
+.loop-return .rt{font-size:13px;color:var(--ink-2);letter-spacing:-.004em}
+.loop-note{margin-top:14px;font-size:13px;color:var(--ink-3);max-width:680px}
+
+/* ---------- stage detail blocks ---------- */
+.block{
+  margin-top:18px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.block-h{
+  display:flex;align-items:center;gap:11px;padding:13px 18px;
+  border-bottom:1px solid var(--rule-soft);background:var(--surface-2);
+}
+.block-h .k{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;font-weight:600;letter-spacing:.09em;color:var(--accent);
+}
+.block-h .t{font-size:15px;font-weight:600;letter-spacing:-.012em}
+.block-b{padding:18px}
+.block-b>p:first-child{margin-top:0}
+.decide{
+  margin-top:16px;padding-top:15px;border-top:1px solid var(--rule-soft);
+}
+.decide .dh{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-4);
+  margin-bottom:10px;
+}
+
+/* ---------- specimens: rendered UI, not prose ---------- */
+.spec{
+  margin-top:18px;border:1px solid var(--rule);border-radius:10px;
+  background:var(--ground);overflow:hidden;
+}
+.spec-h{
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding:9px 15px;border-bottom:1px solid var(--rule);background:var(--surface-2);
+}
+.spec-h .sk{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-4);
+}
+.spec-h .st{font-size:12.5px;color:var(--ink-3);letter-spacing:-.003em}
+.spec-b{padding:16px}
+
+/* mock buttons — styled to read as controls, inert inside a specimen */
+.btn{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:7px;
+  font-size:12.5px;font-weight:500;letter-spacing:-.004em;
+  background:var(--accent);color:var(--on-accent);white-space:nowrap;
+}
+.btn-quiet{
+  background:transparent;color:var(--ink-2);
+  box-shadow:inset 0 0 0 1px var(--rule);
+}
+
+/* recommendation card */
+.rec{
+  background:var(--surface);border:1px solid var(--rule);border-radius:9px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.rec-top{padding:15px 17px 14px}
+.rec-kicker{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-4);
+}
+.rec-title{font-size:17px;font-weight:600;letter-spacing:-.016em;margin-top:8px;line-height:1.3}
+.rec-meta{
+  margin-top:6px;font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.02em;color:var(--ink-3);
+}
+.rec-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--rule-soft);border-top:1px solid var(--rule-soft);
+}
+.rec-cell{background:var(--surface);padding:14px 17px 16px}
+.rec-cell h5{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);
+  margin-bottom:9px;
+}
+.rec-cell p{font-size:13px;line-height:1.5;color:var(--ink-2)}
+.rec-cell p+p{margin-top:8px}
+.rec-cell p.sub{font-size:12px;color:var(--ink-4)}
+.ev{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.ev li{display:flex;gap:10px;align-items:baseline;font-size:12.5px;color:var(--ink-2);line-height:1.4}
+.ev .n{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;
+  font-size:12.5px;font-weight:600;color:var(--ink);min-width:26px;text-align:right;flex:none;
+}
+.rec-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding:12px 17px;border-top:1px solid var(--rule-soft);background:var(--surface-2);
+}
+.rec-foot .eff{font-size:12.5px;color:var(--ink-3);letter-spacing:-.003em}
+.rec-acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* opportunity queue */
+.opp-list{
+  display:flex;flex-direction:column;gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule);border-radius:9px;overflow:hidden;box-shadow:var(--shadow);
+}
+.opp{background:var(--surface);padding:15px 17px;display:flex;flex-direction:column;gap:8px}
+.opp-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.opp-t{font-size:15px;font-weight:600;letter-spacing:-.012em}
+.opp-tags{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-4);white-space:nowrap;
+}
+.opp-p{font-size:13px;color:var(--ink-2);line-height:1.5}
+.opp-rec{display:flex;gap:10px;align-items:baseline;font-size:13px;color:var(--ink);line-height:1.5}
+.opp-rec .rk2{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--accent);flex:none;padding-top:1px;
+}
+.opp-f{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  padding-top:9px;border-top:1px solid var(--rule-soft);
+}
+.opp-f .meta{font-size:12px;color:var(--ink-3);display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.link{
+  font-size:12.5px;font-weight:500;color:var(--accent);letter-spacing:-.003em;white-space:nowrap;
+}
+
+/* next best action */
+.nba{
+  background:var(--surface);border:1px solid var(--rule);border-radius:9px;
+  box-shadow:var(--shadow);padding:18px 19px;display:flex;flex-direction:column;gap:11px;
+}
+.nba-k{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);
+}
+.nba-t{font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.why{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.why li{position:relative;padding-left:16px;font-size:13px;color:var(--ink-2);line-height:1.5}
+.why li::before{
+  content:"";position:absolute;left:0;top:.68em;width:8px;height:1.5px;background:var(--accent);
+}
+.nba-f{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:4px}
+
+/* verification tiles */
+.deltas{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule);border-radius:9px 9px 0 0;overflow:hidden;
+}
+.delta{background:var(--surface);padding:15px 17px 16px}
+.delta .dm{font-size:12.5px;color:var(--ink-3);line-height:1.4;letter-spacing:-.003em}
+.delta .dv{margin-top:9px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.delta .now{font-size:28px;font-weight:600;letter-spacing:-.022em;line-height:1;color:var(--ink)}
+.delta .was{font-size:12.5px;color:var(--ink-4)}
+.delta .dd{margin-top:9px;font-size:12px;font-weight:500;letter-spacing:-.002em}
+.delta .good{color:var(--live)}
+.verdict{
+  display:flex;gap:13px;align-items:flex-start;flex-wrap:wrap;
+  padding:14px 17px;background:var(--surface-2);
+  border:1px solid var(--rule);border-top:0;border-radius:0 0 9px 9px;
+}
+.verdict p{font-size:13px;color:var(--ink-2);line-height:1.5;flex:1 1 300px}
+.handoff{
+  margin-top:10px;display:flex;align-items:center;gap:11px;flex-wrap:wrap;
+  padding:11px 16px;border:1px dashed var(--rule);border-radius:9px;background:var(--surface);
+}
+.handoff .hk{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--live);flex:none;
+}
+.handoff .ht{font-size:13px;color:var(--ink-2)}
+
+/* boundary callout — what I would refuse to build */
+.bound{
+  margin-top:18px;padding:16px 18px;border:1px solid var(--rule);border-radius:10px;
+  background:var(--risk-soft);
+}
+.bound .bh{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--risk);
+  margin-bottom:8px;
+}
+.bound p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.bound p+p{margin-top:10px}
+.bound strong{color:var(--ink)}
+
+/* ---------- tables ---------- */
+.table-scroll{overflow-x:auto;margin-top:16px;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);
+  background:var(--surface-2);
+}
+td{color:var(--ink-2)}
+td:first-child{color:var(--ink);font-weight:500;white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums}
+td.pillcell{white-space:nowrap}
+
+/* ---------- pills ---------- */
+.pill{
+  display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;
+  font-size:11px;font-weight:500;letter-spacing:-.002em;white-space:nowrap;
+}
+.pill-reuse{background:var(--live-soft);color:var(--live)}
+.pill-extend{background:var(--caution-soft);color:var(--caution)}
+.pill-new{background:var(--accent-soft);color:var(--accent)}
+/* status vocabulary — fill and hue both carry state, so it survives CVD and print */
+.pill-ready{background:var(--live-soft);color:var(--live)}
+.pill-invest{background:var(--caution-soft);color:var(--caution)}
+.pill-review{background:transparent;color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--rule)}
+.pill-watch{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.pill-resolved{background:transparent;color:var(--live);box-shadow:inset 0 0 0 1px var(--live)}
+.pill-dismissed{background:transparent;color:var(--ink-4);box-shadow:inset 0 0 0 1px var(--rule-soft)}
+
+/* ---------- validation phases ---------- */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.phase{
+  border:1px solid var(--rule);border-radius:10px;background:var(--surface);
+  padding:16px 17px;box-shadow:var(--shadow);
+}
+.phase h4{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:9px;
+}
+.phase p{font-size:13px;color:var(--ink-2);line-height:1.55}
+.phase .gate{
+  margin-top:11px;padding-top:10px;border-top:1px solid var(--rule-soft);
+  font-size:12px;color:var(--ink-3);
+}
+.phase .gate b{color:var(--ink-2);font-weight:600}
+
+/* ---------- footer ---------- */
+.endnote{
+  margin-top:44px;padding:20px 22px;border:1px solid var(--rule);border-radius:10px;
+  background:var(--surface-2);font-size:13.5px;color:var(--ink-2);max-width:680px;
+}
+.endnote b{color:var(--ink)}
+
+@media (max-width:1000px){
+  .loop-track{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:860px){
+  .phases{grid-template-columns:1fr}
+  .rec-grid{grid-template-columns:1fr}
+  .deltas{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .loop-track{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .wrap,.masthead-in{padding-left:18px;padding-right:18px}
+  body{font-size:14.5px}
+}
+@media (max-width:440px){
+  .loop-track{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+
+<header class="masthead">
+  <div class="masthead-in">
+    <span class="eyebrow">Design assignment</span>
+    <h1>Signal to Published</h1>
+    <span class="sep">·</span>
+    <span class="eyebrow">Vraj Shah</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="prose">
+      <p class="lede">GitBook already ships the screen that lists content gaps. This is a proposal for everything downstream of clicking a row: how a stranger's evidence becomes a gap someone believes in, how a believed gap becomes a decision about what to actually do, how a draft becomes something they'd sign, and how that change reaches a live docs site through the publishing machinery that already exists — then reports back on whether it worked.</p>
+
+      <div class="pull">
+        “Listing gaps on a screen is the easy part. The harder question is what has to be true for that loop to close more than once.”
+        <cite>— the brief</cite>
+      </div>
+
+      <div class="claim">
+        <div class="claim-row">
+          <div class="label">What this is</div>
+          <p>Not AI documentation suggestions. An improvement loop: understand what needs fixing, decide what to do about it, make the change safely, and learn whether it worked. A suggestion ends at the reader's inbox; an improvement ends at a number that moved.</p>
+        </div>
+        <div class="claim-row">
+          <div class="label">What has to be true</div>
+          <p>The loop closes a second time when <strong>reviewing a proposal costs less than ignoring it</strong>, and when <strong>being wrong is cheap for the reviewer and expensive for the agent</strong>. Everything below follows from those two clauses.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:22px">Four consequences, which are the spine of the design. Evidence has to be legible at a glance rather than researched, because the reviewer has never seen it. A diagnosis has to arrive with a recommended action attached, because “47 people are confused about OAuth” is a fact and not a decision. The unit of work has to be a change inside the owner's existing workflow, not a second inbox running parallel to it. And rejection has to be a first-class outcome that visibly improves the next batch — while acceptance stays effortful enough that someone actually reads.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>The loop, and the two edges everyone drops</h2></div>
+    <div class="loop">
+      <div class="loop-track">
+        <div class="stage">
+          <div class="stage-n">01</div>
+          <div class="stage-t">Diagnose</div>
+          <div class="stage-io">signal → a believed gap</div>
+          <div class="stage-q">Is this real, and what is actually going wrong?</div>
+          <div class="stage-out">OUT: a verdict, in under a minute</div>
+        </div>
+        <div class="stage is-new">
+          <div class="stage-n">02</div>
+          <div class="stage-t">Recommend</div>
+          <div class="stage-io">gap → a named action</div>
+          <div class="stage-q">So what should I do about it?</div>
+          <div class="stage-out">OUT: one intervention, sized</div>
+        </div>
+        <div class="stage">
+          <div class="stage-n">03</div>
+          <div class="stage-t">Draft</div>
+          <div class="stage-io">action → proposed text</div>
+          <div class="stage-q">Would I put my name on this?</div>
+          <div class="stage-out">OUT: a diff against a real page</div>
+        </div>
+        <div class="stage">
+          <div class="stage-n">04</div>
+          <div class="stage-t">Ship</div>
+          <div class="stage-io">draft → a change</div>
+          <div class="stage-q">How does this actually ship?</div>
+          <div class="stage-out">OUT: a change request, or a PR</div>
+        </div>
+        <div class="stage">
+          <div class="stage-n">05</div>
+          <div class="stage-t">Verify</div>
+          <div class="stage-io">change → evidence</div>
+          <div class="stage-q">Did it fix what it claimed?</div>
+          <div class="stage-out">OUT: a measured outcome</div>
+        </div>
+      </div>
+      <div class="loop-return">
+        <span class="rk">NEXT OPPORTUNITY</span>
+        <span class="rt">The verified result goes back to the person who accepted it, and it arrives holding the next thing worth doing. This is the only stage that earns a second visit — and it is the one most versions of this feature never build.</span>
+      </div>
+      <p class="loop-note">Stage 1 exists today. Stage 2 is the piece I would add on top of a plain gaps queue: a diagnosis with no recommended action hands the reader a problem and asks them to invent the next step, which is the work they were hoping to avoid. Stages 3–5 are the rest of the assignment, and the return edge is the answer to “more than once”.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Stage by stage</h2></div>
+    <div class="prose"><p class="dim">Each stage below states the question the user is actually asking, then the decisions I would defend in the second half of the session.</p></div>
+
+    <div class="block">
+      <div class="block-h"><span class="k">01</span><span class="t">Diagnose · “Is this real, and what is going wrong?”</span></div>
+      <div class="block-b">
+        <p>The reviewer has no relationship with this evidence: hundreds of questions from strangers, tickets closed by a team they don't sit with. A summary asks them to trust the agent's reading. A raw log asks them to do research. Neither produces a verdict.</p>
+        <div class="decide">
+          <div class="dh">Decisions</div>
+          <ul class="tight">
+            <li><strong>Lead with verbatims, not the summary.</strong> Three real questions, in the asker's words, with source and date — then the count. The quote is what makes a stranger's problem feel real; the number only makes it feel large.</li>
+            <li><strong>Show what the docs answered.</strong> A gap only exists relative to existing content. Put the page the assistant retrieved, and its failed answer, next to the question. This is what lets someone with no context decide in seconds.</li>
+            <li><strong>Separate a content gap from a retrieval gap.</strong> The most common false positive is content that exists but wasn't found. These are different bugs with different owners, and collapsing them poisons trust in the whole feature. The agent runs a coverage check and says which one it thinks this is.</li>
+            <li><strong>Say what the questions cluster on, not just how many there are.</strong> “37 questions” is a size. “68% of them are about what happens after the final retry” is a finding, and it is what tells an owner whether the fix will address the actual confusion.</li>
+            <li><strong>The agent states its own case against itself.</strong> Alongside the verdict, it names the reports it thinks it may be wrong about — “six of these ask how to replay a dropped event, which may be a missing product capability rather than a missing page.” That reservation is sized to match what the verification report later finds still failing, so the uncertainty is calibrated rather than decorative. An agent that only ever builds a case is one you stop reading.</li>
+            <li><strong>Layer the panel: verdict material one tap deep.</strong> The default view is only what a decision needs — what is missing, two verbatim questions, the agent's reservation, where the fix lands. The full case (the why, the failed answer, the coverage check) sits behind one disclosure, so a reviewer who trusts the agent spends ten seconds, and one who doesn't can still audit everything.</li>
+            <li><strong>Dismissal carries a reason.</strong> Not real · already documented · won't fix · wrong owner. “Already documented” is the highest-value signal in the system — it is a search bug reported for free.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="k">02</span><span class="t">Recommend · “So what should I do about it?”</span></div>
+      <div class="block-b">
+        <p>A gap report ends on a fact: 47 people asked about OAuth callbacks, and the assistant couldn't answer 18 of them. That is true, and it is not a decision. The owner still has to work out which page this belongs on, what to put in it, whether it's worth the afternoon, and what they would expect to change if they did it. The system knows more about all four than they do — it has the questions, the retrieval logs, the page tree, and the outcome of every similar change made before this one. Making the reader re-derive it is a failure of nerve, not of scope.</p>
+        <p>So the agent commits to something: <strong>one named intervention, on one named page, with the outcome it expects.</strong></p>
+
+        <div class="spec">
+          <div class="spec-h">
+            <span class="sk">Specimen</span>
+            <span class="st">Recommendation — the bridge between a diagnosis and a draft</span>
+          </div>
+          <div class="spec-b">
+            <div class="rec">
+              <div class="rec-top">
+                <div class="rec-kicker">
+                  <span>Recommendation</span>
+                  <span class="pill pill-ready">Ready to review</span>
+                </div>
+                <div class="rec-title">Document the callback URL for local OAuth development</div>
+                <div class="rec-meta">HIGH IMPACT · HIGH CONFIDENCE · YOU OWN THIS PAGE</div>
+              </div>
+              <div class="rec-grid">
+                <div class="rec-cell">
+                  <h5>Why</h5>
+                  <ul class="ev">
+                    <li><span class="n">47</span><span>questions in the last 30 days</span></li>
+                    <li><span class="n">18</span><span>the Assistant could not answer</span></li>
+                    <li><span class="n">9</span><span>support conversations, 3 escalated</span></li>
+                  </ul>
+                  <p class="sub" style="margin-top:9px">68% ask what URL to register for localhost.</p>
+                </div>
+                <div class="rec-cell">
+                  <h5>Recommended action</h5>
+                  <p>Add a <strong>Local development and callback URLs</strong> section to <code>/oauth/configuration</code> — a localhost example, and a troubleshooting note for the <code>redirect_uri_mismatch</code> error.</p>
+                </div>
+                <div class="rec-cell">
+                  <h5>Expected outcome</h5>
+                  <p>Repeat OAuth setup questions fall, and Assistant answer coverage on this topic rises above the space average.</p>
+                  <p class="sub">Checked 14 days after publish.</p>
+                </div>
+              </div>
+              <div class="rec-foot">
+                <span class="eff">Effort: small · one section on an existing page · needs someone who knows the OAuth implementation</span>
+                <span class="rec-acts">
+                  <span class="btn">Draft the change →</span>
+                  <span class="btn btn-quiet">Not now</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="decide">
+          <div class="dh">Decisions</div>
+          <ul class="tight">
+            <li><strong>One recommendation, not a menu.</strong> Three options is a diagnosis wearing a costume — it hands the decision back. The agent picks one and says why; alternatives sit behind “other approaches” for the reader who disagrees, which is also where a disagreement gets captured as signal.</li>
+            <li><strong>Name a page, not a topic.</strong> “Add a local development section to <code>/oauth/configuration</code>” is executable. “Improve OAuth documentation” is a feeling. If the agent can't name a destination, that is itself the finding — and the recommendation becomes an investigation.</li>
+            <li><strong>Effort is stated in the reviewer's currency.</strong> Not points or hours, but the things that actually decide whether someone starts: how much text, whether an existing page changes or a new one is created, and whether it needs product knowledge or just an editor.</li>
+            <li><strong>The expected outcome is a prediction, and it gets scored.</strong> The card says what should move if this works, and stage 5 comes back and grades it. A prediction nobody checks is marketing; a prediction that is checked is what makes the next recommendation worth reading.</li>
+            <li><strong>The agent is allowed to say it doesn't know yet.</strong> When the evidence supports a problem but not a fix — six people hitting a limit that may be undocumented because the product doesn't support it — the recommendation is an investigation, not a draft. That is a different status, a different button, and an honest one.</li>
+            <li><strong>The agent proposes an intervention, and one of them is writing nothing.</strong> Edit, add a section, create a page, or no documentation change — chosen before a draft exists and shown on the gap in the queue. The fourth case matters most: when the page already answers the question and readers dispute the answer, that is product behaviour, not missing content, and the honest recommendation is to route it rather than write about it. An agent whose only move is to produce content will produce content whether or not it helps. The owner can always overrule and draft anyway; the recommendation informs the judgement, it does not gate it.</li>
+            <li><strong>Confirming the gap is its own act, before any draft exists.</strong> Believing the problem and judging the writing are separate judgements, and collapsing them means the draft argues for the gap that produced it.</li>
+            <li><strong>Drafts are still generated on request.</strong> Asking for the draft <em>is</em> the act of accepting the recommendation, which keeps the two judgements separate and keeps generation cost proportional to real intent rather than to the size of the backlog.</li>
+          </ul>
+        </div>
+
+        <div class="bound">
+          <div class="bh">Where I would stop</div>
+          <p>There is a version of this that keeps growing: campaigns, milestones, a burndown, a Q3 Documentation Health Initiative. I would resist it. That turns GitBook into a project-management product with a docs skin, and it asks an owner to adopt a second planning system to fix a paragraph.</p>
+          <p>The unit stays <strong>one change to one page, with a before and an after</strong>. The moment a proposal needs a project plan, it isn't a documentation gap any more — it is a rewrite, and it should leave this loop and become normal roadmap work. Enough structure to get from “there's a problem” to “here's what I'm doing about it.” No more than that.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="k">03</span><span class="t">Draft · “Would I put my name on this?”</span></div>
+      <div class="block-b">
+        <p>This is where the brief's most dangerous failure lives: a draft that reads convincingly while being wrong. A fluent paragraph passes a skim, and skimming is what a busy owner does. The interface has to make verification cheaper than acceptance.</p>
+        <div class="decide">
+          <div class="dh">Decisions</div>
+          <ul class="tight">
+            <li><strong>The draft arrives as a diff against the page the recommendation named</strong>, inheriting that page's structure and voice — never as a floating document the owner has to find a home for. The recommendation already committed to a destination; the draft honours it.</li>
+            <li><strong>Show the smallest amount of content a confident decision needs.</strong> The review surface sizes itself to the change: a paragraph edit shows the paragraph and its neighbours, a new section shows the section it sits between, a new page shows the page. The reader always sees what exists, what the agent wants to add, and where it goes — and can open the page as it stands at any point. This replaces the unanswerable question of whether to show the whole document or only the new part.</li>
+            <li><strong>Every factual sentence is marked found or inferred.</strong> Sourced claims link to the ticket, thread or page they came from. Unsourced claims are visually flagged as the agent's own inference. This is the single highest-leverage control against the convincing-but-wrong draft, and it costs the reader nothing when the draft is good.</li>
+            <li><strong>Two kinds of suggestion, split by whether the agent will write the replacement.</strong> <em>Proposed</em> carries exact text, so the only question is accept or reject. <em>Edits</em> carries a concern with no rewrite behind it — an unsourced claim, a style-guide breach, a structure the agent thinks is wrong — and asking the agent to work on one is what turns it into a Proposed change. The agent never silently rewrites; a rewrite exists because someone asked for it.</li>
+            <li><strong>The primary action is “Edit and continue”, not “Accept”.</strong> Accept-as-is exists, but it is not the default gesture. The healthy outcome for this feature is accept-with-edit, and the UI should say so.</li>
+            <li><strong>Check the draft against the space's style guide</strong> — GitBook already has one — so voice mismatch is caught by the system rather than by the owner's irritation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="k">04</span><span class="t">Ship · “How does this actually ship?”</span></div>
+      <div class="block-b">
+        <p>Constraint 3 is the one that breaks most designs: some pages can't be edited in place, because Git-synced content has to go back through a pull request. A flow that assumes the in-app editor works for everything is a flow that dies on contact with half the customer base.</p>
+        <div class="decide">
+          <div class="dh">Decisions</div>
+          <ul class="tight">
+            <li><strong>One review object, two renderings.</strong> An editor-owned space renders it as a change request; a Git-synced space renders it as a pull request on the connected repo. Same evidence, same draft, same provenance — different destination.</li>
+            <li><strong>Say where it lands before the user invests.</strong> The destination is on the recommendation card, visible in the queue, before anyone opens anything. Discovering “this has to go through GitHub” after twenty minutes of editing is how you lose someone permanently — and it is also part of the effort estimate, so it has to be known early.</li>
+            <li><strong>Carry the evidence into the PR body.</strong> A reviewer in GitHub never opened GitBook and has none of this context. The questions, sources and coverage check travel with the change.</li>
+            <li><strong>The agent proposes with the accepting user's permissions, never its own.</strong> If they can't publish to that space, it routes to the owner as a review request instead of failing at the last step.</li>
+            <li><strong>Nothing auto-publishes.</strong> The publish button stays where it is, operated by a person.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="k">05</span><span class="t">Verify · “Did it fix what it claimed?”</span></div>
+      <div class="block-b">
+        <p>A merged change is not the end of the loop; it is the start of the only evidence that matters. Without this stage the feature is a to-do list that keeps growing, and there is no reason to open it a second time. This is also what makes the recommendation card honest: it made a prediction, so something has to come back and mark it.</p>
+
+        <div class="spec">
+          <div class="spec-h">
+            <span class="sk">Specimen</span>
+            <span class="st">Verification — 14 days after publish, against the questions the recommendation named</span>
+          </div>
+          <div class="spec-b">
+            <div class="deltas">
+              <div class="delta">
+                <div class="dm">Questions about OAuth callbacks</div>
+                <div class="dv"><span class="now">9</span><span class="was">from 34</span></div>
+                <div class="dd good">−74% in the 14 days since publish</div>
+              </div>
+              <div class="delta">
+                <div class="dm">Answered by the Assistant without escalating</div>
+                <div class="dv"><span class="now">89%</span><span class="was">from 61%</span></div>
+                <div class="dd good">+28 points, same window</div>
+              </div>
+              <div class="delta">
+                <div class="dm">Support conversations on this topic</div>
+                <div class="dv"><span class="now">3</span><span class="was">from 8</span></div>
+                <div class="dd good">−5, none escalated</div>
+              </div>
+            </div>
+            <div class="verdict">
+              <span class="pill pill-resolved">Likely resolved</span>
+              <p>Nine questions still fail. Six of them ask how to rotate a client secret — a different gap, and not one this change claimed to fix. It has been added to the queue on its own evidence.</p>
+            </div>
+            <div class="handoff">
+              <span class="hk">Next</span>
+              <span class="ht">Webhook delivery failures · high impact · <strong>needs investigation</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="decide">
+          <div class="dh">Decisions</div>
+          <ul class="tight">
+            <li><strong>Merging moves the gap to “watching”, not “closed”.</strong> The agent re-runs the original questions against the published content and reports what now resolves and what still fails.</li>
+            <li><strong>That report is the notification that brings the person back</strong> — “the 42 questions behind the page you published now resolve; 6 still fail” — and it has to be willing to say the change didn't work.</li>
+            <li><strong>The report hands over the next thing, and only one.</strong> The moment someone has just seen a fix work is the cheapest moment to start another. It is also the moment where dumping a backlog does the most damage, so the handoff is a single named opportunity, not a list.</li>
+            <li><strong>Measurement lives on the change, not on a dashboard.</strong> A separate analytics screen makes the reader connect an outcome to a cause. Attaching before-and-after to the specific change that claimed it is what turns a number into a verdict.</li>
+            <li><strong>Gaps route by page ownership, and the queue is bounded.</strong> A capped weekly set per owner, not a shared firehose. Trust is limited by review capacity, so the volume has to be too.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>The queue is a decision, not a scoreboard</h2></div>
+    <div class="prose">
+      <p>Two hundred gaps ranked by confidence is a scoreboard, and a scoreboard is a thing you lose to. A docs owner opening that list learns that their documentation is worse than they thought and that fixing it is somebody's full-time job — which is precisely the feeling that makes people close the tab.</p>
+      <p>The same evidence, sorted by what can be acted on today and carrying its recommended action on the row, is a completely different object. Every row answers “and then what?” before it is asked.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec-h">
+        <span class="sk">Specimen</span>
+        <span class="st">Opportunity queue — sorted by actionability, one recommendation per row</span>
+      </div>
+      <div class="spec-b">
+        <div class="opp-list">
+          <div class="opp">
+            <div class="opp-h">
+              <span class="opp-t">OAuth callback configuration</span>
+              <span class="opp-tags">High impact · High confidence</span>
+            </div>
+            <p class="opp-p">People can't work out which callback URL to register when they're developing against localhost, and the error they get back doesn't tell them.</p>
+            <div class="opp-rec"><span class="rk2">REC</span><span>Add a local development section to <code>/oauth/configuration</code></span></div>
+            <div class="opp-f">
+              <span class="meta"><span class="pill pill-ready">Ready to review</span> Small · you own this page · edits in GitBook</span>
+              <span class="link">Review &amp; fix →</span>
+            </div>
+          </div>
+          <div class="opp">
+            <div class="opp-h">
+              <span class="opp-t">Webhook delivery failures</span>
+              <span class="opp-tags">High impact · Medium confidence</span>
+            </div>
+            <p class="opp-p">People can see that a delivery failed and can't find out why. The questions split two ways, and I can't tell which from the logs alone.</p>
+            <div class="opp-rec"><span class="rk2">REC</span><span>Scope it first — this is either a missing troubleshooting page or an error code the product never returns</span></div>
+            <div class="opp-f">
+              <span class="meta"><span class="pill pill-invest">Needs investigation</span> Unknown until scoped · Platform docs</span>
+              <span class="link">Investigate →</span>
+            </div>
+          </div>
+          <div class="opp">
+            <div class="opp-h">
+              <span class="opp-t">Rate limit headers</span>
+              <span class="opp-tags">Medium impact · High confidence</span>
+            </div>
+            <p class="opp-p">Published six days ago. Re-testing the 21 original questions against the live page.</p>
+            <div class="opp-rec"><span class="rk2">REC</span><span>Nothing to do — the result lands on day 14</span></div>
+            <div class="opp-f">
+              <span class="meta"><span class="pill pill-watch">Watching</span> Merged in <code>docs#4412</code> · 8 days to go</span>
+              <span class="link">See progress →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>The status vocabulary is the product</h3>
+    <div class="prose"><p class="dim">Six states, and the useful distinction is not urgency — it is what the agent is actually able to hand you.</p></div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Status</th><th>What it means</th><th>What the agent has</th><th>What the person does</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="pillcell"><span class="pill pill-ready">Ready to review</span></td><td>A specific change to a specific page</td><td>A draft it will stand behind</td><td>Accept, edit, or dismiss</td></tr>
+          <tr><td class="pillcell"><span class="pill pill-invest">Needs investigation</span></td><td>A real cluster, no confident fix — or one it recommends against writing</td><td>The evidence, and its own reasons for doubting</td><td>Scope it, or hand it to someone who can</td></tr>
+          <tr><td class="pillcell"><span class="pill pill-review">With a reviewer</span></td><td>A change request or PR is open</td><td>Nothing further — it is a human's turn</td><td>Review it where reviews already happen</td></tr>
+          <tr><td class="pillcell"><span class="pill pill-watch">Watching</span></td><td>Merged, outcome not yet known</td><td>The original questions, re-running</td><td>Nothing, until the result arrives</td></tr>
+          <tr><td class="pillcell"><span class="pill pill-resolved">Resolved</span></td><td>The questions it named now resolve</td><td>A before and an after</td><td>Nothing — it leaves the queue</td></tr>
+          <tr><td class="pillcell"><span class="pill pill-dismissed">Dismissed</span></td><td>Rejected, with a reason</td><td>A training signal</td><td>Nothing — it does not come back</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Ranking is not the same as choosing</h3>
+    <div class="prose"><p>Even a well-sorted list of forty asks the owner to do arithmetic: impact against effort, against whether they are the right person, against what they have time for before lunch. The queue should be able to answer the question it is actually being asked, which is “what should I do first?”</p></div>
+
+    <div class="spec">
+      <div class="spec-h">
+        <span class="sk">Specimen</span>
+        <span class="st">Next best action — the landing view, above the queue</span>
+      </div>
+      <div class="spec-b">
+        <div class="nba">
+          <div class="nba-k">Recommended next</div>
+          <div class="nba-t">Document the callback URL for local OAuth development</div>
+          <ul class="why">
+            <li>Highest question volume of anything currently unresolved — 47 in 30 days</li>
+            <li>A page already exists to hold the fix, so nothing new has to be structured</li>
+            <li>One section, on a page you own and can publish yourself</li>
+            <li>The three most similar changes resolved 80%, 74% and 91% of their questions</li>
+          </ul>
+          <div class="nba-f">
+            <span class="btn">Start →</span>
+            <span class="btn btn-quiet">See all 38 opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <div class="decide" style="border-top:0;padding-top:0;margin-top:22px">
+        <div class="dh">Decisions</div>
+        <ul class="tight">
+          <li><strong>Promote one recommendation rather than enriching every row.</strong> The failure this avoids is handing someone two hundred problems; two hundred richer rows are the same failure with more ink. One gap is picked — highest reader impact for the smallest change, where a page already exists to put it on — and stated in full with its effort, impact and owner. Everything else stays scannable. The pick follows whatever is filtered, so it is a recommendation about the work in front of you rather than a fixed banner.</li>
+          <li><strong>An open gap says whether it can be acted on, not merely that it is open.</strong> <em>Ready to review</em> means the agent has a change it will stand behind. <em>Needs investigation</em> means it is unsure, or has recommended against writing anything. Effort, impact and readiness are all derived from the evidence rather than authored, so they cannot quietly disagree with it.</li>
+          <li><strong>Rank by actionability, not severity.</strong> A large problem with no known fix ranks below a small one with a page waiting for it. Severity decides what gets investigated; actionability decides what gets done this afternoon. The two are different sorts and the product should not pretend otherwise.</li>
+          <li><strong>“Why this one” is four checkable facts, not a score.</strong> Volume, whether a destination exists, whether the reader can ship it themselves, and how comparable changes actually performed. A number like “priority 8.4” is unauditable and invites arguing with the model instead of with the evidence.</li>
+          <li><strong>“Needs investigation” must not become a landfill.</strong> It is the honest status and therefore the tempting one. If items accumulate there, the agent is deferring rather than diagnosing, and that is a tracked failure — see metrics.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>The trust model</h2></div>
+    <div class="prose">
+      <p>Constraint 4 says the agent will be wrong, and that convincing wrongness is the dangerous case. Treating that as a model-quality problem is a mistake — it is an interaction problem, and these are the rules I would hold to across every screen.</p>
+      <ul class="tight">
+        <li><strong>Asymmetric effort.</strong> Dismissing is one keystroke. Accepting requires the evidence panel to have been opened. Friction belongs on the dangerous path, not the safe one.</li>
+        <li><strong>No confidence percentage.</strong> “87% confident” is uninterpretable and invites rubber-stamping. Show what was found versus inferred, and how many independent sources agree. Those are things a person can actually check.</li>
+        <li><strong>A recommendation is a claim, and claims get scored.</strong> Every card predicts an outcome, and stage 5 marks it. When the agent's predictions have been poor on a given kind of gap, that record is visible on the next card — so an agent that recommends badly becomes visibly less confident inside the product, without anyone editing a prompt.</li>
+        <li><strong>A rejected gap does not come back</strong> unless the underlying evidence materially changes. Repeat false positives are the fastest route to abandonment.</li>
+        <li><strong>Dismissal reasons are the training signal</strong>, and the mix of reasons is a health metric in its own right. “Wrong action” is now a reason of its own — the gap was real and the proposed fix was not, which is a different failure from a hallucinated problem and should be counted separately.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Where a change lands</h2></div>
+    <div class="prose"><p class="dim">The same review object, resolved against how the space is actually managed. Known at recommendation time, because it changes the effort estimate.</p></div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Space type</th><th>Renders as</th><th>Review happens in</th><th>Failure mode it avoids</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Editor-owned</td><td>Change request</td><td>GitBook, existing reviewers</td><td>A parallel approval queue nobody watches</td></tr>
+          <tr><td>Git-synced</td><td>Pull request</td><td>The connected repo</td><td>An in-place edit that the next sync silently reverts</td></tr>
+          <tr><td>Mixed / multi-version</td><td>One PR per target branch</td><td>Repo, one review per version</td><td>A fix that lands on latest and never on the version people read</td></tr>
+          <tr><td>No write access</td><td>Review request</td><td>Routed to the page owner</td><td>Dead-ending at the publish step after all the work</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2>Screens to build</h2></div>
+    <div class="prose"><p class="dim">Staying inside the existing system: the prototype's tokens, chips, drawer, pills and list rows carry most of this. Four components are genuinely new, and three of them are the recommendation layer.</p></div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Screen</th><th>Status</th><th>Built from</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Opportunity queue</td><td><span class="pill pill-extend">Extend</span></td><td>The existing list and filters, re-sorted by actionability, with a recommendation line and a status on every row</td></tr>
+          <tr><td>Next best action</td><td><span class="pill pill-new">New</span></td><td>A single-item view above the queue: one recommendation, and the four facts that ranked it first</td></tr>
+          <tr><td>Evidence panel</td><td><span class="pill pill-extend">Extend</span></td><td>A split detail panel beside the queue — verbatims, the failed answer, the coverage check — so triage moves gap to gap without closing anything</td></tr>
+          <tr><td>Recommendation card</td><td><span class="pill pill-new">New</span></td><td>Why, recommended action, effort, expected outcome — the header of the evidence panel and the row summary in the queue</td></tr>
+          <tr><td>Dismiss with reason</td><td><span class="pill pill-reuse">Reuse</span></td><td>The existing dropdown menu component, plus “wrong action” as a reason</td></tr>
+          <tr><td>Draft review</td><td><span class="pill pill-new">New</span></td><td>Diff view with claim-level provenance, and a suggestions rail splitting concrete changes from open concerns</td></tr>
+          <tr><td>Ship sheet</td><td><span class="pill pill-new">New</span></td><td>Destination, reviewers, permissions and what happens next</td></tr>
+          <tr><td>Verification report</td><td><span class="pill pill-new">New</span></td><td>Stat tiles from the existing system, re-pointed at outcome, attached to the change that predicted it — and the handoff to the next opportunity</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07</span><h2>Assumptions</h2></div>
+    <div class="prose">
+      <p class="dim">Declared, per the brief's invitation, so nothing here is blocked on information we don't have.</p>
+      <ul class="tight">
+        <li><strong>Detection quality is out of scope.</strong> I take the existing beta's gap detection as given and design the loop around it.</li>
+        <li><strong>Assistant logs retain enough question text to quote</strong>, and are scrubbed of personal data before they are ever shown to a docs owner.</li>
+        <li><strong>Page ownership exists or can be derived</strong> from recent editors and space permissions. Without it, routing collapses into a shared queue and the volume cap stops working.</li>
+        <li><strong>Outcomes of past changes are recorded and queryable.</strong> Effort estimates and expected outcomes are only credible because the system can look back at what comparable edits actually did. Until that history exists, the first weeks of recommendations should be stated with visibly wider hedges rather than borrowed confidence.</li>
+        <li><strong>Connected repos accept bot-authored pull requests</strong>, and Git Sync's mapping from page to file is reliable enough to target a section.</li>
+        <li><strong>English first.</strong> Multi-language gap merging is real and deferred — a gap in three locales is one gap, not three, and that deserves its own pass.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08</span><h2>What I would validate</h2></div>
+    <div class="phases">
+      <div class="phase">
+        <h4>Scoping</h4>
+        <p>Ship the evidence panel and the recommendation with no drafting at all to a handful of teams. Two narrow questions: can an owner reach a verdict on someone else's evidence, and is the action the agent proposes the one they would have chosen?</p>
+        <div class="gate"><b>Gate:</b> a verdict in under a minute on most gaps, and the recommended action kept or edited more often than replaced. If people can't decide, or the proposed action is routinely wrong, drafting is premature.</div>
+      </div>
+      <div class="phase">
+        <h4>Build</h4>
+        <p>Dogfood on GitBook's own docs — a large, real, maintained site with an assistant already on it — and let their writers judge the false-positive rate before any customer sees a draft.</p>
+        <div class="gate"><b>Gate:</b> writers accept-with-edit more often than they dismiss, and no accepted draft ships an inaccurate claim.</div>
+      </div>
+      <div class="phase">
+        <h4>Roll-out</h4>
+        <p>Staged by capability, not by percentage: evidence, then recommendations, then drafts on request, then PR routing and verification. Per-space opt-in with a kill switch, and a hard cap on proposals per owner per week.</p>
+        <div class="gate"><b>Gate:</b> the week-two return rate holds. Watch the cohort that stops opening it — they don't complain, they just leave.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Metrics</h2></div>
+    <div class="prose"><p class="dim">Volume of gaps found is a vanity metric — it measures the agent, not the loop. These measure whether the loop closes.</p></div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Layer</th><th>Measure</th><th>Why this one</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Leading</td><td>Time to verdict</td><td>The cost of a decision. If this rises, the evidence design is failing.</td></tr>
+          <tr><td>Leading</td><td>Recommended action kept or edited</td><td>Grades the judgement, separately from the writing. Low here means the diagnosis is fine and the agent's instinct for what to do about it is not.</td></tr>
+          <tr><td>Leading</td><td>Draft request rate</td><td>How often a recommendation is believed enough to be worth writing for.</td></tr>
+          <tr><td>Core</td><td>Next-best-action follow rate</td><td>How often the owner works the thing the system put first. This grades the ranking, not the prose.</td></tr>
+          <tr><td>Core</td><td>Accept-with-edit rate</td><td>The healthy middle. All-accept means rubber-stamping; all-reject means the drafts are worthless.</td></tr>
+          <tr><td>Core</td><td>Merged changes per owner per week</td><td>Throughput of the loop, per person who actually owns content.</td></tr>
+          <tr><td>Trust</td><td>Owner-judged false-positive rate</td><td>The agent graded by the only people qualified to grade it.</td></tr>
+          <tr><td>Trust</td><td>Predicted outcome vs actual</td><td>Every recommendation states what should move. This is the score, and it is what licenses the agent to sound confident at all.</td></tr>
+          <tr><td>Trust</td><td><strong>Repeat-open rate at 2 and 4 weeks</strong></td><td>The brief's own question, made measurable. This is the headline number.</td></tr>
+          <tr><td>Outcome</td><td>Previously failing questions now resolved</td><td>Whether published changes moved the thing that produced the signal.</td></tr>
+          <tr><td>Guardrail</td><td>Published-then-reverted rate</td><td>Catches convincingly wrong drafts that made it all the way through.</td></tr>
+          <tr><td>Guardrail</td><td>Investigations that never resolve</td><td>“Needs investigation” is an honest status and a comfortable hiding place. If items sit there, the agent is deferring rather than diagnosing.</td></tr>
+          <tr><td>Guardrail</td><td>Time to first dismissal for a new user</td><td>If the first proposal someone sees is wrong, there is no second session.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="endnote">
+    <b>Where this goes next.</b> The prototype already carries stage 1 and the design system the rest will be built from. The build order that follows this argument is the recommendation card first — it is the cheapest thing to ship, it can be tested with no generation at all, and it is what turns a list of problems into a list of decisions. Then the evidence panel beneath it, then draft review with provenance, then the ship sheet's fork between a change request and a pull request. Verification comes last in build order and first in importance: it is the only thing that makes the second visit worth anything.
+  </div>
+
+</div>
